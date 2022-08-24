@@ -3,6 +3,7 @@ import styled from "styled-components";
 import AddToCart from "./AddToCart";
 import ProductInformation from "./ProductInformation";
 import StyleSelector from "./StyleSelector";
+import Col from "../../shared-components/Col";
 
 const ProductDetails = () => (
   <Col>
@@ -13,9 +14,5 @@ const ProductDetails = () => (
   </Col>
 )
 
-const Col = styled.div`
-  display: flex;
-  flex-direction: column;
-`
 
 export default ProductDetails;
