@@ -2,15 +2,15 @@
 
 This project is a complete redesign of a formerly outdated feeling retail portal. This redesign will help the client boost sales and tote an overall more user friendly and accessable page.
 
-## This product includes the following widgets created by our team:
+## This product includes the following widgets created by our talented team:
 
-> Product Detail Page
+> Product Detail Page (Grant D.)
 
-> Ratings & Reviews
+> Ratings & Reviews (Brian C.)
 
-> Questions & Answers
+> Questions & Answers (James A.)
 
-> Related Items & Outfit Creation
+> Related Items & Outfit Creation (Tyler L.)
 
 ## Using this repo:
 
@@ -27,8 +27,9 @@ If you are not a member of the team please fork this repo prior to diving in. If
 
 Navigate to the root directory and `npm install` all dependencies.
 
-## Our Talented team:
-- Grant Deedler
-- Tyler Leet
-- James Anderson
-- Brian Crouse
+### Tech Used:
+- React
+- Sass
+- Axios
+- Bable
+- Webpack
