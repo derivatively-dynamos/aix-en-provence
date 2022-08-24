@@ -1,23 +1,29 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './app.scss';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import Overview from './overview/Overview';
+import RelatedItems from './related-items/RelatedItems';
+import QuestionsAndAnswers from './questions-and-answers/QuestionsAndAnswers';
+import RatingsAndReviews from './ratings-and-reviews/RatingsAndReviews';
 
-const Button = styled.button`
-  border: 2px red dashed;
-  color: darkred;
-  font-size: 2em;`
+const App = () => {
+  return (
+    <Div className="container">
+      <h1>Hello World!</h1>
+      <Overview />
+      <RelatedItems />
+      <QuestionsAndAnswers />
+      <RatingsAndReviews />
+    </Div>
+  );
+};
 
-
-class App extends Component {
-  render() {
-    return (
-      <div className='header'>
-        <h1>Hello World!</h1>
-        <Button>Click me!</Button>
-      </div>
-    )
-  }
-}
-
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1em auto 0 auto;
+  width: 80%;
+`
 
 export default App;
