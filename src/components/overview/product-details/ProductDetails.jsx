@@ -3,16 +3,24 @@ import styled from "styled-components";
 import AddToCart from "./AddToCart";
 import ProductInformation from "./ProductInformation";
 import StyleSelector from "./StyleSelector";
-import Col from "../../shared-components/Col";
 
 const ProductDetails = () => (
-  <Col>
-    <h3>Product Details</h3>
+  <Container>
     <ProductInformation/>
     <StyleSelector/>
     <AddToCart />
-  </Col>
+  </Container>
 )
+
+const Container = styled.section`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: #313131;
+  color: lightgray;
+  padding: .5em;
+  border: 1px solid cyan;
+`
 
 
 export default ProductDetails;

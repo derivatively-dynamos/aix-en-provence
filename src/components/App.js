@@ -25,6 +25,8 @@ const Container = styled.div`
   margin: 1em auto 0 auto;
   width: 80%;
   gap: 1em;
+  border: 1px solid darkgray;
+  background-color: #dbdbdb;
 `
 
 export default App;
