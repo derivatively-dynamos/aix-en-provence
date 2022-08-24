@@ -24,6 +24,7 @@ const Div = styled.div`
   align-items: center;
   margin: 1em auto 0 auto;
   width: 80%;
+  gap: 1em;
 `
 
 export default App;
