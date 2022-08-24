@@ -8,17 +8,17 @@ import RatingsAndReviews from './ratings-and-reviews/RatingsAndReviews';
 
 const App = () => {
   return (
-    <Div className="container">
+    <Container className="container">
       <h1>Hello World!</h1>
       <Overview />
       <RelatedItems />
       <QuestionsAndAnswers />
       <RatingsAndReviews />
-    </Div>
+    </Container>
   );
 };
 
-const Div = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
