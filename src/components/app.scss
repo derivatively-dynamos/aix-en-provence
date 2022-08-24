@@ -1,17 +1,8 @@
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
 }
 
-.container {
-  height: 100vh;
-  background-color: #E7E3EB;
+*, *:before, *:after {
+  box-sizing: inherit;
 }
-
-.header {
-  padding: 15px 20px;
-  background-color: #c4bfca;
-  h1{
-    color: rgb(78, 45, 45);
-  }
-}
-
