@@ -31,5 +31,5 @@ Navigate to the root directory and `npm install` all dependencies.
 - React
 - Sass
 - Axios
-- Bable
+- Babel
 - Webpack
