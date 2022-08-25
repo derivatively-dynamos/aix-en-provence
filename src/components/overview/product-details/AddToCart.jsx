@@ -5,8 +5,7 @@ const AddToCart = ({ style }) => {
 
   const sizes = [];
   for(let key in style.skus) {
-    console.log(style.skus[key])
-    sizes.push(<Option>{style.skus[key].size}</Option>);
+    sizes.push(<Option key={style.skus[key].size}>{style.skus[key].size}</Option>);
   }
 
   return (
