@@ -1,18 +1,30 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-const AddToCart = () => (
-  <div>
+const AddToCart = ({ style }) => {
+
+  const sizes = [];
+  for(let key in style.skus) {
+    console.log(style.skus[key])
+    sizes.push(<Option>{style.skus[key].size}</Option>);
+  }
+
+  return (
     <div>
-      <Button>SELECT SIZE v</Button>
-      <Button>1  v</Button>
+      <div>
+        <Select>
+          <Option>SELECT SIZE</Option>
+          {sizes}
+        </Select>
+        <Button>1 v</Button>
+      </div>
+      <div>
+        <Button>ADD TO BAG +</Button>
+        <Button>☆</Button>
+      </div>
     </div>
-    <div>
-      <Button>ADD TO BAG   +</Button>
-      <Button>☆</Button>
-    </div>
-  </div>
-)
+  );
+};
 
 const Button = styled.button`
   border-radius: 0;
@@ -23,6 +35,26 @@ const Button = styled.button`
   padding: 10px;
   margin-right: 10px;
   margin-top: 5px;
-`
+`;
+
+const Select = styled.select`
+  border-radius: 0;
+  border: 1px solid darkgray;
+  background-color: #292929;
+  color: #c0c0c0;
+  font-size: 14px;
+  padding: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+`;
+
+const Option = styled.option`
+  border-radius: 0;
+  border: 1px solid darkgray;
+  background-color: #292929;
+  color: #c0c0c0;
+  font-size: 14px;
+  padding: 10px;
+`;
 
 export default AddToCart;
