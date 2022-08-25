@@ -1,14 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ReviewSlider = ({stars}) => {
+const ReviewSlider = () => {
   return (
-    <ReviewCont>
-      <ReviewBar></ReviewBar>
-      <ReviewBar></ReviewBar>
-      <ReviewBar></ReviewBar>
-      <Indicator></Indicator>
-    </ReviewCont>
+    <>
+      <h3>Comfort</h3>
+      <ReviewCont>
+        <ReviewBar></ReviewBar>
+        <ReviewBar></ReviewBar>
+        <ReviewBar></ReviewBar>
+        <Indicator></Indicator>
+      </ReviewCont>
+      <SpaceCont>
+            <p>Too small</p>
+            <p>Too large</p>
+      </SpaceCont>
+    </>
   )
 }
 
@@ -17,19 +24,26 @@ const Container = styled.div`
   flex: 1;
   width: 100%;
 `
+const SpaceCont = styled(Container)`
+  justify-content: space-between;
+  font-size: 90%;
+`
 const ColumnCont = styled(Container)`
   flex-direction: column;
   padding-right: 10px;
 `
 const ReviewCont = styled(Container)`
+  display: flex;
   flex-direction: row;
-  justify-content: space-between;
   gap: 0.25em;
 `
-const ReviewBar = styled.span`
-  height: .5em;
-  width: 33%;
+const ReviewBar = styled.div`
+  max-height: .5em;
+  flex: 1;
   border: .25em solid white;
+`
+const MiddleBar = styled(ReviewBar)`
+  flex: 2;
 `
 const Indicator = styled.div`
   position: absolute;
