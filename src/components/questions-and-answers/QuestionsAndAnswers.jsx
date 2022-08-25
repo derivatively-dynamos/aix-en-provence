@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import SearchBar from "./SearchBar";
-import QuestionComponent from "./Questions-Answers/QuestionField";
+import QuestionComponent from "./Questions-Answers/q-a-container/QuestionField";
+import QuestionForm from "./Questions-Answers/QuestionForm/QuestionForm";
 
 const QuestionsAndAnswers = () => {
   return (
@@ -10,6 +11,7 @@ const QuestionsAndAnswers = () => {
         <h1>QUESTIONS & ANSWERS...</h1>
         <SearchBar />
         <QuestionComponent />
+        <QuestionForm />
       </div>
     </Container>
   );

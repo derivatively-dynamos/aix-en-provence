@@ -1,24 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 import AnswerField from "./AnswerField";
+import PhotoSection from "./PhotoSection";
+import LoadAnswers from "./LoadAnswers";
 
 const QuestionComponent = () => {
   return (
-    <Container>
+    <ContainerDiv>
       <Box1>
         <h3>Q: Who what which when where why whether how?</h3>
         <Box2>
-          Helpful? <u>Yes</u> | <u>Add Answer</u>
+          Helpful? <Button>Yes</Button> (23) | <Button>Add Answer</Button>
         </Box2>
       </Box1>
       <AnswerField />
-    </Container>
+      <PhotoSection />
+      <LoadAnswers />
+    </ContainerDiv>
   );
 };
 
 export default QuestionComponent;
 
-const Container = styled.div`
+const ContainerDiv = styled.div`
   background-color: #7e7e7e;
   display: block;
   align-items: center;
@@ -32,4 +36,10 @@ const Box1 = styled.div`
 
 const Box2 = styled.span`
   margin-top: 20px;
+`;
+
+const Button = styled.button`
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid black;
 `;

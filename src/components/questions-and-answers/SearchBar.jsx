@@ -6,7 +6,7 @@ const SearchBar = () => {
     <Container>
       <h3>HAVE A QUESTION? SEARCH FOR ANSWERS...</h3>
       <div>
-        <input type="search" placeHolder="Search..." />
+        <input type="search" placeholder="Search..." />
         <button type="submit">Search</button>
       </div>
     </Container>
