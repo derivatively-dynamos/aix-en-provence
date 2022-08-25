@@ -12,6 +12,7 @@ const DefaultView = ({ photos, product }) => {
   }, [photos])
 
   const thumbnailHandler = (index) => {
+    if (index === -1 || index === (photos.length)) return;
     setIndex(index);
     setPhoto(photos[index]);
   };
