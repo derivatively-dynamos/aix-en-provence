@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 const ThumbnailList = ({ photos, setIndex, index }) => {
   const icons = photos.map((photo, i) => {
@@ -27,18 +25,11 @@ const ThumbnailList = ({ photos, setIndex, index }) => {
 
   return (
     <Ul>
-      <Up icon={faChevronUp} onClick={() => setIndex(index - 1)} />
       {icons}
-      <Down icon={faChevronDown} onClick={() => setIndex(index + 1)} />
     </Ul>
   );
 };
-const Up = styled(FontAwesomeIcon)`
-  font-size: 2em;
-`;
-const Down = styled(FontAwesomeIcon)`
-  font-size: 2em;
-`;
+
 const Ul = styled.ul`
   padding: 0;
   margin: 0;
@@ -46,12 +37,17 @@ const Ul = styled.ul`
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 25px;
+  left: 15px;
+  height: 88%;
+  overflow: auto;
+  scrollbar-width: none;
 `;
 const Icon = styled.img`
   height: 60px;
   width: 60px;
+  aspect-ratio: 1;
+  object-fit: cover;
   border: 1px solid red;
   background: gray;
   margin-right: 4px;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const ImageGallery = ({style, product}) => (
   <Container>
-    <DefaultView photos={style.photos} product={product}/>
+    <DefaultView photos={[...style.photos, ...style.photos]} product={product}/>
   </Container>
 )
 
