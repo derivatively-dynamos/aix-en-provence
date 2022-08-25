@@ -24,7 +24,9 @@ const Overview = () => {
 
   return (
     <Container>
-      <ImageGallery />
+      <ImageGallery
+        style={style}
+        product={product}/>
       <ProductDetails
         product={product}
         styles={styles}

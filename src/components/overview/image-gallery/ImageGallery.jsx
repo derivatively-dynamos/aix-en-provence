@@ -2,16 +2,16 @@ import React from "react";
 import DefaultView from "./DefaultView";
 import styled from "styled-components";
 
-const ImageGallery = () => (
+const ImageGallery = ({style, product}) => (
   <Container>
-    <DefaultView/>
+    <DefaultView photos={[...style.photos, ...style.photos]} product={product}/>
   </Container>
 )
 
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 70%;
   background-color: #313131;
   color: lightgray;
   padding: .5em;
