@@ -15,7 +15,7 @@ const ReviewBreakdown = () => {
       <ColumnCont>
         <p>100% of reviews recommend this product</p>
         {starBreakdown.map((starAmt)=> {
-          return <ReviewSlider stars={starAmt}></ReviewSlider>
+          return <ReviewSlider key={starAmt[0]} stars={starAmt}></ReviewSlider>
         })}
       </ColumnCont>
       <ColumnCont>
