@@ -37,7 +37,7 @@ const ProductDetails = () => {
   return (
     <Container>
       <ProductInformation product={product} style={style} />
-      <StyleSelector />
+      <StyleSelector styles={styles} style={style}/>
       <AddToCart />
       <InfoList />
     </Container>
