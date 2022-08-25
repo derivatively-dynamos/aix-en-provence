@@ -1,9 +1,13 @@
 import React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
+import SortBy from './SortBy.jsx'
 
 const ReviewList = () => {
   return (
-    <Container>248 reviews, sorted by relevance</Container>
+    <ColumnCont>
+      <SortBy />
+    </ColumnCont>
   )
 }
 
@@ -11,8 +15,10 @@ const Container = styled.div`
   display: flex;
   flex: 2;
   width: 100%;
-  padding: 0.5em;
-  background-color: white;
 `
 
+const ColumnCont = styled(Container)`
+  flex-direction: column;
+  padding-right: 10px;
+`
 export default ReviewList;

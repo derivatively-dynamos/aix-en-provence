@@ -26,7 +26,7 @@ const Container = styled.div`
   width: 100%;
 `
 const SpaceCont = styled(Container)`
-  font-size: 90%;
+  font-size: 0.9em;
   justify-content: space-between;
 `
 const ColumnCont = styled(Container)`
