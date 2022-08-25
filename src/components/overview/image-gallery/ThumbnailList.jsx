@@ -3,10 +3,9 @@ import styled from 'styled-components';
 
 const ThumbnailList = ({ photos }) => {
 
-  const icons = photos.map((photo) => {
-    return <Icon src={photo.thumbnail_url}/>
+  const icons = photos.map((photo, index) => {
+    return <Icon src={photo.thumbnail_url} key={index}/>
   })
-  console.log(icons);
 
   return (
     <Ul>
@@ -31,5 +30,9 @@ const Icon = styled.img`
   margin-right: 4px;
   margin-top: 5px;
 `;
+
+const CheckedIcon = styled(Icon)`
+  border: 2px solid cyan;
+`
 
 export default ThumbnailList;
