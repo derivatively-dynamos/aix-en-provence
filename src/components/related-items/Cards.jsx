@@ -4,22 +4,50 @@ import styled from "styled-components";
 
 const Cards = () => (
   <Container>
-    <h3>Product Name</h3>
-    <h4>Product Category</h4>
-    <h4>$4,000.00</h4>
-    <div>★★★☆☆</div>
-    <div>Garment Picture</div>
+    <ImageContainer>
+      <img src="https://images.unsplash.com/photo-1562542082-519ebcdb43e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"></img>
+    </ImageContainer>
+    <InfoContainer>
+      <div>Morning Joggers</div>
+      <div>Pants</div>
+      <div>$40.00</div>
+      <div>★★★☆☆</div>
+    </InfoContainer>
   </Container>
 )
+
+
+
 
 const Container = styled.section`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  background-color: #483030;
+  background-color: #925353;
   color: light;
-  padding: .5em;
-  border: 1px solid red;
+  padding: 0 0 .5em 0;
+  margin: 0 .4em 0 .4em;
+  max-width: 16em;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
 `
+const ImageContainer = styled.section`
+  display: flex;
+  height: auto;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+`
+const InfoContainer = styled.section`
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+`
+
 
 export default Cards;
