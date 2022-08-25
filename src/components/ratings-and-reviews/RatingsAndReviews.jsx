@@ -1,16 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import ReviewBreakdown from './ReviewBreakdown.jsx'
+import ReviewList from './ReviewList.jsx'
 
 const RatingsAndReviews = () => {
 
   return (
-    <div>
+    <AppContainer>
       <h2>RATINGS AND REVIEWS</h2>
       <Container>
-        <BdContainer></BdContainer>
-        <RlContainer></RlContainer>
+        <ReviewBreakdown />
+        <ReviewList />
       </Container>
-    </div>
+    </AppContainer>
   )
 }
 
@@ -20,11 +22,8 @@ const Container = styled.div`
   padding: 0.5em;
   background-color: gray;
 `
-const BdContainer = styled(Container)`
-  background-color: red;
-`
-const RlContainer = styled(Container)`
-  background-color: purple;
+const AppContainer = styled(Container)`
+  flex-direction: column;
 `
 
 export default RatingsAndReviews;
