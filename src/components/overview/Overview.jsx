@@ -16,10 +16,11 @@ const Overview = () => {
   const [style, setStyle] = useState(exstyles.results[0]);
 
   const setStyleId = (id) => {
-    console.log(id);
-    // styles.forEach((style) => {
-    //   if (style.style_id)
-    // })
+    styles.forEach((style) => {
+      if (style.style_id === id) {
+        setStyle(style);
+      }
+    })
   }
 
   return (
