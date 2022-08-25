@@ -1,17 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ThumbnailList = ({ photos }) => {
+const ThumbnailList = ({ photos, setIndex, index }) => {
+  const icons = photos.map((photo, i) => {
+    if (i === index) {
+      return (
+        <CheckedIcon
+          src={photo.thumbnail_url}
+          value={i}
+          key={i}
+          onClick={() => setIndex(i)}
+        />
+      );
+    }
+    return (
+      <Icon
+        src={photo.thumbnail_url}
+        value={i}
+        key={i}
+        onClick={() => setIndex(i)}
+      />
+    );
+  });
 
-  const icons = photos.map((photo, index) => {
-    return <Icon src={photo.thumbnail_url} key={index}/>
-  })
-
-  return (
-    <Ul>
-      {icons}
-    </Ul>
-  );
+  return <Ul>{icons}</Ul>;
 };
 const Ul = styled.ul`
   padding: 0;
@@ -23,8 +35,8 @@ const Ul = styled.ul`
   left: 10px;
 `;
 const Icon = styled.img`
-  height: 80px;
-  width: 80px;
+  height: 60px;
+  width: 60px;
   border: 1px solid red;
   background: gray;
   margin-right: 4px;
@@ -33,6 +45,6 @@ const Icon = styled.img`
 
 const CheckedIcon = styled(Icon)`
   border: 2px solid cyan;
-`
+`;
 
 export default ThumbnailList;
