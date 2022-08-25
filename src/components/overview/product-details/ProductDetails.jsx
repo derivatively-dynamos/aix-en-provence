@@ -1,26 +1,29 @@
-import React from "react";
-import styled from "styled-components";
-import AddToCart from "./AddToCart";
-import ProductInformation from "./ProductInformation";
-import StyleSelector from "./StyleSelector";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import AddToCart from './AddToCart';
+import ProductInformation from './ProductInformation';
+import StyleSelector from './StyleSelector';
+import InfoList from './InfoList';
 
-const ProductDetails = () => (
-  <Container>
-    <ProductInformation/>
-    <StyleSelector/>
-    <AddToCart />
-  </Container>
-)
+const ProductDetails = ({ product, styles, style, setStyle }) => {
+  return (
+    <Container>
+      <ProductInformation product={product} style={style} />
+      <StyleSelector styles={styles} style={style} setStyle={setStyle} />
+      <AddToCart style={style}/>
+      <InfoList />
+    </Container>
+  );
+};
 
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex: 1;
   background-color: #313131;
   color: lightgray;
-  padding: .5em;
+  padding: 0.5em;
   border: 1px solid cyan;
-`
-
+`;
 
 export default ProductDetails;

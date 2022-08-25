@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 const ImageGallery = () => (
   <Container>
-    <h3>Image Gallery</h3>
     <DefaultView/>
   </Container>
 )
@@ -12,7 +11,7 @@ const ImageGallery = () => (
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex: 1;
   background-color: #313131;
   color: lightgray;
   padding: .5em;
