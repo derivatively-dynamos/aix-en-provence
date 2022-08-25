@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-
 import styled from 'styled-components';
 import StarBar from './StarBar.jsx';
 import SizeSlider from './SizeSlider.jsx';
@@ -17,9 +16,7 @@ const ReviewBreakdown = () => {
         <p>100% of reviews recommend this product</p>
         {starBreakdown.map((starAmt)=> {
           return (
-            <>
-              <StarBar key={starAmt[0]} stars={starAmt}></StarBar>
-            </>
+            <StarBar key={starAmt[0]} stars={starAmt}></StarBar>
           )
         })}
       </ColumnCont>
