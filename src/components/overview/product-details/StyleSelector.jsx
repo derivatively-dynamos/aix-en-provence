@@ -1,18 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-const StyleSelector = ({ styles: { results }, style }) => {
+const StyleSelector = ({ styles, style, setStyle }) => {
   const [grid, setGrid] = useState([]);
+  const style_id = style.style_id;
 
   useEffect(() => {
-    const newGrid = results.map((style) => {
-      console.log(style);
-      return (
-        <Icon src={style.photos[0].thumbnail_url} key={style.style_id}></Icon>
-      );
+    const newGrid = styles.map((style) => {
+      let icon = <div />;
+      if (style.style_id === style_id) {
+        icon = (
+          <CheckedIcon
+            src={style.photos[0].thumbnail_url}
+            key={style.style_id}
+          ></CheckedIcon>
+        );
+      } else {
+        icon = (
+          <Icon
+            src={style.photos[0].thumbnail_url}
+            key={style.style_id}
+            onClick={() => setStyle(style.style_id)}></Icon>
+        );
+      }
+      return icon;
     });
     setGrid(newGrid);
-  }, [results]);
+  }, [styles, style]);
 
   return (
     <div>
@@ -33,6 +47,10 @@ const Icon = styled.img`
   height: 50px;
   width: 50px;
   border: 1px solid cyan;
+`;
+
+const CheckedIcon = styled(Icon)`
+  border: 2px solid red;
 `;
 
 const IconGrid = styled.div`

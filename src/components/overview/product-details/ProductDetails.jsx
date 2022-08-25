@@ -5,13 +5,13 @@ import ProductInformation from './ProductInformation';
 import StyleSelector from './StyleSelector';
 import InfoList from './InfoList';
 
-const ProductDetails = ({product, styles, style}) => {
+const ProductDetails = ({product, styles, style, setStyle}) => {
 
 
   return (
     <Container>
       <ProductInformation product={product} style={style} />
-      <StyleSelector styles={styles} style={style}/>
+      <StyleSelector styles={styles} style={style} setStyle={setStyle}/>
       <AddToCart />
       <InfoList />
     </Container>

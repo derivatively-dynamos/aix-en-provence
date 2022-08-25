@@ -12,8 +12,15 @@ const PRODUCT_ID = 37312;
 const Overview = () => {
 
   const [product, setProduct] = useState(exproduct);
-  const [styles, setStyles] = useState(exstyles);
+  const [styles, setStyles] = useState(exstyles.results);
   const [style, setStyle] = useState(exstyles.results[0]);
+
+  const setStyleId = (id) => {
+    console.log(id);
+    // styles.forEach((style) => {
+    //   if (style.style_id)
+    // })
+  }
 
   return (
     <Container>
@@ -21,7 +28,8 @@ const Overview = () => {
       <ProductDetails
         product={product}
         styles={styles}
-        style={style}/>
+        style={style}
+        setStyle={setStyleId}/>
     </Container>
   )
 }
