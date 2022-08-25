@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
+import StarBar from './StarBar.jsx'
 import ReviewSlider from './ReviewSlider.jsx'
 
 const ReviewBreakdown = () => {
@@ -9,22 +10,33 @@ const ReviewBreakdown = () => {
   return (
     <ColumnCont>
       <FlushCont>
-        <p style={{fontSize: '400%'}}>5.0</p>
-        <p style={{padding: 40}}>⭐⭐⭐⭐⭐</p>
+        <p style={{fontSize: '400%', paddingRight: ".1em"}}>5.0</p>
+        <p style={{marginTop: 0, marginBottom: '2em'}}>⭐⭐⭐⭐⭐</p>
       </FlushCont>
       <ColumnCont>
         <p>100% of reviews recommend this product</p>
         {starBreakdown.map((starAmt)=> {
-          return <ReviewSlider key={starAmt[0]} stars={starAmt}></ReviewSlider>
+          return (
+            <>
+              <StarBar key={starAmt[0]} stars={starAmt}></StarBar>
+            </>
+          )
         })}
       </ColumnCont>
       <ColumnCont>
-        <p>Size</p>
+        <h3>Size</h3>
         <ReviewSlider></ReviewSlider>
-        <p>Too Small  Perfect Too  Large</p>
-        <p>Comfort</p>
+        <SpaceCont>
+          <p>Too small</p>
+          <p>Perfect</p>
+          <p>Too large</p>
+        </SpaceCont>
+        <h3>Comfort</h3>
         <ReviewSlider></ReviewSlider>
-        <p>Poor                      Large</p>
+        <SpaceCont>
+          <p>Poor</p>
+          <p>Perfect</p>
+        </SpaceCont>
       </ColumnCont>
     </ColumnCont>
   )
@@ -35,9 +47,13 @@ const Container = styled.div`
   flex: 1;
   width: 100%;
 `
+const SpaceCont = styled(Container)`
+  justify-content: space-between;
+`
 const FlushCont = styled.div`
   display: flex;
-  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
   margin: 0;
 `

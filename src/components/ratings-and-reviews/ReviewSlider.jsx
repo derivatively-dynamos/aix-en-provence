@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ReviewSlider = ({starAmt}) => {
+const ReviewSlider = ({stars}) => {
   return (
     <ReviewCont>
       <ReviewBar></ReviewBar>
@@ -22,23 +22,22 @@ const ColumnCont = styled(Container)`
   padding-right: 10px;
 `
 const ReviewCont = styled(Container)`
-  display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0.5em;
+  gap: 0.25em;
 `
-const ReviewBar = styled.div`
-  width: 5em;
-  height: .25em;
-  border: .25em solid white
+const ReviewBar = styled.span`
+  height: .5em;
+  width: 33%;
+  border: .25em solid white;
 `
 const Indicator = styled.div`
   position: absolute;
   width: 0;
   height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid black;
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  border-top: 0.75em solid black;
 `
 
 export default ReviewSlider;
