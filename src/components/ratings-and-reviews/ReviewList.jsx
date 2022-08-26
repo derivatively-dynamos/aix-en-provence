@@ -39,7 +39,7 @@ const BtnCont = styled.div`
   flex-direction: row;
   gap: 1em;
   padding-top: 2.5em;
-  padding-left: 1em;
+  padding-left: 1.5em;
 `
 
 const Btn = styled.div`

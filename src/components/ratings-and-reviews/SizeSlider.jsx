@@ -46,7 +46,7 @@ const ReviewCont = styled(Container)`
 `
 const ReviewBar = styled.div`
   max-height: .5em;
-  border: .25em solid white;
+  border: .25em solid #c8c8c8;
 `
 const Indicator = styled.div`
   position: absolute;
