@@ -18,7 +18,7 @@ const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
         <MainImage src={photo.url} onClick={() => setPopover(true)}></MainImage>
         <Up icon={faChevronUp} />
         <ThumbnailList
-          photos={photos}
+          photos={[...photos, ...photos]}
           setIndex={setIndex}
           index={index}
         />
