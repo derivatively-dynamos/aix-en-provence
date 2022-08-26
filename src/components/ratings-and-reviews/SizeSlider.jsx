@@ -1,22 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SizeSlider = () => {
+const SizeSlider = ({}) => {
+  let x = '';
+  let sliderPos = {
+    transform: `translateX(${x})`
+  }
+
   return (
-    <>
+    <ColumnCont>
       <h3>Size</h3>
       <ReviewCont>
         <ReviewBar></ReviewBar>
         <ReviewBar></ReviewBar>
         <ReviewBar></ReviewBar>
-        <Indicator></Indicator>
+        <Indicator style={sliderPos}></Indicator>
       </ReviewCont>
       <SpaceCont>
             <p>Too small</p>
             <p>Perfect</p>
             <p>Too large</p>
       </SpaceCont>
-    </>
+    </ColumnCont>
   )
 }
 
@@ -25,6 +30,7 @@ const Container = styled.div`
   flex: 1;
   width: 100%;
 `
+
 const SpaceCont = styled(Container)`
   font-size: 0.9em;
   justify-content: space-between;
@@ -34,14 +40,13 @@ const ColumnCont = styled(Container)`
   padding-right: 10px;
 `
 const ReviewCont = styled(Container)`
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 0.25em;
 `
-const ReviewBar = styled.span`
-  height: .5em;
-  width: 33%;
-  border: .25em solid white;
+const ReviewBar = styled.div`
+  max-height: .5em;
+  border: .25em solid #c8c8c8;
 `
 const Indicator = styled.div`
   position: absolute;
@@ -49,7 +54,7 @@ const Indicator = styled.div`
   height: 0;
   border-left: 0.5em solid transparent;
   border-right: 0.5em solid transparent;
-  border-top: 0.75em solid black;
+  border-top: 0.75em solid #303030;;
 `
 
 export default SizeSlider;
