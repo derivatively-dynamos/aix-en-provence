@@ -1,28 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import ThumbnailList from './ThumbnailList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faChevronUp, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
   const [photo, setPhoto] = useState(photos[0]);
 
   useEffect(() => {
     setPhoto(photos[index]);
-  }, [index])
+  }, [index, photos])
 
+  const scrollPos = useRef(null);
+  const scrollDown = () => {
+    scrollPos.current.scrollTop += scrollPos.current.clientHeight;
+  }
+  const scrollUp = () => {
+    scrollPos.current.scrollTop -= scrollPos.current.clientHeight;
+  }
 
   return (
     <Container>
       <ImageContainer>
+        <Left icon={faChevronLeft} color="red"/>
         <MainImage src={photo.url} onClick={() => setPopover(true)}></MainImage>
-        <Up icon={faChevronUp} />
+        <Up icon={faChevronUp} onClick={() => scrollUp(-1)} />
         <ThumbnailList
-          photos={photos}
+          photos={[...photos, ...photos]}
           setIndex={setIndex}
           index={index}
+          scrollPos={scrollPos}
         />
-        <Down icon={faChevronDown} />
+        <Down icon={faChevronDown} onClick={() => scrollDown(1)} />
       </ImageContainer>
       <P>
         <strong>{product.slogan}</strong>
@@ -42,7 +51,7 @@ const Container = styled.div`
 const MainImage = styled.img`
   border: 2px solid cyan;
   flex: 1 1 0;
-  max-height: 500px;
+  height: 500px;
   width: 100%;
   object-fit: cover;
 `;
@@ -64,5 +73,17 @@ const Down = styled(FontAwesomeIcon)`
   left: 1em;
   bottom: 0;
 `;
+const Left = styled(FontAwesomeIcon)`
+  font-size: 2em;
+  position absolute;
+  top: 50%;
+`
+const Right = styled(FontAwesomeIcon)`
+  font-size: 2em;
+  position: absolute;
+  top: 50%;
+  right: 0;
+
+`
 
 export default DefaultView;

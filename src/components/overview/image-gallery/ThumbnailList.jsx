@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import styled from 'styled-components';
 
-const ThumbnailList = ({ photos, setIndex, index }) => {
+const ThumbnailList = ({ photos, setIndex, index, scrollPos }) => {
+
+
   const icons = photos.map((photo, i) => {
     if (i === index) {
       return (
@@ -24,8 +26,9 @@ const ThumbnailList = ({ photos, setIndex, index }) => {
   });
 
   return (
-    <Ul>
+    <Ul ref={scrollPos}>
       {icons}
+      <ExtraSpace/>
     </Ul>
   );
 };
@@ -46,6 +49,8 @@ const Ul = styled.ul`
   &::-webkit-scrollbar {
     display: none;
   }
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 `;
 const Icon = styled.img`
   height: 60px;
@@ -56,9 +61,14 @@ const Icon = styled.img`
   background: gray;
   margin-right: 4px;
   margin-top: 5px;
+  scroll-snap-align: start;
 `;
 const CheckedIcon = styled(Icon)`
   border: 2px solid cyan;
 `;
+const ExtraSpace = styled.div`
+  width: 10px;
+  flex: 1 0 1000px;
+`
 
 export default ThumbnailList;

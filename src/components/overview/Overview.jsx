@@ -28,7 +28,9 @@ const Overview = () => {
 
   useEffect(() => {
     setPhotos(style.photos);
-    setPhotoIndex(0);
+    if (photoIndex > style.photos.length - 1) { //If new index will be out of bounds for array
+      setPhotoIndex(0);
+    }
   }, [style]);
 
   const thumbnailHandler = (index) => {

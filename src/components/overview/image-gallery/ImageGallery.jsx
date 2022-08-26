@@ -17,7 +17,7 @@ const ImageGallery = ({ style, product, setIndex, index, setPopover }) => (
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  flex: 1 1 70%;
+  flex: 1 1 60%;
   background-color: #313131;
   color: lightgray;
   padding: 0.5em;
