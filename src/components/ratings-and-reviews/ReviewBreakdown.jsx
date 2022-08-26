@@ -44,6 +44,7 @@ const FlushCont = styled.div`
 `
 const ColumnCont = styled(Container)`
   flex-direction: column;
+  justify-content: space-between;
   padding-right: 10px;
 `
 

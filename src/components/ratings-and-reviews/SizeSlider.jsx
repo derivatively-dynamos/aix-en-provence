@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SizeSlider = ({}) => {
-  let x = '1em';
+  let x = '';
   let sliderPos = {
     transform: `translateX(${x})`
   }
 
   return (
-    <>
+    <ColumnCont>
       <h3>Size</h3>
       <ReviewCont>
         <ReviewBar></ReviewBar>
@@ -21,7 +21,7 @@ const SizeSlider = ({}) => {
             <p>Perfect</p>
             <p>Too large</p>
       </SpaceCont>
-    </>
+    </ColumnCont>
   )
 }
 
@@ -30,6 +30,7 @@ const Container = styled.div`
   flex: 1;
   width: 100%;
 `
+
 const SpaceCont = styled(Container)`
   font-size: 0.9em;
   justify-content: space-between;
@@ -53,7 +54,7 @@ const Indicator = styled.div`
   height: 0;
   border-left: 0.5em solid transparent;
   border-right: 0.5em solid transparent;
-  border-top: 0.75em solid black;
+  border-top: 0.75em solid #303030;;
 `
 
 export default SizeSlider;

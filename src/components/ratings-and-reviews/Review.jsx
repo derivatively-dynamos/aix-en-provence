@@ -34,7 +34,7 @@ const Review = ({ review }) => {
             <div>{review.response}</div>
           </ResponseBox>
         }
-      <div>Helpful? Yes {review.helpfulness} | Report</div>
+      <Helpful>Helpful? <Links>Yes</Links> {review.helpfulness} | <Links>Report</Links></Helpful>
     </ReviewCont>
   )
 }
@@ -45,8 +45,7 @@ const ReviewCont = styled.div`
   gap: 1em;
   padding: 1.5em;
   width: 100%;
-  color: gray;
-  border-bottom: 2px solid gray;
+  color: #303030;;
 `
 const RevTitle = styled.h3`
   white-space: nowrap;
@@ -71,6 +70,14 @@ const ResponseBox = styled.div`
   gap: 1em;
   background-color: #D3D3D3;
   padding: 1em;
+`
+const Links = styled.a`
+  text-decoration: underline;
+`
+
+const Helpful = styled.div`
+  border-bottom: 2px solid gray;
+  padding-bottom: 2em;
 `
 
 export default Review;

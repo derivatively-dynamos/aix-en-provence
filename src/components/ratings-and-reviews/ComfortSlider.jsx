@@ -7,7 +7,7 @@ const ReviewSlider = () => {
     transform: `translateX(${x})`
   }
   return (
-    <>
+    <ColumnCont>
       <h3>Comfort</h3>
       <ReviewCont>
         <ReviewBar></ReviewBar>
@@ -19,7 +19,7 @@ const ReviewSlider = () => {
             <p>Too small</p>
             <p>Too large</p>
       </SpaceCont>
-    </>
+    </ColumnCont>
   )
 }
 
@@ -30,7 +30,7 @@ const Container = styled.div`
 `
 const SpaceCont = styled(Container)`
   justify-content: space-between;
-    font-size: 0.9em;
+  font-size: 0.9em;
 `
 const ColumnCont = styled(Container)`
   flex-direction: column;
@@ -38,7 +38,7 @@ const ColumnCont = styled(Container)`
 `
 const ReviewCont = styled(Container)`
   display: grid;
-  grid-template-columns: 2fr 3fr 2fr;
+  grid-template-columns: 1fr 2fr 1fr;
   gap: 0.25em;
 `
 const ReviewBar = styled.div`
@@ -52,7 +52,7 @@ const Indicator = styled.div`
   height: 0;
   border-left: 0.5em solid transparent;
   border-right: 0.5em solid transparent;
-  border-top: 0.75em solid black;
+  border-top: 0.75em solid #303030;;
 `
 
 export default ReviewSlider;

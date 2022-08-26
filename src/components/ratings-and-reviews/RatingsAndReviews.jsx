@@ -29,6 +29,7 @@ const Container = styled.div`
 `
 const AppContainer = styled(Container)`
   flex-direction: column;
+  color: #303030;
 `
 
 export default RatingsAndReviews;
