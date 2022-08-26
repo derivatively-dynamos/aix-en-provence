@@ -2,22 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import AnswerField from "./AnswerField";
 import PhotoSection from "./PhotoSection";
-import MoreAnswersButton from "./MoreAnswersButton";
-import QuestionsField from "./QuestionsField";
+import LoadAnswers from "./LoadAnswers";
 
-const QuestionComponent = ({ questions }) => {
-  if (questions.length <= 0) {
-    return null;
-  }
-
-  const question = questions[0];
-  const answers = question.answers;
-
+const QuestionComponent = () => {
   return (
     <ContainerDiv>
-      <QuestionsField question={question} />
-      <AnswerField answers={answers} />
-      <MoreAnswersButton />
+      <Box1>
+        <h3>Q: Who what which when where why whether how?</h3>
+        <Box2>
+          Helpful? <Button>Yes</Button> (23) | <Button>Add Answer</Button>
+        </Box2>
+      </Box1>
+      <AnswerField />
+      <PhotoSection />
+      <LoadAnswers />
     </ContainerDiv>
   );
 };
