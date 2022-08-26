@@ -4,16 +4,18 @@ import styled from 'styled-components';
 import SortBy from './SortBy.jsx';
 import Review from './Review.jsx';
 
-const ReviewList = ({ products }) => {
+const ReviewList = ({ product }) => {
 
   return (
     <Container>
       <div>
         <SortBy />
-        {products[0].results.map((review) => {
+        {product.results.map((review) => {
           return <Review key={review.review_id} review={ review }/>
         })}
       </div>
+      <button>View More</button>
+      <button>Add Review</button>
     </Container>
   )
 }
@@ -24,6 +26,9 @@ const Container = styled.div`
   box-sizing: border-box;
   width: 100%;
   flex-direction: column;
+`
+
+const Btn = styled.button`
 `
 
 export default ReviewList;

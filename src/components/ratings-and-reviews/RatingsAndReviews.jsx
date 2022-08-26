@@ -9,14 +9,14 @@ import sampleProduct from "./sample.js"
 
 const RatingsAndReviews = () => {
 
-  const [ products ] = useState(sampleProduct);
+  const [ product ] = useState(sampleProduct[0]);
 
   return (
     <AppContainer>
       <h2>RATINGS AND REVIEWS</h2>
       <Container>
-        <ReviewBreakdown />
-        <ReviewList products={products}/>
+        <ReviewBreakdown product={product}/>
+        <ReviewList product={product}/>
       </Container>
     </AppContainer>
   )

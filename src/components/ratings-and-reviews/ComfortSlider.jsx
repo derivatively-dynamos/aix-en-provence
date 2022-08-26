@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ReviewSlider = () => {
+  let x = '3em';
+  let sliderPos = {
+    transform: `translateX(${x})`
+  }
   return (
     <>
       <h3>Comfort</h3>
@@ -9,7 +13,7 @@ const ReviewSlider = () => {
         <ReviewBar></ReviewBar>
         <ReviewBar></ReviewBar>
         <ReviewBar></ReviewBar>
-        <Indicator></Indicator>
+        <Indicator style={sliderPos}></Indicator>
       </ReviewCont>
       <SpaceCont>
             <p>Too small</p>
@@ -33,18 +37,15 @@ const ColumnCont = styled(Container)`
   padding-right: 10px;
 `
 const ReviewCont = styled(Container)`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr;
   gap: 0.25em;
 `
 const ReviewBar = styled.div`
   max-height: .5em;
-  flex: 1;
   border: .25em solid white;
 `
-const MiddleBar = styled(ReviewBar)`
-  flex: 2;
-`
+
 const Indicator = styled.div`
   position: absolute;
   width: 0;
