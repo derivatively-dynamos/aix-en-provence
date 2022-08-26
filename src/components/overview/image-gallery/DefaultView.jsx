@@ -9,7 +9,7 @@ const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
 
   useEffect(() => {
     setPhoto(photos[index]);
-  }, [index])
+  }, [index, photos])
 
 
   return (
