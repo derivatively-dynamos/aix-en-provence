@@ -84,6 +84,7 @@ const Left = styled(FontAwesomeIcon)`
   font-size: 3em;
   transition: all .2s;
   position:sticky;
+  z-index: 1;
   color: #000000c9;
   left: 0px;
   &:hover {
