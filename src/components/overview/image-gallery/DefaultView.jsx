@@ -4,29 +4,22 @@ import ThumbnailList from './ThumbnailList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
-const DefaultView = ({ photos, product }) => {
+const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
   const [photo, setPhoto] = useState(photos[0]);
-  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    setPhoto(photos[0]);
-    setIndex(0);
-  }, [photos]);
-
-  const thumbnailHandler = (index) => {
-    if (index === -1 || index === photos.length) return;
-    setIndex(index);
     setPhoto(photos[index]);
-  };
+  }, [index])
+
 
   return (
     <Container>
       <ImageContainer>
-        <MainImage src={photo.url}></MainImage>
+        <MainImage src={photo.url} onClick={() => setPopover(true)}></MainImage>
         <Up icon={faChevronUp} />
         <ThumbnailList
           photos={photos}
-          setIndex={thumbnailHandler}
+          setIndex={setIndex}
           index={index}
         />
         <Down icon={faChevronDown} />
@@ -34,7 +27,7 @@ const DefaultView = ({ photos, product }) => {
       <P>
         <strong>{product.slogan}</strong>
       </P>
-      <P>{product.description}</P>
+      <P>{product.description + product.description}</P>
     </Container>
   );
 };
@@ -56,7 +49,9 @@ const MainImage = styled.img`
 const ImageContainer = styled.div`
   position: relative;
 `;
-const P = styled.p``;
+const P = styled.p`
+
+`;
 const Up = styled(FontAwesomeIcon)`
   font-size: 2em;
   position: absolute;

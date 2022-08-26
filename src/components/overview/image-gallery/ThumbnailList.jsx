@@ -41,7 +41,11 @@ const Ul = styled.ul`
   left: 15px;
   height: 88%;
   overflow: auto;
+  -ms-overflow-style: none;
   scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 const Icon = styled.img`
   height: 60px;
