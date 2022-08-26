@@ -18,20 +18,24 @@ const Cards = () => (
 
 
 
+const Tainer = styled.a``;
 
-const Container = styled.section`
+const Container = styled(Tainer)`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   background-color: #925353;
   color: light;
   padding: 0 0 .5em 0;
-  margin: 0 .4em 0 .4em;
-  max-width: 16em;
+  margin: 0 .3em 0 .3em;
   justify-content: flex-end;
   align-items: center;
   height: 100%;
   overflow: hidden;
+  max-width: 16em;
+  min-width: 16em;
+  scroll-snap-align: start;
+  border-radius: 1%;
 `
 const ImageContainer = styled.section`
   display: flex;
@@ -51,3 +55,8 @@ const InfoContainer = styled.section`
 
 
 export default Cards;
+
+// transition: all .2s;
+// &:hover {
+//   transform: scale(1.02);
+// }

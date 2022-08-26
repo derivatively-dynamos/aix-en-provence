@@ -24,6 +24,7 @@ const Container = styled.section`
   color: lightgray;
   padding: 0.5em;
   border: 1px solid cyan;
+  flex-basis: 30%;
 `;
 
 export default ProductDetails;

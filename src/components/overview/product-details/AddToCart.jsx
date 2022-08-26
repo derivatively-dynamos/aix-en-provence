@@ -1,21 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const AddToCart = ({ style }) => {
 
+  const skus = style.skus;
   const sizes = [];
-  for(let key in style.skus) {
-    sizes.push(<Option key={style.skus[key].size}>{style.skus[key].size}</Option>);
+
+  for(let sku in skus) {
+    let size = skus[sku].size;
+    sizes.push(<Option key={size} value={sku}>{size}</Option>);
+  }
+
+  const [sku, setSku] = useState(null);
+  const [quant, setQuant] = useState([]);
+  const [userQuant, setUserQuant] = useState(null);
+
+  const handleSkuChange = (e) => {
+    const newQuant = [];
+    const quantity = skus[e.target.value].quantity;
+    for(let i = 1; i <= quantity && i <= 15; i++) {
+      newQuant.push(<Option key={i} value={i}>{i}</Option>)
+    }
+    setSku(e.target.value);
+    setQuant(newQuant);
   }
 
   return (
     <div>
       <div>
-        <Select>
-          <Option>SELECT SIZE</Option>
+        <Select onChange={handleSkuChange}>
+          <Option value={null}>SELECT SIZE</Option>
           {sizes}
         </Select>
-        <Button>1 v</Button>
+        <Select onChange={(e) => setUserQuant(e.target.value)}>
+          {quant}
+        </Select>
       </div>
       <div>
         <Button>ADD TO BAG +</Button>

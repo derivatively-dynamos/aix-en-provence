@@ -2,6 +2,12 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
+module.exports= function (api) {
+  return {
+    plugins: ['macros'],
+  }
+}
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -35,5 +41,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
-  }
+  },
+
 };
