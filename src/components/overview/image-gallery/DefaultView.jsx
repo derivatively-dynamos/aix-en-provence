@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import ThumbnailList from './ThumbnailList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faChevronUp, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
   const [photo, setPhoto] = useState(photos[0]);
@@ -22,6 +22,7 @@ const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
   return (
     <Container>
       <ImageContainer>
+        <Left icon={faChevronLeft} color="red"/>
         <MainImage src={photo.url} onClick={() => setPopover(true)}></MainImage>
         <Up icon={faChevronUp} onClick={() => scrollUp(-1)} />
         <ThumbnailList
@@ -72,5 +73,17 @@ const Down = styled(FontAwesomeIcon)`
   left: 1em;
   bottom: 0;
 `;
+const Left = styled(FontAwesomeIcon)`
+  font-size: 2em;
+  position absolute;
+  top: 50%;
+`
+const Right = styled(FontAwesomeIcon)`
+  font-size: 2em;
+  position: absolute;
+  top: 50%;
+  right: 0;
+
+`
 
 export default DefaultView;
