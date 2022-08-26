@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import ThumbnailList from './ThumbnailList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,18 +11,26 @@ const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
     setPhoto(photos[index]);
   }, [index, photos])
 
+  const scrollPos = useRef(null);
+  const scrollDown = () => {
+    scrollPos.current.scrollTop += scrollPos.current.clientHeight;
+  }
+  const scrollUp = () => {
+    scrollPos.current.scrollTop -= scrollPos.current.clientHeight;
+  }
 
   return (
     <Container>
       <ImageContainer>
         <MainImage src={photo.url} onClick={() => setPopover(true)}></MainImage>
-        <Up icon={faChevronUp} />
+        <Up icon={faChevronUp} onClick={() => scrollUp(-1)} />
         <ThumbnailList
           photos={[...photos, ...photos]}
           setIndex={setIndex}
           index={index}
+          scrollPos={scrollPos}
         />
-        <Down icon={faChevronDown} />
+        <Down icon={faChevronDown} onClick={() => scrollDown(1)} />
       </ImageContainer>
       <P>
         <strong>{product.slogan}</strong>
