@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const LoadAnswers = () => {
+const MoreAnswersButton = () => {
   return (
     <ContainerDiv>
       <button>LOAD MORE ANSWERS</button>
@@ -9,7 +9,7 @@ const LoadAnswers = () => {
   );
 };
 
-export default LoadAnswers;
+export default MoreAnswersButton;
 
 const ContainerDiv = styled.div`
   background-color: #7e7e7e;

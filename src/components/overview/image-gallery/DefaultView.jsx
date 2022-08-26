@@ -4,6 +4,20 @@ import ThumbnailList from './ThumbnailList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
+
+const DefaultView = () => (
+  <Container>
+    <MainImage src="https://via.placeholder.com/300" />
+    <ThumbnailList />
+    <P>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem,
+      fugit quasi. Ex itaque nam ad saepe, quis omnis, corrupti repellendus,
+      quae minima labore repellat nisi molestias magnam dignissimos nobis.
+      Voluptas.
+    </P>
+  </Container>
+);
+
 const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
   const [photo, setPhoto] = useState(photos[0]);
 
@@ -32,11 +46,21 @@ const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
   );
 };
 
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
   position: relative;
+
+`;
+const MainImage = styled.img`
+  border: 2px solid cyan;
+  flex: 1;
+`;
+const P = styled.p``;
+
+
   user-select: none;
 `;
 const MainImage = styled.img`
@@ -64,5 +88,6 @@ const Down = styled(FontAwesomeIcon)`
   left: 1em;
   bottom: 0;
 `;
+
 
 export default DefaultView;
