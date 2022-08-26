@@ -11,7 +11,6 @@ const ExpandedView = ({ photo, setPopover }) => {
   const handleMouseMove = (e) => {
     let rect = imageCont.current.getBoundingClientRect()
     let imageRect = image.current;
-    console.log(image.current);
     let hiddenX = imageRect.width - rect.width;
     let hiddenY = imageRect.height - rect.height;
     let xPct = (e.clientX - rect.left) / rect.width;
