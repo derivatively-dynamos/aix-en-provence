@@ -27,7 +27,7 @@ const Container = styled(Tainer)`
   background-color: #925353;
   color: light;
   padding: 0 0 .5em 0;
-  margin: 0 .4em 0 .4em;
+  margin: 0 .3em 0 .3em;
   justify-content: flex-end;
   align-items: center;
   height: 100%;
@@ -35,6 +35,7 @@ const Container = styled(Tainer)`
   max-width: 16em;
   min-width: 16em;
   scroll-snap-align: start;
+  border-radius: 1%;
 `
 const ImageContainer = styled.section`
   display: flex;

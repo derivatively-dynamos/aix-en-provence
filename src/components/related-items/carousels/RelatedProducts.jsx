@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Cards from '../Cards.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 const RelatedProducts = () => {
-  const [clickTrack, setClickTrack] = useState(0);
-  useEffect(() => {
-    console.log(clickTrack);
-  }, [clickTrack]);
+  const scrollRef = useRef(null);
+  const scroll = (direction) => {
+    scrollRef.current.scrollLeft += direction;
+  };
   return (
     <Container>
       <TitleDiv>Related Products</TitleDiv>
       <InnerContainer>
-        <CardContainer>
-          <Left icon={faChevronLeft} onClick={() => setClickTrack(clickTrack + 1)} />
+        <CardContainer ref={scrollRef}>
+          <Left icon={faChevronLeft} onClick={() => {scroll(-200)}}/>
           <Cards />
           <Cards />
           <Cards />
@@ -22,7 +22,7 @@ const RelatedProducts = () => {
           <Cards />
           <Cards />
           <Cards />
-          <Right icon={faChevronRight}/>
+          <Right icon={faChevronRight} onClick={() => {scroll(200)}}/>
         </CardContainer>
       </InnerContainer>
       <SlideTracker>
@@ -68,8 +68,10 @@ const CardContainer = styled.section`
   padding: .5em;
   align-items: center;
   overflow: auto;
+  scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  overflow-x: hidden;
 `
 const SlideTracker = styled.section`
   display: flex;
@@ -112,3 +114,8 @@ const Dash2 = styled(FontAwesomeIcon)`
 
 
 export default RelatedProducts;
+
+// const [clickTrack, setClickTrack] = useState(0);
+// useEffect(() => {
+//   console.log(clickTrack);
+// }, [clickTrack]);

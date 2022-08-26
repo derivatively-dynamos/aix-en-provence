@@ -1,33 +1,37 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Cards from '../Cards.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 const YourOutfit = () => {
+  const scrollRef = useRef(null);
+  const scroll = (direction) => {
+    scrollRef.current.scrollLeft += direction;
+  };
   return (
     <Container>
       <TitleDiv>Your Outfit</TitleDiv>
       <InnerContainer>
-          <CardContainer>
-            <Left icon={faChevronLeft} />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Right icon={faChevronRight}/>
-          </CardContainer>
-        </InnerContainer>
-        <SlideTracker>
-          <Dash icon={faMinus} />
-          <Dash2 icon={faMinus} />
-          <Dash2 icon={faMinus} />
-          <Dash2 icon={faMinus} />
-        </SlideTracker>
-      </Container>
+        <CardContainer ref={scrollRef}>
+          <Left icon={faChevronLeft} onClick={() => {scroll(-200)}}/>
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Right icon={faChevronRight} onClick={() => {scroll(200)}}/>
+        </CardContainer>
+      </InnerContainer>
+      <SlideTracker>
+        <Dash icon={faMinus} />
+        <Dash2 icon={faMinus} />
+        <Dash2 icon={faMinus} />
+        <Dash2 icon={faMinus} />
+      </SlideTracker>
+    </Container>
   );
 };
 const TitleDiv = styled.section`
@@ -64,8 +68,10 @@ const CardContainer = styled.section`
   padding: .5em;
   align-items: center;
   overflow: auto;
+  scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  overflow-x: hidden;
 `
 const SlideTracker = styled.section`
   display: flex;
