@@ -1,34 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Cards from '../Cards.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faMinus } from '@fortawesome/free-solid-svg-icons';
 
-const RelatedProducts = () => (
-  <Container>
-    <TitleDiv>Related Products</TitleDiv>
-    <InnerContainer>
-      <Left icon={faChevronLeft}/>
-      <CardContainer>
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-      </CardContainer>
-      <Right icon={faChevronRight}/>
-    </InnerContainer>
-    <SlideTracker>
-      <Dash icon={faMinus} />
-      <Dash2 icon={faMinus} />
-      <Dash2 icon={faMinus} />
-      <Dash2 icon={faMinus} />
-    </SlideTracker>
-  </Container>
-)
-
+const RelatedProducts = () => {
+  const [clickTrack, setClickTrack] = useState(0);
+  useEffect(() => {
+    console.log(clickTrack);
+  }, [clickTrack]);
+  return (
+    <Container>
+      <TitleDiv>Related Products</TitleDiv>
+      <InnerContainer>
+        <Left icon={faChevronLeft} onClick={() => setClickTrack(clickTrack + 1)} />
+        <CardContainer>
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+        </CardContainer>
+        <Right icon={faChevronRight}/>
+      </InnerContainer>
+      <SlideTracker>
+        <Dash icon={faMinus} />
+        <Dash2 icon={faMinus} />
+        <Dash2 icon={faMinus} />
+        <Dash2 icon={faMinus} />
+      </SlideTracker>
+    </Container>
+  );
+};
 const TitleDiv = styled.section`
   display: flex;
   justify-content: center;
@@ -63,6 +68,7 @@ const CardContainer = styled.section`
   padding: .5em;
   align-items: center;
   overflow: auto;
+  scrollbar-width: none;
 `
 const SlideTracker = styled.section`
   display: flex;
@@ -70,11 +76,21 @@ const SlideTracker = styled.section`
   justify-content: center;
   width: 100%;
 `
+
 const Left = styled(FontAwesomeIcon)`
   font-size: 2em;
+  transition: all .2s;
+  &:hover {
+    transform: scale(1.5);
+  }
 `
+
 const Right = styled(FontAwesomeIcon)`
   font-size: 2em;
+  transition: all .2s;
+  &:hover {
+    transform: scale(1.5);
+  }
 `
 const Dash = styled(FontAwesomeIcon)`
   font-size: 2.5em;

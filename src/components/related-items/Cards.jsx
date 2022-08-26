@@ -18,8 +18,9 @@ const Cards = () => (
 
 
 
+const Tainer = styled.a``;
 
-const Container = styled.section`
+const Container = styled(Tainer)`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -33,6 +34,10 @@ const Container = styled.section`
   overflow: hidden;
   max-width: 16em;
   min-width: 16em;
+  transition: all .2s;
+  &:hover {
+    transform: scale(1.02);
+  }
 `
 const ImageContainer = styled.section`
   display: flex;

@@ -72,9 +72,18 @@ const SlideTracker = styled.section`
 `
 const Left = styled(FontAwesomeIcon)`
   font-size: 2em;
+  transition: all .2s;
+  &:hover {
+    transform: scale(1.5);
+  }
 `
+
 const Right = styled(FontAwesomeIcon)`
   font-size: 2em;
+  transition: all .2s;
+  &:hover {
+    transform: scale(1.5);
+  }
 `
 const Dash = styled(FontAwesomeIcon)`
   font-size: 2.5em;
