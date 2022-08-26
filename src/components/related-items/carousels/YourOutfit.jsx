@@ -9,10 +9,15 @@ const YourOutfit = () => (
     <TitleDiv>Your Outfit</TitleDiv>
     <InnerContainer>
       <Left icon={faChevronLeft}/>
-      <Cards />
-      <Cards />
-      <Cards />
-      <Cards />
+      <CardContainer>
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+      </CardContainer>
       <Right icon={faChevronRight}/>
     </InnerContainer>
     <SlideTracker>
@@ -37,7 +42,7 @@ const Container = styled.section`
   background-color: #313131;
   color: lightgray;
   padding: .5em;
-  justify-content: center;
+  align-items: center;
 `
 const InnerContainer = styled.section`
   display: flex;
@@ -48,6 +53,16 @@ const InnerContainer = styled.section`
   padding: .5em;
   justify-content: center;
   align-items: center;
+  width: 85%;
+`
+const CardContainer = styled.section`
+  display: flex;
+  flex-direction: row;
+  background-color: #313131;
+  color: lightgray;
+  padding: .5em;
+  align-items: center;
+  overflow: auto;
 `
 const SlideTracker = styled.section`
   display: flex;

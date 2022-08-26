@@ -27,11 +27,12 @@ const Container = styled.section`
   color: light;
   padding: 0 0 .5em 0;
   margin: 0 .4em 0 .4em;
-  max-width: 16em;
   justify-content: flex-end;
   align-items: center;
   height: 100%;
   overflow: hidden;
+  max-width: 16em;
+  min-width: 16em;
 `
 const ImageContainer = styled.section`
   display: flex;
