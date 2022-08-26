@@ -34,10 +34,7 @@ const Container = styled(Tainer)`
   overflow: hidden;
   max-width: 16em;
   min-width: 16em;
-  transition: all .2s;
-  &:hover {
-    transform: scale(1.02);
-  }
+  scroll-snap-align: start;
 `
 const ImageContainer = styled.section`
   display: flex;
@@ -57,3 +54,8 @@ const InfoContainer = styled.section`
 
 
 export default Cards;
+
+// transition: all .2s;
+// &:hover {
+//   transform: scale(1.02);
+// }

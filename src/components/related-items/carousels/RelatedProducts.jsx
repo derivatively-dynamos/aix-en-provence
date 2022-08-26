@@ -13,8 +13,8 @@ const RelatedProducts = () => {
     <Container>
       <TitleDiv>Related Products</TitleDiv>
       <InnerContainer>
-        <Left icon={faChevronLeft} onClick={() => setClickTrack(clickTrack + 1)} />
         <CardContainer>
+          <Left icon={faChevronLeft} onClick={() => setClickTrack(clickTrack + 1)} />
           <Cards />
           <Cards />
           <Cards />
@@ -22,8 +22,8 @@ const RelatedProducts = () => {
           <Cards />
           <Cards />
           <Cards />
+          <Right icon={faChevronRight}/>
         </CardContainer>
-        <Right icon={faChevronRight}/>
       </InnerContainer>
       <SlideTracker>
         <Dash icon={faMinus} />
@@ -58,7 +58,7 @@ const InnerContainer = styled.section`
   padding: .5em;
   justify-content: center;
   align-items: center;
-  width: 85%;
+  width: 80%;
 `
 const CardContainer = styled.section`
   display: flex;
@@ -68,6 +68,7 @@ const CardContainer = styled.section`
   padding: .5em;
   align-items: center;
   overflow: auto;
+  scroll-snap-type: x mandatory;
   scrollbar-width: none;
 `
 const SlideTracker = styled.section`
@@ -78,16 +79,22 @@ const SlideTracker = styled.section`
 `
 
 const Left = styled(FontAwesomeIcon)`
-  font-size: 2em;
+  font-size: 3em;
   transition: all .2s;
+  position:sticky;
+  color: #000000c9;
+  left: 0px;
   &:hover {
     transform: scale(1.5);
   }
 `
 
 const Right = styled(FontAwesomeIcon)`
-  font-size: 2em;
+  font-size: 3em;
   transition: all .2s;
+  position:sticky;
+  color: #000000c9;
+  right: 0px;
   &:hover {
     transform: scale(1.5);
   }

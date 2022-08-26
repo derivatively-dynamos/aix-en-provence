@@ -4,31 +4,32 @@ import Cards from '../Cards.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faMinus } from '@fortawesome/free-solid-svg-icons';
 
-const YourOutfit = () => (
-  <Container>
-    <TitleDiv>Your Outfit</TitleDiv>
-    <InnerContainer>
-      <Left icon={faChevronLeft}/>
-      <CardContainer>
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-      </CardContainer>
-      <Right icon={faChevronRight}/>
-    </InnerContainer>
-    <SlideTracker>
-      <Dash icon={faMinus} />
-      <Dash2 icon={faMinus} />
-      <Dash2 icon={faMinus} />
-      <Dash2 icon={faMinus} />
-    </SlideTracker>
-  </Container>
-)
-
+const YourOutfit = () => {
+  return (
+    <Container>
+      <TitleDiv>Your Outfit</TitleDiv>
+      <InnerContainer>
+          <CardContainer>
+            <Left icon={faChevronLeft} />
+            <Cards />
+            <Cards />
+            <Cards />
+            <Cards />
+            <Cards />
+            <Cards />
+            <Cards />
+            <Right icon={faChevronRight}/>
+          </CardContainer>
+        </InnerContainer>
+        <SlideTracker>
+          <Dash icon={faMinus} />
+          <Dash2 icon={faMinus} />
+          <Dash2 icon={faMinus} />
+          <Dash2 icon={faMinus} />
+        </SlideTracker>
+      </Container>
+  );
+};
 const TitleDiv = styled.section`
   display: flex;
   justify-content: center;
@@ -53,7 +54,7 @@ const InnerContainer = styled.section`
   padding: .5em;
   justify-content: center;
   align-items: center;
-  width: 85%;
+  width: 80%;
 `
 const CardContainer = styled.section`
   display: flex;
@@ -63,6 +64,8 @@ const CardContainer = styled.section`
   padding: .5em;
   align-items: center;
   overflow: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
 `
 const SlideTracker = styled.section`
   display: flex;
@@ -70,17 +73,24 @@ const SlideTracker = styled.section`
   justify-content: center;
   width: 100%;
 `
+
 const Left = styled(FontAwesomeIcon)`
-  font-size: 2em;
+  font-size: 3em;
   transition: all .2s;
+  position:sticky;
+  color: #000000c9;
+  left: 0px;
   &:hover {
     transform: scale(1.5);
   }
 `
 
 const Right = styled(FontAwesomeIcon)`
-  font-size: 2em;
+  font-size: 3em;
   transition: all .2s;
+  position:sticky;
+  color: #000000c9;
+  right: 0px;
   &:hover {
     transform: scale(1.5);
   }
