@@ -50,7 +50,7 @@ const Container = styled.div`
 const MainImage = styled.img`
   border: 2px solid cyan;
   flex: 1 1 0;
-  max-height: 500px;
+  height: 500px;
   width: 100%;
   object-fit: cover;
 `;
