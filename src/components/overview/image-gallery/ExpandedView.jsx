@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import ExpandedImage from './ExpandedImage';
 
-const ExpandedView = ({ photo, setPopover }) => {
+const ExpandedView = ({ photo, setPopover, index, setIndex, numPhotos }) => {
 
   const imageCont = useRef(null);
   const image = useRef(null);
@@ -29,6 +29,9 @@ const ExpandedView = ({ photo, setPopover }) => {
       <ExpandedImage
         src={photo}
         onClick={() => setPopover(false)}
+        index={index}
+        setIndex={setIndex}
+        numPhotos={numPhotos}
       />
     </ImageContainer>
   );

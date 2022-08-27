@@ -28,7 +28,8 @@ const Overview = () => {
 
   useEffect(() => {
     setPhotos(style.photos);
-    if (photoIndex > style.photos.length - 1) { //If new index will be out of bounds for array
+    if (photoIndex > style.photos.length - 1) {
+      //If new index will be out of bounds for array
       setPhotoIndex(0);
     }
   }, [style]);
@@ -53,7 +54,16 @@ const Overview = () => {
         style={style}
         setStyle={setStyleId}
       />
-      {popover ? <ExpandedView photo={photos[photoIndex].url} setPopover={setPopover} /> : <></>}
+      {popover ? (
+        <ExpandedView
+          photo={photos[photoIndex].url}
+          setPopover={setPopover}
+          index={photoIndex}
+          setIndex={setPhotoIndex}
+          numPhotos={photos.length} />
+      ) : (
+        <></>
+      )}
     </Container>
   );
 };
