@@ -17,11 +17,12 @@ const StyleSelector = ({ styles, style, setStyle, styleIndex }) => {
           src={style.photos[0].thumbnail_url}
           key={index}
           onClick={() => setStyle(index)}
+          selected={index === styleIndex ? true : false}
         />
       );
     });
     setGrid(newGrid);
-  }, [styles]);
+  }, [styles, styleIndex]);
 
   useEffect(() => {
     let child = gridRef.current.children[styleIndex];
@@ -54,6 +55,7 @@ const Icon = styled.img`
   width: 50px;
   border: none;
   object-fit: cover;
+  outline: ${props => props.selected ? '2px solid white' : 'none'};
 `;
 
 const IconGrid = styled.div`
