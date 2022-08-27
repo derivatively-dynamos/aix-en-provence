@@ -9,7 +9,7 @@ import {
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 
-const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
+const DefaultView = ({ photos, product, setIndex, index, setPopover, lastIndex }) => {
   const [photo, setPhoto] = useState(photos[0]);
 
   const scrollPos = useRef(null);
@@ -24,10 +24,10 @@ const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
   }, []);
 
   useEffect(() => {
-    if (index % 7 === 0 && index !== 0) {
+    if (index % 7 === 0 && index !== 0 && index > lastIndex) {
       scrollDown();
     }
-    if ((index + 1) % 7 === 0) {
+    if ((index + 1) % 7 === 0 && index < lastIndex) {
       scrollUp();
     }
   }, [index])

@@ -15,7 +15,8 @@ const Overview = () => {
   const [styles, setStyles] = useState(exstyles.results);
   const [style, setStyle] = useState(exstyles.results[0]);
   const [photos, setPhotos] = useState(exstyles.results[0].photos);
-  const [photoIndex, setPhotoIndex] = useState(0);
+  const [photoIndex, setIndex] = useState(0);
+  const [lastIndex, setLastIndex] = useState(0);
   const [popover, setPopover] = useState(false);
 
   const setStyleId = (id) => {
@@ -34,6 +35,12 @@ const Overview = () => {
     }
   }, [style]);
 
+  const setPhotoIndex = (index) => {
+    setLastIndex(photoIndex);
+    setIndex(index);
+  }
+
+
   const thumbnailHandler = (index) => {
     if (index === -1 || index === photos.length) return;
     setPhotoIndex(index);
@@ -47,6 +54,7 @@ const Overview = () => {
         setIndex={thumbnailHandler}
         index={photoIndex}
         setPopover={setPopover}
+        lastIndex={lastIndex}
       />
       <ProductDetails
         product={product}
