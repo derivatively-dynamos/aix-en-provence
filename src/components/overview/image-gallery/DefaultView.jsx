@@ -18,15 +18,26 @@ const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
   const scrollUp = () => {
     scrollPos.current.scrollTop -= scrollPos.current.clientHeight;
   }
+  const increaseIndex = () => {
+    if(index < photos.length - 1){
+      setIndex(index + 1)
+    }
+  }
+  const decreaseIndex = () => {
+    if(index > 0) {
+      setIndex(index - 1);
+    }
+  }
 
   return (
     <Container>
       <ImageContainer>
-        <Left icon={faChevronLeft} color="red"/>
+        <Left icon={faChevronLeft} onClick={decreaseIndex}/>
+        <Right icon={faChevronRight} onClick={increaseIndex}/>
         <MainImage src={photo.url} onClick={() => setPopover(true)}></MainImage>
         <Up icon={faChevronUp} onClick={() => scrollUp(-1)} />
         <ThumbnailList
-          photos={[...photos, ...photos]}
+          photos={[...photos]}
           setIndex={setIndex}
           index={index}
           scrollPos={scrollPos}
@@ -77,12 +88,13 @@ const Left = styled(FontAwesomeIcon)`
   font-size: 2em;
   position absolute;
   top: 50%;
+  left: 3em;
 `
 const Right = styled(FontAwesomeIcon)`
   font-size: 2em;
   position: absolute;
   top: 50%;
-  right: 0;
+  right: .5em;
 
 `
 
