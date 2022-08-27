@@ -2,7 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import ThumbnailList from './ThumbnailList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  faChevronDown,
+  faChevronUp,
+  faChevronLeft,
+  faChevronRight,
+} from '@fortawesome/free-solid-svg-icons';
 
 const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
   const [photo, setPhoto] = useState(photos[0]);
@@ -11,40 +16,45 @@ const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
 
   useEffect(() => {
     setPhoto(photos[index]);
-  }, [index, photos])
+  }, [index, photos]);
 
-  useEffect(() => { //Reset scroll position. Might need to fire on product change in the future
+  useEffect(() => {
+    //Reset scroll position. Might need to fire on product change in the future
     scrollPos.current.scrollTop = 0;
-  }, [])
+  }, []);
 
   const scrollDown = () => {
     scrollPos.current.scrollTop += scrollPos.current.clientHeight;
-  }
+  };
   const scrollUp = () => {
     scrollPos.current.scrollTop -= scrollPos.current.clientHeight;
-  }
+  };
   const increaseIndex = () => {
-    if(index < photos.length - 1){
-      setIndex(index + 1)
+    if (index < photos.length - 1) {
+      setIndex(index + 1);
       if ((index + 1) % 7 === 0) {
         scrollDown();
       }
     }
-  }
+  };
   const decreaseIndex = () => {
-    if(index > 0) {
+    if (index > 0) {
       setIndex(index - 1);
       if (index % 7 === 0) {
         scrollUp();
       }
     }
-  }
+  };
 
   return (
     <Container>
       <ImageContainer>
-        <Left icon={faChevronLeft} onClick={decreaseIndex}/>
-        <Right icon={faChevronRight} onClick={increaseIndex}/>
+        {index !== 0 ? (
+          <Left icon={faChevronLeft} onClick={decreaseIndex} />
+        ) : null}
+        {index !== photos.length - 1 ? (
+          <Right icon={faChevronRight} onClick={increaseIndex} />
+        ) : null}
         <MainImage src={photo.url} onClick={() => setPopover(true)}></MainImage>
         <Up icon={faChevronUp} onClick={() => scrollUp(-1)} />
         <ThumbnailList
@@ -80,9 +90,7 @@ const MainImage = styled.img`
 const ImageContainer = styled.div`
   position: relative;
 `;
-const P = styled.p`
-
-`;
+const P = styled.p``;
 const Up = styled(FontAwesomeIcon)`
   font-size: 2em;
   position: absolute;
@@ -101,13 +109,13 @@ const Left = styled(FontAwesomeIcon)`
   top: 50%;
   left: 3em;
   filter: drop-shadow(0px 0px 2px black);
-`
+`;
 const Right = styled(FontAwesomeIcon)`
   font-size: 2em;
   position: absolute;
   top: 50%;
-  right: .5em;
+  right: 0.5em;
   filter: drop-shadow(0px 0px 2px black);
-`
+`;
 
 export default DefaultView;
