@@ -23,6 +23,15 @@ const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
     scrollPos.current.scrollTop = 0;
   }, []);
 
+  useEffect(() => {
+    if (index % 7 === 0 && index !== 0) {
+      scrollDown();
+    }
+    if ((index + 1) % 7 === 0) {
+      scrollUp();
+    }
+  }, [index])
+
   const scrollDown = () => {
     scrollPos.current.scrollTop += scrollPos.current.clientHeight;
   };
@@ -32,17 +41,11 @@ const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
   const increaseIndex = () => {
     if (index < photos.length - 1) {
       setIndex(index + 1);
-      if ((index + 1) % 7 === 0) {
-        scrollDown();
-      }
     }
   };
   const decreaseIndex = () => {
     if (index > 0) {
       setIndex(index - 1);
-      if (index % 7 === 0) {
-        scrollUp();
-      }
     }
   };
 
