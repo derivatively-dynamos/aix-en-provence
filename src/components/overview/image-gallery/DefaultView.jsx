@@ -21,7 +21,7 @@ const DefaultView = ({ photos, product, setIndex, index, setPopover, lastIndex }
   useEffect(() => {
     //Reset scroll position. Might need to fire on product change in the future
     scrollPos.current.scrollTop = 0;
-  }, []);
+  }, [product]);
 
   useEffect(() => {
     if (index % 7 === 0 && index !== 0 && index > lastIndex) {

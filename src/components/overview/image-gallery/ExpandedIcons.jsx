@@ -15,10 +15,11 @@ const ExpandedIcons = ({numPhotos, index, setIndex}) => {
           icon={faCircleDot}/>
       </Icon>)
   }
+
   const iconCont = useRef(null);
   const [offsetLeft, setOffsetLeft] = useState(0);
 
-  useEffect(() => {
+  useEffect(() => { //Indicator background icon tracking
     let selected = iconCont.current.children[index];
     setOffsetLeft(selected.offsetLeft);
   }, [index])
