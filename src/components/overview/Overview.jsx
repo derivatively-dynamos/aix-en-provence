@@ -14,6 +14,7 @@ const Overview = () => {
   const [product, setProduct] = useState(exproduct);
   const [styles, setStyles] = useState(exstyles.results);
   const [style, setStyle] = useState(exstyles.results[0]);
+  const [styleIndex, setStyleIndex] = useState(0);
   const [photos, setPhotos] = useState(exstyles.results[0].photos);
   const [photoIndex, setIndex] = useState(0);
   const [lastIndex, setLastIndex] = useState(0);
@@ -34,6 +35,10 @@ const Overview = () => {
       setPhotoIndex(0);
     }
   }, [style]);
+
+  useEffect(() => {
+    setStyle(styles[styleIndex]);
+  },[styleIndex])
 
   const setPhotoIndex = (index) => {
     setLastIndex(photoIndex);
@@ -60,7 +65,7 @@ const Overview = () => {
         product={product}
         styles={styles}
         style={style}
-        setStyle={setStyleId}
+        setStyle={setStyleIndex}
       />
       {popover ? (
         <ExpandedView

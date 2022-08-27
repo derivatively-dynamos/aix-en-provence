@@ -84,7 +84,7 @@ const Container = styled.div`
   user-select: none;
 `;
 const MainImage = styled.img`
-  border: 2px solid cyan;
+  border: none;
   flex: 1 1 0;
   height: 500px;
   width: 100%;

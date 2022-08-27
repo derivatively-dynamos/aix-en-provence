@@ -58,14 +58,14 @@ const Icon = styled.img`
   width: 60px;
   aspect-ratio: 1;
   object-fit: cover;
-  border: 1px solid red;
+  border: none;
   background: gray;
   margin-right: 4px;
   margin-top: 5px;
   scroll-snap-align: start;
 `;
 const CheckedIcon = styled(Icon)`
-  border: 2px solid cyan;
+  border: none;
 `;
 const ExtraSpace = styled.div`
   width: 10px;
