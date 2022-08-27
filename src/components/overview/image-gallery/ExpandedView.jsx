@@ -21,7 +21,6 @@ const ExpandedView = ({ photo, setPopover, index, setIndex, numPhotos }) => {
 
     setXOffset(newXOffset);
     setYOffset(newYOffset);
-    // var setnewHeight = -(mouseoffTopPercent * excessHeight);
   }
 
   return (

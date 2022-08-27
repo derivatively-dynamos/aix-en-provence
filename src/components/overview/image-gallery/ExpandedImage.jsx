@@ -5,6 +5,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
+import ExpandedIcons from './ExpandedIcons';
 
 const ExpandedImage = ({ index, setIndex, numPhotos, ...props }) => {
   return (
@@ -16,6 +17,7 @@ const ExpandedImage = ({ index, setIndex, numPhotos, ...props }) => {
       {index === numPhotos - 1 ? null : (
         <Right icon={faChevronRight} onClick={() => setIndex(index + 1)} />
       )}
+      <ExpandedIcons numPhotos={numPhotos} index={index} setIndex={setIndex}/>
     </Container>
   );
 };
@@ -46,6 +48,7 @@ const Right = styled(FontAwesomeIcon)`
 `;
 const Container = styled.div`
   height: 100%;
+  position: relative;
 `
 
 export default ExpandedImage;
