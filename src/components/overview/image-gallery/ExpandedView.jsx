@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
+import ExpandedImage from './ExpandedImage';
 
 const ExpandedView = ({ photo, setPopover }) => {
 
@@ -24,22 +25,16 @@ const ExpandedView = ({ photo, setPopover }) => {
   }
 
   return (
-    <ImageContainer ref={imageCont} onMouseMove={handleMouseMove} >
+    <ImageContainer ref={imageCont}  >
       <ExpandedImage
         src={photo}
         onClick={() => setPopover(false)}
-        style={{transform: `translate(${xOffset}px, ${yOffset}px)`}}
-        ref={image}
       />
     </ImageContainer>
   );
 };
 
-const ExpandedImage = styled.img`
-  display:block;
-  width: 3000px;
-  transition-timing-function: linear;
-`;
+
 
 const ImageContainer = styled.div`
   top: 0;
@@ -50,5 +45,9 @@ const ImageContainer = styled.div`
   position: absolute;
   overflow: hidden;
 `;
+
+const SuperExpandedImage = styled.img`
+  display: block;
+`
 
 export default ExpandedView;
