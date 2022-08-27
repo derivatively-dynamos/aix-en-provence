@@ -27,6 +27,7 @@ const StyledImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  cursor: crosshair;
 `;
 const Left = styled(FontAwesomeIcon)`
   color: white;
@@ -49,6 +50,7 @@ const Right = styled(FontAwesomeIcon)`
 const Container = styled.div`
   height: 100%;
   position: relative;
+  z-index: 0;
 `
 
 export default ExpandedImage;
