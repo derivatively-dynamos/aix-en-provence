@@ -66,6 +66,7 @@ const Overview = () => {
         styles={styles}
         style={style}
         setStyle={setStyleIndex}
+        styleIndex={styleIndex}
       />
       {popover ? (
         <ExpandedView

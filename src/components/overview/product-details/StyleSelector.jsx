@@ -3,8 +3,10 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-const StyleSelector = ({ styles, style, setStyle }) => {
+const StyleSelector = ({ styles, style, setStyle, styleIndex }) => {
   const [grid, setGrid] = useState([]);
+  const [selectedX, setSelectedX] = useState(0);
+  const [selectedY, setSelectedY] = useState(0);
   const style_id = style.style_id;
   const gridRef = useRef(null);
 
@@ -22,10 +24,10 @@ const StyleSelector = ({ styles, style, setStyle }) => {
   }, [styles]);
 
   useEffect(() => {
-    console.log(gridRef.current);
-  }, [style])
-
-
+    let child = gridRef.current.children[styleIndex];
+    setSelectedX(child.offsetLeft);
+    setSelectedY(child.offsetTop);
+  }, [styleIndex]);
 
   return (
     <div>
@@ -34,7 +36,9 @@ const StyleSelector = ({ styles, style, setStyle }) => {
       </Div>
       <IconGrid ref={gridRef}>
         {grid}
-        <Check icon={faCheck} />
+        <Selected style={{ left: selectedX, top: selectedY }}>
+          <Check icon={faCheck} />
+        </Selected>
       </IconGrid>
     </div>
   );
@@ -60,10 +64,17 @@ const IconGrid = styled.div`
   max-width: 250px; //Kinda hacky hardcoded solution to wrap the items
   position: relative;
 `;
-
+const Selected = styled.div`
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+`;
 const Check = styled(FontAwesomeIcon)`
   font-size: 2em;
-  color: red;
-  position: absolute;
+  color: white;
+  filter: drop-shadow(0px 0px 2px black);
 `;
 export default StyleSelector;
