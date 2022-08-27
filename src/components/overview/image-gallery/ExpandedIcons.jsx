@@ -43,14 +43,14 @@ const Div = styled.div`
   height: fit-content;
 `
 const Circle = styled(FontAwesomeIcon)`
-  font-size: 1em;
+  font-size: 1.2em;
   z-index: 2;
   color: white;
   position: relative;
 `
 const Indicator = styled.div`
-  width: 1em;
-  height: 1em;
+  width: 1.2em;
+  height: 1.2em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,7 +65,7 @@ const Icon = styled.div`
 `
 const RedCircle = styled(Circle)`
   font-size: .6em;
-  color: #c01010;
+  color: #ff0000;
 `
 
 export default ExpandedIcons;
