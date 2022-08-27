@@ -43,7 +43,7 @@ const Ul = styled.ul`
   top: 25px;
   left: 15px;
   height: 88%;
-  overflow: auto;
+  overflow-y: hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar {

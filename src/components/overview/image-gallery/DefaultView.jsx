@@ -7,11 +7,16 @@ import { faChevronDown, faChevronUp, faChevronLeft, faChevronRight } from '@fort
 const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
   const [photo, setPhoto] = useState(photos[0]);
 
+  const scrollPos = useRef(null);
+
   useEffect(() => {
     setPhoto(photos[index]);
   }, [index, photos])
 
-  const scrollPos = useRef(null);
+  useEffect(() => { //Reset scroll position. Might need to fire on product change in the future
+    scrollPos.current.scrollTop = 0;
+  }, [])
+
   const scrollDown = () => {
     scrollPos.current.scrollTop += scrollPos.current.clientHeight;
   }
@@ -21,11 +26,17 @@ const DefaultView = ({ photos, product, setIndex, index, setPopover }) => {
   const increaseIndex = () => {
     if(index < photos.length - 1){
       setIndex(index + 1)
+      if ((index + 1) % 7 === 0) {
+        scrollDown();
+      }
     }
   }
   const decreaseIndex = () => {
     if(index > 0) {
       setIndex(index - 1);
+      if (index % 7 === 0) {
+        scrollUp();
+      }
     }
   }
 
@@ -89,13 +100,14 @@ const Left = styled(FontAwesomeIcon)`
   position absolute;
   top: 50%;
   left: 3em;
+  filter: drop-shadow(0px 0px 2px black);
 `
 const Right = styled(FontAwesomeIcon)`
   font-size: 2em;
   position: absolute;
   top: 50%;
   right: .5em;
-
+  filter: drop-shadow(0px 0px 2px black);
 `
 
 export default DefaultView;
