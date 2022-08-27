@@ -51,6 +51,7 @@ const Ul = styled.ul`
   }
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  cursor: pointer;
 `;
 const Icon = styled.img`
   height: 60px;

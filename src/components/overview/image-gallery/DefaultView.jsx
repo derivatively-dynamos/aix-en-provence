@@ -86,6 +86,7 @@ const MainImage = styled.img`
   height: 500px;
   width: 100%;
   object-fit: cover;
+  cursor: zoom-in;
 `;
 const ImageContainer = styled.div`
   position: relative;
@@ -96,18 +97,23 @@ const Up = styled(FontAwesomeIcon)`
   position: absolute;
   top: 0;
   left: 1em;
+  filter: drop-shadow(0px 0px 2px black);
+  cursor: pointer;
 `;
 const Down = styled(FontAwesomeIcon)`
   font-size: 2em;
   position: absolute;
   left: 1em;
   bottom: 0;
+  filter: drop-shadow(0px 0px 2px black);
+  cursor: pointer;
 `;
 const Left = styled(FontAwesomeIcon)`
   font-size: 2em;
   position absolute;
   top: 50%;
   left: 3em;
+  cursor: pointer;
   filter: drop-shadow(0px 0px 2px black);
 `;
 const Right = styled(FontAwesomeIcon)`
@@ -115,6 +121,7 @@ const Right = styled(FontAwesomeIcon)`
   position: absolute;
   top: 50%;
   right: 0.5em;
+  cursor: pointer;
   filter: drop-shadow(0px 0px 2px black);
 `;
 
