@@ -1,26 +1,15 @@
-import React, {useRef} from 'react';
-import styled from 'styled-components';
+import React, { useRef } from "react";
+import styled from "styled-components";
 
 const ThumbnailList = ({ photos, setIndex, index, scrollPos }) => {
-
-
   const icons = photos.map((photo, i) => {
-    if (i === index) {
-      return (
-        <CheckedIcon
-          src={photo.thumbnail_url}
-          value={i}
-          key={i}
-          onClick={() => setIndex(i)}
-        />
-      );
-    }
     return (
       <Icon
         src={photo.thumbnail_url}
         value={i}
         key={i}
         onClick={() => setIndex(i)}
+        selected={index === i ? true : false}
       />
     );
   });
@@ -28,7 +17,7 @@ const ThumbnailList = ({ photos, setIndex, index, scrollPos }) => {
   return (
     <Ul ref={scrollPos}>
       {icons}
-      <ExtraSpace/>
+      <ExtraSpace />
     </Ul>
   );
 };
@@ -62,14 +51,13 @@ const Icon = styled.img`
   background: gray;
   margin-right: 4px;
   margin-top: 5px;
+  margin-left: 2px;
   scroll-snap-align: start;
-`;
-const CheckedIcon = styled(Icon)`
-  border: none;
+  outline: ${props => props.selected ? "2px solid white" : "none"};
 `;
 const ExtraSpace = styled.div`
   width: 10px;
   flex: 1 0 1000px;
-`
+`;
 
 export default ThumbnailList;
