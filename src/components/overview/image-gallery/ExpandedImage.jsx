@@ -15,19 +15,28 @@ const ExpandedImage = ({
   setPopover,
   ...props
 }) => {
+  let leftChange = null;
+  let rightChange = null;
+  if (index !== 0) { //Hide if first image
+    leftChange = (
+      <IconCover onClick={() => setIndex(index - 1)}>
+        <Left icon={faChevronLeft} />
+      </IconCover>
+    );
+  }
+  if (index !== numPhotos - 1) { //Hide if last image
+    rightChange = (
+      <IconCoverRight onClick={() => setIndex(index + 1)}>
+        <Right icon={faChevronRight} />
+      </IconCoverRight>
+    );
+  }
+
   return (
     <Container>
       <ImageCover>
-        {index === 0 ? null : (
-          <IconCover onClick={() => setIndex(index - 1)}>
-            <Left icon={faChevronLeft} />
-          </IconCover>
-        )}
-        {index === numPhotos - 1 ? null : (
-          <IconCoverRight onClick={() => setIndex(index + 1)}>
-            <Right icon={faChevronRight} />
-          </IconCoverRight>
-        )}
+        {leftChange}
+        {rightChange}
       </ImageCover>
 
       <StyledImage {...props} />
