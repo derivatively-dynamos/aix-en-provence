@@ -1,40 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSlash } from '@fortawesome/free-solid-svg-icons';
 const AddToCart = ({ style }) => {
-
   const skus = style.skus;
   const sizes = [];
 
-  for(let sku in skus) {
-    let size = skus[sku].size;
-    sizes.push(<Option key={size} value={sku}>{size}</Option>);
-  }
-
-  const [sku, setSku] = useState(null);
-  const [quant, setQuant] = useState([]);
-  const [userQuant, setUserQuant] = useState(null);
-
-  const handleSkuChange = (e) => {
-    const newQuant = [];
-    const quantity = skus[e.target.value].quantity;
-    for(let i = 1; i <= quantity && i <= 15; i++) {
-      newQuant.push(<Option key={i} value={i}>{i}</Option>)
-    }
-    setSku(e.target.value);
-    setQuant(newQuant);
+  for (let key in skus) {
+    sizes.push(<Option key={key}>{skus[key].size}</Option>);
   }
 
   return (
     <div>
       <div>
-        <Select onChange={handleSkuChange}>
-          <Option value={null}>SELECT SIZE</Option>
+        <SizeContainer>
           {sizes}
-        </Select>
-        <Select onChange={(e) => setUserQuant(e.target.value)}>
-          {quant}
-        </Select>
+          <img src="./src/line.svg" />
+        </SizeContainer>
+        {/* <Select onChange={(e) => setUserQuant(e.target.value)}>{quant}</Select> */}
       </div>
       <div>
         <Button>ADD TO BAG +</Button>
@@ -66,13 +49,33 @@ const Select = styled.select`
   margin-top: 5px;
 `;
 
-const Option = styled.option`
+const Option = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  width: 3em;
   border-radius: 0;
   border: 1px solid darkgray;
-  background-color: #292929;
   color: #c0c0c0;
   font-size: 14px;
   padding: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: #686868;
+  }
+  background-color: ${(props) => (props.selected ? 'red' : '#292929')};
+`;
+const SizeContainer = styled.div`
+  margin-top: 1em;
+  gap: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+`;
+const Slash = styled.img`
+  font-size: 2em;
+  position: absolute;
 `;
 
 export default AddToCart;

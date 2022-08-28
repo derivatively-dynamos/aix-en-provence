@@ -23,7 +23,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 1em auto 0 auto;
-  width: 80%;
+  max-width: 1000px;
   gap: 1em;
   border: 1px solid darkgray;
   background-color: #dbdbdb;
