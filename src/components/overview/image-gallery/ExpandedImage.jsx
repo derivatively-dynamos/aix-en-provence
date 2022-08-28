@@ -1,25 +1,38 @@
-import React from 'react';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from "react";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
   faChevronRight,
-  faXmark
-} from '@fortawesome/free-solid-svg-icons';
-import ExpandedIcons from './ExpandedIcons';
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
+import ExpandedIcons from "./ExpandedIcons";
 
-const ExpandedImage = ({ index, setIndex, numPhotos, setPopover, ...props }) => {
+const ExpandedImage = ({
+  index,
+  setIndex,
+  numPhotos,
+  setPopover,
+  ...props
+}) => {
   return (
     <Container>
-      {index === 0 ? null : (
-        <Left icon={faChevronLeft} onClick={() => setIndex(index - 1)} />
-      )}
+      <ImageCover>
+        {index === 0 ? null : (
+          <IconCover onClick={() => setIndex(index - 1)}>
+            <Left icon={faChevronLeft} />
+          </IconCover>
+        )}
+        {index === numPhotos - 1 ? null : (
+          <IconCoverRight onClick={() => setIndex(index + 1)}>
+            <Right icon={faChevronRight} />
+          </IconCoverRight>
+        )}
+      </ImageCover>
+
       <StyledImage {...props} />
-      {index === numPhotos - 1 ? null : (
-        <Right icon={faChevronRight} onClick={() => setIndex(index + 1)} />
-      )}
-      <Close icon={faXmark} onClick={() => setPopover(false)}/>
-      <ExpandedIcons numPhotos={numPhotos} index={index} setIndex={setIndex}/>
+      <Close icon={faXmark} onClick={() => setPopover(false)} />
+      <ExpandedIcons numPhotos={numPhotos} index={index} setIndex={setIndex} />
     </Container>
   );
 };
@@ -31,13 +44,34 @@ const StyledImage = styled.img`
   object-fit: cover;
   cursor: crosshair;
 `;
+const ImageCover = styled.div`
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
+const IconCover = styled.div`
+  display: flex;
+  align-items: center;
+  width: 3em;
+  height: 100%;
+  float: left;
+  cursor: pointer;
+  &:hover {
+    backdrop-filter: blur(2px) brightness(120%);
+  }
+`;
+const IconCoverRight = styled(IconCover)`
+  float: right;
+`;
 const IconBase = styled(FontAwesomeIcon)`
   color: white;
   font-size: 2em;
   position: absolute;
   cursor: pointer;
   filter: drop-shadow(0px 0px 2px black);
-`
+`;
 const Left = styled(IconBase)`
   top: 50%;
   left: 0.5em;
@@ -49,11 +83,11 @@ const Right = styled(IconBase)`
 const Close = styled(IconBase)`
   top: 0.25em;
   right: 0.25em;
-`
+`;
 const Container = styled.div`
   height: 100%;
   position: relative;
   z-index: 0;
-`
+`;
 
 export default ExpandedImage;
