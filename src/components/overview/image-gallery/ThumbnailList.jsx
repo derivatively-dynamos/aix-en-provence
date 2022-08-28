@@ -43,14 +43,14 @@ const Ul = styled.ul`
   cursor: pointer;
 `;
 const Icon = styled.img`
-  height: 60px;
-  width: 60px;
+  height: 55px;
   aspect-ratio: 1;
   object-fit: cover;
   border: none;
   background: gray;
   margin-right: 4px;
-  margin-top: 5px;
+  margin-top: 15px;
+  margin-bottom: -7px;
   margin-left: 2px;
   scroll-snap-align: start;
   outline: ${props => props.selected ? "2px solid white" : "none"};
