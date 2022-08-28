@@ -15,7 +15,7 @@ const AddToCart = ({ style }) => {
       <div>
         <SizeContainer>
           {sizes}
-          <img src="./src/line.svg" />
+          <Slash src="./src/line.svg" />
         </SizeContainer>
         {/* <Select onChange={(e) => setUserQuant(e.target.value)}>{quant}</Select> */}
       </div>
@@ -74,8 +74,10 @@ const SizeContainer = styled.div`
   position: relative;
 `;
 const Slash = styled.img`
-  font-size: 2em;
   position: absolute;
+  aspect-ratio: 1;
+  color: white;
+  width: 5em;
 `;
 
 export default AddToCart;

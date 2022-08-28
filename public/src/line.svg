@@ -41,11 +41,11 @@
      id="layer1"
      transform="translate(-46.70448,-124.56937)">
     <path
-       style="fill:#000000;stroke-width:0.264583"
+       style="stroke-width:0.264583"
        d="m 42.800389,136.20935 32.967868,32.96786"
        id="path120" />
     <path
-       style="fill:#000000;stroke-width:0.264583"
+       style="stroke-width:0.264583"
        d="m 46.70448,125.65384 93.62585,93.62585 0.93987,-0.93987 -93.770444,-93.77045 z"
        id="path124" />
   </g>
