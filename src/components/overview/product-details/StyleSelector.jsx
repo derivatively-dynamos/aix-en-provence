@@ -55,14 +55,14 @@ const Icon = styled.img`
   width: 50px;
   border: none;
   object-fit: cover;
-  outline: ${props => props.selected ? '2px solid white' : 'none'};
+  outline: ${props => props.selected ? '2px solid white' : '1px solid lightgray'};
 `;
 
 const IconGrid = styled.div`
   outline: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 8px;
   max-width: 250px; //Kinda hacky hardcoded solution to wrap the items
   position: relative;
 `;

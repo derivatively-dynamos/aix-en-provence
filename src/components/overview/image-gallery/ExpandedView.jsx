@@ -28,6 +28,7 @@ const ExpandedView = ({ photo, setPopover, index, setIndex, numPhotos }) => {
       index={index}
       setIndex={setIndex}
       numPhotos={numPhotos}
+      setPopover={setPopover}
     />
   );
   const superExpanded = (

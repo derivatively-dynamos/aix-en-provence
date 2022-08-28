@@ -36,7 +36,8 @@ const ProductPrice = ({ original_price, sale_price }) => {
 };
 
 const H4 = styled.h4`
-  margin: 1em 0 0 0.5em;
+  margin: 0;
+  padding: 0;
 `;
 const H2 = styled.h2`
   margin-top: 5px;

@@ -28,6 +28,7 @@ const Container = styled.section`
   background-color: #313131;
   color: lightgray;
   padding: 0.5em;
+  padding-left: 1em;
   border: none;
   flex-basis: 30%;
 `;
