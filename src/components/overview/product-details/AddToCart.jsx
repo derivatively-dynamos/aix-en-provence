@@ -15,7 +15,6 @@ const AddToCart = ({ style }) => {
       <div>
         <SizeContainer>
           {sizes}
-          <Slash src="./src/line.svg" />
         </SizeContainer>
         {/* <Select onChange={(e) => setUserQuant(e.target.value)}>{quant}</Select> */}
       </div>
