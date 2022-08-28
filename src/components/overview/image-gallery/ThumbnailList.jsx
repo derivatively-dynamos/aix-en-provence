@@ -53,6 +53,9 @@ const Icon = styled.img`
   margin-bottom: -7px;
   margin-left: 2px;
   scroll-snap-align: start;
+  &:hover{
+    filter: brightness(120%);
+  }
   outline: ${props => props.selected ? "2px solid white" : "none"};
 `;
 const ExtraSpace = styled.div`

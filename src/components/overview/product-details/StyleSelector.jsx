@@ -55,6 +55,10 @@ const Icon = styled.img`
   width: 50px;
   border: none;
   object-fit: cover;
+  cursor: pointer;
+  &:hover {
+    filter: brightness(150%);
+  }
   outline: ${props => props.selected ? '2px solid white' : '1px solid lightgray'};
 `;
 
