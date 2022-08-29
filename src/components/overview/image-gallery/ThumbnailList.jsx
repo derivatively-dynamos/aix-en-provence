@@ -14,23 +14,21 @@ const ThumbnailList = ({ photos, setIndex, index, scrollPos }) => {
     );
   });
 
-  return (
+  return ( //Empty div aligns scroll
     <Ul ref={scrollPos}>
+      <div/>
       {icons}
-      <ExtraSpace />
+      <BotSpace />
     </Ul>
   );
 };
-
 const Ul = styled.ul`
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
-  top: 25px;
-  left: 15px;
+  gap: 8px;
   height: 88%;
   overflow-y: hidden;
   -ms-overflow-style: none;
@@ -46,12 +44,13 @@ const Icon = styled.img`
   height: 55px;
   aspect-ratio: 1;
   object-fit: cover;
+  margin: 0 4px;
   border: none;
-  margin: 15px 4px -7px 2px;
   scroll-snap-align: start;
+  scroll-margin-top: 4px;
   outline: ${props => props.selected ? `2px solid` : "none"};
 `;
-const ExtraSpace = styled.div`
+const BotSpace = styled.div`
   width: 10px;
   flex: 1 0 1000px;
 `;
