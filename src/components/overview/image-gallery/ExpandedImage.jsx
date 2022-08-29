@@ -1,32 +1,45 @@
-import React from "react";
-import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from 'react';
+import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronLeft,
   faChevronRight,
   faXmark,
-} from "@fortawesome/free-solid-svg-icons";
-import ExpandedIcons from "./ExpandedIcons";
+} from '@fortawesome/free-solid-svg-icons';
+import ExpandedIcons from './ExpandedIcons';
 
 const ExpandedImage = ({
   index,
   setIndex,
   numPhotos,
   setPopover,
+  setBlownUp,
   ...props
 }) => {
   let leftChange = null;
   let rightChange = null;
-  if (index !== 0) { //Hide if first image
+  if (index !== 0) {
+    //Hide if first image
     leftChange = (
-      <IconCover onClick={() => setIndex(index - 1)}>
+      <IconCover
+        onClick={(e) => {
+          e.stopPropagation();
+          setIndex(index - 1);
+        }}
+      >
         <Left icon={faChevronLeft} />
       </IconCover>
     );
   }
-  if (index !== numPhotos - 1) { //Hide if last image
+  if (index !== numPhotos - 1) {
+    //Hide if last image
     rightChange = (
-      <IconCoverRight onClick={() => setIndex(index + 1)}>
+      <IconCoverRight
+        onClick={(e) => {
+          e.stopPropagation();
+          setIndex(index + 1);
+        }}
+      >
         <Right icon={faChevronRight} />
       </IconCoverRight>
     );
@@ -34,7 +47,7 @@ const ExpandedImage = ({
 
   return (
     <Container>
-      <ImageCover>
+      <ImageCover onClick={() => setBlownUp(true)}>
         {leftChange}
         {rightChange}
       </ImageCover>
@@ -59,6 +72,7 @@ const ImageCover = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  user-select: none;
 `;
 const IconCover = styled.div`
   display: flex;

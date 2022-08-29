@@ -24,7 +24,7 @@ const ExpandedView = ({ photo, setPopover, index, setIndex, numPhotos }) => {
   const expanded = (
     <ExpandedImage
       src={photo}
-      onClick={() => setBlownUp(true)}
+      setBlownUp={setBlownUp}
       index={index}
       setIndex={setIndex}
       numPhotos={numPhotos}

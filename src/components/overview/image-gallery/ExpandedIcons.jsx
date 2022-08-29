@@ -6,7 +6,6 @@ import styled from "styled-components";
 const ExpandedIcons = ({numPhotos, index, setIndex}) => {
   const icons = [];
   for (let i = 0; i < numPhotos; i++) {
-    if(i===index) console.log(i);
     icons.push(
       <Icon
         key={i}
