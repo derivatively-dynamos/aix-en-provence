@@ -6,15 +6,11 @@ import SizeSlider from './SizeSlider.jsx';
 import ComfortSlider from './ComfortSlider.jsx';
 import Score from './Score.jsx';
 
-const ReviewBreakdown = ({product}) => {
+const ReviewBreakdown = ({ reviews }) => {
   const [ starBreakdown ] = useState(['5 Stars', '4 Stars', '3 Stars', '2 Stars', '1 Stars'])
-  const ratings = product.results.map((review) => {
+  const ratings = reviews.map((review) => {
     return review.rating;
   })
-  console.log(ratings)
-  const reviews = product.results;
-
-
 
   return (
     <ColumnCont>

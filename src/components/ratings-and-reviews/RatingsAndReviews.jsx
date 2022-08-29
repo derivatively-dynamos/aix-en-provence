@@ -9,14 +9,14 @@ import sampleProduct from "./sample.js"
 
 const RatingsAndReviews = () => {
 
-  const [ product ] = useState(sampleProduct[0]);
+  const [ reviews ] = useState(sampleProduct[0].results);
 
   return (
     <AppContainer>
       <h2>RATINGS AND REVIEWS</h2>
       <Container>
-        <ReviewBreakdown product={product}/>
-        <ReviewList product={product}/>
+        <ReviewBreakdown reviews={reviews}/>
+        <ReviewList reviews={reviews}/>
       </Container>
     </AppContainer>
   )
@@ -30,6 +30,7 @@ const Container = styled.div`
 const AppContainer = styled(Container)`
   flex-direction: column;
   background-color: white;
+  color: #303030;
 `
 
 export default RatingsAndReviews;
