@@ -7,16 +7,19 @@ const AddToCart = ({ style }) => {
   const skus = style.skus;
   const sizes = [];
   const [sku, setSku] = useState(null);
+  const [maxQuant, setMaxQuant] = useState(0);
   const [quant, setQuant] = useState(0);
 
   useEffect(() => {
     setSku(null);
+    setMaxQuant(0);
     setQuant(0);
   }, [style]);
   useEffect(() => {
     if(skus[sku]) {
-      setQuant(skus[sku].quantity)
+      setMaxQuant(skus[sku].quantity)
     }
+    setQuant(0);
   }, [sku])
 
   for (let key in skus) {
@@ -35,7 +38,7 @@ const AddToCart = ({ style }) => {
     <div>
       <SizeAndQuant>
         <SizeContainer>{sizes}</SizeContainer>
-        <QuantSelect quant={quant}/>
+        <QuantSelect quant={quant} setQuant={setQuant} maxQuant={maxQuant} sku={sku}/>
       </SizeAndQuant>
       <div>
         <Button>ADD TO BAG +</Button>
