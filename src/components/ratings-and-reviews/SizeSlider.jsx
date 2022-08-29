@@ -47,9 +47,9 @@ const ReviewCont = styled(Container)`
   max-height: 1em;
 `
 const ReviewBar = styled.div`
-  background-color: #c8c8c8;
+  background-color: #e8e8e8;
   max-height: .5em;
-  border: .25em solid #c8c8c8;
+  border: .25em solid #e8e8e8;
 `
 const Indicator = styled.div`
   position: absolute;
