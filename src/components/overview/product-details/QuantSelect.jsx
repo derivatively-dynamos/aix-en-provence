@@ -5,7 +5,7 @@ const QuantSelect = ({ quant, setQuant, maxQuant, sku }) => {
   const [inStock, setInStock] = useState(true);
 
   useEffect(() => {
-    setInStock(sku === null || maxQuant !== 0)
+    setInStock(sku === null || maxQuant !== 0);
   }, [maxQuant, sku]);
 
   const quants = [];
@@ -19,13 +19,13 @@ const QuantSelect = ({ quant, setQuant, maxQuant, sku }) => {
 
   return (
     <Container>
-      {!inStock ? (
-        <OutOfStock>OUT OF STOCK</OutOfStock>
-      ) : (
+      {inStock ? (
         <Select value={quant} onChange={(e) => setQuant(e.target.value)}>
           <Option value="0">Quantity</Option>
           {quants}
         </Select>
+      ) : (
+        <OutOfStock>OUT OF STOCK</OutOfStock>
       )}
     </Container>
   );
