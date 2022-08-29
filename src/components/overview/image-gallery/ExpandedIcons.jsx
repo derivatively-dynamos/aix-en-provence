@@ -45,7 +45,6 @@ const Div = styled.div`
 const Circle = styled(FontAwesomeIcon)`
   font-size: 1.2em;
   z-index: 2;
-  color: white;
   position: relative;
 `
 const Indicator = styled.div`
@@ -65,7 +64,7 @@ const Icon = styled.div`
 `
 const RedCircle = styled(Circle)`
   font-size: .6em;
-  color: #ff0000;
+  color: ${props => props.theme.flavor};
 `
 
 export default ExpandedIcons;

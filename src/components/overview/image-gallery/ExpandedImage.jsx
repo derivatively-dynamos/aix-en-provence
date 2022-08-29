@@ -89,7 +89,6 @@ const IconCoverRight = styled(IconCover)`
   float: right;
 `;
 const IconBase = styled(FontAwesomeIcon)`
-  color: white;
   font-size: 2em;
   position: absolute;
   cursor: pointer;

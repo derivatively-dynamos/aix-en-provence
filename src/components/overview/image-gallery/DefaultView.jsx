@@ -95,7 +95,7 @@ const ImageContainer = styled.div`
 const Up = styled(FontAwesomeIcon)`
   font-size: 2em;
   position: absolute;
-  top: 0;
+  top: .1em;
   left: 1em;
   filter: drop-shadow(0px 0px 2px black);
   cursor: pointer;
@@ -104,7 +104,7 @@ const Down = styled(FontAwesomeIcon)`
   font-size: 2em;
   position: absolute;
   left: 1em;
-  bottom: 0;
+  bottom: .1em;
   filter: drop-shadow(0px 0px 2px black);
   cursor: pointer;
 `;
