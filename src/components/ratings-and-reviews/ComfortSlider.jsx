@@ -42,6 +42,7 @@ const ReviewCont = styled(Container)`
   gap: 0.25em;
 `
 const ReviewBar = styled.div`
+  background-color: #c8c8c8;
   max-height: .5em;
   border: .25em solid #c8c8c8;
 `
