@@ -44,7 +44,7 @@ const H2 = styled.h2`
   margin-bottom: 0px;
 `;
 const Sale = styled.span`
-  color: red;
+  color: ${props => props.theme.sale}
 `;
 
 export default ProductInformation;

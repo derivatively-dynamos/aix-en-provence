@@ -16,11 +16,10 @@ const ImageGallery = ({ style, product, setIndex, index, setPopover, lastIndex }
 );
 
 const Container = styled.section`
+  color: ${props => props.theme.highlight};
   display: flex;
   flex-direction: column;
   flex: 1 1 60%;
-  background-color: #313131;
-  color: lightgray;
   padding: 0.5em;
   border: none;
 `;
