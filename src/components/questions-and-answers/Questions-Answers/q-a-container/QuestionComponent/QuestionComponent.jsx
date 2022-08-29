@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import AnswerField from "./AnswerField";
-import PhotoSection from "./PhotoSection";
 import MoreAnswersButton from "./MoreAnswersButton";
 import QuestionsField from "./QuestionsField";
 
@@ -12,12 +11,18 @@ const QuestionComponent = ({ questions }) => {
 
   const question = questions[0];
   const answers = question.answers;
+  const answersArr = Object.values(answers);
+
+  const firstHalf = answersArr.slice(0, 2);
+  const restAnswers = answersArr.slice(2, answersArr.length);
 
   return (
     <ContainerDiv>
       <QuestionsField question={question} />
-      <AnswerField answers={answers} />
-      <MoreAnswersButton />
+      <AnswerField answers={firstHalf} />
+      <MoreAnswersButton>
+        <AnswerField answers={restAnswers} />
+      </MoreAnswersButton>
     </ContainerDiv>
   );
 };
