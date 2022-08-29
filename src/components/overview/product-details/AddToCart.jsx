@@ -2,35 +2,41 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSlash } from '@fortawesome/free-solid-svg-icons';
+import QuantSelect from './QuantSelect';
 const AddToCart = ({ style }) => {
   const skus = style.skus;
   const sizes = [];
   const [sku, setSku] = useState(null);
+  const [quant, setQuant] = useState(0);
 
   useEffect(() => {
     setSku(null);
+    setQuant(0);
   }, [style]);
+  useEffect(() => {
+    if(skus[sku]) {
+      setQuant(skus[sku].quantity)
+    }
+  }, [sku])
 
   for (let key in skus) {
     sizes.push(
-      <Option
+      <SizeOption
         key={key}
         onClick={() => setSku(key)}
         selected={sku === key ? true : false}
       >
         {skus[key].size}
-      </Option>
+      </SizeOption>
     );
   }
 
   return (
     <div>
-      <div>
+      <SizeAndQuant>
         <SizeContainer>{sizes}</SizeContainer>
-        <Select>
-          <option>Quantity</option>
-        </Select>
-      </div>
+        <QuantSelect quant={quant}/>
+      </SizeAndQuant>
       <div>
         <Button>ADD TO BAG +</Button>
         <Button>☆</Button>
@@ -50,18 +56,7 @@ const Button = styled.button`
   margin-top: 5px;
 `;
 
-const Select = styled.select`
-  border-radius: 0;
-  border: 1px solid darkgray;
-  background-color: #292929;
-  color: #c0c0c0;
-  font-size: 14px;
-  padding: 10px;
-  margin-right: 10px;
-  margin-top: 5px;
-`;
-
-const Option = styled.button`
+const SizeOption = styled.button`
   font-size: 1em;
   display: flex;
   align-items: center;
@@ -81,7 +76,6 @@ const Option = styled.button`
   background-color: ${(props) => (props.selected ? 'red' : '#292929')};
 `;
 const SizeContainer = styled.div`
-  margin-top: 1em;
   gap: 1em;
   display: flex;
   flex-wrap: wrap;
@@ -92,6 +86,10 @@ const Slash = styled.img`
   aspect-ratio: 1;
   color: white;
   width: 5em;
+`;
+const SizeAndQuant = styled.div`
+  margin-top: 1em;
+  display: flex;
 `;
 
 export default AddToCart;
