@@ -6,12 +6,12 @@ import Review from './Review.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 
-const ReviewList = ({ product }) => {
+const ReviewList = ({ reviews }) => {
 
   return (
     <Container>
       <SortBy />
-      {product.results.map((review) => {
+      {reviews.map((review) => {
         return <Review key={review.review_id} review={ review }/>
       })}
       <BtnCont>
