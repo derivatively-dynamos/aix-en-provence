@@ -42,7 +42,7 @@ const StyledContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  background-color: #925353;
+  background-color: #4f5d2a;
   color: light;
   padding: 0 0 .5em 0;
   margin: 0 .3em 0 .3em;
