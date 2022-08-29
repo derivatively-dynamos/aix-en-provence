@@ -60,14 +60,16 @@ const DefaultView = ({ photos, product, setIndex, index, setPopover, lastIndex }
           <Right icon={faChevronRight} onClick={increaseIndex} />
         ) : null}
         <MainImage src={photo.url} onClick={() => setPopover(true)}></MainImage>
-        <Up icon={faChevronUp} onClick={() => scrollUp(-1)} />
-        <ThumbnailList
-          photos={[...photos]}
-          setIndex={setIndex}
-          index={index}
-          scrollPos={scrollPos}
-        />
-        <Down icon={faChevronDown} onClick={() => scrollDown(1)} />
+        <ScrollContainer>
+          <Up icon={faChevronUp} onClick={() => scrollUp(-1)} />
+          <ThumbnailList
+            photos={[...photos]}
+            setIndex={setIndex}
+            index={index}
+            scrollPos={scrollPos}
+          />
+          <Down icon={faChevronDown} onClick={() => scrollDown(1)} />
+        </ScrollContainer>
       </ImageContainer>
       <Description slogan={product.slogan} description={product.description} />
     </Container>
@@ -81,6 +83,18 @@ const Container = styled.div`
   position: relative;
   user-select: none;
 `;
+const ScrollContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: .2em;
+  padding: .2em 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+`
 const MainImage = styled.img`
   border: none;
   flex: 1 1 0;
@@ -94,17 +108,11 @@ const ImageContainer = styled.div`
 `;
 const Up = styled(FontAwesomeIcon)`
   font-size: 2em;
-  position: absolute;
-  top: .1em;
-  left: 1em;
   filter: drop-shadow(0px 0px 2px black);
   cursor: pointer;
 `;
 const Down = styled(FontAwesomeIcon)`
   font-size: 2em;
-  position: absolute;
-  left: 1em;
-  bottom: .1em;
   filter: drop-shadow(0px 0px 2px black);
   cursor: pointer;
 `;
