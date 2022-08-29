@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-const PhotoSection = ({ photos }) => {
+const PhotoSection = ({ photos, answerID }) => {
   if (photos.length > 0) {
     return (
       <ContainerDiv>
         <div>Yes, as you can see in these photos.</div>
         <Box1>
-          {photos.map((photo, index) => {
-            return <Img src={`${photo}`}></Img>;
+          {photos.map((photo) => {
+            return <Img key={answerID} src={photo}></Img>;
           })}
         </Box1>
         <Box2>

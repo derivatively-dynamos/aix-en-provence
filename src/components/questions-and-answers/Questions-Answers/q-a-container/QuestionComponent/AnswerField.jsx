@@ -3,13 +3,11 @@ import styled from "styled-components";
 import PhotoSection from "./PhotoSection";
 
 const AnswerField = ({ answers }) => {
-  const answersArr = Object.values(answers);
-
   return (
-    <Box1>
-      {answersArr.map((answer, index) => {
-        if (index < 2) {
-          let photos = answer.photos;
+    <section>
+      <Box1>
+        {answers.map((answer) => {
+          const photos = answer.photos;
           return (
             <>
               <Box2>
@@ -36,13 +34,13 @@ const AnswerField = ({ answers }) => {
                     <Button>Report</Button>
                   </div>
                 </Box3>
-                <PhotoSection photos={photos} />
+                <PhotoSection photos={photos} answerID={answer.id} />
               </Box2>
             </>
           );
-        }
-      })}
-    </Box1>
+        })}
+      </Box1>
+    </section>
   );
 };
 
