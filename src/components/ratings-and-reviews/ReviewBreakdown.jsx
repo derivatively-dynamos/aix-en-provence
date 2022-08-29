@@ -8,15 +8,29 @@ import Score from './Score.jsx';
 
 const ReviewBreakdown = ({ reviews }) => {
   const [ starBreakdown ] = useState(['5 Stars', '4 Stars', '3 Stars', '2 Stars', '1 Stars'])
+
   const ratings = reviews.map((review) => {
     return review.rating;
   })
+
+  const recByPer = (reviews.map((review) => {
+    console.log('is recommend: ', review.recommend)
+    if (review.recommend) {
+      return 1
+    } else {
+      return 0;
+    };
+  }).reduce((c, p) => {
+    return c + p;
+  })) / reviews.length * 100;
+
+  console.log(recByPer)
 
   return (
     <ColumnCont>
       <Score reviews={reviews}/>
       <ColumnCont>
-        <p>100% of reviews recommend this product</p>
+        <p>{recByPer}% of reviews recommend this product</p>
         {starBreakdown.map((starAmt)=> {
           return <StarBar key={starAmt[0]} stars={starAmt} reviews={reviews}/>
         })}
