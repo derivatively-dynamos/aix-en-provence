@@ -14,7 +14,6 @@ const ReviewBreakdown = ({ reviews }) => {
   })
 
   const recByPer = (reviews.map((review) => {
-    console.log('is recommend: ', review.recommend)
     if (review.recommend) {
       return 1
     } else {
@@ -23,8 +22,6 @@ const ReviewBreakdown = ({ reviews }) => {
   }).reduce((c, p) => {
     return c + p;
   })) / reviews.length * 100;
-
-  console.log(recByPer)
 
   return (
     <ColumnCont>
