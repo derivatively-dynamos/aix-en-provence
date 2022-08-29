@@ -5,12 +5,7 @@ const QuantSelect = ({ quant, setQuant, maxQuant, sku }) => {
   const [inStock, setInStock] = useState(true);
 
   useEffect(() => {
-    //Should still display "Quantity" if SKU hasn't been selected yet
-    if (sku === null || maxQuant !== 0) {
-      setInStock(true);
-    } else {
-      setInStock(false);
-    }
+    setInStock(sku === null || maxQuant !== 0)
   }, [maxQuant, sku]);
 
   const quants = [];
