@@ -1,18 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import Modal from "./carousels/Modal.jsx";
 
 const Cards = () => {
   const [modalState, setModalState] = useState(false);
 
-  const positionRef = useRef(null);
   const [posStateTop, setPosStateTop] = useState(0);
   const [posStateLeft, setPosStateLeft] = useState(0);
-  const modalEnterHandler = (boolean) => {
-    setPosStateTop(positionRef.current.offsetTop);
-    setPosStateLeft(positionRef.current.offsetLeft);
-    setModalState(boolean);
-  };
+
 
 
 
@@ -21,7 +16,10 @@ const Cards = () => {
       <ImageContainer>
         <img src="https://images.unsplash.com/photo-1562542082-519ebcdb43e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"></img>
       </ImageContainer>
-      <InfoContainer onMouseEnter={() => {modalEnterHandler(true)}} ref={positionRef}>
+      <InfoContainer onMouseEnter={() => {setModalState(true)}} onMouseMove={(e) => {
+        setPosStateLeft(e.nativeEvent.offsetX);
+        setPosStateTop(e.nativeEvent.offsetY);
+      }} >
         <div>Morning Joggers</div>
         <div>Pants</div>
         <div>$40.00</div>
