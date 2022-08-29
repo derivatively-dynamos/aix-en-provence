@@ -8,8 +8,13 @@ import Score from './Score.jsx';
 
 const ReviewBreakdown = ({product}) => {
   const [ starBreakdown ] = useState(['5 Stars', '4 Stars', '3 Stars', '2 Stars', '1 Stars'])
-
+  const ratings = product.results.map((review) => {
+    return review.rating;
+  })
+  console.log(ratings)
   const reviews = product.results;
+
+
 
   return (
     <ColumnCont>
@@ -44,7 +49,7 @@ const FlushCont = styled.div`
 `
 const ColumnCont = styled(Container)`
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   padding-right: 10px;
 `
 

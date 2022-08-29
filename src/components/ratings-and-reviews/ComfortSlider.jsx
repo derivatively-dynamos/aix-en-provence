@@ -31,6 +31,7 @@ const Container = styled.div`
 const SpaceCont = styled(Container)`
   justify-content: space-between;
   font-size: 0.9em;
+  max-height: 1em;
 `
 const ColumnCont = styled(Container)`
   flex-direction: column;
@@ -40,6 +41,7 @@ const ReviewCont = styled(Container)`
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   gap: 0.25em;
+  max-height: 1em;
 `
 const ReviewBar = styled.div`
   background-color: #c8c8c8;
