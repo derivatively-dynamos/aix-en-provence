@@ -1,12 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StarBar = ({stars}) => {
+const StarBar = ({stars, reviews}) => {
+  let starAmt = '30%'
+  let StarBarLevel = {
+    width: starAmt
+  }
   return (
     <Container>
       <StarLabel>{stars}</StarLabel>
       <StarBarCont>
-        <StarBarFill></StarBarFill>
+        <StarBarFill style={StarBarLevel}></StarBarFill>
       </StarBarCont>
     </Container>
   )
@@ -23,6 +27,7 @@ const StarLabel = styled(Container)`
   text-decoration: underline;
   flex: 1;
   padding-right: 0.5em;
+  color: #303030;
 `
 const StarBarCont = styled.div`
   flex: 5;
@@ -32,8 +37,7 @@ const StarBarCont = styled.div`
 `
 const StarBarFill = styled(StarBarCont)`
   position: relative;
-  width: 30%;
-  background-color: black;
+  background-color: #303030;;
 `
 
 export default StarBar;
