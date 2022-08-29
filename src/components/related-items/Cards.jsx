@@ -4,19 +4,17 @@ import Modal from "./carousels/Modal.jsx";
 
 const Cards = () => {
   const [modalState, setModalState] = useState(false);
-  // const [topOffset, setTopOffset] = useState(0);
-  // const [leftOffset, setLeftOffset] = useState(0);
-  const positionRef = useRef(null);
-  // const posObject = positionRef.current.getBoundingClientRect();
-  // console.log(posObject)
-  // const mouseEnterHandler = (modalValue) => {
-  //   console.log(positionRef.current.offsetTop);
-  //   setModalState(modalValue);
+  // const getLocation = () => {
+  //   console.log('leftPosition :', positionRef.current.offsetLeft);
   // }
+  const positionRef = useRef(null);
+  const leftPos = positionRef.current.offsetLeft;
+  const topPos = positionRef.current.offsetTop;
+
 
   return (
-    <Container onMouseLeave={() => {setModalState(false)}}>
-      <Modal modalState={modalState} />
+    <StyledContainer onMouseLeave={() => {setModalState(false)}}>
+      <Modal modalState={modalState} leftPos={leftPos} topPos={topPos} />
       <ImageContainer>
         <img src="https://images.unsplash.com/photo-1562542082-519ebcdb43e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"></img>
       </ImageContainer>
@@ -26,7 +24,7 @@ const Cards = () => {
         <div>$40.00</div>
         <div>★★★☆☆</div>
       </InfoContainer>
-    </Container>
+    </StyledContainer>
   );
 };
 
@@ -43,8 +41,8 @@ const Cards = () => {
 //   position: relative;
 //   overflow: visible;
 // `
-const Tainer = styled.a``;
-const Container = styled(Tainer)`
+const Container = styled.div``;
+const StyledContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -56,8 +54,8 @@ const Container = styled(Tainer)`
   align-items: center;
   height: 100%;
   overflow: hidden;
-  max-width: 16em;
-  min-width: 16em;
+  max-width: 14em;
+  min-width: 14em;
   scroll-snap-align: start;
   border-radius: 1%;
 `

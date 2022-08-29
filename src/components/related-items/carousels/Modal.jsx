@@ -1,12 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-const Modal = ({ modalState, posObject }) => {
+const Modal = ({ modalState, leftPos, topPos }) => {
+  const leftTracker = () => {
+    console.log('lefty :', leftPos, 'toppy :', topPos);
+  }
   if (!modalState) {
     return null;
   } else {
     return (
-      <Container left={'50%'} top={'50%'}>
+      <Container left={leftPos} top={topPos} onMouseEnter={() => {leftTracker()}}>
         <ImagesContainer>
           <ImageContainer>
             <img src="https://images.unsplash.com/photo-1562542082-519ebcdb43e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"></img>
@@ -20,19 +23,13 @@ const Modal = ({ modalState, posObject }) => {
   }
   // style={{transform: `translate(${positionRefLeft}px, ${positionRefTop}px)`}}
 };
-// const StyledModal = styled(Modal)`
-//   position: fixed;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-// `
+
 const Container = styled.section`
-  display: flex;
-  position: fixed;
+  position: absolute;
   top: ${props => `${props.top}`};
   left: ${props => `${props.left}`};
   z-index: 1;
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
 `
 const ImageContainer = styled.section`
   display: flex;

@@ -14,7 +14,9 @@ const RelatedProducts = () => {
       <TitleDiv>Related Products</TitleDiv>
       <InnerContainer>
         <CardContainer ref={scrollRef}>
-          <Left icon={faChevronLeft} onClick={() => {scroll(-200)}}/>
+          <IconCover onClick={() => {scroll(-200)}}>
+            <Left icon={faChevronLeft}/>
+          </IconCover>
           <Cards />
           <Cards />
           <Cards />
@@ -22,7 +24,9 @@ const RelatedProducts = () => {
           <Cards />
           <Cards />
           <Cards />
-          <Right icon={faChevronRight} onClick={() => {scroll(200)}}/>
+          <IconCoverRight onClick={() => {scroll(200)}}>
+            <Right icon={faChevronRight} />
+          </IconCoverRight>
         </CardContainer>
       </InnerContainer>
       <SlideTracker>
@@ -46,7 +50,7 @@ const Container = styled.section`
   flex-grow: 1;
   background-color: #313131;
   color: lightgray;
-  padding: .5em;
+  padding: 0.2;
   align-items: center;
 `
 const InnerContainer = styled.section`
@@ -55,7 +59,7 @@ const InnerContainer = styled.section`
   flex-grow: 1;
   background-color: #313131;
   color: lightgray;
-  padding: .5em;
+  padding: 0.2;
   justify-content: center;
   align-items: center;
   width: 80%;
@@ -65,8 +69,8 @@ const CardContainer = styled.section`
   flex-direction: row;
   background-color: #313131;
   color: lightgray;
-  padding: .5em;
-  align-items: center;
+  padding: .2;
+  align-items: stretch;
   overflow: auto;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
@@ -79,28 +83,34 @@ const SlideTracker = styled.section`
   justify-content: center;
   width: 100%;
 `
+const IconCover = styled.div`
+  display: flex;
+  width: 2em;
+  align-items:stretch;
+  left: 0px;
+  flex-shrink: 0;
+  position: sticky;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  cursor: pointer;
+  &:hover {
+    backdrop-filter: blur(1px) brightness(120%);
+  }
+`
+const IconCoverRight = styled(IconCover)`
+  display: flex;
+  right: 0px;
+`
 
 const Left = styled(FontAwesomeIcon)`
-  font-size: 3em;
-  transition: all .2s;
-  position:sticky;
-  z-index: 1;
-  color: #000000c9;
-  left: 0px;
-  &:hover {
-    transform: scale(1.5);
-  }
+  font-size: 2.3em;
+  color: white;
 `
 
 const Right = styled(FontAwesomeIcon)`
-  font-size: 3em;
-  transition: all .2s;
-  position:sticky;
-  color: #000000c9;
-  right: 0px;
-  &:hover {
-    transform: scale(1.5);
-  }
+  font-size: 2.3em;
+  color: white;
 `
 const Dash = styled(FontAwesomeIcon)`
   font-size: 2.5em;
@@ -116,7 +126,3 @@ const Dash2 = styled(FontAwesomeIcon)`
 
 export default RelatedProducts;
 
-// const [clickTrack, setClickTrack] = useState(0);
-// useEffect(() => {
-//   console.log(clickTrack);
-// }, [clickTrack]);
