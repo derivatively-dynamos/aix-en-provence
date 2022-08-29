@@ -2,18 +2,16 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const QuantSelect = ({ quant, setQuant, maxQuant, sku }) => {
-
   const [inStock, setInStock] = useState(true);
 
-  useEffect(() => { //Should still display "Quantity" if SKU hasn't been selected yet
-    if (sku === null) {
+  useEffect(() => {
+    //Should still display "Quantity" if SKU hasn't been selected yet
+    if (sku === null || maxQuant !== 0) {
       setInStock(true);
-    } else if (maxQuant === 0) {
-      setInStock(false);
     } else {
-      setInStock(true);
+      setInStock(false);
     }
-  }, [maxQuant, sku])
+  }, [maxQuant, sku]);
 
   const quants = [];
   for (let i = 1; i <= maxQuant && i <= 15; i++) {
