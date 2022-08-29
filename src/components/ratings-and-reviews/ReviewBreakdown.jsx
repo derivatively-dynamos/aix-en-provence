@@ -6,16 +6,28 @@ import SizeSlider from './SizeSlider.jsx';
 import ComfortSlider from './ComfortSlider.jsx';
 import Score from './Score.jsx';
 
-const ReviewBreakdown = ({product}) => {
+const ReviewBreakdown = ({ reviews }) => {
   const [ starBreakdown ] = useState(['5 Stars', '4 Stars', '3 Stars', '2 Stars', '1 Stars'])
 
-  const reviews = product.results;
+  const ratings = reviews.map((review) => {
+    return review.rating;
+  })
+
+  const recByPer = (reviews.map((review) => {
+    if (review.recommend) {
+      return 1
+    } else {
+      return 0;
+    };
+  }).reduce((c, p) => {
+    return c + p;
+  })) / reviews.length * 100;
 
   return (
     <ColumnCont>
       <Score reviews={reviews}/>
       <ColumnCont>
-        <p>100% of reviews recommend this product</p>
+        <p>{recByPer}% of reviews recommend this product</p>
         {starBreakdown.map((starAmt)=> {
           return <StarBar key={starAmt[0]} stars={starAmt} reviews={reviews}/>
         })}
@@ -44,7 +56,7 @@ const FlushCont = styled.div`
 `
 const ColumnCont = styled(Container)`
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   padding-right: 10px;
 `
 

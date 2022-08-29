@@ -31,9 +31,9 @@ const StarLabel = styled(Container)`
 `
 const StarBarCont = styled.div`
   flex: 5;
-  height: 0.5em;
+  height: 0.75em;
   width: 100%;
-  background-color: white;
+  background-color: #e8e8e8;
 `
 const StarBarFill = styled(StarBarCont)`
   position: relative;
