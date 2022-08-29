@@ -4,15 +4,17 @@ import styled from 'styled-components';
 const QuantSelect = ({ quant, setQuant, maxQuant, sku }) => {
 
   const [inStock, setInStock] = useState(true);
-  useEffect(() => {
-    if(sku) {
-      if(maxQuant === 0) {
-        setInStock(false);
-      }
+
+  useEffect(() => { //Should still display "Quantity" if SKU hasn't been selected yet
+    if (sku === null) {
+      setInStock(true);
+    } else if (maxQuant === 0) {
+      setInStock(false);
     } else {
       setInStock(true);
     }
-  }, [quant, sku])
+  }, [maxQuant, sku])
+
   const quants = [];
   for (let i = 1; i <= maxQuant && i <= 15; i++) {
     quants.push(
@@ -24,7 +26,7 @@ const QuantSelect = ({ quant, setQuant, maxQuant, sku }) => {
 
   return (
     <Container>
-      {maxQuant === 0 && sku !== null ? (
+      {!inStock ? (
         <OutOfStock>OUT OF STOCK</OutOfStock>
       ) : (
         <Select value={quant} onChange={(e) => setQuant(e.target.value)}>
