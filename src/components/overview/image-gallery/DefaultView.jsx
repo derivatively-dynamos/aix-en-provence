@@ -8,6 +8,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
+import Description from './Description';
 
 const DefaultView = ({ photos, product, setIndex, index, setPopover, lastIndex }) => {
   const [photo, setPhoto] = useState(photos[0]);
@@ -68,10 +69,7 @@ const DefaultView = ({ photos, product, setIndex, index, setPopover, lastIndex }
         />
         <Down icon={faChevronDown} onClick={() => scrollDown(1)} />
       </ImageContainer>
-      <P>
-        <strong>{product.slogan}</strong>
-      </P>
-      <P>{product.description + product.description}</P>
+      <Description slogan={product.slogan} description={product.description} />
     </Container>
   );
 };
@@ -94,7 +92,6 @@ const MainImage = styled.img`
 const ImageContainer = styled.div`
   position: relative;
 `;
-const P = styled.p``;
 const Up = styled(FontAwesomeIcon)`
   font-size: 2em;
   position: absolute;

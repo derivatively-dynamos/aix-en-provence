@@ -5,18 +5,31 @@ import { faSlash } from '@fortawesome/free-solid-svg-icons';
 const AddToCart = ({ style }) => {
   const skus = style.skus;
   const sizes = [];
+  const [sku, setSku] = useState(null);
+
+  useEffect(() => {
+    setSku(null);
+  }, [style]);
 
   for (let key in skus) {
-    sizes.push(<Option key={key}>{skus[key].size}</Option>);
+    sizes.push(
+      <Option
+        key={key}
+        onClick={() => setSku(key)}
+        selected={sku === key ? true : false}
+      >
+        {skus[key].size}
+      </Option>
+    );
   }
 
   return (
     <div>
       <div>
-        <SizeContainer>
-          {sizes}
-        </SizeContainer>
-        {/* <Select onChange={(e) => setUserQuant(e.target.value)}>{quant}</Select> */}
+        <SizeContainer>{sizes}</SizeContainer>
+        <Select>
+          <option>Quantity</option>
+        </Select>
       </div>
       <div>
         <Button>ADD TO BAG +</Button>
@@ -48,7 +61,8 @@ const Select = styled.select`
   margin-top: 5px;
 `;
 
-const Option = styled.div`
+const Option = styled.button`
+  font-size: 1em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,9 +73,10 @@ const Option = styled.div`
   color: #c0c0c0;
   font-size: 14px;
   padding: 10px;
+  user-select: none;
   cursor: pointer;
   &:hover {
-    background-color: #686868;
+    filter: brightness(120%);
   }
   background-color: ${(props) => (props.selected ? 'red' : '#292929')};
 `;

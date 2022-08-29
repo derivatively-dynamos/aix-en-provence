@@ -66,8 +66,8 @@ const IconGrid = styled.div`
   outline: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  max-width: 250px; //Kinda hacky hardcoded solution to wrap the items
+  gap: 1.5em;
+  max-width: 300px; //Kinda hacky hardcoded solution to wrap the items
   position: relative;
 `;
 const Selected = styled.div`
