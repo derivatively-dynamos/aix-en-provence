@@ -9,7 +9,7 @@ const AnswerField = ({ answers }) => {
         {answers.map((answer) => {
           const photos = answer.photos;
           return (
-            <>
+            <div key={answer.id}>
               <Box2>
                 <div>
                   <b>A:</b> {answer.body}
@@ -36,7 +36,7 @@ const AnswerField = ({ answers }) => {
                 </Box3>
                 <PhotoSection photos={photos} answerID={answer.id} />
               </Box2>
-            </>
+            </div>
           );
         })}
       </Box1>

@@ -6,7 +6,7 @@ const QuestionsField = ({ question }) => {
     question;
 
   const [helpfull, setHelpfull] = useState(helpfulness);
-  console.log(helpfull);
+
   return (
     <Box1>
       <b>Q: {questionBody}</b>
