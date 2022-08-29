@@ -17,26 +17,28 @@ const Modal = ({ modalState, posTop, posLeft }) => {
           </ImageContainer>
         </ImagesContainer>
         <InfoContainer>
-          <table border="5" cellpadding="5" bgcolor="#113b2f">
+          <table border="5" cellPadding="5" bgcolor="#113b2f">
             <caption>Product Comparison</caption>
-            <tr>
-              <th>Product</th>
-              <th>Category</th>
-              <th>Price</th>
-              <th>Rating</th>
-            </tr>
-            <tr>
-              <th>Morning Joggers</th>
-              <th>Pants</th>
-              <th>$40.00</th>
-              <th>★★★☆☆</th>
-            </tr>
-            <tr>
-              <th>Camo Onesie</th>
-              <th>Jackets</th>
-              <th>$140.00</th>
-              <th>★★★☆☆</th>
-            </tr>
+            <tbody>
+              <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Rating</th>
+              </tr>
+              <tr>
+                <th>Morning Joggers</th>
+                <th>Pants</th>
+                <th>$40.00</th>
+                <th>★★★☆☆</th>
+              </tr>
+              <tr>
+                <th>Camo Onesie</th>
+                <th>Jackets</th>
+                <th>$140.00</th>
+                <th>★★★☆☆</th>
+              </tr>
+            </tbody>
           </table>
         </InfoContainer>
       </Container>
