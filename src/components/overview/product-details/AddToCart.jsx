@@ -50,9 +50,9 @@ const AddToCart = ({ style }) => {
 
 const Button = styled.button`
   border-radius: 0;
-  border: 1px solid darkgray;
-  background-color: #292929;
-  color: #c0c0c0;
+  border: 1px solid ${props => props.theme.color};
+  background-color: ${props => props.theme.shadow};
+  color: ${props => props.theme.color};
   font-size: 14px;
   padding: 10px;
   margin-right: 10px;
@@ -67,8 +67,8 @@ const SizeOption = styled.button`
   aspect-ratio: 1;
   width: 3em;
   border-radius: 0;
-  border: 1px solid darkgray;
-  color: #c0c0c0;
+  border: 1px solid ${props => props.theme.color};
+  color: ${props => props.theme.color};
   font-size: 14px;
   padding: 10px;
   user-select: none;
@@ -76,7 +76,7 @@ const SizeOption = styled.button`
   &:hover {
     filter: brightness(120%);
   }
-  background-color: ${(props) => (props.selected ? 'red' : '#292929')};
+  background-color: ${(props) => (props.selected ? 'red' : props.theme.shadow)};
 `;
 const SizeContainer = styled.div`
   gap: 1em;

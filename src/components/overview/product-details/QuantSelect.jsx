@@ -34,24 +34,21 @@ const QuantSelect = ({ quant, setQuant, maxQuant, sku }) => {
 const Container = styled.div`
   align-self: flex-start;
   flex-basis: 50%;
-  color: #c0c0c0;
-  font-size: 14px;
   display: flex;
 `;
 const Select = styled.select`
   border-radius: 0;
-  border: 1px solid darkgray;
-  background-color: #292929;
-  color: #c0c0c0;
+  border: 1px solid;
+  background-color: ${props => props.theme.shadow};
+  color: ${props => props.theme.color};
   font-size: 14px;
   padding: 10px;
   position: relative;
 `;
 const OutOfStock = styled.div`
   border-radius: 0;
-  border: 1px solid darkgray;
-  background-color: #292929;
-  color: #c0c0c0;
+  border: 1px solid;
+  background-color: ${props => props.theme.shadow};
   font-size: 14px;
   padding: 10px;
 `;

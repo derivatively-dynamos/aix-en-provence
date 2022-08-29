@@ -59,7 +59,7 @@ const Icon = styled.img`
   &:hover {
     filter: brightness(150%);
   }
-  outline: ${props => props.selected ? '2px solid white' : '1px solid lightgray'};
+  outline: ${props => props.selected ? '2px' : '1px'} solid ${props => props.theme.color};
 `;
 
 const IconGrid = styled.div`
@@ -79,8 +79,8 @@ const Selected = styled.div`
   position: absolute;
 `;
 const Check = styled(FontAwesomeIcon)`
+  color: ${props => props.theme.highlight};
   font-size: 2em;
-  color: white;
   filter: drop-shadow(0px 0px 2px black);
 `;
 export default StyleSelector;
