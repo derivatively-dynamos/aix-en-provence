@@ -6,7 +6,6 @@ import ReactSelect from 'react-select';
 const QuantSelect = ({ quant, setQuant, maxQuant, sku, quantRef, ...props }) => {
 
   const theme = useContext(ThemeContext);
-  console.log(theme);
   const [inStock, setInStock] = useState(true);
 
   useEffect(() => {

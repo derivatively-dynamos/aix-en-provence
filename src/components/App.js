@@ -17,7 +17,7 @@ const App = () => {
     <Container className="container">
       <ThemeProvider theme={themes[theme]}>
         <Header curTheme={theme} setTheme={setTheme} themes={themes}/>
-        <Overview />
+        <Overview productId={37311}/>
         <RelatedItems />
         <QuestionsAndAnswers />
         <RatingsAndReviews />

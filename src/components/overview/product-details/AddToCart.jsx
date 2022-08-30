@@ -4,14 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSlash } from '@fortawesome/free-solid-svg-icons';
 import QuantSelect from './QuantSelect';
 import CartButton from './CartButton';
+import api from '../../shared-components/api';
+
 const AddToCart = ({ style }) => {
   const skus = style.skus;
   const sizes = [];
   const [sku, setSku] = useState(null);
   const [maxQuant, setMaxQuant] = useState(0);
   const [quant, setQuant] = useState(0);
-
   const quantRef = useRef(null);
+
 
   useEffect(() => {
     setSku(null);
@@ -32,7 +34,10 @@ const AddToCart = ({ style }) => {
     setQuant(parseInt(quant));
   }
   const handleCart = () => {
-    console.log(`Adding SKU: ${sku} to cart quant: ${quant} `);
+    api.post('cart', {
+      sku_id: parseInt(sku),
+    }).then(res => console.log('Posted', res))
+    .catch(err => console.error(err))
   }
   const openQuantSelect = () => {
     quantRef.current.focus();
