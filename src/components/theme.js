@@ -14,6 +14,14 @@ const theme = {
     sale: "red",
     shadow: "#2E778A",
     flavor: "red",
+  },
+  red: {
+    color: "pink",
+    background: "darkred",
+    highlight: "white",
+    sale: "red",
+    shadow: "burgundy",
+    flavor: "red",
   }
 };
 
