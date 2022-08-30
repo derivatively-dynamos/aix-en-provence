@@ -7,50 +7,42 @@ import ComfortSlider from './ComfortSlider.jsx';
 import Score from './Score.jsx';
 
 const ReviewBreakdown = ({ reviews }) => {
-  const [ starBreakdown, setStars] = useState({
-    5: 0,
-    4: 0,
-    3: 0,
-    2: 0,
-    1: 0
-  })
 
-  const [ starPercentages, setStarPercentage ] = useState({
-    5: 0,
-    4: 0,
-    3: 0,
-    2: 0,
-    1: 0
-  })
+  const [ totalStars, setTotal ] = useState(0);
+
+  const [ stars, setStars] = useState({
+    5: { amount: 0, percentage: 0 },
+    4: { amount: 0, percentage: 0 },
+    3: { amount: 0, percentage: 0 },
+    2: { amount: 0, percentage: 0 },
+    1: { amount: 0, percentage: 0 }
+  });
 
   useEffect(() => {
+    let total = 0;
+
+    const newStars = {
+      5: { amount: 0, percentage: 0 },
+      4: { amount: 0, percentage: 0 },
+      3: { amount: 0, percentage: 0 },
+      2: { amount: 0, percentage: 0 },
+      1: { amount: 0, percentage: 0 }
+    }
+
     reviews.forEach((review) => {
-      populateStarAmt(review.rating);
+      total += 1;
+      newStars[review.rating].amount += 1;
     })
+
+    for (let star in newStars) {
+      newStars[star].percentage = (newStars[star].amount / total) * 100;
+    }
+
+    setTotal(total);
+    setStars(newStars);
   }, [reviews]);
 
-  useEffect(() => {
-    for (let starCategory in starBreakdown) {
-      populateStarPercentage(starCategory)
-    }
-  }, [starBreakdown])
-
-  const populateStarAmt = (rating) => {
-    const newStarAmts = starBreakdown;
-    newStarAmts[rating] += 1;
-    setStars(newStarAmts);
-  }
-
-  const calcStarPercentage = (starAmt) => {
-    const totalStars = Object.values(starBreakdown).reduce((total, current) => total + current);
-    return (starAmt / totalStars) * 100;
-  }
-
-  const populateStarPercentage = (rating) => {
-    const newStarPercentages = starPercentages;
-    newStarPercentages[rating] = calcStarPercentage(starBreakdown[rating]);
-    setStarPercentage(newStarPercentages);
-  }
+  console.log(stars)
 
   const recommendationByPercent = (reviews.map((review) => {
     if (review.recommend) {
@@ -67,12 +59,11 @@ const ReviewBreakdown = ({ reviews }) => {
       <Score reviews={reviews}/>
       <ColumnCont>
         <p>{recommendationByPercent}% of reviews recommend this product</p>
-        {Object.keys(starPercentages).map((starRating)=> {
-          console.log('starrating', starRating)
+        {Object.keys(stars).reverse().map((starRating)=> {
           return <StarBar
             key={starRating}
             starAmt={starRating}
-            starFill={starPercentages[starRating]}
+            starFill={stars[starRating].percentage}
           />
         })}
       </ColumnCont>
