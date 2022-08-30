@@ -15,11 +15,14 @@ const AddToCart = ({ style }) => {
     setMaxQuant(0);
     setQuant(0);
   }, [style]);
+
   useEffect(() => {
+    let maxQuant = 0;
     if(skus[sku]) {
-      setMaxQuant(skus[sku].quantity)
+      maxQuant = skus[sku].quantity;
+      setMaxQuant(maxQuant);
     }
-    setQuant(0);
+    setQuant(maxQuant ? 1 : 0);
   }, [sku])
 
   for (let key in skus) {
