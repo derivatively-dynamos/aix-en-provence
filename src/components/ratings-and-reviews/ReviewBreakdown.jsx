@@ -7,7 +7,7 @@ import ComfortSlider from './ComfortSlider.jsx';
 import Score from './Score.jsx';
 
 const ReviewBreakdown = ({ reviews }) => {
-  const [ starBreakdown ] = useState([{ '5 Stars': 0 }, { '4 Stars': 0 }, { '3 Stars': 0 }, { '2 Stars': 0 }, { '1 Stars': 0 }])
+  const [ starBreakdown ] = useState([{ '5 Stars': 3 }, { '4 Stars': 4 }, { '3 Stars': 0 }, { '2 Stars': 0 }, { '1 Stars': 6 }])
 
   const recByPer = (reviews.map((review) => {
     if (review.recommend) {
@@ -23,6 +23,10 @@ const ReviewBreakdown = ({ reviews }) => {
     return Object.values(star)[0]
   }).reduce((s, c) => s + c);
 
+  const starFillCalc = (starAmt = 0, totalStars = 0) => {
+    return (starAmt / totalStars) * 100;
+  }
+
   return (
     <ColumnCont>
       <Score reviews={reviews}/>
@@ -31,7 +35,7 @@ const ReviewBreakdown = ({ reviews }) => {
         {starBreakdown.map((starCat)=> {
           const starKey = Object.keys(starCat)[0][0];
           const starAmt = Object.keys(starCat)[0];
-          const starFill = Object.values(starCat)[0];
+          const starFill = starFillCalc(Object.values(starCat)[0], totalStars);
           return <StarBar key={starKey} totalStars={totalStars} starAmt={starAmt} starFill={starFill}/>
         })}
       </ColumnCont>

@@ -49,7 +49,6 @@ const ReviewCont = styled.div`
 `
 const RevTitle = styled.h3`
   white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
 `
 const ReviewHead = styled.div`

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StarBar = ({starAmt, starFill}) => {
   let StarBarLevel = {
-    width: '0%'
+    width: `${starFill}%`
   }
   return (
     <Container>
