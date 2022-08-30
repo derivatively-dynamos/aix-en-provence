@@ -59,11 +59,12 @@ const Icon = styled.img`
   &:hover {
     filter: brightness(150%);
   }
-  outline: ${props => props.selected ? '2px' : '1px'} solid ${props => props.theme.color};
+  outline: ${props => props.selected ? '2px' : '1px'} solid;
 `;
 
 const IconGrid = styled.div`
   outline: none;
+  color: ${props => props.theme.highlight};
   display: flex;
   flex-wrap: wrap;
   gap: 1.5em;

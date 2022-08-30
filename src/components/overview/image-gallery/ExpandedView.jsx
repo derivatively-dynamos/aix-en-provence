@@ -62,6 +62,7 @@ const ImageContainer = styled.div`
   flex: 1;
   position: absolute;
   overflow: hidden;
+  color: ${props => props.theme.highlight};
 `;
 
 const SuperExpandedImage = styled.img`
