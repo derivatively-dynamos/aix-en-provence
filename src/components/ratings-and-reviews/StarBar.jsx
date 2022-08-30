@@ -7,7 +7,7 @@ const StarBar = ({starAmt, starFill}) => {
   }
   return (
     <Container>
-      <StarLabel>{starAmt}</StarLabel>
+      <StarLabel>{starAmt} Stars</StarLabel>
       <StarBarCont>
         <StarBarFill style={StarBarLevel}></StarBarFill>
       </StarBarCont>

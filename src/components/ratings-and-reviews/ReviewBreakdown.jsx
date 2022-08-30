@@ -7,9 +7,10 @@ import ComfortSlider from './ComfortSlider.jsx';
 import Score from './Score.jsx';
 
 const ReviewBreakdown = ({ reviews }) => {
-  const [ starBreakdown ] = useState([{ '5 Stars': 3 }, { '4 Stars': 4 }, { '3 Stars': 0 }, { '2 Stars': 0 }, { '1 Stars': 6 }])
+  const [ starBreakdown, setStars] = useState([{ 5: 0 }, { 4: 0 }, { 3: 0 }, { 2: 0 }, { 1: 0 }])
 
   const recByPer = (reviews.map((review) => {
+
     if (review.recommend) {
       return 1
     } else {
