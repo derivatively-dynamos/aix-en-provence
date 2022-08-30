@@ -42,8 +42,6 @@ const ReviewBreakdown = ({ reviews }) => {
     setStars(newStars);
   }, [reviews]);
 
-  console.log(stars)
-
   const recommendationByPercent = (reviews.map((review) => {
     if (review.recommend) {
       return 1
