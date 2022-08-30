@@ -86,7 +86,8 @@ const Container = styled.div`
   display: flex;
   width: 100%;
   padding: 0.5em;
-  background-color: #7e7e7e;
+  background-color: ${props => props.theme.background};
+  color: ${props => props.theme.color};
   position: relative;
 `;
 

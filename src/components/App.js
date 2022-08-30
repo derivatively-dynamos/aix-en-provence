@@ -1,19 +1,27 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import './app.scss';
 import styled from 'styled-components';
 import Overview from './overview/Overview';
 import RelatedItems from './related-items/RelatedItems';
 import QuestionsAndAnswers from './questions-and-answers/QuestionsAndAnswers';
 import RatingsAndReviews from './ratings-and-reviews/RatingsAndReviews';
+import themes from './theme';
+import { ThemeProvider } from 'styled-components';
+import Header from './Header';
 
 const App = () => {
+
+  const [theme, setTheme] = useState('dark');
+
   return (
     <Container className="container">
-      <h1>Hello World!</h1>
-      <Overview />
-      <RelatedItems />
-      <QuestionsAndAnswers />
-      <RatingsAndReviews />
+      <ThemeProvider theme={themes[theme]}>
+        <Header curTheme={theme} setTheme={setTheme} themes={themes}/>
+        <Overview />
+        <RelatedItems />
+        <QuestionsAndAnswers />
+        <RatingsAndReviews />
+      </ThemeProvider>
     </Container>
   );
 };
