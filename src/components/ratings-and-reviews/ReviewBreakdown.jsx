@@ -7,10 +7,15 @@ import ComfortSlider from './ComfortSlider.jsx';
 import Score from './Score.jsx';
 
 const ReviewBreakdown = ({ reviews }) => {
-  const [ starBreakdown, setStars] = useState([{ 5: 0 }, { 4: 0 }, { 3: 0 }, { 2: 0 }, { 1: 0 }])
+  const [ starBreakdown, setStars] = useState({
+    5: 0,
+    4: 6,
+    3: 0,
+    2: 3,
+    1: 0
+  })
 
   const recByPer = (reviews.map((review) => {
-
     if (review.recommend) {
       return 1
     } else {
@@ -20,8 +25,8 @@ const ReviewBreakdown = ({ reviews }) => {
     return c + p;
   })) / reviews.length * 100;
 
-  const totalStars = starBreakdown.map((star) => {
-    return Object.values(star)[0]
+  const totalStars = Object.values(starBreakdown).map((starType) => {
+    return starType;
   }).reduce((s, c) => s + c);
 
   const starFillCalc = (starAmt = 0, totalStars = 0) => {
@@ -33,11 +38,9 @@ const ReviewBreakdown = ({ reviews }) => {
       <Score reviews={reviews}/>
       <ColumnCont>
         <p>{recByPer}% of reviews recommend this product</p>
-        {starBreakdown.map((starCat)=> {
-          const starKey = Object.keys(starCat)[0][0];
-          const starAmt = Object.keys(starCat)[0];
-          const starFill = starFillCalc(Object.values(starCat)[0], totalStars);
-          return <StarBar key={starKey} totalStars={totalStars} starAmt={starAmt} starFill={starFill}/>
+        {Object.keys(starBreakdown).sort().reverse().map((starType)=> {
+          const starFill = starFillCalc(starBreakdown[starType], totalStars);
+          return <StarBar key={starType} totalStars={totalStars} starAmt={starType} starFill={starFill}/>
         })}
       </ColumnCont>
       <ColumnCont>
