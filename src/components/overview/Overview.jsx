@@ -68,7 +68,6 @@ const Overview = ({ productId}) => {
   };
 
   const handleStyle = (index) => {
-    console.log(styles[index].photos[photoIndex])
     if (!styles[index].photos[photoIndex]) {
       setIndex(0);
     }
