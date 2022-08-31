@@ -62,22 +62,22 @@ const Helpfullness = ({ helpfulness, productName, question }) => {
             <h4>
               {productName}: {question}
             </h4>
-            <label> *What is your nickname </label>
-            <input maxlength="60" placeholder="jack543!" type="text" />
+            <div> *What is your nickname </div>
+            <input maxLength="60" placeholder="jack543!" type="text" />
             <label> *Your email </label>
             <input
-              maxlength="60"
+              maxLength="60"
               placeholder="Example: jack@email.com"
               type="text"
             />
-            <label> *Your Answer</label>
+            <div> *Your Answer</div>
             <textarea
-              maxlength="1000"
+              maxLength="1000"
               rows="6"
               cols="50"
               placeholder="Answer Here..."
             ></textarea>
-            <lable> Upload your photos </lable>
+            <div> Upload your photos </div>
             <input type="file" accept="image/*"></input>
             <button>Submit</button>
           </Form>

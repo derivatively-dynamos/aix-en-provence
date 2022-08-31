@@ -7,7 +7,6 @@ const AnswerField = ({ answer }) => {
   const photos = answer.photos;
   const [helpfull, setHelpfull] = useState(helpfulness);
 
-  console.log(answer);
   return (
     <div>
       <Box2>

@@ -26,17 +26,17 @@ const AddQuestionButton = ({ productName }) => {
       >
         <Form onSubmit={onSubmit}>
           <h4> About the {productName}</h4>
-          <label> *What is your nickname </label>
-          <input maxlength="60" placeholder="jack543!" type="text" />
-          <label> *Your email </label>
+          <div> *What is your nickname </div>
+          <input maxLength="60" placeholder="jack543!" type="text" />
+          <div> *Your email </div>
           <input
-            maxlength="60"
+            maxLength="60"
             placeholder="Example: jack@email.com"
             type="text"
           />
-          <label> *Your Answer</label>
+          <div> *Your Answer</div>
           <textarea
-            maxlength="1000"
+            maxLength="1000"
             rows="6"
             cols="50"
             placeholder="Answer Here..."
