@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import styled from "styled-components";
+import React, { useRef } from 'react';
+import styled from 'styled-components';
 
 const ThumbnailList = ({ photos, setIndex, index, scrollPos }) => {
   const icons = photos.map((photo, i) => {
@@ -14,9 +14,10 @@ const ThumbnailList = ({ photos, setIndex, index, scrollPos }) => {
     );
   });
 
-  return ( //Empty div aligns scroll
+  return (
+    //Empty div aligns scroll
     <Ul ref={scrollPos}>
-      <div/>
+      <div />
       {icons}
       <BotSpace />
     </Ul>
@@ -49,7 +50,7 @@ const Icon = styled.img`
   border: none;
   scroll-snap-align: start;
   scroll-margin-top: 4px;
-  outline: ${props => props.selected ? `2px solid` : "none"};
+  outline: ${(props) => (props.selected ? `2px solid` : 'none')};
 `;
 const BotSpace = styled.div`
   width: 10px;
