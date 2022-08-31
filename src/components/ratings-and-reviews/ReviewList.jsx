@@ -10,7 +10,7 @@ const ReviewList = ({ reviews }) => {
 
   return (
     <Container>
-      <SortBy />
+      <SortBy reviews={ reviews } />
       {reviews.map((review) => {
         return <Review key={review.review_id} review={ review }/>
       })}
@@ -18,8 +18,7 @@ const ReviewList = ({ reviews }) => {
         <Btn>MORE REVIEWS</Btn>
         <Btn>
           ADD REVIEW
-          <Cross icon={faPlusSquare}>
-          </Cross>
+          <Cross icon={faPlusSquare}></Cross>
         </Btn>
       </BtnCont>
     </Container>
@@ -53,6 +52,7 @@ const Btn = styled.div`
 `
 const Cross = styled(FontAwesomeIcon)`
   font-size: 1.5em;
+  color: inherit;
 `
 
 export default ReviewList;
