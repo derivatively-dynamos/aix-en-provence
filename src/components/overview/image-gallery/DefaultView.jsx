@@ -68,14 +68,14 @@ const DefaultView = ({
         ) : null}
         <MainImage src={photo.url} onClick={() => setPopover(true)}></MainImage>
         <ScrollContainer>
-          <Up icon={faChevronUp} onClick={() => scrollUp(-1)} />
+          <Up icon={faChevronUp} onClick={() => scrollUp(-1)} style={photos.length < 7 ? {visibility: 'hidden'} : {}}/>
           <ThumbnailList
             photos={[...photos]}
             setIndex={setIndex}
             index={index}
             scrollPos={scrollPos}
           />
-          <Down icon={faChevronDown} onClick={() => scrollDown(1)} />
+          <Down icon={faChevronDown} onClick={() => scrollDown(1)} style={photos.length < 7 ? {visibility: 'hidden'} : {}} />
         </ScrollContainer>
       </ImageContainer>
       <Description slogan={product.slogan} description={product.description} />
