@@ -74,7 +74,7 @@ const Overview = ({ productId}) => {
     setStyleIndex(index);
   }
 
-  if(!style) return <div>Loading...</div>
+  if(!style) return <Loading/>
 
   return (
     <Container>
@@ -116,5 +116,8 @@ const Container = styled.div`
   color: ${(props) => props.theme.color};
   position: relative;
 `;
+const Loading = styled(Container)`
+  height: 10em;
+`
 
 export default Overview;
