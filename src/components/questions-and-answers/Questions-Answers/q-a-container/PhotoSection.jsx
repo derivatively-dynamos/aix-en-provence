@@ -12,8 +12,11 @@ const PhotoSection = ({ photos, answerID }) => {
           })}
         </Box1>
         <Box2>
-          by User1234 <b>Seller</b> Jan 1, 2019 | Helpful? <Button>Yes</Button>
-          (23) | <Button>Report</Button>
+          <p>
+            by User1234 <b>Seller</b> Jan 1, 2019 | Helpful?{" "}
+            <Button>Yes</Button>
+            (23) | <Button>Report</Button>
+          </p>
         </Box2>
       </ContainerDiv>
     );
