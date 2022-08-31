@@ -3,17 +3,21 @@ import styled from "styled-components";
 
 const PhotoSection = ({ photos, answerID }) => {
   if (photos.length > 0) {
+    console.log();
     return (
       <ContainerDiv>
-        <div>Yes, as you can see in these photos.</div>
+        <div></div>
         <Box1>
           {photos.map((photo) => {
             return <Img key={answerID} src={photo}></Img>;
           })}
         </Box1>
         <Box2>
-          by User1234 <b>Seller</b> Jan 1, 2019 | Helpful? <Button>Yes</Button>
-          (23) | <Button>Report</Button>
+          <p>
+            by User1234 <b>Seller</b> Jan 1, 2019 | Helpful?{" "}
+            <Button>Yes</Button>
+            (23) | <Button>Report</Button>
+          </p>
         </Box2>
       </ContainerDiv>
     );
