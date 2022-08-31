@@ -115,6 +115,9 @@ const Container = styled.div`
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.color};
   position: relative;
+  @media (max-width: 768px){
+    flex-direction: column;
+  }
 `;
 const Loading = styled(Container)`
   height: 10em;
