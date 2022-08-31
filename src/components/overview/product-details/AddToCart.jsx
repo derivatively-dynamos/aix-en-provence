@@ -12,6 +12,7 @@ const AddToCart = ({ style }) => {
   const [sku, setSku] = useState(null);
   const [maxQuant, setMaxQuant] = useState(0);
   const [quant, setQuant] = useState(0);
+  const [fav, setFav] = useState(false);
   const quantRef = useRef(null);
 
 
@@ -61,10 +62,10 @@ const AddToCart = ({ style }) => {
         <SizeContainer>{sizes}</SizeContainer>
         <QuantSelect quant={quant} setQuant={handleQuant} maxQuant={maxQuant} sku={sku} quantRef={quantRef}/>
       </SizeAndQuant>
-      <div>
+      <Row>
         <CartButton quant={quant} handleCart={handleCart} sku={sku} openQuantSelect={openQuantSelect}/>
-        <Button>☆</Button>
-      </div>
+        <Fav onClick={() => setFav(!fav)}>{fav ? '★' : '☆'}</Fav>
+      </Row>
     </div>
   );
 };
@@ -75,10 +76,14 @@ const Button = styled.button`
   background-color: ${props => props.theme.shadow};
   color: ${props => props.theme.color};
   font-size: 14px;
-  padding: 10px;
-  margin-right: 10px;
-  margin-top: 5px;
 `;
+const Fav = styled(Button)`
+  margin: 0;
+  padding: .2em .5em;
+  margin-left: 1em;
+  min-height: 100%;
+  font-size: 1.5em;
+`
 
 const SizeOption = styled.button`
   font-size: 1em;
@@ -90,7 +95,7 @@ const SizeOption = styled.button`
   border-radius: 0;
   border: 1px solid ${props => props.theme.color};
   color: ${props => props.theme.color};
-  font-size: 14px;
+  font-size: .9em;
   padding: 10px;
   user-select: none;
   cursor: pointer;
@@ -115,5 +120,10 @@ const SizeAndQuant = styled.div`
   margin-top: 1em;
   display: flex;
 `;
+const Row = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 1em;
+`
 
 export default AddToCart;

@@ -44,8 +44,6 @@ const Button = styled.button`
   color: ${(props) => props.theme.color};
   font-size: 14px;
   padding: 10px;
-  margin-right: 10px;
-  margin-top: 5px;
   cursor: pointer;
 `;
 const Valid = styled(Button)`
