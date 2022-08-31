@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import StarBar from './StarBar.jsx';
 import SizeSlider from './SizeSlider.jsx';
@@ -7,13 +7,42 @@ import ComfortSlider from './ComfortSlider.jsx';
 import Score from './Score.jsx';
 
 const ReviewBreakdown = ({ reviews }) => {
-  const [ starBreakdown ] = useState(['5 Stars', '4 Stars', '3 Stars', '2 Stars', '1 Stars'])
 
-  const ratings = reviews.map((review) => {
-    return review.rating;
-  })
+  const [ totalStars, setTotal ] = useState(0);
 
-  const recByPer = (reviews.map((review) => {
+  const [ stars, setStars] = useState({
+    5: { amount: 0, percentage: 0 },
+    4: { amount: 0, percentage: 0 },
+    3: { amount: 0, percentage: 0 },
+    2: { amount: 0, percentage: 0 },
+    1: { amount: 0, percentage: 0 }
+  });
+
+  useEffect(() => {
+    let total = 0;
+
+    const newStars = {
+      5: { amount: 0, percentage: 0 },
+      4: { amount: 0, percentage: 0 },
+      3: { amount: 0, percentage: 0 },
+      2: { amount: 0, percentage: 0 },
+      1: { amount: 0, percentage: 0 }
+    }
+
+    reviews.forEach((review) => {
+      total += 1;
+      newStars[review.rating].amount += 1;
+    })
+
+    for (let star in newStars) {
+      newStars[star].percentage = (newStars[star].amount / total) * 100;
+    }
+
+    setTotal(total);
+    setStars(newStars);
+  }, [reviews]);
+
+  const recommendationByPercent = (reviews.map((review) => {
     if (review.recommend) {
       return 1
     } else {
@@ -27,9 +56,13 @@ const ReviewBreakdown = ({ reviews }) => {
     <ColumnCont>
       <Score reviews={reviews}/>
       <ColumnCont>
-        <p>{recByPer}% of reviews recommend this product</p>
-        {starBreakdown.map((starAmt)=> {
-          return <StarBar key={starAmt[0]} stars={starAmt} reviews={reviews}/>
+        <p>{recommendationByPercent}% of reviews recommend this product</p>
+        {Object.keys(stars).reverse().map((starRating)=> {
+          return <StarBar
+            key={starRating}
+            starAmt={starRating}
+            starFill={stars[starRating].percentage}
+          />
         })}
       </ColumnCont>
       <ColumnCont>
