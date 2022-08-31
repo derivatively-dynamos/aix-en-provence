@@ -122,8 +122,8 @@ const SizeAndQuant = styled.div`
 `;
 const Row = styled.div`
   display: flex;
-  align-items: center;
-  margin-top: 1em;
+  align-items: stretch;
+  margin-top: 1.5em;
 `
 
 export default AddToCart;
