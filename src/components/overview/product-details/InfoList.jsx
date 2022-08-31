@@ -1,19 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-const InfoList = () => (
+const InfoList = ({features}) => {
+
+  const list = features.map(feature => {
+    return <Li key={feature.feature}>{feature.feature}: {feature.value}</Li>
+  })
+
+  return (
   <Ul>
-    <Li>
-      GMO and Pesticide-free
-    </Li>
-    <Li>
-      Made with 100% Genetic Modification
-    </Li>
-    <Li>
-      This is made up
-    </Li>
+    {list}
   </Ul>
-)
+)}
 
 const Li = styled.li`
   list-style-type: circle;
@@ -25,7 +23,7 @@ const Ul = styled.ul`
   margin: 0;
   padding: 0;
   margin-left: 20px;
-  margin-top: 5px;
+  margin-top: 1em;
 `
 
 export default InfoList;
