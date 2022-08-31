@@ -1,45 +1,76 @@
 const sampleProduct = [
   {
-    "product": "2",
+    "product": "37311",
     "page": 0,
     "count": 5,
     "results": [
-      {
-        "review_id": 5,
-        "rating": 3,
-        "summary": "I'm enjoying wearing these shades",
-        "recommend": true,
-        "response": null,
-        "body": "Comfortable and practical.",
-        "date": "2019-04-14T00:00:00.000Z",
-        "reviewer_name": "shortandsweeet",
-        "helpfulness": 5,
-        "photos": [{
-            "id": 1,
-            "url": "urlplaceholder/review_5_photo_number_1.jpg"
-          },
-          {
-            "id": 2,
-            "url": "urlplaceholder/review_5_photo_number_2.jpg"
-          },
-          // ...
-        ]
-      },
-      {
-        "review_id": 3,
-        "rating": 4,
-        "summary": "I am liking these glasses",
-        "recommend": false,
-        "response": "Glad you're enjoying the product!",
-        "body": "They are very dark. But that's good because I'm in very sunny spots",
-        "date": "2019-06-23T00:00:00.000Z",
-        "reviewer_name": "bigbrotherbenjamin",
-        "helpfulness": 5,
-        "photos": [],
-      },
-      // ...
+        {
+            "review_id": 1275329,
+            "rating": 1,
+            "summary": "this product stinks",
+            "recommend": true,
+            "response": null,
+            "body": "I dont like it",
+            "date": "2022-07-13T00:00:00.000Z",
+            "reviewer_name": "anonymous cat",
+            "helpfulness": 76,
+            "photos": []
+        },
+        {
+            "review_id": 1275306,
+            "rating": 5,
+            "summary": "asdf",
+            "recommend": true,
+            "response": null,
+            "body": "this should change the review count, but its not showing up on the reviews ",
+            "date": "2022-07-12T00:00:00.000Z",
+            "reviewer_name": "joe",
+            "helpfulness": 66,
+            "photos": []
+        },
+        {
+            "review_id": 1274977,
+            "rating": 3,
+            "summary": "Meh Camo",
+            "recommend": false,
+            "response": null,
+            "body": "It's super tight too",
+            "date": "2022-06-01T00:00:00.000Z",
+            "reviewer_name": "CamoDude",
+            "helpfulness": 41,
+            "photos": []
+        },
+        {
+            "review_id": 1276231,
+            "rating": 5,
+            "summary": "Really it is so good",
+            "recommend": true,
+            "response": null,
+            "body": "The clothing rocks, it is just a fact",
+            "date": "2022-08-26T00:00:00.000Z",
+            "reviewer_name": "Ryan",
+            "helpfulness": 38,
+            "photos": [
+                {
+                    "id": 2455860,
+                    "url": "https://i.imgur.com/EPHb3G6.jpeg"
+                }
+            ]
+        },
+        {
+            "review_id": 1275308,
+            "rating": 5,
+            "summary": "yea reviewcount is going up",
+            "recommend": true,
+            "response": null,
+            "body": "cool man cool",
+            "date": "2022-07-12T00:00:00.000Z",
+            "reviewer_name": "joe",
+            "helpfulness": 9,
+            "photos": []
+        }
     ]
-  }
+}
 ]
 
 export default sampleProduct;

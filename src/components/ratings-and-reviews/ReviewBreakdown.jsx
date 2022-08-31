@@ -9,7 +9,7 @@ import Score from './Score.jsx';
 const ReviewBreakdown = ({ reviews }) => {
 
   const [ totalStars, setTotal ] = useState(0);
-
+  const [ starScore, setScore ] = useState(0);
   const [ stars, setStars] = useState({
     5: { amount: 0, percentage: 0 },
     4: { amount: 0, percentage: 0 },
@@ -38,7 +38,18 @@ const ReviewBreakdown = ({ reviews }) => {
       newStars[star].percentage = (newStars[star].amount / total) * 100;
     }
 
+    const calcScore = () => {
+      let score = 0;
+      for (let starRate in newStars) {
+        score += starRate * newStars[starRate].amount
+      }
+      return score / total;
+    }
+
+    console.log(calcScore())
+
     setTotal(total);
+    setScore(calcScore())
     setStars(newStars);
   }, [reviews]);
 
@@ -54,7 +65,7 @@ const ReviewBreakdown = ({ reviews }) => {
 
   return (
     <ColumnCont>
-      <Score reviews={reviews}/>
+      <Score score={starScore}/>
       <ColumnCont>
         <p>{recommendationByPercent}% of reviews recommend this product</p>
         {Object.keys(stars).reverse().map((starRating)=> {
