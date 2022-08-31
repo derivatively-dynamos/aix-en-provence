@@ -31,8 +31,9 @@ const ReviewBreakdown = ({ data }) => {
     }
 
     for (let rating in data.ratings) {
-      total += 1;
-      newStars[rating].amount += 1;
+      rating = Number(rating);
+      newStars[rating].amount = Number(data.ratings[rating]);
+      total += newStars[rating].amount;
     }
 
     for (let star in newStars) {
