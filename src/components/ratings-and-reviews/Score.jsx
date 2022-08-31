@@ -3,14 +3,10 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 
-const Score = ({stars, reviews}) => {
-  const starAvg = reviews.reduce((curr, next) => (curr.rating + next.rating) / reviews.length)
-  const starPer = (starAvg / 5) * 100;
-  const starPerRounded = `${Math.round(starPer / 10) * 10}%`;
-
+const Score = ({ score }) => {
   return (
     <ScoreCont>
-      <ScoreNum>{starAvg}</ScoreNum>
+      <ScoreNum>{score}</ScoreNum>
       <ScoreCont>
         <StarCont>
           <FullStar icon={faStar}></FullStar>

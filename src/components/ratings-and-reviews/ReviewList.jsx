@@ -11,9 +11,11 @@ const ReviewList = ({ reviews }) => {
   return (
     <Container>
       <SortBy reviews={ reviews } />
-      {reviews.map((review) => {
-        return <Review key={review.review_id} review={ review }/>
-      })}
+      <ReviewListCont>
+        {reviews.map((review) => {
+          return <Review key={review.review_id} review={ review }/>
+        })}
+      </ReviewListCont>
       <BtnCont>
         <Btn>MORE REVIEWS</Btn>
         <Btn>
@@ -33,6 +35,11 @@ const Container = styled.div`
   width: 100%;
   flex-direction: column;
 `
+const ReviewListCont = styled(Container)`
+  max-height: 35em;
+  overflow: auto;
+`
+
 const BtnCont = styled.div`
   display: flex;
   flex-direction: row;
