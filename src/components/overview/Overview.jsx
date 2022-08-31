@@ -9,11 +9,11 @@ import api from '../shared-components/api';
 
 
 const Overview = ({ productId}) => {
-  const [product, setProduct] = useState(exproduct);
-  const [styles, setStyles] = useState(exstyles.results);
-  const [style, setStyle] = useState(exstyles.results[0]);
+  const [product, setProduct] = useState(null);
+  const [styles, setStyles] = useState(null);
+  const [style, setStyle] = useState(null);
   const [styleIndex, setStyleIndex] = useState(0);
-  const [photos, setPhotos] = useState(exstyles.results[0].photos);
+  const [photos, setPhotos] = useState(null);
   const [photoIndex, setIndex] = useState(0);
   const [lastIndex, setLastIndex] = useState(0);
   const [popover, setPopover] = useState(false);
@@ -38,11 +38,13 @@ const Overview = ({ productId}) => {
       setStyleIndex(0);
       setIndex(0);
       setPopover(false);
+      setPhotos(res.data.results[0].photos)
     })
     .catch(err => console.error(err))
   },[productId])
 
   useEffect(() => {
+    if (!style) return;
     setPhotos(style.photos);
     if (photoIndex > style.photos.length - 1) {
       //If new index will be out of bounds for array
@@ -51,6 +53,7 @@ const Overview = ({ productId}) => {
   }, [style]);
 
   useEffect(() => {
+    if (!style) return;
     setStyle(styles[styleIndex]);
   }, [styleIndex]);
 
@@ -65,12 +68,14 @@ const Overview = ({ productId}) => {
   };
 
   const handleStyle = (index) => {
-    if (!photos[index]) {
+    console.log(styles[index].photos[photoIndex])
+    if (!styles[index].photos[photoIndex]) {
       setIndex(0);
     }
     setStyleIndex(index);
   }
 
+  if(!style) return <div>Loading...</div>
 
   return (
     <Container>

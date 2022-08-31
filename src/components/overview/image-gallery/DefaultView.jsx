@@ -10,13 +10,20 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Description from './Description';
 
-const DefaultView = ({ photos, product, setIndex, index, setPopover, lastIndex }) => {
+const DefaultView = ({
+  photos,
+  product,
+  setIndex,
+  index,
+  setPopover,
+  lastIndex,
+}) => {
   const [photo, setPhoto] = useState(photos[0]);
 
   const scrollPos = useRef(null);
 
   useEffect(() => {
-    setPhoto(photos[index]);
+    if (photos[index]) setPhoto(photos[index]);
   }, [index, photos]);
 
   useEffect(() => {
@@ -31,7 +38,7 @@ const DefaultView = ({ photos, product, setIndex, index, setPopover, lastIndex }
     if ((index + 1) % 7 === 0 && index < lastIndex) {
       scrollUp();
     }
-  }, [index])
+  }, [index]);
 
   const scrollDown = () => {
     scrollPos.current.scrollTop += scrollPos.current.clientHeight;
@@ -87,14 +94,14 @@ const ScrollContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  margin-left: .2em;
-  padding: .2em 0;
+  margin-left: 0.2em;
+  padding: 0.2em 0;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
-`
+`;
 const MainImage = styled.img`
   border: none;
   flex: 1 1 0;
