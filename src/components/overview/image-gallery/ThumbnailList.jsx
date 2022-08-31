@@ -41,7 +41,7 @@ const Ul = styled.ul`
   cursor: pointer;
 `;
 const Icon = styled.img`
-  height: 55px;
+  height: 53px;
   aspect-ratio: 1;
   object-fit: cover;
   margin: 0 4px;

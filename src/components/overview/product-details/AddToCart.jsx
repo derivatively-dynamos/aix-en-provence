@@ -1,26 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSlash } from '@fortawesome/free-solid-svg-icons';
 import QuantSelect from './QuantSelect';
+import CartButton from './CartButton';
+import api from '../../shared-components/api';
+
 const AddToCart = ({ style }) => {
   const skus = style.skus;
   const sizes = [];
   const [sku, setSku] = useState(null);
   const [maxQuant, setMaxQuant] = useState(0);
   const [quant, setQuant] = useState(0);
+  const quantRef = useRef(null);
+
 
   useEffect(() => {
     setSku(null);
     setMaxQuant(0);
     setQuant(0);
   }, [style]);
+
   useEffect(() => {
+    let maxQuant = 0;
     if(skus[sku]) {
-      setMaxQuant(skus[sku].quantity)
+      maxQuant = skus[sku].quantity;
+      setMaxQuant(maxQuant);
     }
-    setQuant(0);
-  }, [sku])
+    setQuant(maxQuant ? 1 : 0);
+  }, [sku]);
+
+  const handleQuant = (quant) => {
+    setQuant(parseInt(quant));
+  }
+  const handleCart = () => {
+    api.post('cart', {
+      sku_id: parseInt(sku),
+    }).then(res => console.log('Posted', res))
+    .catch(err => console.error(err))
+  }
+  const openQuantSelect = () => {
+    quantRef.current.focus();
+  }
 
   for (let key in skus) {
     sizes.push(
@@ -38,10 +59,10 @@ const AddToCart = ({ style }) => {
     <div>
       <SizeAndQuant>
         <SizeContainer>{sizes}</SizeContainer>
-        <QuantSelect quant={quant} setQuant={setQuant} maxQuant={maxQuant} sku={sku}/>
+        <QuantSelect quant={quant} setQuant={handleQuant} maxQuant={maxQuant} sku={sku} quantRef={quantRef}/>
       </SizeAndQuant>
       <div>
-        <Button>ADD TO BAG +</Button>
+        <CartButton quant={quant} handleCart={handleCart} sku={sku} openQuantSelect={openQuantSelect}/>
         <Button>☆</Button>
       </div>
     </div>
