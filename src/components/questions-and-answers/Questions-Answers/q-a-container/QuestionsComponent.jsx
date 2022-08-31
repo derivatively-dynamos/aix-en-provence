@@ -3,7 +3,7 @@ import styled from "styled-components";
 import QuestionsField from "./QuestionsField";
 import AddQuestionButton from "../Forms/Buttons/AddQuestionButton";
 
-const QuestionsComponent = ({ questions }) => {
+const QuestionsComponent = ({ questions, productName }) => {
   const [loadMore, setLoadMore] = useState(false);
 
   const handleClick = () => {
@@ -14,18 +14,28 @@ const QuestionsComponent = ({ questions }) => {
       {questions.map((question, index) => {
         if (!loadMore && index < 2) {
           return (
-            <QuestionsField key={question.question_id} question={question} />
+            <QuestionsField
+              key={question.question_id}
+              question={question}
+              productName={productName}
+            />
           );
         } else if (loadMore) {
           return (
-            <QuestionsField key={question.question_id} question={question} />
+            <QuestionsField
+              key={question.question_id}
+              question={question}
+              productName={productName}
+            />
           );
         }
       })}
-      <button onClick={handleClick}>
+      <Button onClick={handleClick}>
         {loadMore ? "COLLAPSE" : "MORE ANSWERED QUESTIONS"}
-      </button>
-      <AddQuestionButton>ADD A QUESTION</AddQuestionButton>
+      </Button>
+      <AddQuestionButton productName={productName}>
+        ADD A QUESTION
+      </AddQuestionButton>
     </ContainerDiv>
   );
 };
@@ -37,4 +47,10 @@ const ContainerDiv = styled.div`
   display: block;
   align-items: center;
   justify-content: space-between;
+`;
+
+const Button = styled.button`
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid black;
 `;

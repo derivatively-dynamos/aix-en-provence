@@ -3,9 +3,10 @@ import styled from "styled-components";
 
 const PhotoSection = ({ photos, answerID }) => {
   if (photos.length > 0) {
+    console.log();
     return (
       <ContainerDiv>
-        <div>Yes, as you can see in these photos.</div>
+        <div></div>
         <Box1>
           {photos.map((photo) => {
             return <Img key={answerID} src={photo}></Img>;

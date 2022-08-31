@@ -1,20 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import AnswersComponent from "./AnswersComponent";
-import AddButton from "../Forms/Buttons/AddButton";
+import AddButtonComponent from "../Forms/Buttons/AddButtonComponent";
 
-const QuestionsField = ({ question }) => {
+const QuestionsField = ({ question, productName }) => {
   const {
     question_body,
     answers: questionsAnswers,
     question_helpfulness: helpfulness,
-    question_id,
   } = question;
-
-  const productName = `Slacker's Slacks`;
-  // will need to get product name passed down as props
-
-  console.log(question);
 
   const answers = Object.values(questionsAnswers);
 
@@ -58,7 +52,7 @@ const Helpfullness = ({ helpfulness, productName, question }) => {
         Helpful?{" "}
         <Button onClick={() => setHelpfull(helpfulness + 1)}>Yes</Button>{" "}
         {helpfull} |{" "}
-        <AddButton
+        <AddButtonComponent
           name={"Add Answer"}
           onClick={onClick}
           isOpen={isOpen}
@@ -68,13 +62,26 @@ const Helpfullness = ({ helpfulness, productName, question }) => {
             <h4>
               {productName}: {question}
             </h4>
-            <label> Display Name </label>
-            <input type="text" />
-            <label> Email </label>
-            <input type="text" />
+            <label> *What is your nickname </label>
+            <input maxlength="60" placeholder="jack543!" type="text" />
+            <label> *Your email </label>
+            <input
+              maxlength="60"
+              placeholder="Example: jack@email.com"
+              type="text"
+            />
+            <label> *Your Answer</label>
+            <textarea
+              maxlength="1000"
+              rows="6"
+              cols="50"
+              placeholder="Answer Here..."
+            ></textarea>
+            <lable> Upload your photos </lable>
+            <input type="file" accept="image/*"></input>
             <button>Submit</button>
           </Form>
-        </AddButton>
+        </AddButtonComponent>
       </span>
     </div>
   );

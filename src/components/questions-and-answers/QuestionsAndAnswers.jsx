@@ -25,14 +25,14 @@ const QuestionsAndAnswers = () => {
       });
   }, []);
 
-  console.log(questions);
-
+  const productName = `Slacker's Slacks`;
+  // will need to get product name passed down as props
   return (
     <Container>
       <div>
         <h1>QUESTIONS & ANSWERS...</h1>
         <SearchBar />
-        <QuestionsComponent questions={questions} />
+        <QuestionsComponent questions={questions} productName={productName} />
       </div>
     </Container>
   );
