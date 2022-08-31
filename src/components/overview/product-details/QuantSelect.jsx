@@ -36,6 +36,7 @@ const QuantSelect = ({ quant, setQuant, maxQuant, sku, quantRef, ...props }) => 
           value={options[quant]}
           styles={selectStyles}
           custTheme={theme}
+          isSearchable={false}
         />
       ) : (
         <OutOfStock>OUT OF STOCK</OutOfStock>
@@ -99,5 +100,16 @@ const selectStyles = { //Horrible
   singleValue: (provided, state) => ({
     ...provided,
     color: state.selectProps.custTheme.color,
+  }),
+  indicatorSeparator: (provided, state) => ({
+    ...provided,
+    backgroundColor: state.selectProps.custTheme.color,
+  }),
+  dropdownIndicator: (provided, state) => ({
+    ...provided,
+    color: 'inherit',
+    '&:hover': {
+      color: 'inherit',
+    }
   })
 }
