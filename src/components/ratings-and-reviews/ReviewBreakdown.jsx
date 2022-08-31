@@ -73,7 +73,7 @@ const ReviewBreakdown = ({ data }) => {
         })}
       </ColumnCont>
       <ColumnCont>
-        <SizeSlider></SizeSlider>
+        <SizeSlider size={data.characteristics.Fit.value}></SizeSlider>
         <ComfortSlider></ComfortSlider>
       </ColumnCont>
     </ColumnCont>
