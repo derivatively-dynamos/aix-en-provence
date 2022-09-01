@@ -6,10 +6,11 @@ import SizeSlider from './SizeSlider.jsx';
 import ComfortSlider from './ComfortSlider.jsx';
 import Score from './Score.jsx';
 
-const ReviewBreakdown = ({ reviews }) => {
+const ReviewBreakdown = ({ data }) => {
 
   const [ totalStars, setTotal ] = useState(0);
-
+  const [ starScore, setScore ] = useState(0);
+  const [ percentRecommended, setPercentRecommended] = useState(0);
   const [ stars, setStars] = useState({
     5: { amount: 0, percentage: 0 },
     4: { amount: 0, percentage: 0 },
@@ -29,34 +30,40 @@ const ReviewBreakdown = ({ reviews }) => {
       1: { amount: 0, percentage: 0 }
     }
 
-    reviews.forEach((review) => {
-      total += 1;
-      newStars[review.rating].amount += 1;
-    })
+    for (let rating in data.ratings) {
+      rating = Number(rating);
+      newStars[rating].amount = Number(data.ratings[rating]);
+      total += newStars[rating].amount;
+    }
 
     for (let star in newStars) {
       newStars[star].percentage = (newStars[star].amount / total) * 100;
     }
 
-    setTotal(total);
-    setStars(newStars);
-  }, [reviews]);
+    const calcScore = () => {
+      let score = 0;
+      for (let starRate in newStars) {
+        score += starRate * newStars[starRate].amount
+      }
+      return (score / total).toFixed(1);
+    }
 
-  const recommendationByPercent = (reviews.map((review) => {
-    if (review.recommend) {
-      return 1
-    } else {
-      return 0;
-    };
-  }).reduce((c, p) => {
-    return c + p;
-  })) / reviews.length * 100;
+    const calcRecommendationPercentage = (recommended) => {
+      const recByFraction = Number(recommended.true) / (Number(recommended.true) + Number(recommended.false));
+      return Math.round(recByFraction * 100);
+    }
+
+    setTotal(total);
+    setScore(calcScore())
+    setPercentRecommended(calcRecommendationPercentage(data.recommended))
+    setStars(newStars);
+  }, [data]);
 
   return (
     <ColumnCont>
-      <Score reviews={reviews}/>
+      <Score score={starScore}/>
       <ColumnCont>
-        <p>{recommendationByPercent}% of reviews recommend this product</p>
+        <p>{percentRecommended}% of reviews recommend this product</p>
         {Object.keys(stars).reverse().map((starRating)=> {
           return <StarBar
             key={starRating}
@@ -66,8 +73,8 @@ const ReviewBreakdown = ({ reviews }) => {
         })}
       </ColumnCont>
       <ColumnCont>
-        <SizeSlider></SizeSlider>
-        <ComfortSlider></ComfortSlider>
+        <SizeSlider size={data.characteristics.Fit.value}></SizeSlider>
+        <ComfortSlider comfort={data.characteristics.Comfort.value}></ComfortSlider>
       </ColumnCont>
     </ColumnCont>
   )

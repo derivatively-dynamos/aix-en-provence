@@ -3,36 +3,17 @@ import styled from "styled-components";
 
 const PhotoSection = ({ photos, answerID }) => {
   if (photos.length > 0) {
-    console.log();
     return (
-      <ContainerDiv>
-        <div></div>
-        <Box1>
-          {photos.map((photo) => {
-            return <Img key={answerID} src={photo}></Img>;
-          })}
-        </Box1>
-        <Box2>
-          <p>
-            by User1234 <b>Seller</b> Jan 1, 2019 | Helpful?{" "}
-            <Button>Yes</Button>
-            (23) | <Button>Report</Button>
-          </p>
-        </Box2>
-      </ContainerDiv>
+      <Box1>
+        {photos.map((photo) => {
+          return <Img key={answerID} src={photo}></Img>;
+        })}
+      </Box1>
     );
   }
 };
 
 export default PhotoSection;
-
-const ContainerDiv = styled.div`
-  background-color: #7e7e7e;
-  display: flex;
-  margin-left: 10px;
-  padding-top: 30px;
-  flex-direction: column;
-`;
 
 const Box1 = styled.div`
   display: flex;

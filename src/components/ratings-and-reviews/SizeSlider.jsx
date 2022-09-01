@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SizeSlider = ({}) => {
-  let x = '';
+const SizeSlider = ({ size }) => {
+  let x = (Number(size) / 5) * 100;
   let sliderPos = {
-    transform: `translateX(${x})`
+    left: `${x}%`
   }
 
   return (
@@ -41,6 +41,7 @@ const ColumnCont = styled(Container)`
   padding-right: 10px;
 `
 const ReviewCont = styled(Container)`
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0.25em;
