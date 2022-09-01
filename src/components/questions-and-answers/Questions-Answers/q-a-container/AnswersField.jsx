@@ -4,8 +4,11 @@ import PhotoSection from "./PhotoSection";
 
 const AnswerField = ({ answer }) => {
   const helpfulness = answer.helpfulness;
+
+  console.log("answer", answer);
+
   const photos = answer.photos;
-  const [helpfull, setHelpfull] = useState(helpfulness);
+  const [helpful, setHelpfull] = useState(helpfulness);
 
   return (
     <div>
@@ -29,8 +32,11 @@ const AnswerField = ({ answer }) => {
             })}
           </div>
           <div>
-            | Helpful? <Button>Yes</Button> ({answer.helpfulness}) |
-            <Button>Report</Button>
+            | Helpful?{" "}
+            <Button onClick={() => setHelpfull((preState) => preState + 1)}>
+              Yes
+            </Button>{" "}
+            ({helpful}) |<Button>Report</Button>
           </div>
         </Box3>
         <PhotoSection photos={photos} answerID={answer.id} />
