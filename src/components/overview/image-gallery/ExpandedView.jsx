@@ -62,6 +62,10 @@ const ImageContainer = styled.div`
   flex: 1;
   position: absolute;
   overflow: hidden;
+  color: ${props => props.theme.highlight};
+  @media (max-width: 768px){
+    height: 100vh;
+  }
 `;
 
 const SuperExpandedImage = styled.img`

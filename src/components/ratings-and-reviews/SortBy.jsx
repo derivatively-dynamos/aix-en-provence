@@ -2,10 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const SortBy = () => {
+const SortBy = ({ reviews }) => {
   return (
     <Container>
-      <Inline>248 reviews, sorted by</Inline>
+      <Inline>{reviews.length} reviews, sorted by</Inline>
       <Selector>
         <option>helpful</option>
         <option>newest</option>

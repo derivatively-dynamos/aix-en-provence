@@ -6,20 +6,21 @@ import Review from './Review.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 
-const ReviewList = ({ product }) => {
+const ReviewList = ({ reviews }) => {
 
   return (
     <Container>
-      <SortBy />
-      {product.results.map((review) => {
-        return <Review key={review.review_id} review={ review }/>
-      })}
+      <SortBy reviews={ reviews } />
+      <ReviewListCont>
+        {reviews.map((review) => {
+          return <Review key={review.review_id} review={ review }/>
+        })}
+      </ReviewListCont>
       <BtnCont>
         <Btn>MORE REVIEWS</Btn>
         <Btn>
           ADD REVIEW
-          <Cross icon={faPlusSquare}>
-          </Cross>
+          <Cross icon={faPlusSquare}></Cross>
         </Btn>
       </BtnCont>
     </Container>
@@ -34,6 +35,11 @@ const Container = styled.div`
   width: 100%;
   flex-direction: column;
 `
+const ReviewListCont = styled(Container)`
+  max-height: 35em;
+  overflow: auto;
+`
+
 const BtnCont = styled.div`
   display: flex;
   flex-direction: row;
@@ -53,6 +59,7 @@ const Btn = styled.div`
 `
 const Cross = styled(FontAwesomeIcon)`
   font-size: 1.5em;
+  color: inherit;
 `
 
 export default ReviewList;

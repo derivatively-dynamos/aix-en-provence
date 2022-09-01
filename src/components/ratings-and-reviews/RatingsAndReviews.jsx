@@ -5,18 +5,20 @@ import ReviewBreakdown from './ReviewBreakdown.jsx'
 import ReviewList from './ReviewList.jsx'
 
 //sample data:
-import sampleProduct from "./sample.js"
+import sampleProduct from "./sampleReviews.js"
+import sampleMetaData from "./sampleMetaData.js"
 
 const RatingsAndReviews = () => {
 
-  const [ product ] = useState(sampleProduct[0]);
+  const [ reviews ] = useState(sampleProduct[0].results);
+  const [ metaData ] = useState(sampleMetaData);
 
   return (
     <AppContainer>
       <h2>RATINGS AND REVIEWS</h2>
       <Container>
-        <ReviewBreakdown product={product}/>
-        <ReviewList product={product}/>
+        <ReviewBreakdown data={metaData}/>
+        <ReviewList reviews={reviews}/>
       </Container>
     </AppContainer>
   )
@@ -29,6 +31,7 @@ const Container = styled.div`
 `
 const AppContainer = styled(Container)`
   flex-direction: column;
+  background-color: white;
   color: #303030;
 `
 

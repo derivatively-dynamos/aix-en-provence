@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import styled from "styled-components";
+import React, { useRef } from 'react';
+import styled from 'styled-components';
 
 const ThumbnailList = ({ photos, setIndex, index, scrollPos }) => {
   const icons = photos.map((photo, i) => {
@@ -15,22 +15,21 @@ const ThumbnailList = ({ photos, setIndex, index, scrollPos }) => {
   });
 
   return (
+    //Empty div aligns scroll
     <Ul ref={scrollPos}>
+      <div />
       {icons}
-      <ExtraSpace />
+      <BotSpace />
     </Ul>
   );
 };
-
 const Ul = styled.ul`
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
-  top: 25px;
-  left: 15px;
+  gap: 8px;
   height: 88%;
   overflow-y: hidden;
   -ms-overflow-style: none;
@@ -43,22 +42,17 @@ const Ul = styled.ul`
   cursor: pointer;
 `;
 const Icon = styled.img`
-  height: 55px;
+  width: 53px;
   aspect-ratio: 1;
+  background-color: white;
   object-fit: cover;
+  margin: 0 4px;
   border: none;
-  background: gray;
-  margin-right: 4px;
-  margin-top: 15px;
-  margin-bottom: -7px;
-  margin-left: 2px;
   scroll-snap-align: start;
-  &:hover{
-    filter: brightness(120%);
-  }
-  outline: ${props => props.selected ? "2px solid white" : "none"};
+  scroll-margin-top: 4px;
+  outline: ${(props) => (props.selected ? `2px solid` : 'none')};
 `;
-const ExtraSpace = styled.div`
+const BotSpace = styled.div`
   width: 10px;
   flex: 1 0 1000px;
 `;

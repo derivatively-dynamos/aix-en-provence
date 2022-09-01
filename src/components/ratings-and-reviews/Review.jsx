@@ -49,7 +49,6 @@ const ReviewCont = styled.div`
 `
 const RevTitle = styled.h3`
   white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
 `
 const ReviewHead = styled.div`
@@ -68,7 +67,7 @@ const ResponseBox = styled.div`
   width: 100%
   justify-content: space-between;
   gap: 1em;
-  background-color: #D3D3D3;
+  background-color: #e8e8e8;
   padding: 1em;
 `
 const Links = styled.a`

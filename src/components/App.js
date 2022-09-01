@@ -1,19 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import './app.scss';
 import styled from 'styled-components';
 import Overview from './overview/Overview';
 import RelatedItems from './related-items/RelatedItems';
 import QuestionsAndAnswers from './questions-and-answers/QuestionsAndAnswers';
 import RatingsAndReviews from './ratings-and-reviews/RatingsAndReviews';
+import themes from './theme';
+import { ThemeProvider } from 'styled-components';
+import Header from './Header';
+import clickTrack from './shared-components/ClickTracker';
 
 const App = () => {
+  const [theme, setTheme] = useState('dark');
+
+  const OverviewTrack = clickTrack(Overview, 'overview');
+
   return (
     <Container className="container">
-      <h1>Hello World!</h1>
-      <Overview />
-      <RelatedItems />
-      <QuestionsAndAnswers />
-      <RatingsAndReviews />
+      <ThemeProvider theme={themes[theme]}>
+        <Header curTheme={theme} setTheme={setTheme} themes={themes} />
+        <OverviewTrack productId={37311} />
+        <RelatedItems />
+        <QuestionsAndAnswers />
+        <RatingsAndReviews />
+      </ThemeProvider>
     </Container>
   );
 };
@@ -27,6 +37,6 @@ const Container = styled.div`
   gap: 1em;
   border: 1px solid darkgray;
   background-color: #dbdbdb;
-`
+`;
 
 export default App;

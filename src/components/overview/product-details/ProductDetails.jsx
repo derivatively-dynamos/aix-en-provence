@@ -16,7 +16,7 @@ const ProductDetails = ({ product, styles, style, setStyle, styleIndex }) => {
         styleIndex={styleIndex}
       />
       <AddToCart style={style} />
-      <InfoList />
+      <InfoList features={product.features}/>
     </Container>
   );
 };
@@ -25,8 +25,6 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   flex: 1;
-  background-color: #313131;
-  color: lightgray;
   padding: 0.5em;
   padding-left: 1em;
   border: none;

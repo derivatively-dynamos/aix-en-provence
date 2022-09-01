@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StarBar = ({stars, reviews}) => {
-  let starAmt = '30%'
+const StarBar = ({starAmt, starFill}) => {
   let StarBarLevel = {
-    width: starAmt
+    width: `${starFill}%`
   }
   return (
     <Container>
-      <StarLabel>{stars}</StarLabel>
+      <StarLabel>{starAmt} Stars</StarLabel>
       <StarBarCont>
         <StarBarFill style={StarBarLevel}></StarBarFill>
       </StarBarCont>
@@ -31,9 +30,9 @@ const StarLabel = styled(Container)`
 `
 const StarBarCont = styled.div`
   flex: 5;
-  height: 0.5em;
+  height: 0.75em;
   width: 100%;
-  background-color: white;
+  background-color: #e8e8e8;
 `
 const StarBarFill = styled(StarBarCont)`
   position: relative;
