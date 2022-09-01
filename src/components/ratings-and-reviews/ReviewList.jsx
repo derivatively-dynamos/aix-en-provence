@@ -7,17 +7,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 
 const ReviewList = ({ reviews }) => {
+  const [expanded, expand] = useState(false);
+  let style;
+  expanded ? style = { maxHeight:'35em'} : style = { maxHeight:'200em'}
 
   return (
     <Container>
       <SortBy reviews={ reviews } />
-      <ReviewListCont>
+      <ReviewListCont style={style}>
         {reviews.map((review) => {
           return <Review key={review.review_id} review={ review }/>
         })}
       </ReviewListCont>
       <BtnCont>
-        <Btn>MORE REVIEWS</Btn>
+        <Btn onClick={()=>{
+          expanded ? expand(true) : expand(false);
+        }}>MORE REVIEWS</Btn>
         <Btn>
           ADD REVIEW
           <Cross icon={faPlusSquare}></Cross>
@@ -36,8 +41,8 @@ const Container = styled.div`
   flex-direction: column;
 `
 const ReviewListCont = styled(Container)`
-  max-height: 35em;
-  overflow: auto;
+  max-height: 40em;
+  overflow: hidden;
 `
 
 const BtnCont = styled.div`
