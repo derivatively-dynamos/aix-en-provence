@@ -8,21 +8,27 @@ import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 
 const ReviewList = ({ reviews }) => {
   const [expanded, expand] = useState(false);
-  let style;
-  expanded ? style = { maxHeight:'35em'} : style = { maxHeight:'200em'}
+
+  const handleExpansion = () => {
+    expanded ? expand(false) : expand(true);
+    console.log(expanded)
+  }
 
   return (
     <Container>
       <SortBy reviews={ reviews } />
-      <ReviewListCont style={style}>
-        {reviews.map((review) => {
+      <Container>
+        {expanded ? reviews.map((review) => {
+          return <Review key={review.review_id} review={ review }/>
+        })
+        : reviews.slice(0, 2).map((review) => {
           return <Review key={review.review_id} review={ review }/>
         })}
-      </ReviewListCont>
+      </Container>
       <BtnCont>
         <Btn onClick={()=>{
-          expanded ? expand(true) : expand(false);
-        }}>MORE REVIEWS</Btn>
+          handleExpansion();
+        }}>{expanded ? 'LESS REVIEWS' : 'MORE REVIEWS'}</Btn>
         <Btn>
           ADD REVIEW
           <Cross icon={faPlusSquare}></Cross>
@@ -39,10 +45,6 @@ const Container = styled.div`
   box-sizing: border-box;
   width: 100%;
   flex-direction: column;
-`
-const ReviewListCont = styled(Container)`
-  max-height: 40em;
-  overflow: hidden;
 `
 
 const BtnCont = styled.div`
