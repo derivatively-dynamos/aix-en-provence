@@ -8,16 +8,18 @@ import RatingsAndReviews from './ratings-and-reviews/RatingsAndReviews';
 import themes from './theme';
 import { ThemeProvider } from 'styled-components';
 import Header from './Header';
+import clickTrack from './shared-components/ClickTracker';
 
 const App = () => {
-
   const [theme, setTheme] = useState('dark');
+
+  const OverviewTrack = clickTrack(Overview, 'overview');
 
   return (
     <Container className="container">
       <ThemeProvider theme={themes[theme]}>
-        <Header curTheme={theme} setTheme={setTheme} themes={themes}/>
-        <Overview productId={37311}/>
+        <Header curTheme={theme} setTheme={setTheme} themes={themes} />
+        <OverviewTrack productId={37311} />
         <RelatedItems />
         <QuestionsAndAnswers />
         <RatingsAndReviews />
@@ -35,6 +37,6 @@ const Container = styled.div`
   gap: 1em;
   border: 1px solid darkgray;
   background-color: #dbdbdb;
-`
+`;
 
 export default App;
