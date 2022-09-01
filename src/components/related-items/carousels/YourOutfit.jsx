@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import Cards from '../Cards.jsx';
+import Cards from './Cards.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faMinus } from '@fortawesome/free-solid-svg-icons';
 

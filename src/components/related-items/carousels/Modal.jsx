@@ -7,7 +7,10 @@ const Modal = ({ modalState, posTop, posLeft }) => {
     return null;
   } else {
     return (
-      <Container left={posLeft} top={posTop} >
+      <Container style={{
+        top: posTop,
+        left: posLeft
+      }} >
         <ImagesContainer>
           <ImageContainer>
             <img src="https://images.unsplash.com/photo-1562542082-519ebcdb43e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"></img>
@@ -51,8 +54,8 @@ const Container = styled.section`
   border-radius: 2%;
   flex-direction: column;
   position: absolute;
-  top: ${props => `${props.top}`};
-  left: ${props => `${props.left}`};
+  /* top: ${props => `${props.top}`};
+  left: ${props => `${props.left}`}; */
   z-index: 2;
   overflow: hidden;
 `
