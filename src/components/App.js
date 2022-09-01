@@ -12,7 +12,7 @@ import clickTrack from './shared-components/ClickTracker';
 
 const App = () => {
   const [theme, setTheme] = useState('dark');
-  const [productId, setProductId] = useState(37312);
+  const [productId, setProductId] = useState(37313);
 
   const OverviewTrack = clickTrack(Overview, 'overview');
 
