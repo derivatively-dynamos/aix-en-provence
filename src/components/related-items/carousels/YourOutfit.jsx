@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Cards from './Cards.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const YourOutfit = () => {
   const scrollRef = useRef(null);
@@ -17,10 +17,10 @@ const YourOutfit = () => {
           <IconCover onClick={() => {scroll(-200)}}>
             <Left icon={faChevronLeft}/>
           </IconCover>
-          <div style={{
-            width: '100%',
-            height: '100%'
-          }}></div>
+          <AddItemCard>
+            <PlusIcon icon={faPlus}/>
+            <AddItemText>Add to Outfit</AddItemText>
+          </AddItemCard>
           <IconCoverRight onClick={() => {scroll(200)}}>
             <Right icon={faChevronRight} />
           </IconCoverRight>
@@ -35,6 +35,26 @@ const YourOutfit = () => {
     </Container>
   );
 };
+const AddItemCard = styled.section`
+  display: flex;
+  flex-direction: column;
+  background: #2E778A;
+  max-width: 16em;
+  min-width: 16em;
+  height: 17em;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  left: 0;
+`
+const PlusIcon = styled(FontAwesomeIcon)`
+  font-size: 6em;
+  color: white;
+`
+const AddItemText = styled.section`
+  font-size: 1em;
+  color: white;
+`
 const TitleDiv = styled.section`
   display: flex;
   justify-content: center;
@@ -45,7 +65,7 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  background-color: #313131;
+  background-color: ${props => props.theme.background};
   color: lightgray;
   padding: 0.2;
   align-items: center;
@@ -54,7 +74,7 @@ const InnerContainer = styled.section`
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  background-color: #313131;
+  background-color: ${props => props.theme.background};
   color: lightgray;
   padding: 0.2;
   justify-content: center;
@@ -64,10 +84,11 @@ const InnerContainer = styled.section`
 const CardContainer = styled.section`
   display: flex;
   flex-direction: row;
-  background-color: #313131;
+  background-color: ${props => props.theme.background};
   color: lightgray;
   padding: .2;
   align-items: stretch;
+  width: 100%;
   overflow: auto;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;

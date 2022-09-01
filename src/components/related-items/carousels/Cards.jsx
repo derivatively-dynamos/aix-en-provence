@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Modal from "./Modal.jsx";
 import api from '../../shared-components/api';
 
-const Cards = ({ product, setProductId }) => {
+const Cards = ({ product, setProductId, currProductInfo }) => {
 
   const [price, setPrice] = useState(null);
   const [photo, setPhoto] = useState(null);
@@ -52,7 +52,7 @@ const Cards = ({ product, setProductId }) => {
         <div>${price}</div>
         <div>★★★☆☆</div>
       </InfoContainer>
-      <Modal modalState={modalState} posTop={posStateTop} posLeft={posStateLeft} />
+      <Modal modalState={modalState} posTop={posStateTop} posLeft={posStateLeft} price={price} name={name} photo={photo} category={category} currProductInfo={currProductInfo} />
     </StyledContainer>
   );
 };
@@ -67,8 +67,8 @@ const StyledContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  background-color: #4f5d2a;
-  color: light;
+  background-color: ${props => props.theme.shadow};
+  color: ${props => props.theme.color};
   padding: 0 0 .5em 0;
   margin: 0 .3em 0 .3em;
   justify-content: flex-end;
