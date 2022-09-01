@@ -5,8 +5,6 @@ import PhotoSection from "./PhotoSection";
 const AnswerField = ({ answer }) => {
   const helpfulness = answer.helpfulness;
 
-  console.log("answer", answer);
-
   const photos = answer.photos;
   const [helpful, setHelpfull] = useState(helpfulness);
   const [reported, setReport] = useState(false);
