@@ -17,13 +17,10 @@ const YourOutfit = () => {
           <IconCover onClick={() => {scroll(-200)}}>
             <Left icon={faChevronLeft}/>
           </IconCover>
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
+          <div style={{
+            width: '100%',
+            height: '100%'
+          }}></div>
           <IconCoverRight onClick={() => {scroll(200)}}>
             <Right icon={faChevronRight} />
           </IconCoverRight>

@@ -1,10 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import Modal from "./Modal.jsx";
+import api from '../../shared-components/api';
 
-const Cards = () => {
+const Cards = ({ product, setProductId }) => {
+
+  const [price, setPrice] = useState(null);
+  const [photo, setPhoto] = useState(null);
+  const [name, setName] = useState(null);
+  const [category, setCategory] = useState(null);
   const [modalState, setModalState] = useState(false);
-
   const [posStateTop, setPosStateTop] = useState(0);
   const [posStateLeft, setPosStateLeft] = useState(0);
   const handleMouseEnter = (boolean, e) => {
@@ -12,18 +17,39 @@ const Cards = () => {
     setPosStateLeft(e.clientX);
     setPosStateTop(e.clientY);
   }
+  useEffect(() => {
+    api.get(`products/${product}`)
+    .then(res => {
+      setName(res.data.name);
+      setCategory(res.data.category);
+    })
+    .catch(err => console.error(err))
+  }, [product]);
+
+  useEffect(() => {
+    api.get(`products/${product}/styles`)
+    .then(res => {
+      setPrice(res.data.results[0]['original_price']);
+      setPhoto(res.data.results[0].photos[0]['thumbnail_url']);
+    })
+    .catch(err => console.error(err))
+  }, [product]);
+
 
 
 
   return (
-    <StyledContainer onMouseLeave={() => {setModalState(false)}}>
+    <StyledContainer onMouseLeave={() => {setModalState(false)}} onClick={() => {setProductId(product)}}>
       <ImageContainer>
-        <img src="https://images.unsplash.com/photo-1562542082-519ebcdb43e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"></img>
+        <img src={photo} style={{
+          maxWidth: 'auto',
+          height: '100%'
+        }}></img>
       </ImageContainer>
       <InfoContainer onMouseEnter={(event) => {handleMouseEnter(true, event)}} >
-        <div>Morning Joggers</div>
-        <div>Pants</div>
-        <div>$40.00</div>
+        <div>{name}</div>
+        <div>{category}</div>
+        <div>${price}</div>
         <div>★★★☆☆</div>
       </InfoContainer>
       <Modal modalState={modalState} posTop={posStateTop} posLeft={posStateLeft} />
@@ -49,18 +75,21 @@ const StyledContainer = styled(Container)`
   align-items: center;
   height: 100%;
   overflow: hidden;
-  max-width: 14em;
-  min-width: 14em;
+  max-width: 16em;
+  min-width: 16em;
   scroll-snap-align: start;
-  border-radius: 1%;
 `
 
 const ImageContainer = styled.section`
   display: flex;
-  height: auto;
+  max-height: 12em;
+  min-height: 12em;
   overflow: hidden;
+  justify-content: center;
+  align-items: center;
   margin: 0;
   padding: 0;
+  width: 100%;
 `
 const InfoContainer = styled.section`
   display: flex;

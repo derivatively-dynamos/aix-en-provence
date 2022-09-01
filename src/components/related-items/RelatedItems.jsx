@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import RelatedProducts from './carousels/RelatedProducts.jsx';
 import YourOutfit from './carousels/YourOutfit.jsx';
 
-const RelatedItems = () => {
+const RelatedItems = ({ productId, setProductId }) => {
 
   return (
     <RICDiv>
-      <RelatedProducts />
-      <YourOutfit />
+      <RelatedProducts productId={productId} setProductId={setProductId} />
+      <YourOutfit productId={productId}/>
     </RICDiv>
   )
 }

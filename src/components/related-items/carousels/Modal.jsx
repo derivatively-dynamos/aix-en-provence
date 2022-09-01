@@ -10,7 +10,7 @@ const Modal = ({ modalState, posTop, posLeft }) => {
       <Container style={{
         top: posTop,
         left: posLeft,
-        transform: `translate(-2%, -90%)`
+        transform: `translate(-6%, -80%)`
       }} >
         <ImagesContainer>
           <ImageContainer>
@@ -52,11 +52,8 @@ const Modal = ({ modalState, posTop, posLeft }) => {
 
 const Container = styled.section`
   display: flex;
-  border-radius: 2%;
   flex-direction: column;
   position: fixed;
-  /* top: ${props => `${props.top}`};
-  left: ${props => `${props.left}`}; */
   z-index: 2;
   overflow: hidden;
 `

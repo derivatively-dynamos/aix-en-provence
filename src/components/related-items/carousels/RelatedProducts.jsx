@@ -3,12 +3,23 @@ import styled from "styled-components";
 import Cards from './Cards.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faMinus } from '@fortawesome/free-solid-svg-icons';
+import api from '../../shared-components/api';
 
-const RelatedProducts = () => {
+const RelatedProducts = ({ productId, setProductId }) => {
+  const [relatedProducts, setRelatedProducts] = useState([37312, 37313, 37318, 37317]);
   const scrollRef = useRef(null);
   const scroll = (direction) => {
     scrollRef.current.scrollLeft += direction;
   };
+  useEffect(() => {
+    api.get(`products/${productId}/related`)
+    .then(res => {
+      setRelatedProducts(res.data);
+    })
+    .catch(err => console.error(err))
+  }, [productId])
+
+
   return (
     <Container>
       <TitleDiv>Related Products</TitleDiv>
@@ -17,13 +28,11 @@ const RelatedProducts = () => {
           <IconCover onClick={() => {scroll(-200)}}>
             <Left icon={faChevronLeft}/>
           </IconCover>
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
+          {relatedProducts.map((product, i) => {
+            return (
+              <Cards product={product} key={i} setProductId={setProductId}/>
+            )
+          })}
           <IconCoverRight onClick={() => {scroll(200)}}>
             <Right icon={faChevronRight} />
           </IconCoverRight>
