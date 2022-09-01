@@ -15,9 +15,6 @@ const App = () => {
   const [productId, setProductId] = useState(37312);
 
   const OverviewTrack = clickTrack(Overview, 'overview');
-  useEffect(() => {
-    console.log('productId :', productId);
-  }, [productId]);
 
   return (
     <Container className="container">
