@@ -16,7 +16,7 @@ const ProductDetails = ({ product, styles, style, setStyle, styleIndex }) => {
         styleIndex={styleIndex}
       />
       <AddToCart style={style} />
-      <InfoList />
+      <InfoList features={product.features}/>
     </Container>
   );
 };

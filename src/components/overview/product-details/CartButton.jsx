@@ -38,14 +38,13 @@ const Container = styled.div`
   position: relative;
 `;
 const Button = styled.button`
+  height: 100%;
   border-radius: 0;
   border: 1px solid ${(props) => props.theme.color};
   background-color: ${(props) => props.theme.shadow};
   color: ${(props) => props.theme.color};
   font-size: 14px;
   padding: 10px;
-  margin-right: 10px;
-  margin-top: 5px;
   cursor: pointer;
 `;
 const Valid = styled(Button)`
@@ -62,9 +61,8 @@ const Modal = styled.div`
   padding: 0.5em;
   border: 1px solid ${(props) => props.theme.flavor};
   background-color: ${(props) => props.theme.background};
-  border-radius: 4px;
   left: 0;
-  top: -100%;
+  top: -140%;
   filter: drop-shadow(1px 1px 2px black);
 `;
 

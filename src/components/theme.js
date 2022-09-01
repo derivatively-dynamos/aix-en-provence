@@ -1,11 +1,11 @@
 const theme = {
   light: {
     color: "black",
-    background: "rgb(172, 221, 221)",
-    highlight: "rgb(217, 252, 255)",
+    background: '#f0f0f0',
+    highlight: '#ffebfc',
     sale: "red",
-    shadow: "#4fbfdb",
-    flavor: "blue",
+    shadow: '#f0f0f0',
+    flavor: "red",
   },
   dark: {
     color: "white",
@@ -22,6 +22,15 @@ const theme = {
     sale: "red",
     shadow: "burgundy",
     flavor: "red",
+  },
+  pastel: {
+    background: '#e1aaf0',
+    color: 'black',
+    highlight: '#ff4d97',
+    sale: '#fffb00',
+    shadow: '#68ccc4',
+    flavor: '#4dfff0'
+
   }
 };
 
