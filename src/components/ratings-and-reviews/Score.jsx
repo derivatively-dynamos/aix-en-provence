@@ -1,66 +1,78 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-regular-svg-icons';
+import { faStar as empty} from '@fortawesome/free-regular-svg-icons';
+import { faStar as filled } from '@fortawesome/free-solid-svg-icons';
 
 const Score = ({ score }) => {
+  const amount = (score / 5) * 100;
+  const starDisplay = {
+    width: `${amount}%`
+  }
+
   return (
     <ScoreCont>
       <ScoreNum>{score}</ScoreNum>
-      <ScoreCont>
-        <StarCont>
-          <FullStar icon={faStar}></FullStar>
-          <FullStar icon={faStar}></FullStar>
-          <FullStar icon={faStar}></FullStar>
-          <FullStar icon={faStar}></FullStar>
-          <FullStar icon={faStar}></FullStar>
-        </StarCont>
-        <StarCont>
-          <StarCover></StarCover>
-        </StarCont>
-        <StarCont>
-          <EmptyStar icon={faStar}></EmptyStar>
-          <EmptyStar icon={faStar}></EmptyStar>
-          <EmptyStar icon={faStar}></EmptyStar>
-          <EmptyStar icon={faStar}></EmptyStar>
-          <EmptyStar icon={faStar}></EmptyStar>
-        </StarCont>
-      </ScoreCont>
+      <StarCont>
+        <FilledStars style={starDisplay}>
+          <FullStar icon={filled}></FullStar>
+          <FullStar icon={filled}></FullStar>
+          <FullStar icon={filled}></FullStar>
+          <FullStar icon={filled}></FullStar>
+          <FullStar icon={filled}></FullStar>
+        </FilledStars>
+        <EmptyStars>
+          <EmptyStar icon={empty}></EmptyStar>
+          <EmptyStar icon={empty}></EmptyStar>
+          <EmptyStar icon={empty}></EmptyStar>
+          <EmptyStar icon={empty}></EmptyStar>
+          <EmptyStar icon={empty}></EmptyStar>
+        </EmptyStars>
+      </StarCont>
     </ScoreCont>
   )
 }
 
 const ScoreCont = styled.div`
+  position: relative;
+  top: 0;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   font-weight: 600;
 `
 
 const ScoreNum = styled.div`
-  margin-top: 0;
   font-size: 5em;
   padding-right: .1em;
   color: #303030;
 `
 const StarCont = styled.div`
+  position: relative;
+  width: 90px;
+  top: 1em;
+`
+const FilledStars = styled.div`
   position: absolute;
-  margin-top: 0;
-  margin-bottom: 3em;
+  display: flex;
+  overflow: hidden;
+  background-color: inherit;
+  font-weight: 500;
+`
+const EmptyStars = styled.div`
+  position: absolute;
+  display: flex;
 `
 const EmptyStar = styled(FontAwesomeIcon)`
   position: relative;
+  display: flex;
   color: black;
-`
-const StarCover = styled.div`
-  position: relative;
-  background-color: gray;
-  height: 1em;
+  font-weight: 900;
 `
 const FullStar = styled(FontAwesomeIcon)`
   position: relative;
-  color: red;
+  color: yellow;
 `
 
 export default Score;

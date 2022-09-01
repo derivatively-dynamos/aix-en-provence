@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar as empty} from '@fortawesome/free-regular-svg-icons';
+import { faStar as filled } from '@fortawesome/free-solid-svg-icons';
 
 const Review = ({ review }) => {
-  let stars = '';
-  while (stars.length < review.rating) {
-    stars += '⭐'
+  const amount = (review.rating / 5) * 100;
+  const starDisplay = {
+    width: `${amount}%`
   }
 
   let date = new Date(review.date).toLocaleDateString("en-us", {
@@ -17,7 +20,22 @@ const Review = ({ review }) => {
   return (
     <ReviewCont>
       <ReviewHead>
-        <div>{stars}</div>
+        <StarCont>
+          <FilledStars style={starDisplay}>
+            <FullStar icon={filled}></FullStar>
+            <FullStar icon={filled}></FullStar>
+            <FullStar icon={filled}></FullStar>
+            <FullStar icon={filled}></FullStar>
+            <FullStar icon={filled}></FullStar>
+          </FilledStars>
+          <EmptyStars>
+            <EmptyStar icon={empty}></EmptyStar>
+            <EmptyStar icon={empty}></EmptyStar>
+            <EmptyStar icon={empty}></EmptyStar>
+            <EmptyStar icon={empty}></EmptyStar>
+            <EmptyStar icon={empty}></EmptyStar>
+          </EmptyStars>
+        </StarCont>
         <AuthorDate>
           <div>{review.reviewer_name},</div>
           <div>{date}</div>
@@ -47,14 +65,38 @@ const ReviewCont = styled.div`
   width: 100%;
   color: #303030;;
 `
-const RevTitle = styled.h3`
-  white-space: nowrap;
-  text-overflow: ellipsis;
-`
 const ReviewHead = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+`
+const StarCont = styled.div`
+  position: relative;
+  width: 90px;
+`
+const FilledStars = styled.div`
+  position: absolute;
+  display: flex;
+  overflow: hidden;
+  background-color: inherit;
+  font-weight: 500;
+`
+const EmptyStars = styled.div`
+  position: absolute;
+  display: flex;
+`
+const EmptyStar = styled(FontAwesomeIcon)`
+  position: relative;
+  display: flex;
+  color: black;
+  font-weight: 900;
+`
+const FullStar = styled(FontAwesomeIcon)`
+  position: relative;
+  color: yellow;
+`
+const RevTitle = styled.h3`
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `
 const AuthorDate = styled(ReviewHead)`
   font-size: 0.9em;
