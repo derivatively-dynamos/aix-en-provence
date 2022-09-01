@@ -4,8 +4,18 @@ import PhotoSection from "./PhotoSection";
 
 const AnswerField = ({ answer }) => {
   const helpfulness = answer.helpfulness;
+
   const photos = answer.photos;
-  const [helpfull, setHelpfull] = useState(helpfulness);
+  const [helpful, setHelpfull] = useState(helpfulness);
+  const [reported, setReport] = useState(false);
+
+  const report = () => {
+    if (!reported) {
+      setReport((preState) => !preState);
+    } else {
+      return null;
+    }
+  };
 
   return (
     <div>
@@ -13,6 +23,7 @@ const AnswerField = ({ answer }) => {
         <div>
           <b>A:</b> {answer.body}
         </div>
+        <PhotoSection photos={photos} answerID={answer.id} />
         <Box3>
           <div>
             {answer.answerer_name == "Seller" ? (
@@ -29,11 +40,16 @@ const AnswerField = ({ answer }) => {
             })}
           </div>
           <div>
-            | Helpful? <Button>Yes</Button> ({answer.helpfulness}) |
-            <Button>Report</Button>
+            | Helpful?{" "}
+            <Button onClick={() => setHelpfull((preState) => preState + 1)}>
+              Yes
+            </Button>{" "}
+            ({helpful}) |
+            <Button onClick={report}>
+              {reported ? <ReportedText>Reported</ReportedText> : "Report"}
+            </Button>
           </div>
         </Box3>
-        <PhotoSection photos={photos} answerID={answer.id} />
       </Box2>
     </div>
   );
@@ -47,6 +63,10 @@ const Box3 = styled.div`
   display: flex;
   margin-top: 10px;
   flex-wrap: wrap;
+`;
+
+const ReportedText = styled.div`
+  background-color: #00af00;
 `;
 
 const Button = styled.button`

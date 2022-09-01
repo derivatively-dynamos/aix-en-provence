@@ -34,7 +34,7 @@ const AddQuestionButton = ({ productName }) => {
             placeholder="Example: jack@email.com"
             type="text"
           />
-          <div> *Your Answer</div>
+          <div> *Your Question</div>
           <textarea
             maxLength="1000"
             rows="6"
