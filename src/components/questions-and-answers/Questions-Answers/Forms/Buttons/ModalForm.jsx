@@ -5,6 +5,7 @@ const Modal = ({
   isOpen,
   onClick,
   showCloseButton = true,
+  showHeader,
   children,
   title,
 }) => {
@@ -15,9 +16,12 @@ const Modal = ({
   return (
     <ModalDiv onClick={onClick}>
       <ModalContentDiv onClick={(e) => e.stopPropagation()}>
-        <ModalHeaderDiv>
-          <ModalTitleH4>{title}</ModalTitleH4>
-        </ModalHeaderDiv>
+        {showHeader ? (
+          <ModalHeaderDiv>
+            <ModalTitleH4>{title}</ModalTitleH4>
+          </ModalHeaderDiv>
+        ) : null}
+
         <ModalBodyDiv>{children}</ModalBodyDiv>
         {showCloseButton ? (
           <ModalFooterDiv>
@@ -52,7 +56,8 @@ const ModalHeaderDiv = styled.div`
 `;
 
 const ModalTitleH4 = styled.h4`
-  margin: 0;
+  margin: 0px;
+  padding: 0px;
 `;
 
 const ModalBodyDiv = styled.div`

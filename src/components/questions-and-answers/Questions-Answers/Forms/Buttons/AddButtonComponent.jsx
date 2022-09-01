@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import Modal from "./ModalForm";
 import styled from "styled-components";
 
-const AddButtonComponent = ({ onClick, isOpen, name, children, title }) => {
+const AddButtonComponent = ({
+  onClick,
+  isOpen,
+  name,
+  children,
+  title,
+  showHeader,
+}) => {
   return (
     <ButtonDiv>
       <Button onClick={onClick}>{name}</Button>
@@ -11,6 +18,7 @@ const AddButtonComponent = ({ onClick, isOpen, name, children, title }) => {
         isOpen={isOpen}
         onClick={onClick}
         showCloseButton={false}
+        showHeader={showHeader}
       >
         <div>{children}</div>
       </Modal>

@@ -28,6 +28,7 @@ const HelpfulnessAnswerComponent = ({ helpfulness, productName, question }) => {
           onClick={onClick}
           isOpen={isOpen}
           title={"Submit your Answer"}
+          showHeader={true}
         >
           <Form onSubmit={onSubmit}>
             <h4>
