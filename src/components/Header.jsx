@@ -10,17 +10,40 @@ const Header = ({curTheme, setTheme, themes}) => {
 
   return (
     <Container>
-      <h1>Hello World!</h1>
-      <select value={curTheme} onChange={(e) => setTheme(e.target.value)}>
-        {themeList}
-      </select>
+      <Title>
+        <H1>FEC</H1>
+        <select value={curTheme} onChange={(e) => setTheme(e.target.value)}>
+          {themeList}
+        </select>
+      </Title>
+      <SaleAlert>
+        SITE-WIDE ANNOUNCEMENT MESSAGE! - SALE / DISCOUNT <strong>OFFER</strong> - <u>NEW PRODUCT HIGHLIGHT</u>
+      </SaleAlert>
     </Container>
   )
 }
 
-const Container = styled.div`
+const Title = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 1em;
+  width: 100%;
+`
+const H1 = styled.h1`
+  margin: .5em 0 ;
+`
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: ${props => props.theme.background};
+  color: ${props => props.theme.color};
+`
+const SaleAlert = styled.div`
+  background-color: ${props => props.theme.shadow};
+  padding:  .5em;
+  text-align: center;
 `
 
 export default Header;
