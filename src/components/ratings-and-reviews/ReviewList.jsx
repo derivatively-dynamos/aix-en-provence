@@ -11,7 +11,6 @@ const ReviewList = ({ reviews }) => {
 
   const handleExpansion = () => {
     expanded ? expand(false) : expand(true);
-    console.log(expanded)
   }
 
   return (
