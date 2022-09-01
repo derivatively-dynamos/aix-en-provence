@@ -10,10 +10,11 @@ import { ThemeProvider } from 'styled-components';
 import Header from './Header';
 import clickTrack from './shared-components/ClickTracker';
 
+const OverviewTrack = clickTrack(Overview, 'overview');
+
 const App = () => {
   const [theme, setTheme] = useState('dark');
 
-  const OverviewTrack = clickTrack(Overview, 'overview');
 
   return (
     <Container className="container">
