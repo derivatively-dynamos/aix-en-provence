@@ -19,7 +19,7 @@ const H4 = styled.h4`
 
 `
 const P = styled.p`
-
+  margin-bottom: 0;
 `
 
 export default Description;

@@ -106,6 +106,9 @@ const MainImage = styled.img`
   border: none;
   flex: 1 1 0;
   height: 500px;
+  @media (max-width: 768px){
+    height: 300px;
+  }
   width: 100%;
   object-fit: cover;
   cursor: zoom-in;
