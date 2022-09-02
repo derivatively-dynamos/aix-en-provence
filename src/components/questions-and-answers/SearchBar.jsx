@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-const SearchBar = () => {
+const SearchBar = ({ handleSearch }) => {
+  const [searchText, setSearch] = useState("");
+
   return (
     <Container>
       <h3>HAVE A QUESTION? SEARCH FOR ANSWERS...</h3>
       <div>
-        <input type="search" placeholder="Search..." />
-        <button type="submit">Search</button>
+        <input
+          type="text"
+          placeholder="Search..."
+          onChange={(e) => {
+            const text = e.target.value;
+            setSearch(text);
+            handleSearch(text);
+          }}
+          value={searchText}
+        />
+        <i>🕵️‍♀️</i>
       </div>
     </Container>
   );

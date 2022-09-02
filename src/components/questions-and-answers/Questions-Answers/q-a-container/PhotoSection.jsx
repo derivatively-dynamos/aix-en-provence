@@ -9,13 +9,6 @@ const PhotoSection = ({ photos, answerID }) => {
     setIsOpen((preState) => !preState);
   };
 
-  // isOpen,
-  // onClick,
-  // showCloseButton = true,
-  // showHeader,
-  // children,
-  // title,
-
   if (photos.length > 0) {
     return (
       <Box1>
