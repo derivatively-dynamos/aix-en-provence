@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Modal = ({ modalState, posTop, posLeft, price, name, photo, category, currProductInfo, setModalState }) => {
+const Modal = ({ modalState, price, name, photo, category, currProductInfo, setModalState }) => {
 
 
   if (!modalState) {

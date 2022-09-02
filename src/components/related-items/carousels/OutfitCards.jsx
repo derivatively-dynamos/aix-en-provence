@@ -41,21 +41,21 @@ const OutfitCards = ({ product, setProductId, currProductInfo }) => {
 
 
   return (
-    <StyledContainer onMouseLeave={() => {setModalState(false)}} onClick={() => {setProductId(product)}}>
+    <StyledContainer onClick={() => {setProductId(product)}}>
       <ImageContainer>
-        <img src={photo} style={{
+        <img onClick={() => {setProductId(product)}} src={photo} style={{
           maxWidth: 'auto',
           height: '100%'
         }}></img>
         <StarButton icon={faStar} />
       </ImageContainer>
-      <InfoContainer onMouseEnter={(event) => {handleMouseEnter(true, event)}} >
+      <InfoContainer onClick={() => {setProductId(product)}} >
         <div>{name}</div>
         <div>{category}</div>
         <div>${price}</div>
         <div>★★★☆☆</div>
       </InfoContainer>
-      <Modal modalState={modalState} posTop={posStateTop} posLeft={posStateLeft} price={price} name={name} photo={photo} category={category} currProductInfo={currProductInfo} />
+      <Modal modalState={modalState} price={price} name={name} photo={photo} category={category} currProductInfo={currProductInfo} />
     </StyledContainer>
   );
 };

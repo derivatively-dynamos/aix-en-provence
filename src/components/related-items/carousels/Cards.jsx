@@ -12,12 +12,9 @@ const Cards = ({ product, setProductId, currProductInfo }) => {
   const [name, setName] = useState(null);
   const [category, setCategory] = useState(null);
   const [modalState, setModalState] = useState(false);
-  const [posStateTop, setPosStateTop] = useState(0);
-  const [posStateLeft, setPosStateLeft] = useState(0);
-  const handleStarClick = (boolean, e) => {
+
+  const handleStarClick = (boolean) => {
     setModalState(boolean);
-    setPosStateLeft(e.clientX);
-    setPosStateTop(e.clientY);
   }
   useEffect(() => {
     api.get(`products/${product}`)
@@ -41,13 +38,13 @@ const Cards = ({ product, setProductId, currProductInfo }) => {
 
 
   return (
-    <StyledContainer onMouseLeave={() => {setModalState(false)}} >
+    <StyledContainer >
       <ImageContainer>
         <img onClick={() => {setProductId(product)}} src={photo} style={{
           maxWidth: 'auto',
           height: '100%'
         }}></img>
-        <StarButton icon={faStar} onClick={(event) => {handleStarClick(true, event)}} />
+        <StarButton icon={faStar} onClick={(event) => {handleStarClick(true)}} />
       </ImageContainer>
       <InfoContainer onClick={() => {setProductId(product)}} >
         <div>{name}</div>
@@ -55,7 +52,7 @@ const Cards = ({ product, setProductId, currProductInfo }) => {
         <div>${price}</div>
         <div>★★★☆☆</div>
       </InfoContainer>
-      <Modal modalState={modalState} posTop={posStateTop} posLeft={posStateLeft} price={price} name={name} photo={photo} category={category} currProductInfo={currProductInfo} setModalState={setModalState} />
+      <Modal modalState={modalState} price={price} name={name} photo={photo} category={category} currProductInfo={currProductInfo} setModalState={setModalState} />
     </StyledContainer>
   );
 };
