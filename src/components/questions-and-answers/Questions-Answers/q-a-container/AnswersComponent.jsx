@@ -19,14 +19,14 @@ const AnswersComponent = ({ answers }) => {
             return <AnswersField key={answer.id} answer={answer} />;
           }
         })}
-        {answers.length > 2 && (
-          <div>
+        <div>
+          {answers.length > 1 ? (
             <Button onClick={handleClick}>
               {" "}
               {loadMore ? "Collapse" : "Load More Answers"}
             </Button>
-          </div>
-        )}
+          ) : null}
+        </div>
       </Box1>
     </section>
   );

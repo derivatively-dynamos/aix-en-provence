@@ -41,10 +41,8 @@ const AnswerField = ({ answer }) => {
           </div>
           <div>
             | Helpful?{" "}
-            <Button onClick={() => setHelpfull((preState) => preState + 1)}>
-              Yes
-            </Button>{" "}
-            ({helpful}) |
+            <Button onClick={() => setHelpfull(helpfulness + 1)}>Yes</Button> (
+            {helpful}) |
             <Button onClick={report}>
               {reported ? <ReportedText>Reported</ReportedText> : "Report"}
             </Button>
