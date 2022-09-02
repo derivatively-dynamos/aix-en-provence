@@ -63,4 +63,9 @@ const Container = styled.div`
   background-color: #7e7e7e;
 `;
 
+const Box1 = styled.div`
+  max-height: 500px;
+  overflow: auto;
+`;
+
 export default QuestionsAndAnswers;
