@@ -27,7 +27,6 @@ const Overview = ({ product, styles}) => {
 
   useEffect(() => {
     if(styles.length === 0) return;
-    console.log(styles);
     setStyle(styles[0]);
     setStyleIndex(0);
     setIndex(0);
