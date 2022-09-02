@@ -79,7 +79,8 @@ const StyledContainer = styled(Container)`
   max-width: 16em;
   min-width: 16em;
   scroll-snap-align: start;
-  border: 2px solid ${props => props.theme.color}
+  border: 2px solid ${props => props.theme.color};
+  cursor: pointer;
 `
 
 const ImageContainer = styled.section`
