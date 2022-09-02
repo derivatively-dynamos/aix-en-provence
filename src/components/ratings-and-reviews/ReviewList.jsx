@@ -26,13 +26,15 @@ const ReviewList = ({ reviews }) => {
         })}
       </Container>
       <BtnCont>
+      {reviews.length > 2 &&
         <Btn onClick={()=>{
           handleExpansion();
         }}>{expanded ? 'LESS REVIEWS' : 'MORE REVIEWS'}</Btn>
-        <Btn>
-          ADD REVIEW
-          <Cross icon={faPlus}></Cross>
-        </Btn>
+      }
+      <Btn>
+        ADD REVIEW
+        <Cross icon={faPlus}></Cross>
+      </Btn>
       </BtnCont>
     </Container>
   )

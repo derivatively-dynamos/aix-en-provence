@@ -29,18 +29,14 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
         ) / reviewBundle.length;
         setScore(score)
     })
-    .catch((err) => {
-      console.log(err);
-    })
+    .catch((err) => console.log(err))
 
     api.get(`/reviews/meta/?product_id=${productId}`)
     .then((returnedData) => {
       const apiMetaData = returnedData.data;
       setMetaData(apiMetaData);
     })
-    .catch((err) => {
-      console.log(err);
-    })
+    .catch((err) => console.log(err))
   }, [productId])
 
   return (
