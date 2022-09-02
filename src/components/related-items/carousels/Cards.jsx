@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import Modal from "./Modal.jsx";
 import api from '../../shared-components/api';
+import { faChevronLeft, faChevronRight, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const Cards = ({ product, setProductId, currProductInfo }) => {
 
@@ -70,7 +71,7 @@ const StyledContainer = styled(Container)`
   background-color: ${props => props.theme.shadow};
   color: ${props => props.theme.color};
   padding: 0 0 .5em 0;
-  margin: 0 .3em 0 .3em;
+  margin: 0 .6em 0 0;
   justify-content: flex-end;
   align-items: center;
   height: 100%;
@@ -78,6 +79,7 @@ const StyledContainer = styled(Container)`
   max-width: 16em;
   min-width: 16em;
   scroll-snap-align: start;
+  border: 2px solid ${props => props.theme.color}
 `
 
 const ImageContainer = styled.section`
