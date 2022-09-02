@@ -9,12 +9,27 @@ import themes from './theme';
 import { ThemeProvider } from 'styled-components';
 import Header from './Header';
 import clickTrack from './shared-components/ClickTracker';
+import api from './shared-components/api';
 
 const OverviewTrack = clickTrack(Overview, 'overview');
 
 const App = () => {
   const [theme, setTheme] = useState('dark');
   const [productId, setProductId] = useState(37313);
+  const [product, setProduct] = useState('');
+  const [styles, setStyles] = useState([]);
+
+  useEffect(() => {
+    api.get(`products/${productId}`)
+      .then((res) => {
+        setProduct(res.data);
+        return api.get(`products/${productId}/styles`);
+      })
+      .then((res) => {
+        setStyles(res.data.results);
+      })
+      .catch((err) => console.error(err));
+  }, [productId]);
 
   return (
     <Container
@@ -23,7 +38,7 @@ const App = () => {
     >
       <ThemeProvider theme={themes[theme]}>
         <Header curTheme={theme} setTheme={setTheme} themes={themes} />
-        <OverviewTrack productId={productId} />
+        <OverviewTrack product={product} styles={styles} />
         <SlimColumn>
           <RelatedItems productId={productId} setProductId={setProductId} />
           <QuestionsAndAnswers />
