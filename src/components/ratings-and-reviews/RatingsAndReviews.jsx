@@ -36,7 +36,6 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     api.get(`/reviews/meta/?product_id=${productId}`)
     .then((returnedData) => {
       const apiMetaData = returnedData.data;
-      console.log(apiMetaData)
       setMetaData(apiMetaData);
     })
     .catch((err) => {
