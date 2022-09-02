@@ -12,13 +12,8 @@ const OutfitCards = ({ product, setProductId, currProductInfo, outfit, setOutfit
   const [name, setName] = useState(null);
   const [category, setCategory] = useState(null);
   const [modalState, setModalState] = useState(false);
-  const [posStateTop, setPosStateTop] = useState(0);
-  const [posStateLeft, setPosStateLeft] = useState(0);
-  const handleMouseEnter = (boolean, e) => {
-    setModalState(boolean);
-    setPosStateLeft(e.clientX);
-    setPosStateTop(e.clientY);
-  }
+
+
   useEffect(() => {
     api.get(`products/${product}`)
     .then(res => {
@@ -63,7 +58,7 @@ const OutfitCards = ({ product, setProductId, currProductInfo, outfit, setOutfit
           maxWidth: 'auto',
           height: '100%'
         }}></img>
-        <StarButton icon={faCircleXmark} onClick={() => {xClickHandler()}} />
+        <XButton icon={faCircleXmark} onClick={() => {xClickHandler()}} />
       </ImageContainer>
       <InfoContainer onClick={() => {setProductId(product)}} >
         <div>{name}</div>
@@ -101,7 +96,7 @@ const StyledContainer = styled(Container)`
   cursor: pointer;
   position: relative;
 `
-const StarButton = styled(FontAwesomeIcon)`
+const XButton = styled(FontAwesomeIcon)`
   font-size: 1.2em;
   color: ${props => props.theme.shadow};
   z-index: 2;
@@ -110,7 +105,6 @@ const StarButton = styled(FontAwesomeIcon)`
   top: 0;
   margin: 0.2em 0.2em 0 0;
   transition: all .2s ease-in-out;
-  font-weight: bolder;
   &:hover {
     transform: scale(1.2);
   }

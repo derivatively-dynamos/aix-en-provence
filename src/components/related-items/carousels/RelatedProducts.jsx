@@ -10,13 +10,19 @@ const RelatedProducts = ({ productId, setProductId, currProductInfo }) => {
   const [relatedProducts, setRelatedProducts] = useState([37312, 37313, 37318, 37317]);
   const [displayWidth, setDisplayWidth] = useState(0);
   const [scrollWidth, setScrollWidth] = useState(0);
+  const [scrollLeftLoc, setScrollLeftLoc] = useState(0);
+  const [isShownLeft, setIsShownLeft] = useState(false);
 
   //Refs
   const scrollRef = useRef(null);
 
   //Utility functions
+  const handleSCrollClick = (direction) => {
+    setIsShownLeft(!isShownLeft);
+    scroll(direction);
+  }
   const scroll = (direction) => {
-    scrollRef.current.scrollLeft += direction;
+    setScrollLeftLoc(scrollRef.current.scrollLeft += direction);
   };
 
   useEffect(() => {
@@ -33,37 +39,23 @@ const RelatedProducts = ({ productId, setProductId, currProductInfo }) => {
     setScrollWidth(scrollRef.current.scrollWidth);
   }, [productId]);
 
-  //Conditional Rendering
-  let iconConditionalLeft;
-  let iconConditionalRight;
-
-  if (scrollWidth > displayWidth) {
-    iconConditionalLeft = <IconCover onClick={() => {scroll(-200)}}>
-      <Left icon={faChevronLeft}/>
-    </IconCover>
-  } else {
-    iconConditionalLeft = <IconCover style={{ display: 'none'}} />
-  }
-  if (scrollWidth > displayWidth) {
-    iconConditionalRight = <IconCoverRight onClick={() => {scroll(200)}}>
-      <Right icon={faChevronRight}/>
-    </IconCoverRight>
-  } else {
-    iconConditionalRight = <IconCoverRight style={{ display: 'none'}} />
-  }
 
   return (
     <Container>
       <TitleDiv>Related Products</TitleDiv>
       <InnerContainer>
         <CardContainer ref={scrollRef}>
-          {iconConditionalLeft}
+          <IconCover onClick={() => { scroll(-265) }}>
+            <Left icon={faChevronLeft} />
+          </IconCover>
           {relatedProducts.map((product, i) => {
             return (
               <Cards product={product} key={i} setProductId={setProductId} currProductInfo={currProductInfo} />
             )
           })}
-          {iconConditionalRight}
+          <IconCoverRight onClick={() => { handleSCrollClick(265) }}>
+            <Right icon={faChevronRight} />
+          </IconCoverRight>
         </CardContainer>
       </InnerContainer>
       <SlideTracker />

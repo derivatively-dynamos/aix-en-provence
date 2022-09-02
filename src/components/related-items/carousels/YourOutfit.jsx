@@ -9,7 +9,6 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
   const [displayWidth, setDisplayWidth] = useState(0);
   const [scrollWidth, setScrollWidth] = useState(0);
   const [outfit, setOutfit] = useState([]);
-  const [scrollLoc, setScrollLoc] = useState(0);
 
   //Refs
   const scrollRef = useRef(null);
@@ -17,7 +16,6 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
   //Utility functions
   const scroll = (direction) => {
     scrollRef.current.scrollLeft += direction;
-    setScrollLoc(scrollRef.current.scrollLeft);
   };
   const updateOutfitHandler = () => {
     if (!outfit.includes(productId)) {
@@ -87,6 +85,7 @@ const AddItemCard = styled.section`
   border: 2px solid ${props => props.theme.color};
   cursor: pointer;
 `
+
 const PlusIcon = styled(FontAwesomeIcon)`
   font-size: 6em;
   color: ${props => props.theme.color};
