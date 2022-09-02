@@ -17,7 +17,6 @@ const RelatedProducts = ({ productId, setProductId, currProductInfo }) => {
   //Utility functions
   const scroll = (direction) => {
     scrollRef.current.scrollLeft += direction;
-    console.log(scrollRef);
   };
 
   useEffect(() => {

@@ -18,7 +18,6 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
   const scroll = (direction) => {
     scrollRef.current.scrollLeft += direction;
     setScrollLoc(scrollRef.current.scrollLeft);
-    console.log(scrollRef.current.scrollLeft);
   };
   const updateOutfitHandler = () => {
     if (!outfit.includes(productId)) {
