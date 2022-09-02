@@ -5,37 +5,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faMinus } from '@fortawesome/free-solid-svg-icons';
 import api from '../../shared-components/api';
 
-const RelatedProducts = ({ productId, setProductId }) => {
+const RelatedProducts = ({ productId, setProductId, currProductInfo }) => {
+  //State
   const [relatedProducts, setRelatedProducts] = useState([37312, 37313, 37318, 37317]);
-  const [currProductInfo, setCurrProductInfo] = useState({
-    name: '',
-    category: '',
-    price: '',
-    photo: ''
-  })
+  const [displayWidth, setDisplayWidth] = useState(0);
+  const [scrollWidth, setScrollWidth] = useState(0);
+
+  //Refs
   const scrollRef = useRef(null);
+
+  //Utility functions
   const scroll = (direction) => {
     scrollRef.current.scrollLeft += direction;
   };
-  useEffect(() => {
-    api.get(`products/${productId}`)
-    .then(res => {
-      setCurrProductInfo(prevState => ({
-        ...prevState,
-        name: res.data.name,
-        category: res.data.category
-      }));
-      return api.get(`products/${productId}/styles`)
-    })
-    .then(res => {
-      setCurrProductInfo(prevState => ({
-        ...prevState,
-        price: res.data.results[0]['original_price'],
-        photo: res.data.results[0].photos[0]['thumbnail_url']
-      }));
-    })
-    .catch(err => console.error(err))
-  }, [productId])
+
   useEffect(() => {
     api.get(`products/${productId}/related`)
     .then(res => {
@@ -44,27 +27,46 @@ const RelatedProducts = ({ productId, setProductId }) => {
     .catch(err => console.error(err))
   }, [productId]);
 
+  //Use Effect
+  useEffect(() => {
+    setDisplayWidth(scrollRef.current.offsetWidth);
+    setScrollWidth(scrollRef.current.scrollWidth);
+  }, [productId]);
 
+  //Conditional Rendering
+  let iconConditionalLeft;
+  let iconConditionalRight;
+
+  if (scrollWidth > displayWidth) {
+    iconConditionalLeft = <IconCover onClick={() => {scroll(-200)}}>
+      <Left icon={faChevronLeft}/>
+    </IconCover>
+  } else {
+    iconConditionalLeft = <IconCover style={{ display: 'none'}} />
+  }
+  if (scrollWidth > displayWidth) {
+    iconConditionalRight = <IconCoverRight onClick={() => {scroll(200)}}>
+      <Right icon={faChevronRight}/>
+    </IconCoverRight>
+  } else {
+    iconConditionalRight = <IconCoverRight style={{ display: 'none'}} />
+  }
 
   return (
     <Container>
       <TitleDiv>Related Products</TitleDiv>
       <InnerContainer>
         <CardContainer ref={scrollRef}>
-          <IconCover onClick={() => {scroll(-200)}}>
-            <Left icon={faChevronLeft}/>
-          </IconCover>
+          {iconConditionalLeft}
           {relatedProducts.map((product, i) => {
             return (
               <Cards product={product} key={i} setProductId={setProductId} currProductInfo={currProductInfo} />
             )
           })}
-          <IconCoverRight onClick={() => {scroll(200)}}>
-            <Right icon={faChevronRight} />
-          </IconCoverRight>
+          {iconConditionalRight}
         </CardContainer>
       </InnerContainer>
-      <SlideTracker></SlideTracker>
+      <SlideTracker />
     </Container>
   );
 };
@@ -94,7 +96,7 @@ const InnerContainer = styled.section`
   padding: 0.2;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 95%;
 `
 const CardContainer = styled.section`
   display: flex;
@@ -136,12 +138,12 @@ const IconCoverRight = styled(IconCover)`
 
 const Left = styled(FontAwesomeIcon)`
   font-size: 2.3em;
-  color: white;
+  color: ${props => props.theme.color};
 `
 
 const Right = styled(FontAwesomeIcon)`
   font-size: 2.3em;
-  color: white;
+  color: ${props => props.theme.color};
 `
 const Dash = styled(FontAwesomeIcon)`
   font-size: 2.5em;
