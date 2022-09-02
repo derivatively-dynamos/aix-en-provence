@@ -96,7 +96,7 @@ const InnerContainer = styled.section`
   padding: 0.2;
   justify-content: center;
   align-items: center;
-  width: 95%;
+  width: 100%;
 `
 const CardContainer = styled.section`
   display: flex;

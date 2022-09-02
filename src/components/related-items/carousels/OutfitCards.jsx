@@ -5,16 +5,19 @@ import api from '../../shared-components/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faMinus, faPlus, faStar } from '@fortawesome/free-solid-svg-icons';
 
-const Cards = ({ product, setProductId, currProductInfo }) => {
+const OutfitCards = ({ product, setProductId, currProductInfo }) => {
 
   const [price, setPrice] = useState(null);
   const [photo, setPhoto] = useState(null);
   const [name, setName] = useState(null);
   const [category, setCategory] = useState(null);
   const [modalState, setModalState] = useState(false);
-
-  const handleStarClick = (boolean) => {
+  const [posStateTop, setPosStateTop] = useState(0);
+  const [posStateLeft, setPosStateLeft] = useState(0);
+  const handleMouseEnter = (boolean, e) => {
     setModalState(boolean);
+    setPosStateLeft(e.clientX);
+    setPosStateTop(e.clientY);
   }
   useEffect(() => {
     api.get(`products/${product}`)
@@ -38,13 +41,13 @@ const Cards = ({ product, setProductId, currProductInfo }) => {
 
 
   return (
-    <StyledContainer >
+    <StyledContainer onClick={() => {setProductId(product)}}>
       <ImageContainer>
         <img onClick={() => {setProductId(product)}} src={photo} style={{
           maxWidth: 'auto',
           height: '100%'
         }}></img>
-        <StarButton icon={faStar} onClick={(event) => {handleStarClick(true)}} />
+        <StarButton icon={faStar} />
       </ImageContainer>
       <InfoContainer onClick={() => {setProductId(product)}} >
         <div>{name}</div>
@@ -52,7 +55,7 @@ const Cards = ({ product, setProductId, currProductInfo }) => {
         <div>${price}</div>
         <div>★★★☆☆</div>
       </InfoContainer>
-      <Modal modalState={modalState} price={price} name={name} photo={photo} category={category} currProductInfo={currProductInfo} setModalState={setModalState} />
+      <Modal modalState={modalState} price={price} name={name} photo={photo} category={category} currProductInfo={currProductInfo} />
     </StyledContainer>
   );
 };
@@ -117,5 +120,4 @@ const InfoContainer = styled.section`
 `
 
 
-export default Cards;
-
+export default OutfitCards;
