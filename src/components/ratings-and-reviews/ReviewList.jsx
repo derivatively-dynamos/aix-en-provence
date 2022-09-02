@@ -18,23 +18,23 @@ const ReviewList = ({ reviews }) => {
       <SortBy reviews={ reviews } />
       <Container>
         {expanded
-        ? reviews.map((review) => {
-          return <Review key={review.review_id} review={ review }/>
-        })
-        : reviews.slice(0, 2).map((review) => {
-          return <Review key={review.review_id} review={ review }/>
+          ? reviews.map((review) => {
+            return <Review key={review.review_id} review={ review }/>
+          })
+          : reviews.slice(0, 2).map((review) => {
+            return <Review key={review.review_id} review={ review }/>
         })}
       </Container>
       <BtnCont>
-      {reviews.length > 2 &&
-        <Btn onClick={()=>{
-          handleExpansion();
-        }}>{expanded ? 'LESS REVIEWS' : 'MORE REVIEWS'}</Btn>
-      }
-      <Btn>
-        ADD REVIEW
-        <Cross icon={faPlus}></Cross>
-      </Btn>
+        {reviews.length > 2 &&
+          <Btn onClick={()=>{
+            handleExpansion();
+          }}>{expanded ? 'LESS REVIEWS' : 'MORE REVIEWS'}</Btn>
+        }
+        <Btn>
+          ADD REVIEW
+          <Cross icon={faPlus}></Cross>
+        </Btn>
       </BtnCont>
     </Container>
   )
@@ -42,11 +42,10 @@ const ReviewList = ({ reviews }) => {
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   flex: 2;
   align-items: flex-start;
-  box-sizing: border-box;
   width: 100%;
-  flex-direction: column;
 `
 
 const BtnCont = styled.div`

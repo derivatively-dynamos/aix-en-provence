@@ -5,10 +5,6 @@ import ReviewBreakdown from './ReviewBreakdown.jsx';
 import ReviewList from './ReviewList.jsx';
 import api from "../shared-components/api.js";
 
-//sample data:
-import sampleProduct from "./sampleReviews.js"
-import sampleMetaData from "./sampleMetaData.js"
-
 const RatingsAndReviews = ({productId, score, setScore }) => {
   const [ reviews, setReview] = useState(undefined);
   const [ metaData, setMetaData] = useState(undefined);
@@ -39,7 +35,6 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     .catch((err) => console.log(err))
   }, [productId])
 
-  console.log(!reviews || !metaData)
   if (!reviews || !metaData) return <Loading />
 
   return (
