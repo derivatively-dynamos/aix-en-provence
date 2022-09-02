@@ -18,7 +18,7 @@ const sampleProduct = [
         },
         {
             "review_id": 1275306,
-            "rating": 5,
+            "rating": 2,
             "summary": "asdf",
             "recommend": true,
             "response": null,
@@ -42,7 +42,7 @@ const sampleProduct = [
         },
         {
             "review_id": 1276231,
-            "rating": 5,
+            "rating": 2,
             "summary": "Really it is so good",
             "recommend": true,
             "response": null,

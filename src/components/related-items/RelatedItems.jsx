@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import RelatedProducts from './carousels/RelatedProducts.jsx';
 import YourOutfit from './carousels/YourOutfit.jsx';
 
-const RelatedItems = () => {
+const RelatedItems = ({ productId, setProductId }) => {
 
   return (
     <RICDiv>
-      <RelatedProducts />
-      <YourOutfit />
+      <RelatedProducts productId={productId} setProductId={setProductId} />
+      <YourOutfit productId={productId}/>
     </RICDiv>
   )
 }
@@ -18,7 +18,7 @@ const RICDiv = styled.div`
   flex-direction: column;
   width: 100%;
   padding: 0.5em;
-  background-color: #7e7e7e;
+  background-color: #153A51;
 `
 
 export default RelatedItems;

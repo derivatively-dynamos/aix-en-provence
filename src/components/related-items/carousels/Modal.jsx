@@ -1,58 +1,82 @@
 import React from "react";
 import styled from "styled-components";
 
-const Modal = ({ modalState, posTop, posLeft }) => {
+const Modal = ({ modalState, posTop, posLeft, price, name, photo, category, currProductInfo }) => {
+
 
   if (!modalState) {
     return null;
   } else {
     return (
-      <Container left={posLeft} top={posTop} >
+      <Container style={{
+        top: posTop,
+        left: posLeft,
+        transform: `translate(-6%, -80%)`
+      }} >
         <ImagesContainer>
           <ImageContainer>
-            <img src="https://images.unsplash.com/photo-1562542082-519ebcdb43e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"></img>
+            <img src={currProductInfo.photo}></img>
           </ImageContainer>
           <ImageContainer>
-            <img src="https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"></img>
+            <img src={photo}></img>
           </ImageContainer>
         </ImagesContainer>
         <InfoContainer>
-          <table border="5" cellPadding="5" bgcolor="#113b2f">
-            <caption>Product Comparison</caption>
+          <StyleTable>
+            <StyleCaption>Product Comparison</StyleCaption>
             <tbody>
               <tr>
-                <th>Product</th>
-                <th>Category</th>
-                <th>Price</th>
-                <th>Rating</th>
+                <StyleTh>{currProductInfo.name}</StyleTh>
+                <StyleTh2>Product</StyleTh2>
+                <StyleTh>{name}</StyleTh>
               </tr>
               <tr>
-                <th>Morning Joggers</th>
-                <th>Pants</th>
-                <th>$40.00</th>
-                <th>★★★☆☆</th>
+                <StyleTh>{currProductInfo.category}</StyleTh>
+                <StyleTh2>Category</StyleTh2>
+                <StyleTh>{category}</StyleTh>
               </tr>
               <tr>
-                <th>Camo Onesie</th>
-                <th>Jackets</th>
-                <th>$140.00</th>
-                <th>★★★☆☆</th>
+                <StyleTh>${currProductInfo.price}</StyleTh>
+                <StyleTh2>Price</StyleTh2>
+                <StyleTh>${price}</StyleTh>
+              </tr>
+              <tr>
+                <StyleTh>★★★☆☆</StyleTh>
+                <StyleTh2>Rating</StyleTh2>
+                <StyleTh>★★★☆☆</StyleTh>
               </tr>
             </tbody>
-          </table>
+          </StyleTable>
         </InfoContainer>
       </Container>
     );
   }
 };
-
+{/* <StyleTh>★★★☆☆</StyleTh> */}
+const StyleTable = styled.table`
+  background-color: ${props => props.theme.shadow};
+  border: 2px solid ${props => props.theme.color};
+  border-collapse: collapse;
+  margin: 0 .4em .1em .4em;
+`
+const StyleCaption = styled.caption`
+  color: ${props => props.theme.color};
+  margin: 0 0 1em 0;
+  font-weight: bold;
+`
+const StyleTh = styled.th`
+  color: ${props => props.theme.color};
+  border: 2px solid ${props => props.theme.color};
+`
+const StyleTh2 = styled.th`
+  color: ${props => props.theme.color};
+  border: 2px solid ${props => props.theme.color};
+  font-weight: lighter;
+`
 const Container = styled.section`
   display: flex;
-  border-radius: 2%;
   flex-direction: column;
-  position: absolute;
-  top: ${props => `${props.top}`};
-  left: ${props => `${props.left}`};
+  position: fixed;
   z-index: 2;
   overflow: hidden;
 `
@@ -67,13 +91,15 @@ const ImagesContainer = styled.section`
   display: flex;
   flex-direction: row;
   overflow:auto;
+  justify-content: space-evenly;
+  background-color: ${props => props.theme.background};
 `
 const InfoContainer = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
   /* flex-direction: row; */
-  background-color: #1e4512e5;
+  background-color: ${props => props.theme.background};
   padding: 1em;
 `
 

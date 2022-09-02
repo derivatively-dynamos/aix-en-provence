@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import './app.scss';
 import styled from 'styled-components';
 import Overview from './overview/Overview';
@@ -14,15 +14,18 @@ const OverviewTrack = clickTrack(Overview, 'overview');
 
 const App = () => {
   const [theme, setTheme] = useState('dark');
-
+  const [productId, setProductId] = useState(37313);
 
   return (
-    <Container className="container" style={{backgroundColor: themes[theme].background}}>
+    <Container
+      className="container"
+      style={{ backgroundColor: themes[theme].background }}
+    >
       <ThemeProvider theme={themes[theme]}>
         <Header curTheme={theme} setTheme={setTheme} themes={themes} />
-        <OverviewTrack productId={37311} />
+        <OverviewTrack productId={productId} />
         <SlimColumn>
-          <RelatedItems />
+          <RelatedItems productId={productId} setProductId={setProductId} />
           <QuestionsAndAnswers />
           <RatingsAndReviews />
         </SlimColumn>
@@ -41,6 +44,6 @@ const Container = styled.div`
 `;
 const SlimColumn = styled.div`
   max-width: 85%;
-`
+`;
 
 export default App;

@@ -1,14 +1,51 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import Cards from '../Cards.jsx';
+import Cards from './Cards.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faMinus } from '@fortawesome/free-solid-svg-icons';
+import api from '../../shared-components/api';
 
-const RelatedProducts = () => {
+const RelatedProducts = ({ productId, setProductId }) => {
+  const [relatedProducts, setRelatedProducts] = useState([37312, 37313, 37318, 37317]);
+  const [currProductInfo, setCurrProductInfo] = useState({
+    name: '',
+    category: '',
+    price: '',
+    photo: ''
+  })
   const scrollRef = useRef(null);
   const scroll = (direction) => {
     scrollRef.current.scrollLeft += direction;
   };
+  useEffect(() => {
+    api.get(`products/${productId}`)
+    .then(res => {
+      setCurrProductInfo(prevState => ({
+        ...prevState,
+        name: res.data.name,
+        category: res.data.category
+      }));
+      return api.get(`products/${productId}/styles`)
+    })
+    .then(res => {
+      setCurrProductInfo(prevState => ({
+        ...prevState,
+        price: res.data.results[0]['original_price'],
+        photo: res.data.results[0].photos[0]['thumbnail_url']
+      }));
+    })
+    .catch(err => console.error(err))
+  }, [productId])
+  useEffect(() => {
+    api.get(`products/${productId}/related`)
+    .then(res => {
+      setRelatedProducts(res.data);
+    })
+    .catch(err => console.error(err))
+  }, [productId]);
+
+
+
   return (
     <Container>
       <TitleDiv>Related Products</TitleDiv>
@@ -17,38 +54,33 @@ const RelatedProducts = () => {
           <IconCover onClick={() => {scroll(-200)}}>
             <Left icon={faChevronLeft}/>
           </IconCover>
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
+          {relatedProducts.map((product, i) => {
+            return (
+              <Cards product={product} key={i} setProductId={setProductId} currProductInfo={currProductInfo} />
+            )
+          })}
           <IconCoverRight onClick={() => {scroll(200)}}>
             <Right icon={faChevronRight} />
           </IconCoverRight>
         </CardContainer>
       </InnerContainer>
-      <SlideTracker>
-        <Dash icon={faMinus} />
-        <Dash2 icon={faMinus} />
-        <Dash2 icon={faMinus} />
-        <Dash2 icon={faMinus} />
-      </SlideTracker>
+      <SlideTracker></SlideTracker>
     </Container>
   );
 };
+{/* <Dash2 icon={faMinus} /> */}
 const TitleDiv = styled.section`
   display: flex;
   justify-content: center;
   font-weight: bold;
   font-size: larger;
+  color: ${props => props.theme.color}
 `
 const Container = styled.section`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  background-color: #313131;
+  background-color: ${props => props.theme.background};
   color: lightgray;
   padding: 0.2;
   align-items: center;
@@ -57,7 +89,7 @@ const InnerContainer = styled.section`
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  background-color: #313131;
+  background-color: ${props => props.theme.background};
   color: lightgray;
   padding: 0.2;
   justify-content: center;
@@ -67,7 +99,7 @@ const InnerContainer = styled.section`
 const CardContainer = styled.section`
   display: flex;
   flex-direction: row;
-  background-color: #313131;
+  background-color: ${props => props.theme.background};
   color: lightgray;
   padding: .2;
   align-items: stretch;
@@ -79,9 +111,8 @@ const CardContainer = styled.section`
 `
 const SlideTracker = styled.section`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   width: 100%;
+  height: 1em;
 `
 const IconCover = styled.div`
   display: flex;
