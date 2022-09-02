@@ -10,20 +10,25 @@ import { ThemeProvider } from 'styled-components';
 import Header from './Header';
 import clickTrack from './shared-components/ClickTracker';
 
+const OverviewTrack = clickTrack(Overview, 'overview');
+
 const App = () => {
   const [theme, setTheme] = useState('dark');
   const [productId, setProductId] = useState(37313);
 
-  const OverviewTrack = clickTrack(Overview, 'overview');
-
   return (
-    <Container className="container">
+    <Container
+      className="container"
+      style={{ backgroundColor: themes[theme].background }}
+    >
       <ThemeProvider theme={themes[theme]}>
         <Header curTheme={theme} setTheme={setTheme} themes={themes} />
-        <OverviewTrack productId={37311} />
-        <RelatedItems productId={productId} setProductId={setProductId} />
-        <QuestionsAndAnswers />
-        <RatingsAndReviews />
+        <OverviewTrack productId={productId} />
+        <SlimColumn>
+          <RelatedItems productId={productId} setProductId={setProductId} />
+          <QuestionsAndAnswers />
+          <RatingsAndReviews />
+        </SlimColumn>
       </ThemeProvider>
     </Container>
   );
@@ -35,9 +40,10 @@ const Container = styled.div`
   align-items: center;
   margin: 1em auto 0 auto;
   max-width: 1200px;
-  gap: 1em;
   border: 1px solid darkgray;
-  background-color: #dbdbdb;
+`;
+const SlimColumn = styled.div`
+  max-width: 85%;
 `;
 
 export default App;

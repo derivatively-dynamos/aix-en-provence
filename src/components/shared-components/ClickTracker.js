@@ -1,12 +1,13 @@
 import React from "react";
 import api from "./api";
 import _ from "lodash";
+import styled from "styled-components";
 
 const clickTrack = (Component, name) => {
   return (props) => (
-    <div onClick={(e) => throttledTracker(e, name)}>
+    <Div onClick={(e) => throttledTracker(e, name)}>
       <Component {...props} />
-    </div>
+    </Div>
   );
 };
 
@@ -18,6 +19,9 @@ const handleClickTrack = (e, name) => {
   }
   api.post('interactions', body).catch(err => console.error(err))
 }
+const Div=styled.div`
+  width: 100%;
+`
 
 const throttledTracker = _.throttle(handleClickTrack, 500);
 export default clickTrack;

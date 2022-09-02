@@ -120,7 +120,7 @@ const Container = styled.div`
   }
 `;
 const Loading = styled(Container)`
-  height: 10em;
+  height: 25em;
 `
 
 export default Overview;
