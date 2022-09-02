@@ -8,7 +8,7 @@ import ReviewList from './ReviewList.jsx'
 import sampleProduct from "./sampleReviews.js"
 import sampleMetaData from "./sampleMetaData.js"
 
-const RatingsAndReviews = () => {
+const RatingsAndReviews = ({ score, setScore }) => {
 
   const [ reviews ] = useState(sampleProduct[0].results);
   const [ metaData ] = useState(sampleMetaData);
