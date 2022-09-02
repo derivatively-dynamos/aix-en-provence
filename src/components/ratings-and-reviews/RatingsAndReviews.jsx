@@ -1,17 +1,47 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import styled from 'styled-components';
-import ReviewBreakdown from './ReviewBreakdown.jsx'
-import ReviewList from './ReviewList.jsx'
+import ReviewBreakdown from './ReviewBreakdown.jsx';
+import ReviewList from './ReviewList.jsx';
+import api from "../shared-components/api.js";
 
 //sample data:
 import sampleProduct from "./sampleReviews.js"
 import sampleMetaData from "./sampleMetaData.js"
 
-const RatingsAndReviews = () => {
+const RatingsAndReviews = ({productId, score, setScore }) => {
+  const [ reviews, setReview] = useState(sampleProduct[0].results);
+  const [ metaData, setMetaData] = useState(sampleMetaData);
 
-  const [ reviews ] = useState(sampleProduct[0].results);
-  const [ metaData ] = useState(sampleMetaData);
+  useEffect(() => {
+    api.get(`/reviews/?product_id=${productId}`)
+    .then((product) => {
+      const reviewBundle = product.data.results
+      setReview(reviewBundle)
+      //setScore for App
+      const init = 0;
+      const score = reviewBundle
+        .map((review) => {
+          return review.rating;
+        })
+        .reduce((total, curr) =>
+          total + curr, init
+        ) / reviewBundle.length;
+        setScore(score)
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
+    api.get(`/reviews/meta/?product_id=${productId}`)
+    .then((returnedData) => {
+      const apiMetaData = returnedData.data;
+      setMetaData(apiMetaData);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }, [productId])
 
   return (
     <AppContainer>
