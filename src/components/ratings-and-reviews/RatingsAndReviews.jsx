@@ -11,21 +11,46 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
   const [ sortedBy, setSort ] = useState('relevance')
 
   const filterBy = (reviewArr, filter) => {
-    if (filter === 'helpfulness') {
-      const sortedByHelpfulness = reviewArr.slice().sort((a, b) =>
-        b.helpfulness - a.helpfulness
-      );
-      setReviews(sortedByHelpfulness);
-    } else if (filter === 'newest') {
-      const sortedByNewest = reviewArr.slice().sort((a, b) => {
-        let aDate = new Date(a.date)
-        let bDate = new Date(b.date)
-        return bDate - aDate;
-      });
-      setReviews(sortedByNewest);
-    } else {
-      setReviews(reviewArr);
+    console.log(filter)
+    switch (filter) {
+      case 'helpfulness':
+        const sortedByHelpfulness = reviewArr.slice().sort((a, b) =>
+          b.helpfulness - a.helpfulness
+        );
+        setReviews(sortedByHelpfulness);
+        break;
+      case 'newest':
+        const sortedByNewest = reviewArr.slice().sort((a, b) => {
+          let aDate = new Date(a.date)
+          let bDate = new Date(b.date)
+          return bDate - aDate;
+        });
+        setReviews(sortedByNewest);
+        break;
+      case '5 Stars':
+        showStarReviews(5);
+        break;
+      case '4 Stars':
+        showStarReviews(4);
+        break;
+      case '3 Stars':
+        showStarReviews(3);
+        break;
+      case '2 Stars':
+        showStarReviews(2)
+        break;
+      case '1 Stars':
+        showStarReviews(1);
+        break;
+      default:
+        setReviews(reviewArr);
     }
+  }
+
+  //Can't go back after this :/
+  const showStarReviews = (starNum) => {
+    const reviewsByNum = reviews.slice().filter(review => review.rating === starNum)
+    setReviews(reviewsByNum)
   }
 
   const report = () => {
@@ -72,7 +97,7 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     <AppContainer>
       <Headline>RATINGS AND REVIEWS</Headline>
       <Container>
-        <ReviewBreakdown data={metaData}/>
+        <ReviewBreakdown setSort={setSort} data={metaData}/>
         <ReviewList report={report} markHelpful={markHelpful} reviews={reviews} setSort={setSort}/>
       </Container>
     </AppContainer>
