@@ -9,7 +9,6 @@ const SortBy = ({ reviewAmt, setSort }) => {
       <Selector
         onChange={() => {
           setSort(event.target.value);
-          console.log('e target:', event.target.value)
         }}
       >
         <option value="relevance" defaultValue>relevance</option>

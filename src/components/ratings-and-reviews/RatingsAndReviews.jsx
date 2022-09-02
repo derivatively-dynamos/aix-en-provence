@@ -13,16 +13,19 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
   const filterBy = (reviewArr, filter) => {
     if (filter === 'helpfulness') {
       const sortedByHelpfulness = reviewArr.slice().sort((a, b) =>
-      b.helpfulness - a.helpfulness
+        b.helpfulness - a.helpfulness
       );
       setReviews(sortedByHelpfulness);
-    // } else if (filter === 'newest') {
-    //   const sortedByNewest = reviewArr.slice().sort((a, b) => a.date > b.date ? 1 : a.date < b.date ? -1 : 0);
-    //   setReviews(sortedByNewest);
+    } else if (filter === 'newest') {
+      const sortedByNewest = reviewArr.slice().sort((a, b) => {
+        let aDate = new Date(a.date)
+        let bDate = new Date(b.date)
+        return bDate - aDate;
+      });
+      setReviews(sortedByNewest);
     } else {
       setReviews(reviewArr);
     }
-    console.log('reviews: ', reviews, 'filter: ', filter)
   }
 
   useEffect(() => {
