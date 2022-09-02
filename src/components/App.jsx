@@ -43,7 +43,7 @@ const App = () => {
         <SlimColumn>
           <RelatedItems productId={productId} setProductId={setProductId} />
           <QuestionsAndAnswers />
-          <RatingsAndReviews productId={productId} score={score} setScore={setScore}/>
+          <RatingsAndReviews />
         </SlimColumn>
       </ThemeProvider>
     </Container>
