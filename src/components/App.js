@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import './app.scss';
 import styled from 'styled-components';
 import Overview from './overview/Overview';
@@ -12,6 +12,7 @@ import clickTrack from './shared-components/ClickTracker';
 
 const App = () => {
   const [theme, setTheme] = useState('dark');
+  const [productId, setProductId] = useState(37313);
 
   const OverviewTrack = clickTrack(Overview, 'overview');
 
@@ -20,7 +21,7 @@ const App = () => {
       <ThemeProvider theme={themes[theme]}>
         <Header curTheme={theme} setTheme={setTheme} themes={themes} />
         <OverviewTrack productId={37311} />
-        <RelatedItems />
+        <RelatedItems productId={productId} setProductId={setProductId} />
         <QuestionsAndAnswers />
         <RatingsAndReviews />
       </ThemeProvider>
