@@ -5,7 +5,7 @@ import api from '../../shared-components/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faMinus, faPlus, faStar } from '@fortawesome/free-solid-svg-icons';
 
-const Cards = ({ product, setProductId, currProductInfo }) => {
+const OutfitCards = ({ product, setProductId, currProductInfo }) => {
 
   const [price, setPrice] = useState(null);
   const [photo, setPhoto] = useState(null);
@@ -14,7 +14,7 @@ const Cards = ({ product, setProductId, currProductInfo }) => {
   const [modalState, setModalState] = useState(false);
   const [posStateTop, setPosStateTop] = useState(0);
   const [posStateLeft, setPosStateLeft] = useState(0);
-  const handleStarClick = (boolean, e) => {
+  const handleMouseEnter = (boolean, e) => {
     setModalState(boolean);
     setPosStateLeft(e.clientX);
     setPosStateTop(e.clientY);
@@ -41,21 +41,21 @@ const Cards = ({ product, setProductId, currProductInfo }) => {
 
 
   return (
-    <StyledContainer onMouseLeave={() => {setModalState(false)}} >
+    <StyledContainer onMouseLeave={() => {setModalState(false)}} onClick={() => {setProductId(product)}}>
       <ImageContainer>
-        <img onClick={() => {setProductId(product)}} src={photo} style={{
+        <img src={photo} style={{
           maxWidth: 'auto',
           height: '100%'
         }}></img>
-        <StarButton icon={faStar} onClick={(event) => {handleStarClick(true, event)}} />
+        <StarButton icon={faStar} />
       </ImageContainer>
-      <InfoContainer onClick={() => {setProductId(product)}} >
+      <InfoContainer onMouseEnter={(event) => {handleMouseEnter(true, event)}} >
         <div>{name}</div>
         <div>{category}</div>
         <div>${price}</div>
         <div>★★★☆☆</div>
       </InfoContainer>
-      <Modal modalState={modalState} posTop={posStateTop} posLeft={posStateLeft} price={price} name={name} photo={photo} category={category} currProductInfo={currProductInfo} setModalState={setModalState} />
+      <Modal modalState={modalState} posTop={posStateTop} posLeft={posStateLeft} price={price} name={name} photo={photo} category={category} currProductInfo={currProductInfo} />
     </StyledContainer>
   );
 };
@@ -120,5 +120,4 @@ const InfoContainer = styled.section`
 `
 
 
-export default Cards;
-
+export default OutfitCards;
