@@ -180,3 +180,5 @@ const Dash2 = styled(FontAwesomeIcon)`
 `
 
 export default YourOutfit;
+
+
