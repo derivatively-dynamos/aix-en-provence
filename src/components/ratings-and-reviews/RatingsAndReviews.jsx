@@ -1,9 +1,8 @@
 import React from 'react';
-import { useState, useEffect} from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
-import ReviewBreakdown from './ReviewBreakdown.jsx';
-import ReviewList from './ReviewList.jsx';
-import api from "../shared-components/api.js";
+import ReviewBreakdown from './ReviewBreakdown.jsx'
+import ReviewList from './ReviewList.jsx'
 
 const RatingsAndReviews = ({productId, score, setScore }) => {
   const [ reviews, setReview] = useState(undefined);
@@ -34,6 +33,8 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     })
     .catch((err) => console.log(err))
   }, [productId])
+
+const RatingsAndReviews = () => {
 
   if (!reviews || !metaData) return <Loading />
 

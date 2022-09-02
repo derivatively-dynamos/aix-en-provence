@@ -44,8 +44,7 @@ const RICDiv = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0.5em;
-  background-color: #153A51;
+  padding: 0;
 `
 
 export default RelatedItems;
