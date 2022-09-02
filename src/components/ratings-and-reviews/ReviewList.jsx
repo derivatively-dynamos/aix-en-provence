@@ -6,7 +6,7 @@ import Review from './Review.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-const ReviewList = ({ reviews }) => {
+const ReviewList = ({ reviews, setSort }) => {
   const [expanded, expand] = useState(false);
 
   const handleExpansion = () => {
@@ -15,7 +15,7 @@ const ReviewList = ({ reviews }) => {
 
   return (
     <Container>
-      <SortBy reviews={ reviews } />
+      <SortBy reviewAmt={reviews.length} setSort={setSort} />
       <Container>
         {expanded
           ? reviews.map((review) => {

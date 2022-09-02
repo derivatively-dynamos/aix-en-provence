@@ -6,14 +6,30 @@ import ReviewList from './ReviewList.jsx';
 import api from "../shared-components/api.js";
 
 const RatingsAndReviews = ({productId, score, setScore }) => {
-  const [ reviews, setReview] = useState(undefined);
+  const [ reviews, setReviews] = useState(undefined);
   const [ metaData, setMetaData] = useState(undefined);
+  const [ sortedBy, setSort ] = useState('relevance')
+
+  const filterBy = (reviewArr, filter) => {
+    if (filter === 'helpfulness') {
+      const sortedByHelpfulness = reviewArr.slice().sort((a, b) =>
+      b.helpfulness - a.helpfulness
+      );
+      setReviews(sortedByHelpfulness);
+    // } else if (filter === 'newest') {
+    //   const sortedByNewest = reviewArr.slice().sort((a, b) => a.date > b.date ? 1 : a.date < b.date ? -1 : 0);
+    //   setReviews(sortedByNewest);
+    } else {
+      setReviews(reviewArr);
+    }
+    console.log('reviews: ', reviews, 'filter: ', filter)
+  }
 
   useEffect(() => {
     api.get(`/reviews/?product_id=${productId}`)
     .then((product) => {
       const reviewBundle = product.data.results
-      setReview(reviewBundle)
+      filterBy(reviewBundle, sortedBy)
       //setScore for App
       const init = 0;
       const score = reviewBundle
@@ -35,6 +51,10 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     .catch((err) => console.log(err))
   }, [productId])
 
+  useEffect(() => {
+    filterBy(reviews, sortedBy)
+  }, [sortedBy])
+
   if (!reviews || !metaData) return <Loading />
 
   return (
@@ -42,7 +62,7 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
       <Headline>RATINGS AND REVIEWS</Headline>
       <Container>
         <ReviewBreakdown data={metaData}/>
-        <ReviewList reviews={reviews}/>
+        <ReviewList reviews={reviews} setSort={setSort}/>
       </Container>
     </AppContainer>
   )
