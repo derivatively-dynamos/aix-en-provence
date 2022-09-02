@@ -22,8 +22,9 @@ const PhotoSection = ({ photos, answerID }) => {
                 onClick={onClick}
                 showCloseButton={false}
                 showHeader={false}
+                key={answerID}
               >
-                <Img2 key={answerID} src={photo}></Img2>
+                <Img2 src={photo}></Img2>
               </Modal>
             );
           }
