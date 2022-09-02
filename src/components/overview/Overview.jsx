@@ -8,9 +8,8 @@ import ExpandedView from './image-gallery/ExpandedView';
 import api from '../shared-components/api';
 
 
-const Overview = ({ productId}) => {
-  const [product, setProduct] = useState(null);
-  const [styles, setStyles] = useState(null);
+const Overview = ({ product, styles}) => {
+
   const [style, setStyle] = useState(null);
   const [styleIndex, setStyleIndex] = useState(0);
   const [photos, setPhotos] = useState(null);
@@ -27,21 +26,14 @@ const Overview = ({ productId}) => {
   };
 
   useEffect(() => {
-    api.get(`products/${productId}`)
-    .then(res => {
-      setProduct(res.data);
-      return api.get(`products/${productId}/styles`)
-    })
-    .then(res => {
-      setStyles(res.data.results);
-      setStyle(res.data.results[0])
-      setStyleIndex(0);
-      setIndex(0);
-      setPopover(false);
-      setPhotos(res.data.results[0].photos)
-    })
-    .catch(err => console.error(err))
-  },[productId])
+    if(styles.length === 0) return;
+    setStyle(styles[0]);
+    setStyleIndex(0);
+    setIndex(0);
+    setPopover(false);
+    setPhotos(styles[0].photos);
+  }, [product, styles])
+
 
   useEffect(() => {
     if (!style) return;

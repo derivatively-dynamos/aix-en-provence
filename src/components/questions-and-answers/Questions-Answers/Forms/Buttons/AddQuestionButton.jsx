@@ -22,10 +22,12 @@ const AddQuestionButton = ({ productName }) => {
         name={name}
         onClick={onClick}
         isOpen={isOpen}
+        showHeader={false}
         title={"Ask Your Question"}
       >
         <Form onSubmit={onSubmit}>
-          <h4> About the {productName}</h4>
+          {" "}
+          <H4> About the {productName}</H4>
           <div> *What is your nickname </div>
           <input maxLength="60" placeholder="jack543!" type="text" />
           <div> *Your email </div>
@@ -55,4 +57,9 @@ const name = "ADD A QUESTION";
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+`;
+
+const H4 = styled.h4`
+  margin-top: 5px;
+  margin-bottom: 15px;
 `;

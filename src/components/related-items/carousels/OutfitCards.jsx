@@ -3,18 +3,21 @@ import styled from "styled-components";
 import Modal from "./Modal.jsx";
 import api from '../../shared-components/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faMinus, faPlus, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faMinus, faPlus, faStar, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
-const Cards = ({ product, setProductId, currProductInfo }) => {
+const OutfitCards = ({ product, setProductId, currProductInfo, outfit, setOutfit }) => {
 
   const [price, setPrice] = useState(null);
   const [photo, setPhoto] = useState(null);
   const [name, setName] = useState(null);
   const [category, setCategory] = useState(null);
   const [modalState, setModalState] = useState(false);
-
-  const handleStarClick = (boolean) => {
+  const [posStateTop, setPosStateTop] = useState(0);
+  const [posStateLeft, setPosStateLeft] = useState(0);
+  const handleMouseEnter = (boolean, e) => {
     setModalState(boolean);
+    setPosStateLeft(e.clientX);
+    setPosStateTop(e.clientY);
   }
   useEffect(() => {
     api.get(`products/${product}`)
@@ -34,17 +37,33 @@ const Cards = ({ product, setProductId, currProductInfo }) => {
     .catch(err => console.error(err))
   }, [product]);
 
+  const removeProduct = (index) => {
+    setOutfit([
+      ...outfit.slice(0, index),
+      ...outfit.slice(index + 1, outfit.length)
+    ]);
+  }
+
+  const xClickHandler = () => {
+    let currIndex;
+    outfit.forEach((item, i) => {
+      if (item === product) {
+        currIndex = i;
+      }
+    })
+    removeProduct(currIndex);
+  }
 
 
 
   return (
-    <StyledContainer >
+    <StyledContainer>
       <ImageContainer>
         <img onClick={() => {setProductId(product)}} src={photo} style={{
           maxWidth: 'auto',
           height: '100%'
         }}></img>
-        <StarButton icon={faStar} onClick={(event) => {handleStarClick(true)}} />
+        <StarButton icon={faCircleXmark} onClick={() => {xClickHandler()}} />
       </ImageContainer>
       <InfoContainer onClick={() => {setProductId(product)}} >
         <div>{name}</div>
@@ -52,7 +71,7 @@ const Cards = ({ product, setProductId, currProductInfo }) => {
         <div>${price}</div>
         <div>★★★☆☆</div>
       </InfoContainer>
-      <Modal modalState={modalState} price={price} name={name} photo={photo} category={category} currProductInfo={currProductInfo} setModalState={setModalState} />
+      <Modal modalState={modalState} price={price} name={name} photo={photo} category={category} currProductInfo={currProductInfo} />
     </StyledContainer>
   );
 };
@@ -91,6 +110,7 @@ const StarButton = styled(FontAwesomeIcon)`
   top: 0;
   margin: 0.2em 0.2em 0 0;
   transition: all .2s ease-in-out;
+  font-weight: bolder;
   &:hover {
     transform: scale(1.2);
   }
@@ -117,5 +137,4 @@ const InfoContainer = styled.section`
 `
 
 
-export default Cards;
-
+export default OutfitCards;

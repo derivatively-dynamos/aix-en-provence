@@ -1,55 +1,95 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import Cards from './Cards.jsx';
+import OutfitCards from './OutfitCards.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
-const YourOutfit = () => {
+const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
+  //State
+  const [displayWidth, setDisplayWidth] = useState(0);
+  const [scrollWidth, setScrollWidth] = useState(0);
+  const [outfit, setOutfit] = useState([]);
+  const [scrollLoc, setScrollLoc] = useState(0);
+
+  //Refs
   const scrollRef = useRef(null);
+
+  //Utility functions
   const scroll = (direction) => {
     scrollRef.current.scrollLeft += direction;
+    setScrollLoc(scrollRef.current.scrollLeft);
   };
+  const updateOutfitHandler = () => {
+    if (!outfit.includes(productId)) {
+      setOutfit(oldOutfit => [...oldOutfit, productId])
+    }
+  }
+
+  //Use Effect
+  useEffect(() => {
+    setDisplayWidth(scrollRef.current.offsetWidth);
+    setScrollWidth(scrollRef.current.scrollWidth);
+  }, [outfit]);
+
+  //Conditional Rendering
+  let iconConditionalLeft;
+  let iconConditionalRight;
+
+  if (scrollWidth > displayWidth) {
+    iconConditionalLeft = <IconCover onClick={() => {scroll(-200)}}>
+      <Left icon={faChevronLeft}/>
+    </IconCover>
+  } else {
+    iconConditionalLeft = <IconCover style={{ display: 'none'}} />
+  }
+  if (scrollWidth > displayWidth) {
+    iconConditionalRight = <IconCoverRight onClick={() => {scroll(200)}}>
+      <Right icon={faChevronRight}/>
+    </IconCoverRight>
+  } else {
+    iconConditionalRight = <IconCoverRight style={{ display: 'none'}} />
+  }
+
   return (
     <Container>
       <TitleDiv>Your Outfit</TitleDiv>
       <InnerContainer>
+        <AddItemCard onClick={() => {updateOutfitHandler()}}>
+          <PlusIcon icon={faPlus}/>
+          <AddItemText>Add to Outfit</AddItemText>
+        </AddItemCard>
         <CardContainer ref={scrollRef}>
-          <IconCover onClick={() => {scroll(-200)}}>
-            <Left icon={faChevronLeft}/>
-          </IconCover>
-          <AddItemCard>
-            <PlusIcon icon={faPlus}/>
-            <AddItemText>Add to Outfit</AddItemText>
-          </AddItemCard>
-          <IconCoverRight onClick={() => {scroll(200)}}>
-            <Right icon={faChevronRight} />
-          </IconCoverRight>
+          {iconConditionalLeft}
+          {[...outfit].reverse().map((product, i) => {
+            return (
+              <OutfitCards product={product} key={i} setProductId={setProductId} currProductInfo={currProductInfo} outfit={outfit} setOutfit={setOutfit} />
+            )
+          })}
+          {iconConditionalRight}
         </CardContainer>
       </InnerContainer>
-      <SlideTracker>
-        <Dash icon={faMinus} />
-        <Dash2 icon={faMinus} />
-        <Dash2 icon={faMinus} />
-        <Dash2 icon={faMinus} />
-      </SlideTracker>
+      <SlideTracker />
     </Container>
   );
 };
 const AddItemCard = styled.section`
   display: flex;
   flex-direction: column;
-  background: #2E778A;
+  background: ${props => props.theme.shadow};
   max-width: 16em;
   min-width: 16em;
-  height: 17em;
+  height: 18.3em;
   align-items: center;
   justify-content: center;
-  position: sticky;
   left: 0;
+  margin: 0 .6em 0 0;
+  scroll-snap-align: start;
+  border: 2px solid ${props => props.theme.color};
+  cursor: pointer;
 `
 const PlusIcon = styled(FontAwesomeIcon)`
   font-size: 6em;
-  color: white;
+  color: ${props => props.theme.color};
 `
 const AddItemText = styled.section`
   font-size: 1em;
@@ -60,6 +100,7 @@ const TitleDiv = styled.section`
   justify-content: center;
   font-weight: bold;
   font-size: larger;
+  color: ${props => props.theme.color}
 `
 const Container = styled.section`
   display: flex;
@@ -77,9 +118,9 @@ const InnerContainer = styled.section`
   background-color: ${props => props.theme.background};
   color: lightgray;
   padding: 0.2;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
-  width: 80%;
+  width: 100%;
 `
 const CardContainer = styled.section`
   display: flex;
@@ -88,7 +129,6 @@ const CardContainer = styled.section`
   color: lightgray;
   padding: .2;
   align-items: stretch;
-  width: 100%;
   overflow: auto;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
@@ -97,9 +137,8 @@ const CardContainer = styled.section`
 `
 const SlideTracker = styled.section`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   width: 100%;
+  height: 2em;
 `
 const IconCover = styled.div`
   display: flex;
@@ -123,12 +162,12 @@ const IconCoverRight = styled(IconCover)`
 
 const Left = styled(FontAwesomeIcon)`
   font-size: 2.3em;
-  color: white;
+  color: ${props => props.theme.color};
 `
 
 const Right = styled(FontAwesomeIcon)`
   font-size: 2.3em;
-  color: white;
+  color: ${props => props.theme.color};
 `
 const Dash = styled(FontAwesomeIcon)`
   font-size: 2.5em;
