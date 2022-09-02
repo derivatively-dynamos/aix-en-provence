@@ -39,7 +39,7 @@ const Review = ({ report, markHelpful, review }) => {
         }
       }>{!markedHelpful
           ? 'Yes'
-          : 'You marked this as helpful!'
+          : null
         }</UlText> {review.helpfulness} | <UlText
         onClick={()=> {
           report();
