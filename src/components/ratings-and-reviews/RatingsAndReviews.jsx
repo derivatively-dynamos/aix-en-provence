@@ -28,6 +28,14 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     }
   }
 
+  const report = () => {
+    console.log('reported')
+  }
+
+  const markHelpful = () => {
+    console.log('marked helpful!')
+  }
+
   useEffect(() => {
     api.get(`/reviews/?product_id=${productId}`)
     .then((product) => {
@@ -65,7 +73,7 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
       <Headline>RATINGS AND REVIEWS</Headline>
       <Container>
         <ReviewBreakdown data={metaData}/>
-        <ReviewList reviews={reviews} setSort={setSort}/>
+        <ReviewList report={report} markHelpful={markHelpful} reviews={reviews} setSort={setSort}/>
       </Container>
     </AppContainer>
   )

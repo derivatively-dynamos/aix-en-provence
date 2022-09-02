@@ -6,7 +6,7 @@ import Review from './Review.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-const ReviewList = ({ reviews, setSort }) => {
+const ReviewList = ({ report, markHelpful, reviews, setSort }) => {
   const [expanded, expand] = useState(false);
 
   const handleExpansion = () => {
@@ -19,10 +19,10 @@ const ReviewList = ({ reviews, setSort }) => {
       <Container>
         {expanded
           ? reviews.map((review) => {
-            return <Review key={review.review_id} review={ review }/>
+            return <Review report={report} markHelpful={markHelpful} key={review.review_id} review={ review }/>
           })
           : reviews.slice(0, 2).map((review) => {
-            return <Review key={review.review_id} review={ review }/>
+            return <Review report={report} markHelpful={markHelpful} key={review.review_id} review={ review }/>
         })}
       </Container>
       <BtnCont>
