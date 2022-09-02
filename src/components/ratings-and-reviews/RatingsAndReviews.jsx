@@ -10,8 +10,8 @@ import sampleProduct from "./sampleReviews.js"
 import sampleMetaData from "./sampleMetaData.js"
 
 const RatingsAndReviews = ({productId, score, setScore }) => {
-  const [ reviews, setReview] = useState(sampleProduct[0].results);
-  const [ metaData, setMetaData] = useState(sampleMetaData);
+  const [ reviews, setReview] = useState(undefined);
+  const [ metaData, setMetaData] = useState(undefined);
 
   useEffect(() => {
     api.get(`/reviews/?product_id=${productId}`)
@@ -39,6 +39,9 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     .catch((err) => console.log(err))
   }, [productId])
 
+  console.log(!reviews || !metaData)
+  if (!reviews || !metaData) return <Loading />
+
   return (
     <AppContainer>
       <h2>RATINGS AND REVIEWS</h2>
@@ -54,6 +57,9 @@ const Container = styled.div`
   display: flex;
   width: 100%;
   padding: 0.5em;
+`
+const Loading = styled(Container)`
+  height: 25em;
 `
 const AppContainer = styled(Container)`
   flex-direction: column;
