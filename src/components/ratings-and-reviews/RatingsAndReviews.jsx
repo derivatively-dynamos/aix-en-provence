@@ -39,7 +39,7 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
 
   return (
     <AppContainer>
-      <h2>RATINGS AND REVIEWS</h2>
+      <Headline>RATINGS AND REVIEWS</Headline>
       <Container>
         <ReviewBreakdown data={metaData}/>
         <ReviewList reviews={reviews}/>
@@ -47,6 +47,10 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     </AppContainer>
   )
 }
+
+const Headline = styled.h2`
+  padding-bottom: 1em;
+`
 
 const Container = styled.div`
   display: flex;

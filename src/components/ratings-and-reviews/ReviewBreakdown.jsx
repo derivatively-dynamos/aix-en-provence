@@ -108,7 +108,7 @@ const ColumnCont = styled(Container)`
   flex-direction: column;
   justify-content: space-around;
   padding-right: 10px;
-  max-height: 60em;
+  max-height: 45em;
   padding-bottom: 1em;
 `
 
