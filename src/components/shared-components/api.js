@@ -7,5 +7,9 @@ const api = axios.create({
     Authorization: GIT_AUTH
   }
 })
+api.interceptors.request.use(request => {
+  console.log('Making request');
+  return request
+})
 
 export default api;
