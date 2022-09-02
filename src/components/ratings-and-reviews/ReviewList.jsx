@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import SortBy from './SortBy.jsx';
 import Review from './Review.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const ReviewList = ({ reviews }) => {
   const [expanded, expand] = useState(false);
@@ -31,7 +31,7 @@ const ReviewList = ({ reviews }) => {
         }}>{expanded ? 'LESS REVIEWS' : 'MORE REVIEWS'}</Btn>
         <Btn>
           ADD REVIEW
-          <Cross icon={faPlusSquare}></Cross>
+          <Cross icon={faPlus}></Cross>
         </Btn>
       </BtnCont>
     </Container>
@@ -58,6 +58,7 @@ const BtnCont = styled.div`
 const Btn = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-weight: 900;
   padding: 2em;
   border: 0.15em solid #303030;
@@ -65,7 +66,7 @@ const Btn = styled.div`
   color: #303030;
 `
 const Cross = styled(FontAwesomeIcon)`
-  font-size: 1.5em;
+  font-size: 2em;
   color: inherit;
 `
 
