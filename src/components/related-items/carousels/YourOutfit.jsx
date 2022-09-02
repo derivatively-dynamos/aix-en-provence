@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import Cards from './Cards.jsx';
+import OutfitCards from './OutfitCards.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
@@ -62,7 +62,7 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
           {iconConditionalLeft}
           {[...outfit].reverse().map((product, i) => {
             return (
-              <Cards product={product} key={i} setProductId={setProductId} currProductInfo={currProductInfo} />
+              <OutfitCards product={product} key={i} setProductId={setProductId} currProductInfo={currProductInfo} />
             )
           })}
           {iconConditionalRight}
@@ -120,7 +120,7 @@ const InnerContainer = styled.section`
   padding: 0.2;
   justify-content: start;
   align-items: center;
-  width: 95%;
+  width: 100%;
 `
 const CardContainer = styled.section`
   display: flex;
@@ -138,7 +138,7 @@ const CardContainer = styled.section`
 const SlideTracker = styled.section`
   display: flex;
   width: 100%;
-  height: 1em;
+  height: 2em;
 `
 const IconCover = styled.div`
   display: flex;
