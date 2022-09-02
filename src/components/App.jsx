@@ -15,7 +15,6 @@ const OverviewTrack = clickTrack(Overview, 'overview');
 const App = () => {
   const [theme, setTheme] = useState('dark');
   const [productId, setProductId] = useState(37313);
-  const [ score, setScore ] = useState(0);
 
   return (
     <Container
@@ -28,7 +27,7 @@ const App = () => {
         <SlimColumn>
           <RelatedItems productId={productId} setProductId={setProductId} />
           <QuestionsAndAnswers />
-          <RatingsAndReviews productId={productId} score={score} setScore={setScore}/>
+          <RatingsAndReviews />
         </SlimColumn>
       </ThemeProvider>
     </Container>
