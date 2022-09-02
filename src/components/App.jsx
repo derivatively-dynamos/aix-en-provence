@@ -38,7 +38,7 @@ const App = () => {
     >
       <ThemeProvider theme={themes[theme]}>
         <Header curTheme={theme} setTheme={setTheme} themes={themes} />
-        <OverviewTrack productId={productId} />
+        <OverviewTrack product={product} styles={styles} />
         <SlimColumn>
           <RelatedItems productId={productId} setProductId={setProductId} />
           <QuestionsAndAnswers />
