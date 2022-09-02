@@ -61,7 +61,7 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
         </AddItemCard>
         <CardContainer ref={scrollRef}>
           {iconConditionalLeft}
-          {outfit.map((product, i) => {
+          {[...outfit].reverse().map((product, i) => {
             return (
               <Cards product={product} key={i} setProductId={setProductId} currProductInfo={currProductInfo} />
             )
