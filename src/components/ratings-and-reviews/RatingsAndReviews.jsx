@@ -6,9 +6,10 @@ import ReviewBreakdown from './ReviewBreakdown.jsx';
 import ReviewList from './ReviewList.jsx';
 
 const RatingsAndReviews = ({productId, score, setScore }) => {
-  const [ reviews, setReviews] = useState(undefined);
-  const [ metaData, setMetaData] = useState(undefined);
-  const [ sortedBy, setSort ] = useState('relevance');
+  const [reviews, setReviews] = useState(undefined);
+  const [sortedReviews, setSortedReviews] = useState(undefined);
+  const [metaData, setMetaData] = useState(undefined);
+  const [sortedBy, setSort ] = useState('relevance');
 
   const filterBy = (reviewArr, filter) => {
     switch (filter) {
@@ -16,7 +17,7 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
         const sortedByHelpfulness = reviewArr.slice().sort((a, b) =>
           b.helpfulness - a.helpfulness
         );
-        setReviews(sortedByHelpfulness);
+        setSortedReviews(sortedByHelpfulness);
         break;
       case 'newest':
         const sortedByNewest = reviewArr.slice().sort((a, b) => {
@@ -24,47 +25,60 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
           let bDate = new Date(b.date)
           return bDate - aDate;
         });
-        setReviews(sortedByNewest);
+        setSortedReviews(sortedByNewest);
         break;
       case '5 Stars':
-        showStarReviews(5);
+        sortByStars(5);
         break;
       case '4 Stars':
-        showStarReviews(4);
+        sortByStars(4);
         break;
       case '3 Stars':
-        showStarReviews(3);
+        sortByStars(3);
         break;
       case '2 Stars':
-        showStarReviews(2)
+        sortByStars(2)
         break;
       case '1 Stars':
-        showStarReviews(1);
+        sortByStars(1);
         break;
       default:
-        setReviews(reviewArr);
+        setSortedReviews(reviewArr);
         break;
     }
   }
 
-  //Can't go back after this :/
-  const showStarReviews = (starNum) => {
+  const sortByStars = (starNum) => {
     const reviewsByNum = reviews.slice().filter(review => review.rating === starNum);
-    setReviews(reviewsByNum);
+    setSortedReviews(reviewsByNum);
   }
 
   const report = () => {
     console.log('reported')
+    api.put(`/reviews/${productId}/report`)
+    .then(() => {
+      console.log('Post Reported!')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   }
 
   const markHelpful = () => {
-    console.log('marked helpful!')
+    api.put(`/reviews/:${productId}/helpful`)
+    .then(() => {
+      console.log('marked helpful!')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   }
 
   useEffect(() => {
     api.get(`/reviews/?product_id=${productId}`)
     .then((product) => {
       const reviewBundle = product.data.results;
+      setReviews(reviewBundle);
       filterBy(reviewBundle, sortedBy);
       //setScore for App
       const init = 0;
@@ -97,8 +111,16 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     <AppContainer>
       <Headline>RATINGS AND REVIEWS</Headline>
       <Container>
-        <ReviewBreakdown setSort={setSort} data={metaData}/>
-        <ReviewList report={report} markHelpful={markHelpful} reviews={reviews} setSort={setSort}/>
+        <ReviewBreakdown
+          setSort={setSort}
+          data={metaData}
+        />
+        <ReviewList
+          report={report}
+          markHelpful={markHelpful}
+          reviews={sortedReviews}
+          setSort={setSort}
+        />
       </Container>
     </AppContainer>
   )
