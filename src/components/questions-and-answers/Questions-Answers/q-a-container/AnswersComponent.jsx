@@ -22,7 +22,7 @@ const AnswersComponent = ({ answers }) => {
           })}
         </Box2>
         <div>
-          {answers.length > 1 ? (
+          {answers.length > 2 ? (
             <Button onClick={handleClick}>
               {" "}
               {loadMore ? "Collapse" : "Load More Answers"}

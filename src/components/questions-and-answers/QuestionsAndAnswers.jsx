@@ -5,14 +5,14 @@ import SearchBar from "./SearchBar";
 import QuestionsComponent from "./Questions-Answers/q-a-container/QuestionsComponent";
 import { GIT_AUTH, API_URL } from "../../../config";
 
-const QuestionsAndAnswers = () => {
+const QuestionsAndAnswers = ({ product }) => {
   const [questions, setQuestions] = useState([]);
   const [originalQuestions, setOriginalQuestions] = useState([]);
 
   useEffect(() => {
     axios({
       method: "get",
-      url: `${API_URL}/qa/questions?product_id=37314`,
+      url: `${API_URL}/qa/questions?product_id=${product.id}`,
       headers: { Authorization: GIT_AUTH },
       responseType: "json",
     })
@@ -50,7 +50,7 @@ const QuestionsAndAnswers = () => {
       <div>
         <h1>QUESTIONS & ANSWERS...</h1>
         <SearchBar handleSearch={handleSearch} />
-        <QuestionsComponent questions={questions} productName={productName} />
+        <QuestionsComponent questions={questions} productName={product.name} />
       </div>
     </Container>
   );

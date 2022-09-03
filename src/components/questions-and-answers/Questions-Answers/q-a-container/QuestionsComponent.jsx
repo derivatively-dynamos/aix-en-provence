@@ -5,10 +5,11 @@ import AddQuestionButton from "../Forms/Buttons/AddQuestionButton";
 
 const QuestionsComponent = ({ questions, productName }) => {
   const [loadMore, setLoadMore] = useState(false);
-
   const handleClick = () => {
     setLoadMore((prevState) => !prevState);
   };
+
+  console.log("questions", questions);
   return (
     <ContainerDiv>
       {questions.map((question, index) => {
@@ -30,9 +31,12 @@ const QuestionsComponent = ({ questions, productName }) => {
           );
         }
       })}
-      <Button onClick={handleClick}>
-        {loadMore ? "COLLAPSE" : "MORE ANSWERED QUESTIONS"}
-      </Button>
+      {questions.length > 2 ? (
+        <Button onClick={handleClick}>
+          {loadMore ? "COLLAPSE" : "MORE ANSWERED QUESTIONS"}
+        </Button>
+      ) : null}
+
       <AddQuestionButton productName={productName}>
         ADD A QUESTION
       </AddQuestionButton>
