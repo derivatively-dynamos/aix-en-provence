@@ -2,11 +2,11 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import StarBar from './StarBar.jsx';
-import SizeSlider from './SizeSlider.jsx';
+import FitSlider from './FitSlider.jsx';
 import ComfortSlider from './ComfortSlider.jsx';
 import Score from './Score.jsx';
 
-const ReviewBreakdown = ({ data }) => {
+const ReviewBreakdown = ({ setSort, data }) => {
 
   const [ totalStars, setTotal ] = useState(0);
   const [ starScore, setScore ] = useState(0);
@@ -59,6 +59,14 @@ const ReviewBreakdown = ({ data }) => {
     setStars(newStars);
   }, [data]);
 
+  const characteristics = data.characteristics;
+
+  const createSlider = (key, characteristic, value) => {
+    return characteristic === 'Comfort' || characteristic === 'Quality'
+    ? <ComfortSlider key={key} characteristic={characteristic} value={value}></ComfortSlider>
+    : <FitSlider key={key} characteristic={characteristic} value={value}></FitSlider>
+  }
+
   return (
     <ColumnCont>
       <Score score={starScore}/>
@@ -69,12 +77,15 @@ const ReviewBreakdown = ({ data }) => {
             key={starRating}
             starAmt={starRating}
             starFill={stars[starRating].percentage}
+            setSort={setSort}
           />
         })}
       </ColumnCont>
       <ColumnCont>
-        <SizeSlider size={data.characteristics.Fit.value}></SizeSlider>
-        <ComfortSlider comfort={data.characteristics.Comfort.value}></ComfortSlider>
+        {Object.keys(characteristics).map((characteristic) => {
+          return createSlider(characteristics[characteristic].id, characteristic, characteristics[characteristic].value)
+          })
+        }
       </ColumnCont>
     </ColumnCont>
   )
@@ -98,7 +109,8 @@ const ColumnCont = styled(Container)`
   flex-direction: column;
   justify-content: space-around;
   padding-right: 10px;
-  max-height: 40em;
+  max-height: 45em;
+  padding-bottom: 1em;
 `
 
 export default ReviewBreakdown;
