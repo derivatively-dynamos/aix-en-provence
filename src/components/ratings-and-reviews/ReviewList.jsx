@@ -6,7 +6,7 @@ import Review from './Review.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 
-const ReviewList = ({ report, markHelpful, reviews, setSort }) => {
+const ReviewList = ({ reviews }) => {
   const [expanded, expand] = useState(false);
 
   const handleExpansion = () => {
@@ -15,22 +15,20 @@ const ReviewList = ({ report, markHelpful, reviews, setSort }) => {
 
   return (
     <Container>
-      <SortBy reviewAmt={reviews.length} setSort={setSort} />
+      <SortBy reviews={ reviews } />
       <Container>
         {expanded
-          ? reviews.map((review) => {
-            return <Review report={report} markHelpful={markHelpful} key={review.review_id} review={ review }/>
-          })
-          : reviews.slice(0, 2).map((review) => {
-            return <Review report={report} markHelpful={markHelpful} key={review.review_id} review={ review }/>
+        ? reviews.map((review) => {
+          return <Review key={review.review_id} review={ review }/>
+        })
+        : reviews.slice(0, 2).map((review) => {
+          return <Review key={review.review_id} review={ review }/>
         })}
       </Container>
       <BtnCont>
-        {reviews.length > 2 &&
-          <Btn onClick={()=>{
-            handleExpansion();
-          }}>{expanded ? 'LESS REVIEWS' : 'MORE REVIEWS'}</Btn>
-        }
+        <Btn onClick={()=>{
+          handleExpansion();
+        }}>{expanded ? 'LESS REVIEWS' : 'MORE REVIEWS'}</Btn>
         <Btn>
           ADD REVIEW
           <Cross icon={faPlusSquare}></Cross>
@@ -42,10 +40,11 @@ const ReviewList = ({ report, markHelpful, reviews, setSort }) => {
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
   flex: 2;
   align-items: flex-start;
+  box-sizing: border-box;
   width: 100%;
+  flex-direction: column;
 `
 
 const BtnCont = styled.div`
