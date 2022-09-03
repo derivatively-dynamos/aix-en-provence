@@ -90,6 +90,8 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     filterBy(reviews, sortedBy)
   }, [sortedBy])
 
+const RatingsAndReviews = () => {
+
   if (!reviews || !metaData) return <Loading />
 
   return (
