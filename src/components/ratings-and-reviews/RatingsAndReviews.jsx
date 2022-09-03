@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import ReviewBreakdown from './ReviewBreakdown.jsx'
 import ReviewList from './ReviewList.jsx'
 
-<<<<<<< HEAD
 const RatingsAndReviews = ({productId, score, setScore }) => {
   const [ reviews, setReviews] = useState(undefined);
   const [ metaData, setMetaData] = useState(undefined);
@@ -86,16 +85,6 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     })
     .catch((err) => console.log(err))
   }, [productId])
-=======
-//sample data:
-import sampleProduct from "./sampleReviews.js"
-import sampleMetaData from "./sampleMetaData.js"
-
-const RatingsAndReviews = () => {
-
-  const [ reviews ] = useState(sampleProduct[0].results);
-  const [ metaData ] = useState(sampleMetaData);
->>>>>>> a9b7dd9231ab03124297d87ad21fd8a64b25412b
 
   useEffect(() => {
     filterBy(reviews, sortedBy)
