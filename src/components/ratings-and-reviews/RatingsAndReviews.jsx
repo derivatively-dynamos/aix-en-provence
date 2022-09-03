@@ -1,16 +1,16 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import ReviewBreakdown from './ReviewBreakdown.jsx'
-import ReviewList from './ReviewList.jsx'
+import api from '../shared-components/api';
+import ReviewBreakdown from './ReviewBreakdown.jsx';
+import ReviewList from './ReviewList.jsx';
 
 const RatingsAndReviews = ({productId, score, setScore }) => {
   const [ reviews, setReviews] = useState(undefined);
   const [ metaData, setMetaData] = useState(undefined);
-  const [ sortedBy, setSort ] = useState('relevance')
+  const [ sortedBy, setSort ] = useState('relevance');
 
   const filterBy = (reviewArr, filter) => {
-    console.log(filter)
     switch (filter) {
       case 'helpfulness':
         const sortedByHelpfulness = reviewArr.slice().sort((a, b) =>
@@ -43,13 +43,14 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
         break;
       default:
         setReviews(reviewArr);
+        break;
     }
   }
 
   //Can't go back after this :/
   const showStarReviews = (starNum) => {
-    const reviewsByNum = reviews.slice().filter(review => review.rating === starNum)
-    setReviews(reviewsByNum)
+    const reviewsByNum = reviews.slice().filter(review => review.rating === starNum);
+    setReviews(reviewsByNum);
   }
 
   const report = () => {
@@ -63,8 +64,8 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
   useEffect(() => {
     api.get(`/reviews/?product_id=${productId}`)
     .then((product) => {
-      const reviewBundle = product.data.results
-      filterBy(reviewBundle, sortedBy)
+      const reviewBundle = product.data.results;
+      filterBy(reviewBundle, sortedBy);
       //setScore for App
       const init = 0;
       const score = reviewBundle
@@ -90,8 +91,6 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     filterBy(reviews, sortedBy)
   }, [sortedBy])
 
-const RatingsAndReviews = () => {
-
   if (!reviews || !metaData) return <Loading />
 
   return (
@@ -108,7 +107,6 @@ const RatingsAndReviews = () => {
 const Headline = styled.h2`
   padding-bottom: 1em;
 `
-
 const Container = styled.div`
   display: flex;
   width: 100%;
