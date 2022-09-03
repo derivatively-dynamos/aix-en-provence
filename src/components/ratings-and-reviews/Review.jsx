@@ -33,18 +33,32 @@ const Review = ({ report, markHelpful, review }) => {
           </ResponseBox>
         }
       <Helpful>Helpful? <UlText
+        name='Helpful Button'
         onClick={()=> {
-          setMarkedHelpful(true);
-          markHelpful();
+          !reported
+          ? (
+            markHelpful(),
+            setMarkedHelpful(true)
+          )
+          : null
         }
       }>{!markedHelpful
           ? 'Yes'
           : null
         }</UlText> {review.helpfulness} | <UlText
+        name='Report Button'
         onClick={()=> {
-          report();
+          !reported
+          ? (
+            report(),
+            setReported(true)
+          )
+          : null
         }
-      }>Report</UlText></Helpful>
+      }>{!reported
+          ? 'Report'
+          : 'Reported'}
+      </UlText></Helpful>
     </ReviewCont>
   )
 }
