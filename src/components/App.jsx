@@ -18,6 +18,7 @@ const App = () => {
   const [productId, setProductId] = useState(37313);
   const [product, setProduct] = useState('');
   const [styles, setStyles] = useState([]);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     api.get(`products/${productId}`)
@@ -42,7 +43,7 @@ const App = () => {
         <SlimColumn>
           <RelatedItems productId={productId} setProductId={setProductId} />
           <QuestionsAndAnswers />
-          <RatingsAndReviews />
+          <RatingsAndReviews productId={productId}/>
         </SlimColumn>
       </ThemeProvider>
     </Container>
