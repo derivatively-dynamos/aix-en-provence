@@ -12,9 +12,11 @@ const PhotoSection = ({ photos, answerID }) => {
   if (photos.length > 0) {
     return (
       <Box1>
-        {photos.map((photo) => {
+        {photos.map((photo, index) => {
           if (!isOpen) {
-            return <Img onClick={onClick} key={answerID} src={photo}></Img>;
+            return (
+              <Img onClick={onClick} key={answerID + index} src={photo}></Img>
+            );
           } else {
             return (
               <Modal
@@ -22,7 +24,7 @@ const PhotoSection = ({ photos, answerID }) => {
                 onClick={onClick}
                 showCloseButton={false}
                 showHeader={false}
-                key={answerID}
+                key={answerID + index}
               >
                 <Img2 src={photo}></Img2>
               </Modal>

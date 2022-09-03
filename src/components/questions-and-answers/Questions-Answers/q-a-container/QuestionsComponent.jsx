@@ -58,6 +58,8 @@ const ContainerDiv = styled.div`
   display: block;
   align-items: center;
   justify-content: space-between;
+  max-height: 300px;
+  overflow: auto;
 `;
 
 const Button = styled.button`
