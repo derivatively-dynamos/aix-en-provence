@@ -9,22 +9,26 @@ const QuestionsAndAnswers = ({ product }) => {
   const [questions, setQuestions] = useState([]);
   const [originalQuestions, setOriginalQuestions] = useState([]);
 
+  let productID = product.id;
+
   useEffect(() => {
-    axios({
-      method: "get",
-      url: `${API_URL}/qa/questions?product_id=${product.id}`,
-      headers: { Authorization: GIT_AUTH },
-      responseType: "json",
-    })
-      .then(({ data }) => data.results)
-      .then((results) => {
-        setQuestions(results);
-        setOriginalQuestions(results);
+    if (productID !== undefined) {
+      axios({
+        method: "get",
+        url: `${API_URL}/qa/questions?product_id=${productID}&count=50`,
+        headers: { Authorization: GIT_AUTH },
+        responseType: "json",
       })
-      .catch((err) => {
-        console.log("ERROR", err);
-      });
-  }, []);
+        .then(({ data }) => data.results)
+        .then((results) => {
+          setQuestions(results);
+          setOriginalQuestions(results);
+        })
+        .catch((err) => {
+          console.log("ERROR", err);
+        });
+    }
+  }, [productID]);
 
   const handleSearch = (searchText) => {
     searchText = searchText.toLocaleLowerCase();

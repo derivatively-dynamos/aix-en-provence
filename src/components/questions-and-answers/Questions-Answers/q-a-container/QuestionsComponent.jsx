@@ -9,7 +9,14 @@ const QuestionsComponent = ({ questions, productName }) => {
     setLoadMore((prevState) => !prevState);
   };
 
-  console.log("questions", questions);
+  if (questions.length < 1) {
+    return (
+      <AddQuestionButton productName={productName}>
+        ADD A QUESTION
+      </AddQuestionButton>
+    );
+  }
+
   return (
     <ContainerDiv>
       {questions.map((question, index) => {
