@@ -1,11 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Modal from "./Modal.jsx";
-import api from '../../shared-components/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faMinus, faPlus, faStar, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
-const OutfitCards = ({ product, setProductId, currProductInfo, outfit, setOutfit }) => {
+const OutfitCards = ({ product, setProductId, outfit, setOutfit }) => {
 
   const [price, setPrice] = useState(null);
   const [photo, setPhoto] = useState(null);
@@ -15,22 +13,13 @@ const OutfitCards = ({ product, setProductId, currProductInfo, outfit, setOutfit
 
 
   useEffect(() => {
-    api.get(`products/${product}`)
-    .then(res => {
-      setName(res.data.name);
-      setCategory(res.data.category);
-    })
-    .catch(err => console.error(err))
-  }, [product]);
+    setPrice(product.price);
+    setPhoto(product.photo);
+    setName(product.name);
+    setCategory(product.category);
+  }, [product])
 
-  useEffect(() => {
-    api.get(`products/${product}/styles`)
-    .then(res => {
-      setPrice(res.data.results[0]['original_price']);
-      setPhoto(res.data.results[0].photos[0]['thumbnail_url']);
-    })
-    .catch(err => console.error(err))
-  }, [product]);
+
 
   const removeProduct = (index) => {
     setOutfit([
@@ -66,7 +55,6 @@ const OutfitCards = ({ product, setProductId, currProductInfo, outfit, setOutfit
         <div>${price}</div>
         <div>★★★☆☆</div>
       </InfoContainer>
-      <Modal modalState={modalState} price={price} name={name} photo={photo} category={category} currProductInfo={currProductInfo} />
     </StyledContainer>
   );
 };

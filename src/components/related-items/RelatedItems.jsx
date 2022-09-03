@@ -7,6 +7,7 @@ import api from '../shared-components/api';
 const RelatedItems = ({ productId, setProductId, product, styles }) => {
 
   const [currProductInfo, setCurrProductInfo] = useState({
+    id: '',
     name: '',
     category: '',
     price: '',
@@ -16,6 +17,7 @@ const RelatedItems = ({ productId, setProductId, product, styles }) => {
     if (styles.length === 0) return;
     setCurrProductInfo(prevState => ({
       ...prevState,
+      id: product.id,
       name: product.name,
       category: product.category
     }));

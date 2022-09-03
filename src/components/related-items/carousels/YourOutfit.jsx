@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import OutfitCards from './OutfitCards.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
   //State
@@ -18,12 +18,12 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
     scrollRef.current.scrollLeft += direction;
   };
   const updateOutfitHandler = () => {
-    if (!outfit.includes(productId)) {
-      setOutfit(oldOutfit => [...oldOutfit, productId])
+    if (!outfit.includes(currProductInfo)) {
+      setOutfit(oldOutfit => [...oldOutfit, currProductInfo])
     }
   }
 
-  //Use Effect
+
   useEffect(() => {
     setDisplayWidth(scrollRef.current.offsetWidth);
     setScrollWidth(scrollRef.current.scrollWidth);
@@ -59,9 +59,11 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
         <CardContainer ref={scrollRef}>
           {iconConditionalLeft}
           {[...outfit].reverse().map((product, i) => {
-            return (
-              <OutfitCards product={product} key={i} setProductId={setProductId} currProductInfo={currProductInfo} outfit={outfit} setOutfit={setOutfit} />
-            )
+            if (product.id !== '') {
+              return (
+                <OutfitCards product={product} key={i} setProductId={setProductId} outfit={outfit} setOutfit={setOutfit} />
+              )
+            }
           })}
           {iconConditionalRight}
         </CardContainer>
