@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Slider = ({ characteristic, value }) => {
-  let x = (Number(value) / 5) * 100;
+const SizeSlider = ({ size }) => {
+  let x = (Number(size) / 5) * 100;
   let sliderPos = {
     left: `${x}%`
   }
 
   return (
     <ColumnCont>
-      <h3>{characteristic}</h3>
+      <h3>Size</h3>
       <ReviewCont>
         <ReviewBar></ReviewBar>
         <ReviewBar></ReviewBar>
@@ -38,8 +38,7 @@ const SpaceCont = styled(Container)`
 `
 const ColumnCont = styled(Container)`
   flex-direction: column;
-  padding-right: 0.1em;
-  padding-bottom: 1.5em;
+  padding-right: 10px;
 `
 const ReviewCont = styled(Container)`
   position: relative;
@@ -62,4 +61,4 @@ const Indicator = styled.div`
   border-top: 0.75em solid #303030;;
 `
 
-export default Slider;
+export default SizeSlider;

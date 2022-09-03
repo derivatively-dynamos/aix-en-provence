@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import FiveStarRating from '../shared-components/FiveStarRating';
 
-const Review = ({ report, markHelpful, review }) => {
-  const [ markedHelpful, setMarkedHelpful ] = useState(false);
-  const [ reported, setReported ] = useState(false);
+const Review = ({ review }) => {
 
   let date = new Date(review.date).toLocaleDateString("en-us", {
       month: "long",
       year: "numeric",
       day: "numeric",
     });
+
 
   return (
     <ReviewCont>
@@ -32,6 +31,7 @@ const Review = ({ report, markHelpful, review }) => {
             <div>{review.response}</div>
           </ResponseBox>
         }
+
       <Helpful>Helpful? <UlText
         name='Helpful Button'
         onClick={()=> {
@@ -59,6 +59,7 @@ const Review = ({ report, markHelpful, review }) => {
           ? 'Report'
           : 'Reported'}
       </UlText></Helpful>
+
     </ReviewCont>
   )
 }
@@ -93,7 +94,7 @@ const ResponseBox = styled.div`
   background-color: #e8e8e8;
   padding: 1em;
 `
-const UlText = styled.a`
+const Links = styled.a`
   text-decoration: underline;
 `
 
