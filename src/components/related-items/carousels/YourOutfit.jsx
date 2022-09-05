@@ -9,14 +9,18 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
   const [displayWidth, setDisplayWidth] = useState(0);
   const [scrollWidth, setScrollWidth] = useState(0);
   const [outfit, setOutfit] = useState([]);
+  const [scrollLeftLoc, setScrollLeftLoc] = useState(0);
+  const [isShownLeft, setIsShownLeft] = useState(false);
+  const [isShownRight, setIsShownRight] = useState(true);
 
   //Refs
   const scrollRef = useRef(null);
 
   //Utility functions
   const scroll = (direction) => {
-    scrollRef.current.scrollLeft += direction;
+    setScrollLeftLoc(scrollRef.current.scrollLeft += direction);
   };
+
   const updateOutfitHandler = () => {
     if (!outfit.includes(currProductInfo)) {
       setOutfit(oldOutfit => [...oldOutfit, currProductInfo])
@@ -30,18 +34,34 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
   }, [outfit]);
 
   //Conditional Rendering
+  useEffect(() => {
+    if (scrollLeftLoc > 32) {
+      setIsShownLeft(true);
+    }
+    if (scrollLeftLoc < 100) {
+      setIsShownLeft(false);
+    }
+    if (((scrollRef.current.scrollWidth - scrollRef.current.clientWidth) - scrollLeftLoc) < 0) {
+      setIsShownRight(false);
+    }
+    if (((scrollRef.current.scrollWidth - scrollRef.current.clientWidth) - scrollLeftLoc) > 0) {
+      setIsShownRight(true);
+    }
+  }, [scrollLeftLoc])
+
+
   let iconConditionalLeft;
   let iconConditionalRight;
 
   if (scrollWidth > displayWidth) {
-    iconConditionalLeft = <IconCover onClick={() => {scroll(-200)}}>
+    iconConditionalLeft = <IconCover onClick={() => {scroll(-200)}} style={{visibility: `${isShownLeft ? 'visible' : 'hidden'}`}}>
       <Left icon={faChevronLeft}/>
     </IconCover>
   } else {
     iconConditionalLeft = <IconCover style={{ display: 'none'}} />
   }
   if (scrollWidth > displayWidth) {
-    iconConditionalRight = <IconCoverRight onClick={() => {scroll(200)}}>
+    iconConditionalRight = <IconCoverRight onClick={() => {scroll(200)}} style={{visibility: `${isShownRight ? 'visible' : 'hidden'}`}}>
       <Right icon={faChevronRight}/>
     </IconCoverRight>
   } else {

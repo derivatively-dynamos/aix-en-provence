@@ -8,23 +8,19 @@ import api from '../../shared-components/api';
 const RelatedProducts = ({ productId, setProductId, currProductInfo }) => {
   //State
   const [relatedProducts, setRelatedProducts] = useState([37312, 37313, 37318, 37317]);
-  const [displayWidth, setDisplayWidth] = useState(0);
-  const [scrollWidth, setScrollWidth] = useState(0);
   const [scrollLeftLoc, setScrollLeftLoc] = useState(0);
   const [isShownLeft, setIsShownLeft] = useState(false);
+  const [isShownRight, setIsShownRight] = useState(true);
 
   //Refs
   const scrollRef = useRef(null);
 
   //Utility functions
-  const handleSCrollClick = (direction) => {
-    setIsShownLeft(!isShownLeft);
-    scroll(direction);
-  }
   const scroll = (direction) => {
     setScrollLeftLoc(scrollRef.current.scrollLeft += direction);
   };
 
+  //Use Effect
   useEffect(() => {
     api.get(`products/${productId}/related`)
     .then(res => {
@@ -33,11 +29,21 @@ const RelatedProducts = ({ productId, setProductId, currProductInfo }) => {
     .catch(err => console.error(err))
   }, [productId]);
 
-  //Use Effect
+
   useEffect(() => {
-    setDisplayWidth(scrollRef.current.offsetWidth);
-    setScrollWidth(scrollRef.current.scrollWidth);
-  }, [productId]);
+    if (scrollLeftLoc > 32) {
+      setIsShownLeft(true);
+    }
+    if (scrollLeftLoc < 200) {
+      setIsShownLeft(false);
+    }
+    if (((scrollRef.current.scrollWidth - scrollRef.current.clientWidth) - scrollLeftLoc) < 0) {
+      setIsShownRight(false);
+    }
+    if (((scrollRef.current.scrollWidth - scrollRef.current.clientWidth) - scrollLeftLoc) > 0) {
+      setIsShownRight(true);
+    }
+  }, [scrollLeftLoc])
 
 
   return (
@@ -45,7 +51,7 @@ const RelatedProducts = ({ productId, setProductId, currProductInfo }) => {
       <TitleDiv>Related Products</TitleDiv>
       <InnerContainer>
         <CardContainer ref={scrollRef}>
-          <IconCover onClick={() => { scroll(-265) }}>
+          <IconCover onClick={() => { scroll(-265) }} style={{visibility: `${isShownLeft ? 'visible' : 'hidden'}`}}>
             <Left icon={faChevronLeft} />
           </IconCover>
           {relatedProducts.map((product, i) => {
@@ -53,7 +59,7 @@ const RelatedProducts = ({ productId, setProductId, currProductInfo }) => {
               <Cards product={product} key={i} setProductId={setProductId} currProductInfo={currProductInfo} />
             )
           })}
-          <IconCoverRight onClick={() => { handleSCrollClick(265) }}>
+          <IconCoverRight onClick={() => { scroll(265) }} style={{visibility: `${isShownRight ? 'visible' : 'hidden'}`}}>
             <Right icon={faChevronRight} />
           </IconCoverRight>
         </CardContainer>
