@@ -62,7 +62,7 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
           {iconConditionalLeft}
           {[...outfit].reverse().map((product, i) => {
             return (
-              <OutfitCards product={product} key={i} setProductId={setProductId} currProductInfo={currProductInfo} />
+              <OutfitCards product={product} key={i} setProductId={setProductId} currProductInfo={currProductInfo} outfit={outfit} setOutfit={setOutfit} />
             )
           })}
           {iconConditionalRight}
