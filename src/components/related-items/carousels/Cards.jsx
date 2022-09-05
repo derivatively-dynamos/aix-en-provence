@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Modal from "./Modal.jsx";
 import api from '../../shared-components/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faMinus, faPlus, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const Cards = ({ product, setProductId, currProductInfo }) => {
 
@@ -16,6 +16,7 @@ const Cards = ({ product, setProductId, currProductInfo }) => {
   const handleStarClick = (boolean) => {
     setModalState(boolean);
   }
+
   useEffect(() => {
     api.get(`products/${product}`)
     .then(res => {
