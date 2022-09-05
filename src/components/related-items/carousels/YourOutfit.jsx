@@ -2,14 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import OutfitCards from './OutfitCards.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
   //State
   const [displayWidth, setDisplayWidth] = useState(0);
   const [scrollWidth, setScrollWidth] = useState(0);
   const [outfit, setOutfit] = useState([]);
-  const [scrollLoc, setScrollLoc] = useState(0);
 
   //Refs
   const scrollRef = useRef(null);
@@ -17,15 +16,14 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
   //Utility functions
   const scroll = (direction) => {
     scrollRef.current.scrollLeft += direction;
-    setScrollLoc(scrollRef.current.scrollLeft);
   };
   const updateOutfitHandler = () => {
-    if (!outfit.includes(productId)) {
-      setOutfit(oldOutfit => [...oldOutfit, productId])
+    if (!outfit.includes(currProductInfo)) {
+      setOutfit(oldOutfit => [...oldOutfit, currProductInfo])
     }
   }
 
-  //Use Effect
+
   useEffect(() => {
     setDisplayWidth(scrollRef.current.offsetWidth);
     setScrollWidth(scrollRef.current.scrollWidth);
@@ -61,9 +59,11 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
         <CardContainer ref={scrollRef}>
           {iconConditionalLeft}
           {[...outfit].reverse().map((product, i) => {
-            return (
-              <OutfitCards product={product} key={i} setProductId={setProductId} currProductInfo={currProductInfo} outfit={outfit} setOutfit={setOutfit} />
-            )
+            if (product.id !== '') {
+              return (
+                <OutfitCards product={product} key={i} setProductId={setProductId} outfit={outfit} setOutfit={setOutfit} />
+              )
+            }
           })}
           {iconConditionalRight}
         </CardContainer>
@@ -87,6 +87,7 @@ const AddItemCard = styled.section`
   border: 2px solid ${props => props.theme.color};
   cursor: pointer;
 `
+
 const PlusIcon = styled(FontAwesomeIcon)`
   font-size: 6em;
   color: ${props => props.theme.color};
@@ -181,3 +182,5 @@ const Dash2 = styled(FontAwesomeIcon)`
 `
 
 export default YourOutfit;
+
+

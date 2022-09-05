@@ -1,41 +1,25 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Modal from "./Modal.jsx";
-import api from '../../shared-components/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faMinus, faPlus, faStar, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
-const OutfitCards = ({ product, setProductId, currProductInfo, outfit, setOutfit }) => {
+const OutfitCards = ({ product, setProductId, outfit, setOutfit }) => {
 
   const [price, setPrice] = useState(null);
   const [photo, setPhoto] = useState(null);
   const [name, setName] = useState(null);
   const [category, setCategory] = useState(null);
   const [modalState, setModalState] = useState(false);
-  const [posStateTop, setPosStateTop] = useState(0);
-  const [posStateLeft, setPosStateLeft] = useState(0);
-  const handleMouseEnter = (boolean, e) => {
-    setModalState(boolean);
-    setPosStateLeft(e.clientX);
-    setPosStateTop(e.clientY);
-  }
-  useEffect(() => {
-    api.get(`products/${product}`)
-    .then(res => {
-      setName(res.data.name);
-      setCategory(res.data.category);
-    })
-    .catch(err => console.error(err))
-  }, [product]);
+
 
   useEffect(() => {
-    api.get(`products/${product}/styles`)
-    .then(res => {
-      setPrice(res.data.results[0]['original_price']);
-      setPhoto(res.data.results[0].photos[0]['thumbnail_url']);
-    })
-    .catch(err => console.error(err))
-  }, [product]);
+    setPrice(product.price);
+    setPhoto(product.photo);
+    setName(product.name);
+    setCategory(product.category);
+  }, [product])
+
+
 
   const removeProduct = (index) => {
     setOutfit([
@@ -63,7 +47,7 @@ const OutfitCards = ({ product, setProductId, currProductInfo, outfit, setOutfit
           maxWidth: 'auto',
           height: '100%'
         }}></img>
-        <StarButton icon={faCircleXmark} onClick={() => {xClickHandler()}} />
+        <XButton icon={faCircleXmark} onClick={() => {xClickHandler()}} />
       </ImageContainer>
       <InfoContainer onClick={() => {setProductId(product)}} >
         <div>{name}</div>
@@ -71,7 +55,6 @@ const OutfitCards = ({ product, setProductId, currProductInfo, outfit, setOutfit
         <div>${price}</div>
         <div>★★★☆☆</div>
       </InfoContainer>
-      <Modal modalState={modalState} price={price} name={name} photo={photo} category={category} currProductInfo={currProductInfo} />
     </StyledContainer>
   );
 };
@@ -101,7 +84,7 @@ const StyledContainer = styled(Container)`
   cursor: pointer;
   position: relative;
 `
-const StarButton = styled(FontAwesomeIcon)`
+const XButton = styled(FontAwesomeIcon)`
   font-size: 1.2em;
   color: ${props => props.theme.shadow};
   z-index: 2;
@@ -110,7 +93,6 @@ const StarButton = styled(FontAwesomeIcon)`
   top: 0;
   margin: 0.2em 0.2em 0 0;
   transition: all .2s ease-in-out;
-  font-weight: bolder;
   &:hover {
     transform: scale(1.2);
   }
