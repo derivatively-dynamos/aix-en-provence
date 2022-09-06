@@ -42,7 +42,7 @@ const App = () => {
         <OverviewTrack product={product} styles={styles} />
         <SlimColumn>
           <RelatedItems productId={productId} setProductId={setProductId} product={product} styles={styles}/>
-          <QuestionsAndAnswers />
+          <QuestionsAndAnswers product={product}/>
           <RatingsAndReviews setScore={setScore} productId={productId}/>
         </SlimColumn>
       </ThemeProvider>
