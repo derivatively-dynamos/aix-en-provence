@@ -47,26 +47,36 @@ const AnswerField = ({ answer }) => {
         <Box3>
           <div>
             {answer.answerer_name == "Seller" ? (
-              <b>by {answer.answerer_name},</b>
+              <Box1>by {answer.answerer_name},</Box1>
             ) : (
-              `by ${answer.answerer_name},`
+              <Box4> by {answer.answerer_name}, </Box4>
             )}
           </div>
-          <div style={{ marginLeft: "5px" }}>
+          <Box5>
             {new Date(answer.date).toLocaleDateString("en-us", {
               month: "long",
               year: "numeric",
               day: "numeric",
             })}
-          </div>
-          <div>
-            | Helpful?{" "}
-            <Button disabled={isDisabled} onClick={onClick}>
+          </Box5>
+          <div style={{ fontSize: "12.5px", marginTop: "2px" }}>
+            | <span style={{ marginLeft: "3px" }}>Helpful? </span>
+            <Button
+              style={{ fontSize: "13px" }}
+              disabled={isDisabled}
+              onClick={onClick}
+            >
               Yes
             </Button>{" "}
-            ({helpful}) |
+            <span style={{ marginRight: "2px" }}>{helpful}</span> |
             <Button onClick={report}>
-              {reported ? <ReportedText>Reported</ReportedText> : "Report"}
+              {reported ? (
+                <ReportedText>Reported</ReportedText>
+              ) : (
+                <span style={{ marginLeft: "3px", fontSize: "12.5px" }}>
+                  Report
+                </span>
+              )}
             </Button>
           </div>
         </Box3>
@@ -74,6 +84,10 @@ const AnswerField = ({ answer }) => {
     </div>
   );
 };
+
+const Box1 = styled.b`
+  font-size: 13px;
+`;
 
 const Box2 = styled.div`
   flex-direction: column;
@@ -86,8 +100,20 @@ const Box3 = styled.div`
   flex-wrap: wrap;
 `;
 
+const Box4 = styled.span`
+  font-size: 13px;
+`;
+
+const Box5 = styled.span`
+  margin-left: 5px;
+  margin-top: 2px;
+  margin-right: 6px;
+  font-size: 13px;
+`;
+
 const ReportedText = styled.div`
-  background-color: #00af00;
+  background-color: #dc143c;
+  font-size: 12.5px;
 `;
 
 const Button = styled.button`

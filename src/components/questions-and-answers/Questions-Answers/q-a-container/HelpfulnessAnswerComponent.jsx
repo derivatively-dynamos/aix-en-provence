@@ -85,12 +85,12 @@ const HelpfulnessAnswerComponent = ({
 
   return (
     <div>
-      <span>
+      <span style={{ fontSize: "14px" }}>
         Helpful?{" "}
         <Button disabled={isDisabled} onClick={onClickHelpfulness}>
           Yes
         </Button>{" "}
-        {helpful} |{" "}
+        <Box2>{helpful}</Box2> |{" "}
         <AddButtonComponent
           name={"Add Answer"}
           onClick={onClick}
@@ -169,4 +169,8 @@ const Form = styled.form`
 
 const B = styled.b`
   color: red;
+`;
+
+const Box2 = styled.span`
+  padding-right: 5px;
 `;
