@@ -15,7 +15,7 @@ const Review = ({ review, markHelpful, report}) => {
   return (
     <ReviewCont>
       <ReviewHead>
-        <FiveStarRating score={review.rating} />
+        <Rating score={review.rating} />
         <AuthorDate>
           <div>{review.reviewer_name},</div>
           <div>{date}</div>

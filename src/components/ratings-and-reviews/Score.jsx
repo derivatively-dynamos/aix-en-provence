@@ -6,7 +6,7 @@ const Score = ({ score }) => {
   return (
     <ScoreCont>
       <ScoreNum>{score}</ScoreNum>
-      <FiveStarRating score={score} />
+      <Rating score={score} />
     </ScoreCont>
   )
 }

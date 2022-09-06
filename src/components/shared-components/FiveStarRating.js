@@ -33,7 +33,6 @@ const FiveStarRating = ({ score }) => {
 const StarCont = styled.div`
   position: relative;
   width: 90px;
-  top: 1em;
 `
 const FilledStars = styled.div`
   position: absolute;
