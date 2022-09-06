@@ -109,7 +109,7 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
 
   return (
     <AppContainer>
-      <Headline>RATINGS AND REVIEWS</Headline>
+      <h2>RATINGS AND REVIEWS</h2>
       <Container>
         <ReviewBreakdown
           setSort={setSort}
@@ -134,13 +134,13 @@ const Container = styled.div`
   width: 100%;
   padding: 0.5em;
 `
-const Loading = styled(Container)`
-  height: 25em;
-`
 const AppContainer = styled(Container)`
   flex-direction: column;
   background-color: white;
   color: #303030;
+`
+const Loading = styled(Container)`
+  height: 25em;
 `
 
 export default RatingsAndReviews;

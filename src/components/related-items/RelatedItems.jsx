@@ -4,33 +4,29 @@ import RelatedProducts from './carousels/RelatedProducts.jsx';
 import YourOutfit from './carousels/YourOutfit.jsx';
 import api from '../shared-components/api';
 
-const RelatedItems = ({ productId, setProductId }) => {
+const RelatedItems = ({ productId, setProductId, product, styles }) => {
 
   const [currProductInfo, setCurrProductInfo] = useState({
+    id: '',
     name: '',
     category: '',
     price: '',
     photo: ''
   })
   useEffect(() => {
-    api.get(`products/${productId}`)
-    .then(res => {
-      setCurrProductInfo(prevState => ({
-        ...prevState,
-        name: res.data.name,
-        category: res.data.category
-      }));
-      return api.get(`products/${productId}/styles`)
-    })
-    .then(res => {
-      setCurrProductInfo(prevState => ({
-        ...prevState,
-        price: res.data.results[0]['original_price'],
-        photo: res.data.results[0].photos[0]['thumbnail_url']
-      }));
-    })
-    .catch(err => console.error(err))
-  }, [productId])
+    if (styles.length === 0) return;
+    setCurrProductInfo(prevState => ({
+      ...prevState,
+      id: product.id,
+      name: product.name,
+      category: product.category
+    }));
+    setCurrProductInfo(prevState => ({
+      ...prevState,
+      price: styles[0]['original_price'],
+      photo: styles[0].photos[0]['thumbnail_url']
+    }));
+  }, [product, styles])
 
   return (
     <RICDiv>
