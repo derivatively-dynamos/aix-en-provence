@@ -18,13 +18,14 @@ const QuestionsField = ({ question, productName }) => {
       <div>
         <Box1>
           <div>
-            <b>Q:</b> {question_body}
+            <b>Q:</b> <b>{question_body}</b>
           </div>
           <HelpfulnessAnswerComponent
             helpfulness={helpfulness}
             productName={productName}
             question={question_body}
             questionID={questionID}
+            answers={answers}
           />
         </Box1>
         <AnswersComponent answers={answers} />

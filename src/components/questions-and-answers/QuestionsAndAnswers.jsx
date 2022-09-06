@@ -45,17 +45,20 @@ const QuestionsAndAnswers = ({ product }) => {
         return question;
       }
     });
-    console.log("state", questions);
+
     setQuestions(searchItems);
   };
 
-  // will need to get product name passed down as props
   return (
     <Container>
       <div>
         <H1>QUESTIONS & ANSWERS...</H1>
         <SearchBar handleSearch={handleSearch} />
-        <QuestionsComponent questions={questions} productName={productName} />
+        <QuestionsComponent
+          questions={questions}
+          productName={productName}
+          productID={productID}
+        />
       </div>
     </Container>
   );
