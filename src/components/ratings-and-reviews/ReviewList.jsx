@@ -38,9 +38,20 @@ const ReviewList = ({setSort, reviews, markHelpful, report}) => {
         })}
       </Container>
       <BtnCont>
-        <Btn onClick={()=>{
-          handleExpansion();
-        }}>{expanded ? 'LESS REVIEWS' : 'MORE REVIEWS'}</Btn>
+        {reviews.length < 2
+          ? null
+          : (
+              <Btn
+                onClick={()=>{
+                  handleExpansion();
+                }}
+              >
+              {expanded
+                ? 'LESS REVIEWS'
+                : 'MORE REVIEWS'}
+              </Btn>
+          )
+        }
         <Btn>
           ADD REVIEW
           <Cross icon={faPlusSquare}></Cross>
