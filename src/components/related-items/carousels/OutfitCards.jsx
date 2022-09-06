@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import FiveStarRating from '../../shared-components/Rating.jsx';
 
 const OutfitCards = ({ product, setProductId, outfit, setOutfit }) => {
 
@@ -53,7 +54,7 @@ const OutfitCards = ({ product, setProductId, outfit, setOutfit }) => {
         <div>{name}</div>
         <div>{category}</div>
         <div>${price}</div>
-        <div>★★★☆☆</div>
+        <div><FiveStarRating score={product.score}/></div>
       </InfoContainer>
     </StyledContainer>
   );
@@ -84,6 +85,7 @@ const StyledContainer = styled(Container)`
   cursor: pointer;
   position: relative;
 `
+
 const XButton = styled(FontAwesomeIcon)`
   font-size: 1.2em;
   color: ${props => props.theme.shadow};
@@ -116,6 +118,8 @@ const InfoContainer = styled.section`
   flex-grow: 1;
   align-items: center;
   justify-content: center;
+  max-height: 5.6em;
+  min-height: 5.6em;
 `
 
 

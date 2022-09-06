@@ -4,9 +4,8 @@ import styled from "styled-components";
 const Modal = ({
   isOpen,
   onClick,
-  showCloseButton = true,
+  showCloseButton,
   showHeader,
-  className,
   children,
   title,
 }) => {
@@ -69,7 +68,5 @@ border-bottom 1px solid #eee;
 `;
 
 const ModalFooterDiv = styled.div``;
-
-const Button = styled.button``;
 
 export default Modal;
