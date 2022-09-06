@@ -25,6 +25,7 @@ const QuestionsField = ({ question, productName }) => {
             productName={productName}
             question={question_body}
             questionID={questionID}
+            answers={answers}
           />
         </Box1>
         <AnswersComponent answers={answers} />

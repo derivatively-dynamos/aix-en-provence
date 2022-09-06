@@ -17,6 +17,11 @@ const AnswerField = ({ answer }) => {
     } else {
       return null;
     }
+
+    api
+      .put(`qa/answers/${answerID}/report`)
+      .then((res) => console.log("Posted", res))
+      .catch((err) => console.error(err));
   };
 
   let answerID = answer.id;

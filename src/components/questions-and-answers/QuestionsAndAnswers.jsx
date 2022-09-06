@@ -45,11 +45,10 @@ const QuestionsAndAnswers = ({ product }) => {
         return question;
       }
     });
-    console.log("state", questions);
+
     setQuestions(searchItems);
   };
 
-  // will need to get product name passed down as props
   return (
     <Container>
       <div>

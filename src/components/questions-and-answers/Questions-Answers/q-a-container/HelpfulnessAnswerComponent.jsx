@@ -48,7 +48,16 @@ const HelpfulnessAnswerComponent = ({
 
     setIsOpen(false);
 
-    /// API call
+    const { username, email, answer } = formValues;
+
+    api
+      .post(`qa/questions/${questionID}/answers`, {
+        body: answer,
+        name: username,
+        email: email,
+      })
+      .then((res) => console.log("Posted", res))
+      .catch((err) => console.error(err));
   };
 
   const onChange = (e) => {
