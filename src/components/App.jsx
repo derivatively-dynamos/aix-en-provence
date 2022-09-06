@@ -41,8 +41,6 @@ const App = () => {
         <Header curTheme={theme} setTheme={setTheme} themes={themes} />
         <OverviewTrack product={product} styles={styles} />
         <SlimColumn>
-          <RelatedItems productId={productId} setProductId={setProductId} />
-          <QuestionsAndAnswers product={product} />
           <RelatedItems productId={productId} setProductId={setProductId} product={product} styles={styles}/>
           <QuestionsAndAnswers product={product} />
           <RatingsAndReviews />
