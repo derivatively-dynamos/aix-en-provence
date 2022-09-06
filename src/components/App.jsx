@@ -42,7 +42,7 @@ const App = () => {
         <Header curTheme={theme} setTheme={setTheme} themes={themes} />
         <OverviewTrack product={product} styles={styles} score={score}/>
         <SlimColumn>
-          <RelatedItems productId={productId} setProductId={setProductId} product={product} styles={styles}/>
+          <RelatedItems productId={productId} setProductId={setProductId} product={product} styles={styles} score={score} />
           <QuestionsAndAnswers product={product}/>
           <RatingsAndReviews setScore={setScore} productId={productId}/>
         </SlimColumn>

@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import AddButtonComponent from "../Forms/Buttons/AddButtonComponent";
+import api from "../../../shared-components/api";
 
-const HelpfulnessAnswerComponent = ({ helpfulness, productName, question }) => {
+const HelpfulnessAnswerComponent = ({
+  helpfulness,
+  productName,
+  question,
+  questionID,
+}) => {
+  const fileRef = useRef(null);
   const [helpful, setHelpful] = useState(helpfulness);
   const [isOpen, setIsOpen] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [isDisabled, setDisabled] = useState(false);
   const [formValues, setFormValues] = useState({
     username: "",
     email: "",
@@ -14,6 +22,16 @@ const HelpfulnessAnswerComponent = ({ helpfulness, productName, question }) => {
 
   const onClick = () => {
     setIsOpen((preState) => !preState);
+  };
+
+  const onClickHelpfulness = () => {
+    setHelpful(helpfulness + 1);
+
+    setDisabled(true);
+    api
+      .put(`qa/questions/${questionID}/helpful`)
+      .then((res) => console.log("Posted", res))
+      .catch((err) => console.error(err));
   };
 
   const onSubmit = (e) => {
@@ -40,11 +58,29 @@ const HelpfulnessAnswerComponent = ({ helpfulness, productName, question }) => {
     setFormValues((preState) => ({ ...preState, [name]: value }));
   };
 
+  // const onFileUpload = (e) => {
+  //   const files = fileRef.current.files;
+  //   const file = files[0];
+  //   const accept = ["image/png"];
+
+  //   if (accept.indexOf(file.type) > -1) {
+  //     var fr = new FileReader();
+  //     fr.readAsDataURL(file);
+  //     setFormValues((prevState) => ({
+  //       ...prevState,
+  //       photos: fr.readAsDataURL(file),
+  //     }));
+  //   }
+  // };
+  // console.log(formValues);
+
   return (
     <div>
       <span>
         Helpful?{" "}
-        <Button onClick={() => setHelpful(helpfulness + 1)}>Yes</Button>{" "}
+        <Button disabled={isDisabled} onClick={onClickHelpfulness}>
+          Yes
+        </Button>{" "}
         {helpful} |{" "}
         <AddButtonComponent
           name={"Add Answer"}
@@ -93,12 +129,7 @@ const HelpfulnessAnswerComponent = ({ helpfulness, productName, question }) => {
               placeholder="Answer Here..."
             ></textarea>
             <div> Upload your photos </div>
-            <input
-              type="file"
-              accept="image/*"
-              name="file"
-              onChange={onChange}
-            ></input>
+            <input type="file" />
             <button>Submit</button>
           </Form>
         </AddButtonComponent>

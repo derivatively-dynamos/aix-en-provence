@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import PhotoSection from "./PhotoSection";
+import api from "../../../shared-components/api";
 
 const AnswerField = ({ answer }) => {
   const helpfulness = answer.helpfulness;
 
   const photos = answer.photos;
-  const [helpful, setHelpfull] = useState(helpfulness);
+  const [helpful, setHelpful] = useState(helpfulness);
   const [reported, setReport] = useState(false);
+  const [isDisabled, setDisabled] = useState(false);
 
   const report = () => {
     if (!reported) {
@@ -15,6 +17,19 @@ const AnswerField = ({ answer }) => {
     } else {
       return null;
     }
+  };
+
+  let answerID = answer.id;
+
+  const onClick = () => {
+    setHelpful(helpfulness + 1);
+
+    setDisabled(true);
+
+    api
+      .put(`qa/answers/${answerID}/helpful`)
+      .then((res) => console.log("Posted", res))
+      .catch((err) => console.error(err));
   };
 
   return (
@@ -41,8 +56,10 @@ const AnswerField = ({ answer }) => {
           </div>
           <div>
             | Helpful?{" "}
-            <Button onClick={() => setHelpfull(helpfulness + 1)}>Yes</Button> (
-            {helpful}) |
+            <Button disabled={isDisabled} onClick={onClick}>
+              Yes
+            </Button>{" "}
+            ({helpful}) |
             <Button onClick={report}>
               {reported ? <ReportedText>Reported</ReportedText> : "Report"}
             </Button>
@@ -52,6 +69,7 @@ const AnswerField = ({ answer }) => {
     </div>
   );
 };
+
 const Box2 = styled.div`
   flex-direction: column;
   margin: 20px;

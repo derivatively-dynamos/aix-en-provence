@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import AddButtonComponent from "./AddButtonComponent";
+import Modal from "./ModalForm";
 
 const AddQuestionButton = ({ productName }) => {
   const [isOpen, setIsOpen] = useState(false);

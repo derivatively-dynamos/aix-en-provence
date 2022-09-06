@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import FiveStarRating from '../../shared-components/Rating.jsx';
 
-const Modal = ({ modalState, price, name, photo, category, currProductInfo, setModalState }) => {
+const Modal = ({ modalState, price, name, photo, category, currProductInfo, setModalState, score }) => {
 
 
   if (!modalState) {
@@ -22,28 +23,28 @@ const Modal = ({ modalState, price, name, photo, category, currProductInfo, setM
           <InfoContainer>
             <StyleTable>
               <StyleCaption>Product Comparison</StyleCaption>
-              <tbody>
-                <tr>
+              <StyleBody>
+                <StyleTr>
                   <StyleTh>{currProductInfo.name}</StyleTh>
                   <StyleTh2>Product</StyleTh2>
                   <StyleTh>{name}</StyleTh>
-                </tr>
-                <tr>
+                </StyleTr>
+                <StyleTr>
                   <StyleTh>{currProductInfo.category}</StyleTh>
                   <StyleTh2>Category</StyleTh2>
                   <StyleTh>{category}</StyleTh>
-                </tr>
-                <tr>
+                </StyleTr>
+                <StyleTr>
                   <StyleTh>${currProductInfo.price}</StyleTh>
                   <StyleTh2>Price</StyleTh2>
                   <StyleTh>${price}</StyleTh>
-                </tr>
-                <tr>
-                  <StyleTh>★★★☆☆</StyleTh>
+                </StyleTr>
+                <StyleTr>
+                  <StyleRatingTh><FiveStarRating score={currProductInfo.score} /></StyleRatingTh>
                   <StyleTh2>Rating</StyleTh2>
-                  <StyleTh>★★★☆☆</StyleTh>
-                </tr>
-              </tbody>
+                  <StyleRatingTh><FiveStarRating score={score} /></StyleRatingTh>
+                </StyleTr>
+              </StyleBody>
             </StyleTable>
           </InfoContainer>
         </Container>
@@ -63,6 +64,22 @@ const StyleCaption = styled.caption`
   margin: 0 0 1em 0;
   font-weight: bold;
 `
+const StyleBody = styled.tbody`
+
+`
+
+const StyleTr = styled.tr`
+
+`
+// const StyledFiveStar = styled(FiveStarRating)`
+
+// `
+const StyleRatingTh = styled.th`
+  color: ${props => props.theme.color};
+  border: 2px solid ${props => props.theme.color};
+  padding: 0 1.1em 1.1em 1.1em;
+`
+
 const StyleTh = styled.th`
   color: ${props => props.theme.color};
   border: 2px solid ${props => props.theme.color};

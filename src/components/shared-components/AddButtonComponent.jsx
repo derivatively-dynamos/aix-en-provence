@@ -1,6 +1,33 @@
 import React from "react";
-import Modal from "./ModalForm";
+import Modal from "../questions-and-answers/Questions-Answers/Forms/Buttons/ModalForm";
 import styled from "styled-components";
+
+// must include onClick an isOpen state to be passed down
+// examples:
+
+//  const [isOpen, setIsOpen] = useState(false);
+
+// const onClick = () => {
+//     setIsOpen((preState) => !preState);
+//   };
+
+// customize stylying with showHeader either truthy or falsy
+// If including header add title as string
+// styled should be set to false
+
+// example of how your props should look
+//    <AddButtonComponent
+//        name={"NAME ON BUTTON"}
+//        onClick={onClick}
+//        isOpen={isOpen}
+//       showHeader={false}
+//       title={"Your Title"}
+//       styled={false}>
+//
+//        FORM GOES HERE
+//         </AddButtonComponent>
+
+// Nest your form inside of the AddButtonComponent
 
 const AddButtonComponent = ({
   onClick,

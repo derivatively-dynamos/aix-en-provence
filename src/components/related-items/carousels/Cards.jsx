@@ -4,6 +4,7 @@ import Modal from "./Modal.jsx";
 import api from '../../shared-components/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import FiveStarRating from '../../shared-components/Rating.jsx';
 
 const Cards = ({ product, setProductId, currProductInfo }) => {
 
@@ -11,6 +12,7 @@ const Cards = ({ product, setProductId, currProductInfo }) => {
   const [photo, setPhoto] = useState(null);
   const [name, setName] = useState(null);
   const [category, setCategory] = useState(null);
+  const [score, setScore] = useState(null);
   const [modalState, setModalState] = useState(false);
 
   const handleStarClick = (boolean) => {
@@ -35,6 +37,22 @@ const Cards = ({ product, setProductId, currProductInfo }) => {
     .catch(err => console.error(err))
   }, [product]);
 
+  useEffect(() => {
+    api.get(`reviews/?product_id=${product}`)
+    .then(res => {
+      let resultScores = [];
+      res.data.results.forEach((review) => {
+        resultScores.push(review.rating);
+      })
+      let totalScore = resultScores.reduce((accum, curr) => {
+        return accum + curr;
+      }, 0);
+      let averageScore = totalScore / resultScores.length;
+      setScore(averageScore);
+    })
+    .catch(err => console.error(err))
+  }, [product]);
+
 
 
 
@@ -51,9 +69,9 @@ const Cards = ({ product, setProductId, currProductInfo }) => {
         <div>{name}</div>
         <div>{category}</div>
         <div>${price}</div>
-        <div>★★★☆☆</div>
+        <div><FiveStarRating score={score}/></div>
       </InfoContainer>
-      <Modal modalState={modalState} price={price} name={name} photo={photo} category={category} currProductInfo={currProductInfo} setModalState={setModalState} />
+      <Modal modalState={modalState} price={price} name={name} photo={photo} score={score} category={category} currProductInfo={currProductInfo} setModalState={setModalState} />
     </StyledContainer>
   );
 };
@@ -115,6 +133,8 @@ const InfoContainer = styled.section`
   flex-grow: 1;
   align-items: center;
   justify-content: center;
+  max-height: 5.6em;
+  min-height: 5.6em;
 `
 
 
