@@ -39,7 +39,7 @@ const HelpfulnessAnswerComponent = ({ helpfulness, productName, question }) => {
 
     setFormValues((preState) => ({ ...preState, [name]: value }));
   };
-  console.log(hasError);
+
   return (
     <div>
       <span>
