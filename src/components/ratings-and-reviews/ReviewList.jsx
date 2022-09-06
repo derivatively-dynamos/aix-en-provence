@@ -7,9 +7,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 import ModalButton from './ModalButton.jsx'
 
-const ReviewList = ({setSort, reviews, markHelpful, report}) => {
+const ReviewList = ({
+    setSort,
+    reviews,
+    markHelpful,
+    report,
+    isOpen,
+    setIsOpen,
+    onSubmit
+  }) => {
   const [expanded, expand] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
 
   const handleExpansion = () => {
     expanded ? expand(false) : expand(true);
@@ -61,6 +68,7 @@ const ReviewList = ({setSort, reviews, markHelpful, report}) => {
         <ModalButton
           onClick={onClick}
           isOpen={isOpen}
+          onSubmit={onSubmit}
         />
       </BtnCont>
     </Container>
