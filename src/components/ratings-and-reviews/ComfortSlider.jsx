@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ReviewSlider = ({ comfort }) => {
+const ReviewSlider = ({characteristic, comfort }) => {
   let x = (Number(comfort) / 5) * 100;
   let sliderPos = {
     left: `${x}%`
@@ -9,7 +9,7 @@ const ReviewSlider = ({ comfort }) => {
 
   return (
     <ColumnCont>
-      <h3>Comfort</h3>
+      <h3>{characteristic}</h3>
       <ReviewCont>
         <ReviewBar></ReviewBar>
         <ReviewBar></ReviewBar>
@@ -17,8 +17,8 @@ const ReviewSlider = ({ comfort }) => {
         <Indicator style={sliderPos}></Indicator>
       </ReviewCont>
       <SpaceCont>
-            <p>Too small</p>
-            <p>Too large</p>
+        <p>Poor</p>
+        <p>Perfect</p>
       </SpaceCont>
     </ColumnCont>
   )
@@ -28,6 +28,7 @@ const Container = styled.div`
   display: flex;
   flex: 1;
   width: 100%;
+  padding-bottom: 1em;
 `
 const SpaceCont = styled(Container)`
   justify-content: space-between;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SizeSlider = ({ size }) => {
+const SizeSlider = ({ characteristic, size }) => {
   let x = (Number(size) / 5) * 100;
   let sliderPos = {
     left: `${x}%`
@@ -9,7 +9,7 @@ const SizeSlider = ({ size }) => {
 
   return (
     <ColumnCont>
-      <h3>Size</h3>
+      <h3>{characteristic}</h3>
       <ReviewCont>
         <ReviewBar></ReviewBar>
         <ReviewBar></ReviewBar>
@@ -29,8 +29,8 @@ const Container = styled.div`
   display: flex;
   flex: 1;
   width: 100%;
+  padding-bottom: 1em;
 `
-
 const SpaceCont = styled(Container)`
   font-size: 0.9em;
   justify-content: space-between;

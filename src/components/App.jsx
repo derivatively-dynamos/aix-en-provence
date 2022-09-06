@@ -18,6 +18,7 @@ const App = () => {
   const [productId, setProductId] = useState(37313);
   const [product, setProduct] = useState("");
   const [styles, setStyles] = useState([]);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     api
@@ -42,8 +43,8 @@ const App = () => {
         <OverviewTrack product={product} styles={styles} />
         <SlimColumn>
           <RelatedItems productId={productId} setProductId={setProductId} product={product} styles={styles}/>
-          <QuestionsAndAnswers product={product} />
-          <RatingsAndReviews />
+          <QuestionsAndAnswers product={product}/>
+          <RatingsAndReviews setScore={setScore} productId={productId}/>
         </SlimColumn>
       </ThemeProvider>
     </Container>
