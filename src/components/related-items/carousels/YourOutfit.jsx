@@ -2,48 +2,66 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import OutfitCards from './OutfitCards.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
   //State
   const [displayWidth, setDisplayWidth] = useState(0);
   const [scrollWidth, setScrollWidth] = useState(0);
   const [outfit, setOutfit] = useState([]);
-  const [scrollLoc, setScrollLoc] = useState(0);
+  const [scrollLeftLoc, setScrollLeftLoc] = useState(0);
+  const [isShownLeft, setIsShownLeft] = useState(false);
+  const [isShownRight, setIsShownRight] = useState(true);
 
   //Refs
   const scrollRef = useRef(null);
 
   //Utility functions
   const scroll = (direction) => {
-    scrollRef.current.scrollLeft += direction;
-    setScrollLoc(scrollRef.current.scrollLeft);
+    setScrollLeftLoc(scrollRef.current.scrollLeft += direction);
   };
+
   const updateOutfitHandler = () => {
-    if (!outfit.includes(productId)) {
-      setOutfit(oldOutfit => [...oldOutfit, productId])
+    if (!outfit.includes(currProductInfo)) {
+      setOutfit(oldOutfit => [...oldOutfit, currProductInfo])
     }
   }
 
-  //Use Effect
+
   useEffect(() => {
     setDisplayWidth(scrollRef.current.offsetWidth);
     setScrollWidth(scrollRef.current.scrollWidth);
   }, [outfit]);
 
   //Conditional Rendering
+  useEffect(() => {
+    if (scrollLeftLoc > 32) {
+      setIsShownLeft(true);
+    }
+    if (scrollLeftLoc < 100) {
+      setIsShownLeft(false);
+    }
+    if (((scrollRef.current.scrollWidth - scrollRef.current.clientWidth) - scrollLeftLoc) < 0) {
+      setIsShownRight(false);
+    }
+    if (((scrollRef.current.scrollWidth - scrollRef.current.clientWidth) - scrollLeftLoc) > 0) {
+      setIsShownRight(true);
+    }
+  }, [scrollLeftLoc])
+
+
   let iconConditionalLeft;
   let iconConditionalRight;
 
   if (scrollWidth > displayWidth) {
-    iconConditionalLeft = <IconCover onClick={() => {scroll(-200)}}>
+    iconConditionalLeft = <IconCover onClick={() => {scroll(-200)}} style={{visibility: `${isShownLeft ? 'visible' : 'hidden'}`}}>
       <Left icon={faChevronLeft}/>
     </IconCover>
   } else {
     iconConditionalLeft = <IconCover style={{ display: 'none'}} />
   }
   if (scrollWidth > displayWidth) {
-    iconConditionalRight = <IconCoverRight onClick={() => {scroll(200)}}>
+    iconConditionalRight = <IconCoverRight onClick={() => {scroll(200)}} style={{visibility: `${isShownRight ? 'visible' : 'hidden'}`}}>
       <Right icon={faChevronRight}/>
     </IconCoverRight>
   } else {
@@ -61,9 +79,11 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
         <CardContainer ref={scrollRef}>
           {iconConditionalLeft}
           {[...outfit].reverse().map((product, i) => {
-            return (
-              <OutfitCards product={product} key={i} setProductId={setProductId} currProductInfo={currProductInfo} outfit={outfit} setOutfit={setOutfit} />
-            )
+            if (product.id !== '') {
+              return (
+                <OutfitCards product={product} key={i} setProductId={setProductId} outfit={outfit} setOutfit={setOutfit} />
+              )
+            }
           })}
           {iconConditionalRight}
         </CardContainer>
@@ -87,6 +107,7 @@ const AddItemCard = styled.section`
   border: 2px solid ${props => props.theme.color};
   cursor: pointer;
 `
+
 const PlusIcon = styled(FontAwesomeIcon)`
   font-size: 6em;
   color: ${props => props.theme.color};
@@ -181,3 +202,5 @@ const Dash2 = styled(FontAwesomeIcon)`
 `
 
 export default YourOutfit;
+
+
