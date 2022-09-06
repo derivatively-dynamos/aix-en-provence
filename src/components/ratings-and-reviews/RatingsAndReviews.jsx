@@ -10,6 +10,18 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
   const [sortedReviews, setSortedReviews] = useState(undefined);
   const [metaData, setMetaData] = useState(undefined);
   const [sortedBy, setSort ] = useState('relevance');
+  const [userReview, setUserReview] = useState({
+    body: '',
+    date: '',
+    helpfulness: 1,
+    photos: [],
+    rating: 1,
+    recommend: false,
+    response: null,
+    review_id: 1,
+    reviewer_name: '',
+    summary: ''
+  });
 
   const filterBy = (reviewArr, filter) => {
     switch (filter) {

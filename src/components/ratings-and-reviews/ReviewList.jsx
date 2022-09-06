@@ -5,13 +5,19 @@ import SortBy from './SortBy.jsx';
 import Review from './Review.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
+import ModalButton from './ModalButton.jsx'
 
 const ReviewList = ({setSort, reviews, markHelpful, report}) => {
   const [expanded, expand] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleExpansion = () => {
     expanded ? expand(false) : expand(true);
   }
+
+  const onClick = () => {
+    setIsOpen((preState) => !preState);
+  };
 
   return (
     <Container>
@@ -52,10 +58,10 @@ const ReviewList = ({setSort, reviews, markHelpful, report}) => {
               </Btn>
           )
         }
-        <Btn>
-          ADD REVIEW
-          <Cross icon={faPlusSquare}></Cross>
-        </Btn>
+        <ModalButton
+          onClick={onClick}
+          isOpen={isOpen}
+        />
       </BtnCont>
     </Container>
   )
