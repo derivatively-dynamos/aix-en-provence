@@ -24,6 +24,7 @@ const AddQuestionButton = ({ productName }) => {
         isOpen={isOpen}
         showHeader={false}
         title={"Ask Your Question"}
+        styled={false}
       >
         <Form onSubmit={onSubmit}>
           {" "}

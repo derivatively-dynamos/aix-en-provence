@@ -68,8 +68,9 @@ const ReportedText = styled.div`
 `;
 
 const Button = styled.button`
-  background: transparent;
+  background-color: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.color};
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${(props) => props.theme.color};
 `;
 export default AnswerField;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const SearchBar = ({ handleSearch }) => {
   const [searchText, setSearch] = useState("");
@@ -8,9 +9,18 @@ const SearchBar = ({ handleSearch }) => {
   return (
     <Container>
       <div>
+        <FontAwesomeIcon
+          style={{
+            color: "grey",
+            position: "relative",
+            left: "9px",
+            zIndex: "100",
+            top: "25px",
+          }}
+          icon={faSearch}
+        />
         <Input
           type="text"
-          icon="fa-solid fa-magnifying-glass"
           placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
           onChange={(e) => {
             const text = e.target.value;
@@ -41,7 +51,6 @@ const Input = styled.input`
   height: 25px;
   width: 355px;
   padding: 2px 23px 2px 30px;
-  outline: 0;
 `;
 
 export default SearchBar;

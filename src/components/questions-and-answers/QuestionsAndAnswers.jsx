@@ -54,7 +54,7 @@ const QuestionsAndAnswers = ({ product }) => {
   return (
     <Container>
       <div>
-        <h1>QUESTIONS & ANSWERS...</h1>
+        <H1>QUESTIONS & ANSWERS...</H1>
         <SearchBar handleSearch={handleSearch} />
         <QuestionsComponent questions={questions} productName={productName} />
       </div>
@@ -66,26 +66,15 @@ const Container = styled.div`
   display: flex;
   width: 100%;
   padding: 0.5em;
+  margin: 50px 0px;
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.color};
   position: relative;
   flex-direction: column;
 `;
 
-const Button = styled.button`
-  height: 100%;
-  border-radius: 0;
-  border: 1px solid ${(props) => props.theme.color};
-  background-color: ${(props) => props.theme.shadow};
-  color: ${(props) => props.theme.color};
-  font-size: 14px;
-  padding: 10px;
-  cursor: pointer;
-`;
-
-const Box1 = styled.div`
-  max-height: 500px;
-  overflow: auto;
+const H1 = styled.h1`
+  margin-bottom: 0px;
 `;
 
 export default QuestionsAndAnswers;

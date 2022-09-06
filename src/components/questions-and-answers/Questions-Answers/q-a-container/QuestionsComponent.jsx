@@ -48,6 +48,7 @@ export default QuestionsComponent;
 
 const ContainerDiv = styled.div`
   background-color: #7e7e7e;
+  margin-top: 15px;
   display: block;
   align-items: center;
   justify-content: space-between;

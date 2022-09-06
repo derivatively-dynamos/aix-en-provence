@@ -10,10 +10,13 @@ const AddButtonComponent = ({
   title,
   showHeader,
   className,
+  styled,
 }) => {
   return (
     <ButtonDiv>
-      <Button onClick={onClick}>{name}</Button>
+      <Button styled={styled} onClick={onClick}>
+        {name}
+      </Button>
       <Modal
         title={title}
         isOpen={isOpen}
@@ -51,4 +54,7 @@ const Button = styled.button`
   font-size: 14px;
   padding: 10px;
   cursor: pointer;
+  ${(props) =>
+    props.styled &&
+    "background: transparent; letter-spacing: normal; word-spacing: normal; line-height: normal; text-transform: none;text-indent: 0px; text-shadow: none; display: inline-block; text-align: center; border: none; border-bottom: 1px solid white; padding-bottom: 3px "}
 `;

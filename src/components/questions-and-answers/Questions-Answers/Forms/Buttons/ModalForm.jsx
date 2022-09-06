@@ -49,7 +49,8 @@ justify-content: center;
 
 const ModalContentDiv = styled.div`
   width: 500px;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.color};
 `;
 
 const ModalHeaderDiv = styled.div`
