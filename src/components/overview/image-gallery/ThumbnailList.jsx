@@ -51,6 +51,7 @@ const Icon = styled.img`
   scroll-snap-align: start;
   scroll-margin-top: 4px;
   outline: ${(props) => (props.selected ? `2px solid` : 'none')};
+  box-shadow: ${props => props.selected ? '0px 0px 4px black' : 'none'};
 `;
 const BotSpace = styled.div`
   width: 10px;
