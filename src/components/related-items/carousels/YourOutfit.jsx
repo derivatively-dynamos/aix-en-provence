@@ -8,7 +8,16 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
   //State
   const [displayWidth, setDisplayWidth] = useState(0);
   const [scrollWidth, setScrollWidth] = useState(0);
-  const [outfit, setOutfit] = useState([]);
+  const [outfit, setOutfit] = useState(() => {
+    if (localStorage.getItem('outfit')) {
+      try {
+        return JSON.parse(localStorage.getItem('outfit'))
+      } catch (error) {
+        localStorage.removeItem('outfiit')
+      }
+    }
+    return [];
+  });
   const [scrollLeftLoc, setScrollLeftLoc] = useState(0);
   const [isShownLeft, setIsShownLeft] = useState(false);
   const [isShownRight, setIsShownRight] = useState(true);
@@ -27,6 +36,10 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
     }
   }
 
+
+  useEffect(() => {
+    localStorage.setItem('outfit', JSON.stringify(outfit));
+  }, [outfit])
 
   useEffect(() => {
     setDisplayWidth(scrollRef.current.offsetWidth);
