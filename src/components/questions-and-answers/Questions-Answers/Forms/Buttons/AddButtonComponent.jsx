@@ -46,5 +46,5 @@ const Button = styled.button`
   cursor: pointer;
   ${(props) =>
     props.styled &&
-    "background: transparent; letter-spacing: normal; word-spacing: normal; line-height: normal; text-transform: none;text-indent: 0px; text-shadow: none; display: inline-block; text-align: center; border: none; border-bottom: 1px solid white; padding-bottom: 3px "}
+    "background: transparent; letter-spacing: normal; word-spacing: normal; line-height: normal; text-transform: none;text-indent: 0px; text-shadow: none; display: inline-block; text-align: center; border: none; text-decoration: underline; padding-bottom: 3px "}
 `;

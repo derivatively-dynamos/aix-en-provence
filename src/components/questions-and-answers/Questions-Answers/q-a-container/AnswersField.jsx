@@ -94,6 +94,6 @@ const Button = styled.button`
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.color};
   border: none;
-  border-bottom: 1px solid ${(props) => props.theme.color};
+  text-decoration: underline;
 `;
 export default AnswerField;

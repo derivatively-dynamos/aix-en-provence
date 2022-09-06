@@ -153,7 +153,7 @@ const Button = styled.button`
   color: ${(props) => props.theme.color};
   background: transparent;
   border: none;
-  border-bottom: 1px solid ${(props) => props.theme.color};
+  text-decoration: underline;
 `;
 
 const Box1 = styled.div`

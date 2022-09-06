@@ -54,5 +54,5 @@ const Button = styled.button`
   margin-left: 20px;
   background: transparent;
   border: none;
-  border-bottom: 1px solid ${(props) => props.theme.color};
+  text-decoration: underline;
 `;
