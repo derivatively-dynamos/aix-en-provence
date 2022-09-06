@@ -61,8 +61,8 @@ const EmptyStar = styled(FontAwesomeIcon)`
 `
 const FullStar = styled(FontAwesomeIcon)`
   position: relative;
-  color: yellow;
-  font-size: 0.9em;
+  color: ${props => props.theme.reviewColor};
+  font-size: 0.8em;
 `
 const StarWrap = styled.div`
   flex-basis: 18px;
