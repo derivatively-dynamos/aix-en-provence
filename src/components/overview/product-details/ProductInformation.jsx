@@ -1,14 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import Rating from '../../shared-components/Rating';
 
 const ProductInformation = ({
   product: { category, name, description },
   style: { original_price, sale_price },
+  score
 }) => (
   <Col>
     <Wrapper>
       <Row>
-        <div>★★★☆☆</div>
+        <Rating score={score}/>
         <div>
           <a href="">Read all reviews</a>
         </div>

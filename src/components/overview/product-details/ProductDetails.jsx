@@ -5,10 +5,10 @@ import ProductInformation from "./ProductInformation";
 import StyleSelector from "./StyleSelector";
 import InfoList from "./InfoList";
 
-const ProductDetails = ({ product, styles, style, setStyle, styleIndex }) => {
+const ProductDetails = ({ product, styles, style, setStyle, styleIndex, score }) => {
   return (
     <Container>
-      <ProductInformation product={product} style={style} />
+      <ProductInformation product={product} style={style} score={score} />
       <StyleSelector
         styles={styles}
         style={style}
