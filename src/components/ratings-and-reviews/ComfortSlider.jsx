@@ -28,6 +28,7 @@ const Container = styled.div`
   display: flex;
   flex: 1;
   width: 100%;
+  padding-bottom: 1em;
 `
 const SpaceCont = styled(Container)`
   justify-content: space-between;

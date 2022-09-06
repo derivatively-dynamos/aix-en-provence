@@ -58,7 +58,7 @@ const ReviewBreakdown = ({ data, setSort }) => {
     setPercentRecommended(calcRecommendationPercentage(data.recommended))
     setStars(newStars);
   }, [data]);
-
+  console.log(data)
   return (
     <ColumnCont>
       <Score score={starScore}/>
@@ -74,8 +74,23 @@ const ReviewBreakdown = ({ data, setSort }) => {
         })}
       </ColumnCont>
       <ColumnCont>
-        <SizeSlider size={data.characteristics.Fit.value}></SizeSlider>
-        <ComfortSlider comfort={data.characteristics.Comfort.value}></ComfortSlider>
+        {Object.keys(data.characteristics).map((char) => {
+          let charObj = data.characteristics[char];
+          switch (char) {
+            case 'Comfort' || 'Quality':
+              return <ComfortSlider
+                key={charObj.id}
+                characteristic={char}
+                comfort={charObj.value}
+              ></ComfortSlider>
+            default:
+              return <SizeSlider
+                key={charObj.id}
+                characteristic={char}
+                size={charObj.value}
+              ></SizeSlider>
+          }
+        })}
       </ColumnCont>
     </ColumnCont>
   )
