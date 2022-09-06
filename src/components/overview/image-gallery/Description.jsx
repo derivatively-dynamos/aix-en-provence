@@ -15,6 +15,8 @@ const Container = styled.section`
   user-select: text;
   color: ${props => props.theme.color};
   min-height: 8em;
+  width: 90%;
+  align-self: center;
 `
 const H4 = styled.h4`
 
