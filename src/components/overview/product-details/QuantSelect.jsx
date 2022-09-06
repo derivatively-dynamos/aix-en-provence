@@ -50,7 +50,7 @@ export default QuantSelect;
 
 const Container = styled.div`
   align-self: flex-start;
-  flex-basis: 50%;
+  flex: 1 0 35%;
   display: flex;
 `;
 const OldSelect = styled(ReactSelect)`

@@ -13,7 +13,7 @@ const clickTrack = (Component, name) => {
 
 const handleClickTrack = (e, name) => {
   const body = {
-    element: e.target.className,
+    element: JSON.stringify(e.target.className),
     widget: name,
     time: Date.now() + '',
   }
@@ -23,5 +23,5 @@ const Div=styled.div`
   width: 100%;
 `
 
-const throttledTracker = _.throttle(handleClickTrack, 500);
+const throttledTracker = _.throttle(handleClickTrack, 2000);
 export default clickTrack;

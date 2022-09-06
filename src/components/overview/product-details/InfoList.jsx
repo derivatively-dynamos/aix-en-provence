@@ -22,8 +22,9 @@ const Li = styled.li`
 const Ul = styled.ul`
   margin: 0;
   padding: 0;
+  margin-top: auto;
   margin-left: 20px;
-  margin-top: 1em;
+  margin-bottom: 2em;
 `
 
 export default InfoList;

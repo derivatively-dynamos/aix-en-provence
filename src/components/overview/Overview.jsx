@@ -8,7 +8,7 @@ import ExpandedView from './image-gallery/ExpandedView';
 import api from '../shared-components/api';
 
 
-const Overview = ({ product, styles}) => {
+const Overview = ({ product, styles, score}) => {
 
   const [style, setStyle] = useState(null);
   const [styleIndex, setStyleIndex] = useState(0);
@@ -84,6 +84,7 @@ const Overview = ({ product, styles}) => {
         style={style}
         setStyle={handleStyle}
         styleIndex={styleIndex}
+        score={score}
       />
       {popover ? (
         <ExpandedView
@@ -112,7 +113,7 @@ const Container = styled.div`
   }
 `;
 const Loading = styled(Container)`
-  height: 25em;
+  height: 650px;
 `
 
 export default Overview;
