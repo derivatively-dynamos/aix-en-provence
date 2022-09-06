@@ -12,7 +12,7 @@ const ProductInformation = ({
       <Row>
         <Rating score={score}/>
         <div>
-          <a href="">Read all reviews</a>
+          <a href="#reviews">Read all reviews</a>
         </div>
       </Row>
       <ProductInfo>
