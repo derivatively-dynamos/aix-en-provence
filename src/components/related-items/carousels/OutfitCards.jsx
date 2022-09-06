@@ -88,13 +88,14 @@ const StyledContainer = styled(Container)`
 
 const XButton = styled(FontAwesomeIcon)`
   font-size: 1.2em;
-  color: ${props => props.theme.shadow};
+  color: ${props => props.theme.color};
   z-index: 2;
   position: absolute;
   right: 0;
   top: 0;
   margin: 0.2em 0.2em 0 0;
   transition: all .2s ease-in-out;
+  filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
   &:hover {
     transform: scale(1.2);
   }
