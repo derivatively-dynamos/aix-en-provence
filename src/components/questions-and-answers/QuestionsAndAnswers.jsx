@@ -54,7 +54,11 @@ const QuestionsAndAnswers = ({ product }) => {
       <div>
         <H1>QUESTIONS & ANSWERS...</H1>
         <SearchBar handleSearch={handleSearch} />
-        <QuestionsComponent questions={questions} productName={productName} />
+        <QuestionsComponent
+          questions={questions}
+          productName={productName}
+          productID={productID}
+        />
       </div>
     </Container>
   );

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import QuestionsField from "./QuestionsField";
 import AddQuestionButton from "../Forms/Buttons/AddQuestionButton";
 
-const QuestionsComponent = ({ questions, productName }) => {
+const QuestionsComponent = ({ questions, productName, productID }) => {
   const [loadMore, setLoadMore] = useState(false);
   const handleClick = () => {
     setLoadMore((prevState) => !prevState);
@@ -38,7 +38,7 @@ const QuestionsComponent = ({ questions, productName }) => {
             {loadMore ? "COLLAPSE" : "MORE ANSWERED QUESTIONS"}
           </Button>
         ) : null}
-        <AddQuestionButton productName={productName} />
+        <AddQuestionButton productName={productName} productID={productID} />
       </QuestionDiv>
     </>
   );
