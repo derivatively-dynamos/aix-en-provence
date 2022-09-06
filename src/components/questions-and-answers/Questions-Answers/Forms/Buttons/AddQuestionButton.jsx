@@ -17,7 +17,7 @@ const AddQuestionButton = ({ productName }) => {
   };
 
   return (
-    <div>
+    <ContainerDiv>
       <AddButtonComponent
         name={name}
         onClick={onClick}
@@ -46,13 +46,17 @@ const AddQuestionButton = ({ productName }) => {
           <button>Submit</button>
         </Form>
       </AddButtonComponent>
-    </div>
+    </ContainerDiv>
   );
 };
 
 export default AddQuestionButton;
 
-const name = "ADD A QUESTION";
+const name = "ADD A QUESTION +";
+
+const ContainerDiv = styled.div`
+  margin-left: 10px;
+`;
 
 const Form = styled.form`
   display: flex;

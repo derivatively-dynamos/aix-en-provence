@@ -9,45 +9,38 @@ const QuestionsComponent = ({ questions, productName }) => {
     setLoadMore((prevState) => !prevState);
   };
 
-  if (questions.length < 1) {
-    return (
-      <AddQuestionButton productName={productName}>
-        ADD A QUESTION
-      </AddQuestionButton>
-    );
-  }
-
   return (
-    <ContainerDiv>
-      {questions.map((question, index) => {
-        if (!loadMore && index < 2) {
-          return (
-            <QuestionsField
-              key={question.question_id}
-              question={question}
-              productName={productName}
-            />
-          );
-        } else if (loadMore) {
-          return (
-            <QuestionsField
-              key={question.question_id}
-              question={question}
-              productName={productName}
-            />
-          );
-        }
-      })}
-      {questions.length > 2 ? (
-        <Button onClick={handleClick}>
-          {loadMore ? "COLLAPSE" : "MORE ANSWERED QUESTIONS"}
-        </Button>
-      ) : null}
-
-      <AddQuestionButton productName={productName}>
-        ADD A QUESTION
-      </AddQuestionButton>
-    </ContainerDiv>
+    <>
+      <ContainerDiv>
+        {questions.map((question, index) => {
+          if (!loadMore && index < 2) {
+            return (
+              <QuestionsField
+                key={question.question_id}
+                question={question}
+                productName={productName}
+              />
+            );
+          } else if (loadMore) {
+            return (
+              <QuestionsField
+                key={question.question_id}
+                question={question}
+                productName={productName}
+              />
+            );
+          }
+        })}
+      </ContainerDiv>
+      <QuestionDiv>
+        {questions.length > 2 ? (
+          <Button onClick={handleClick}>
+            {loadMore ? "COLLAPSE" : "MORE ANSWERED QUESTIONS"}
+          </Button>
+        ) : null}
+        <AddQuestionButton productName={productName} />
+      </QuestionDiv>
+    </>
   );
 };
 
@@ -60,10 +53,22 @@ const ContainerDiv = styled.div`
   justify-content: space-between;
   max-height: 300px;
   overflow: auto;
+  background-color: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.color};
+`;
+
+const QuestionDiv = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
 const Button = styled.button`
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid black;
+  height: 100%;
+  border-radius: 0;
+  border: 1px solid ${(props) => props.theme.color};
+  background-color: ${(props) => props.theme.shadow};
+  color: ${(props) => props.theme.color};
+  font-size: 14px;
+  padding: 10px;
+  cursor: pointer;
 `;

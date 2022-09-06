@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import SearchBar from "./SearchBar";
 import QuestionsComponent from "./Questions-Answers/q-a-container/QuestionsComponent";
+import AddQuestionButton from "./Questions-Answers/Forms/Buttons/AddQuestionButton";
 import { GIT_AUTH, API_URL } from "../../../config";
 
 const QuestionsAndAnswers = ({ product }) => {
@@ -10,6 +11,7 @@ const QuestionsAndAnswers = ({ product }) => {
   const [originalQuestions, setOriginalQuestions] = useState([]);
 
   let productID = product.id;
+  let productName = product.name;
 
   useEffect(() => {
     if (productID !== undefined) {
@@ -40,31 +42,45 @@ const QuestionsAndAnswers = ({ product }) => {
     }
     const searchItems = questions.filter((question) => {
       const questionText = JSON.stringify(question).toLocaleLowerCase();
-      if (questionText.includes(searchText)) {
+      if (questionText.indexOf(searchText) > -1) {
         return question;
       }
     });
+    console.log("state", questions);
     setQuestions(searchItems);
   };
 
-  const productName = `Slacker's Slacks`;
   // will need to get product name passed down as props
   return (
     <Container>
       <div>
         <h1>QUESTIONS & ANSWERS...</h1>
         <SearchBar handleSearch={handleSearch} />
-        <QuestionsComponent questions={questions} productName={product.name} />
+        <QuestionsComponent questions={questions} productName={productName} />
       </div>
     </Container>
   );
 };
 
 const Container = styled.div`
-  display: block;
+  display: flex;
   width: 100%;
   padding: 0.5em;
-  background-color: #7e7e7e;
+  background-color: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.color};
+  position: relative;
+  flex-direction: column;
+`;
+
+const Button = styled.button`
+  height: 100%;
+  border-radius: 0;
+  border: 1px solid ${(props) => props.theme.color};
+  background-color: ${(props) => props.theme.shadow};
+  color: ${(props) => props.theme.color};
+  font-size: 14px;
+  padding: 10px;
+  cursor: pointer;
 `;
 
 const Box1 = styled.div`

@@ -6,6 +6,7 @@ const Modal = ({
   onClick,
   showCloseButton = true,
   showHeader,
+  className,
   children,
   title,
 }) => {

@@ -72,6 +72,12 @@ const Button = styled.button`
   border-bottom: 1px solid black;
 `;
 
+const Span = styled.span`
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid black;
+`;
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;
