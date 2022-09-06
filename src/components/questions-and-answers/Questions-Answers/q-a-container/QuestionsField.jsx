@@ -11,6 +11,7 @@ const QuestionsField = ({ question, productName }) => {
   } = question;
 
   const answers = Object.values(questionsAnswers);
+  const questionID = question.question_id;
 
   return (
     <>
@@ -23,6 +24,7 @@ const QuestionsField = ({ question, productName }) => {
             helpfulness={helpfulness}
             productName={productName}
             question={question_body}
+            questionID={questionID}
           />
         </Box1>
         <AnswersComponent answers={answers} />
