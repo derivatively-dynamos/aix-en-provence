@@ -102,7 +102,7 @@ const SizeOption = styled.button`
   &:hover {
     filter: brightness(120%);
   }
-  background-color: ${(props) => (props.selected ? 'red' : props.theme.shadow)};
+  background-color: ${(props) => (props.selected ? props.theme.flavor : props.theme.shadow)};
 `;
 const SizeContainer = styled.div`
   gap: 1em;
