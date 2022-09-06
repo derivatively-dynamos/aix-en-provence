@@ -48,7 +48,16 @@ const HelpfulnessAnswerComponent = ({
 
     setIsOpen(false);
 
-    /// API call
+    const { username, email, answer } = formValues;
+
+    api
+      .post(`qa/questions/${questionID}/answers`, {
+        body: answer,
+        name: username,
+        email: email,
+      })
+      .then((res) => console.log("Posted", res))
+      .catch((err) => console.error(err));
   };
 
   const onChange = (e) => {
@@ -76,12 +85,12 @@ const HelpfulnessAnswerComponent = ({
 
   return (
     <div>
-      <span>
+      <span style={{ fontSize: "14px" }}>
         Helpful?{" "}
         <Button disabled={isDisabled} onClick={onClickHelpfulness}>
           Yes
         </Button>{" "}
-        {helpful} |{" "}
+        <Box2>{helpful}</Box2> |{" "}
         <AddButtonComponent
           name={"Add Answer"}
           onClick={onClick}
@@ -144,7 +153,7 @@ const Button = styled.button`
   color: ${(props) => props.theme.color};
   background: transparent;
   border: none;
-  border-bottom: 1px solid ${(props) => props.theme.color};
+  text-decoration: underline;
 `;
 
 const Box1 = styled.div`
@@ -160,4 +169,8 @@ const Form = styled.form`
 
 const B = styled.b`
   color: red;
+`;
+
+const Box2 = styled.span`
+  padding-right: 5px;
 `;

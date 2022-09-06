@@ -48,9 +48,12 @@ const Box2 = styled.div`
 `;
 
 const Button = styled.button`
+  background-color: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.color};
   display: flex;
+  margin-bottom: 10px;
   margin-left: 20px;
   background: transparent;
   border: none;
-  border-bottom: 1px solid black;
+  text-decoration: underline;
 `;
