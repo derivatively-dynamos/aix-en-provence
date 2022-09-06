@@ -53,9 +53,9 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     setSortedReviews(reviewsByNum);
   }
 
-  const report = () => {
-    console.log('reported')
-    api.put(`/reviews/${productId}/report`)
+  const report = (reviewId) => {
+    console.log('reported');
+    api.put(`/reviews/${reviewId}/report`)
     .then(() => {
       console.log('Post Reported!')
     })
@@ -64,8 +64,9 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     })
   }
 
-  const markHelpful = () => {
-    api.put(`/reviews/:${productId}/helpful`)
+  const markHelpful = (reviewId) => {
+    console.log('Marked Helpful!');
+    api.put(`/reviews/${reviewId}/helpful`)
     .then(() => {
       console.log('marked helpful!')
     })

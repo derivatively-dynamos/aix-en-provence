@@ -12,7 +12,6 @@ const Review = ({ review, markHelpful, report}) => {
       day: "numeric",
     });
 
-
   return (
     <ReviewCont>
       <ReviewHead>
@@ -38,7 +37,7 @@ const Review = ({ review, markHelpful, report}) => {
         onClick={()=> {
           !reported
           ? (
-            markHelpful(),
+            markHelpful(review.review_id),
             setMarkedHelpful(true)
           )
           : null
@@ -51,7 +50,7 @@ const Review = ({ review, markHelpful, report}) => {
         onClick={()=> {
           !reported
           ? (
-            report(),
+            report(review.review_id),
             setReported(true)
           )
           : null
