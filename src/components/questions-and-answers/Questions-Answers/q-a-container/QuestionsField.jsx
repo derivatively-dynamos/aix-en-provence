@@ -18,7 +18,7 @@ const QuestionsField = ({ question, productName }) => {
       <div>
         <Box1>
           <div>
-            <b>Q:</b> {question_body}
+            <b>Q:</b> <b>{question_body}</b>
           </div>
           <HelpfulnessAnswerComponent
             helpfulness={helpfulness}
