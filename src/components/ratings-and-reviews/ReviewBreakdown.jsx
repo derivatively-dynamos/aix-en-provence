@@ -58,7 +58,7 @@ const ReviewBreakdown = ({ data, setSort }) => {
     setPercentRecommended(calcRecommendationPercentage(data.recommended))
     setStars(newStars);
   }, [data]);
-  console.log(data)
+
   return (
     <ColumnCont>
       <Score score={starScore}/>
