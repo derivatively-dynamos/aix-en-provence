@@ -122,7 +122,7 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
           reviews={sortedReviews}
           setSort={setSort}
         />
-        
+
       </Container>
     </AppContainer>
   )
@@ -141,6 +141,10 @@ const AppContainer = styled(Container)`
   flex-direction: column;
   background-color: white;
   color: #303030;
+`
+
+const Loading = styled(Container)`
+  height: 25em;
 `
 
 export default RatingsAndReviews;

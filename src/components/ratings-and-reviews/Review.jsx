@@ -94,7 +94,7 @@ const ResponseBox = styled.div`
   background-color: #e8e8e8;
   padding: 1em;
 `
-const Links = styled.a`
+const UlText = styled.a`
   text-decoration: underline;
 `
 
