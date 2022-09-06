@@ -1,26 +1,27 @@
-import React, { Component, useState, useEffect } from 'react';
-import './app.scss';
-import styled from 'styled-components';
-import Overview from './overview/Overview';
-import RelatedItems from './related-items/RelatedItems';
-import QuestionsAndAnswers from './questions-and-answers/QuestionsAndAnswers';
-import RatingsAndReviews from './ratings-and-reviews/RatingsAndReviews';
-import themes from './theme';
-import { ThemeProvider } from 'styled-components';
-import Header from './Header';
-import clickTrack from './shared-components/ClickTracker';
-import api from './shared-components/api';
+import React, { Component, useState, useEffect } from "react";
+import "./app.scss";
+import styled from "styled-components";
+import Overview from "./overview/Overview";
+import RelatedItems from "./related-items/RelatedItems";
+import QuestionsAndAnswers from "./questions-and-answers/QuestionsAndAnswers";
+import RatingsAndReviews from "./ratings-and-reviews/RatingsAndReviews";
+import themes from "./theme";
+import { ThemeProvider } from "styled-components";
+import Header from "./Header";
+import clickTrack from "./shared-components/ClickTracker";
+import api from "./shared-components/api";
 
-const OverviewTrack = clickTrack(Overview, 'overview');
+const OverviewTrack = clickTrack(Overview, "overview");
 
 const App = () => {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState("dark");
   const [productId, setProductId] = useState(37313);
-  const [product, setProduct] = useState('');
+  const [product, setProduct] = useState("");
   const [styles, setStyles] = useState([]);
 
   useEffect(() => {
-    api.get(`products/${productId}`)
+    api
+      .get(`products/${productId}`)
       .then((res) => {
         setProduct(res.data);
         return api.get(`products/${productId}/styles`);
@@ -41,7 +42,7 @@ const App = () => {
         <OverviewTrack product={product} styles={styles} />
         <SlimColumn>
           <RelatedItems productId={productId} setProductId={setProductId} product={product} styles={styles}/>
-          <QuestionsAndAnswers />
+          <QuestionsAndAnswers product={product} />
           <RatingsAndReviews />
         </SlimColumn>
       </ThemeProvider>

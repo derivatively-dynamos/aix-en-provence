@@ -17,13 +17,14 @@ const AddQuestionButton = ({ productName }) => {
   };
 
   return (
-    <div>
+    <ContainerDiv>
       <AddButtonComponent
         name={name}
         onClick={onClick}
         isOpen={isOpen}
         showHeader={false}
         title={"Ask Your Question"}
+        styled={false}
       >
         <Form onSubmit={onSubmit}>
           {" "}
@@ -46,13 +47,17 @@ const AddQuestionButton = ({ productName }) => {
           <button>Submit</button>
         </Form>
       </AddButtonComponent>
-    </div>
+    </ContainerDiv>
   );
 };
 
 export default AddQuestionButton;
 
-const name = "ADD A QUESTION";
+const name = "ADD A QUESTION +";
+
+const ContainerDiv = styled.div`
+  margin-left: 10px;
+`;
 
 const Form = styled.form`
   display: flex;

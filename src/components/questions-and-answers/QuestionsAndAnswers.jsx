@@ -3,28 +3,34 @@ import axios from "axios";
 import styled from "styled-components";
 import SearchBar from "./SearchBar";
 import QuestionsComponent from "./Questions-Answers/q-a-container/QuestionsComponent";
+import AddQuestionButton from "./Questions-Answers/Forms/Buttons/AddQuestionButton";
 import { GIT_AUTH, API_URL } from "../../../config";
 
-const QuestionsAndAnswers = () => {
+const QuestionsAndAnswers = ({ product }) => {
   const [questions, setQuestions] = useState([]);
   const [originalQuestions, setOriginalQuestions] = useState([]);
 
+  let productID = product.id;
+  let productName = product.name;
+
   useEffect(() => {
-    axios({
-      method: "get",
-      url: `${API_URL}/qa/questions?product_id=37314`,
-      headers: { Authorization: GIT_AUTH },
-      responseType: "json",
-    })
-      .then(({ data }) => data.results)
-      .then((results) => {
-        setQuestions(results);
-        setOriginalQuestions(results);
+    if (productID !== undefined) {
+      axios({
+        method: "get",
+        url: `${API_URL}/qa/questions?product_id=${productID}&count=50`,
+        headers: { Authorization: GIT_AUTH },
+        responseType: "json",
       })
-      .catch((err) => {
-        console.log("ERROR", err);
-      });
-  }, []);
+        .then(({ data }) => data.results)
+        .then((results) => {
+          setQuestions(results);
+          setOriginalQuestions(results);
+        })
+        .catch((err) => {
+          console.log("ERROR", err);
+        });
+    }
+  }, [productID]);
 
   const handleSearch = (searchText) => {
     searchText = searchText.toLocaleLowerCase();
@@ -36,19 +42,19 @@ const QuestionsAndAnswers = () => {
     }
     const searchItems = questions.filter((question) => {
       const questionText = JSON.stringify(question).toLocaleLowerCase();
-      if (questionText.includes(searchText)) {
+      if (questionText.indexOf(searchText) > -1) {
         return question;
       }
     });
+    console.log("state", questions);
     setQuestions(searchItems);
   };
 
-  const productName = `Slacker's Slacks`;
   // will need to get product name passed down as props
   return (
     <Container>
       <div>
-        <h1>QUESTIONS & ANSWERS...</h1>
+        <H1>QUESTIONS & ANSWERS...</H1>
         <SearchBar handleSearch={handleSearch} />
         <QuestionsComponent questions={questions} productName={productName} />
       </div>
@@ -57,10 +63,18 @@ const QuestionsAndAnswers = () => {
 };
 
 const Container = styled.div`
-  display: block;
+  display: flex;
   width: 100%;
   padding: 0.5em;
-  background-color: #7e7e7e;
+  margin: 50px 0px;
+  background-color: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.color};
+  position: relative;
+  flex-direction: column;
+`;
+
+const H1 = styled.h1`
+  margin-bottom: 0px;
 `;
 
 export default QuestionsAndAnswers;
