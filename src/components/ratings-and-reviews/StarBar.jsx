@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StarBar = ({starAmt, starFill}) => {
+const StarBar = ({starAmt, starFill, setSort}) => {
   let StarBarLevel = {
     width: `${starFill}%`
   }
   return (
-    <Container>
+    <Container onClick={() => {setSort(`${starAmt} Stars`)}}>
       <StarLabel>{starAmt} Stars</StarLabel>
       <StarBarCont>
         <StarBarFill style={StarBarLevel}></StarBarFill>

@@ -6,7 +6,7 @@ import SizeSlider from './SizeSlider.jsx';
 import ComfortSlider from './ComfortSlider.jsx';
 import Score from './Score.jsx';
 
-const ReviewBreakdown = ({ data }) => {
+const ReviewBreakdown = ({ data, setSort }) => {
 
   const [ totalStars, setTotal ] = useState(0);
   const [ starScore, setScore ] = useState(0);
@@ -69,6 +69,7 @@ const ReviewBreakdown = ({ data }) => {
             key={starRating}
             starAmt={starRating}
             starFill={stars[starRating].percentage}
+            setSort={setSort}
           />
         })}
       </ColumnCont>
