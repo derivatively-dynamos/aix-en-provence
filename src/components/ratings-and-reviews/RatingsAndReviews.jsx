@@ -110,7 +110,7 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
 
   return (
     <AppContainer>
-      <Headline>RATINGS AND REVIEWS</Headline>
+      <h2>RATINGS AND REVIEWS</h2>
       <Container>
         <ReviewBreakdown
           setSort={setSort}
@@ -127,9 +127,6 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
   )
 }
 
-const Headline = styled.h2`
-  padding-bottom: 1em;
-`
 const Container = styled.div`
   display: flex;
   width: 100%;

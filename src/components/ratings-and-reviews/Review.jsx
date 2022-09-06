@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import FiveStarRating from '../shared-components/FiveStarRating';
+import Rating from '../shared-components/Rating.jsx';
 
 const Review = ({ review, markHelpful, report}) => {
   const [reported, setReported] = useState(false);

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import FiveStarRating from '../shared-components/FiveStarRating';
+import Rating from '../shared-components/Rating.jsx';
 
 const Score = ({ score }) => {
   return (
@@ -12,7 +12,6 @@ const Score = ({ score }) => {
 }
 
 const ScoreCont = styled.div`
-  position: relative;
   top: 0;
   display: flex;
   justify-content: flex-start;
@@ -20,7 +19,6 @@ const ScoreCont = styled.div`
   width: 100%;
   font-weight: 600;
 `
-
 const ScoreNum = styled.div`
   font-size: 5em;
   padding-right: .1em;
