@@ -19,10 +19,14 @@ const ReviewList = ({ reviews }) => {
       <Container>
         {expanded
         ? reviews.map((review) => {
-          return <Review key={review.review_id} review={ review }/>
+          return <Review
+            key={review.review_id}
+            review={ review }/>
         })
         : reviews.slice(0, 2).map((review) => {
-          return <Review key={review.review_id} review={ review }/>
+          return <Review
+            key={review.review_id}
+            review={ review }/>
         })}
       </Container>
       <BtnCont>
