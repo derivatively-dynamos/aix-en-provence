@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import FiveStarRating from '../shared-components/FiveStarRating';
 
-const Review = ({ review }) => {
+const Review = ({ review, markHelpful, report}) => {
+  const [reported, setReported] = useState(false);
+  const [markedHelpful, setMarkedHelpful] = useState(false);
 
   let date = new Date(review.date).toLocaleDateString("en-us", {
       month: "long",
@@ -92,7 +94,7 @@ const ResponseBox = styled.div`
   background-color: #e8e8e8;
   padding: 1em;
 `
-const Links = styled.a`
+const UlText = styled.a`
   text-decoration: underline;
 `
 
