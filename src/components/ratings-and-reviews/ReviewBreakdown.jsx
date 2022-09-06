@@ -77,7 +77,13 @@ const ReviewBreakdown = ({ data, setSort }) => {
         {Object.keys(data.characteristics).map((char) => {
           let charObj = data.characteristics[char];
           switch (char) {
-            case 'Comfort' || 'Quality':
+            case 'Comfort':
+              return <ComfortSlider
+                key={charObj.id}
+                characteristic={char}
+                comfort={charObj.value}
+              ></ComfortSlider>
+            case 'Quality':
               return <ComfortSlider
                 key={charObj.id}
                 characteristic={char}
