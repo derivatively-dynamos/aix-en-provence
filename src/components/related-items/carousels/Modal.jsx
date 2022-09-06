@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import FiveStarRating from '../../shared-components/FiveStarRating.js';
 
 const Modal = ({ modalState, price, name, photo, category, currProductInfo, setModalState }) => {
 
@@ -39,7 +40,7 @@ const Modal = ({ modalState, price, name, photo, category, currProductInfo, setM
                   <StyleTh>${price}</StyleTh>
                 </tr>
                 <tr>
-                  <StyleTh>★★★☆☆</StyleTh>
+                  <StyleTh><FiveStarRating score={currProductInfo.score} /></StyleTh>
                   <StyleTh2>Rating</StyleTh2>
                   <StyleTh>★★★☆☆</StyleTh>
                 </tr>

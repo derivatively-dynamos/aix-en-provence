@@ -4,14 +4,15 @@ import RelatedProducts from './carousels/RelatedProducts.jsx';
 import YourOutfit from './carousels/YourOutfit.jsx';
 import api from '../shared-components/api';
 
-const RelatedItems = ({ productId, setProductId, product, styles }) => {
+const RelatedItems = ({ productId, setProductId, product, styles, score }) => {
 
   const [currProductInfo, setCurrProductInfo] = useState({
     id: '',
     name: '',
     category: '',
     price: '',
-    photo: ''
+    photo: '',
+    score: ''
   })
   useEffect(() => {
     if (styles.length === 0) return;
@@ -26,7 +27,11 @@ const RelatedItems = ({ productId, setProductId, product, styles }) => {
       price: styles[0]['original_price'],
       photo: styles[0].photos[0]['thumbnail_url']
     }));
-  }, [product, styles])
+    setCurrProductInfo(prevState => ({
+      ...prevState,
+      score: score
+    }));
+  }, [product, styles, score])
 
   return (
     <RICDiv>
