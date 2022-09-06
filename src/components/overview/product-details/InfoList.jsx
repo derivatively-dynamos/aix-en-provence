@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook, faTwitter, faPinterest } from "@fortawesome/free-brands-svg-icons";
 
 const InfoList = ({features}) => {
 
@@ -8,9 +10,11 @@ const InfoList = ({features}) => {
   })
 
   return (
-  <Ul>
-    {list}
-  </Ul>
+  <Container>
+    <Ul>
+      {list}
+    </Ul>
+  </Container>
 )}
 
 const Li = styled.li`
@@ -25,6 +29,9 @@ const Ul = styled.ul`
   margin-top: auto;
   margin-left: 20px;
   margin-bottom: 2em;
+`
+const Container = styled.div`
+  display: flex;
 `
 
 export default InfoList;
