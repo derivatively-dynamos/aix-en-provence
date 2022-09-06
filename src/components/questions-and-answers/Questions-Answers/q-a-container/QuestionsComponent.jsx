@@ -52,7 +52,7 @@ const ContainerDiv = styled.div`
   display: block;
   align-items: center;
   justify-content: space-between;
-  max-height: 300px;
+  max-height: 700px;
   overflow: auto;
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.color};
