@@ -109,7 +109,7 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
 
   return (
     <AppContainer>
-      <h2>RATINGS AND REVIEWS</h2>
+      <Headline>RATINGS AND REVIEWS</Headline>
       <Container>
         <ReviewBreakdown
           setSort={setSort}
