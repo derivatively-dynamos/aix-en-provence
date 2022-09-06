@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import FiveStarRating from '../shared-components/FiveStarRating';
 
-const Review = ({ review }) => {
+const Review = ({ review, markHelpful, report}) => {
+  const [reported, setReported] = useState(false);
+  const [markedHelpful, setMarkedHelpful] = useState(false);
 
   let date = new Date(review.date).toLocaleDateString("en-us", {
       month: "long",
@@ -31,7 +33,33 @@ const Review = ({ review }) => {
             <div>{review.response}</div>
           </ResponseBox>
         }
-      <Helpful>Helpful? <Links>Yes</Links> {review.helpfulness} | <Links>Report</Links></Helpful>
+      <Helpful>Helpful? <UlText
+        name='Helpful Button'
+        onClick={()=> {
+          !reported
+          ? (
+            markHelpful(),
+            setMarkedHelpful(true)
+          )
+          : null
+        }
+      }>{!markedHelpful
+          ? 'Yes'
+          : null
+        }</UlText> {review.helpfulness} | <UlText
+        name='Report Button'
+        onClick={()=> {
+          !reported
+          ? (
+            report(),
+            setReported(true)
+          )
+          : null
+        }
+      }>{!reported
+          ? 'Report'
+          : 'Reported'}
+      </UlText></Helpful>
     </ReviewCont>
   )
 }
@@ -66,7 +94,7 @@ const ResponseBox = styled.div`
   background-color: #e8e8e8;
   padding: 1em;
 `
-const Links = styled.a`
+const UlText = styled.a`
   text-decoration: underline;
 `
 

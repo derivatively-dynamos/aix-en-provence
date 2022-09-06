@@ -2,14 +2,14 @@ import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const SortBy = ({ reviews }) => {
+const SortBy = ({ reviews, setSort }) => {
   return (
     <Container>
       <Inline>{reviews.length} reviews, sorted by</Inline>
-      <Selector>
-        <option>helpful</option>
-        <option>newest</option>
-        <option>relevance</option>
+      <Selector onClick={(e) => setSort(e.target.value)}>
+        <option value="helpful">helpful</option>
+        <option value="newest">newest</option>
+        <option value="relevance" defaultValue>relevance</option>
       </Selector>
     </Container>
   )

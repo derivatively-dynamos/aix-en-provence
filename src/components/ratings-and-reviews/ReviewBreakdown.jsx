@@ -6,7 +6,7 @@ import SizeSlider from './SizeSlider.jsx';
 import ComfortSlider from './ComfortSlider.jsx';
 import Score from './Score.jsx';
 
-const ReviewBreakdown = ({ data }) => {
+const ReviewBreakdown = ({ data, setSort }) => {
 
   const [ totalStars, setTotal ] = useState(0);
   const [ starScore, setScore ] = useState(0);
@@ -69,12 +69,34 @@ const ReviewBreakdown = ({ data }) => {
             key={starRating}
             starAmt={starRating}
             starFill={stars[starRating].percentage}
+            setSort={setSort}
           />
         })}
       </ColumnCont>
       <ColumnCont>
-        <SizeSlider size={data.characteristics.Fit.value}></SizeSlider>
-        <ComfortSlider comfort={data.characteristics.Comfort.value}></ComfortSlider>
+        {Object.keys(data.characteristics).map((char) => {
+          let charObj = data.characteristics[char];
+          switch (char) {
+            case 'Comfort':
+              return <ComfortSlider
+                key={charObj.id}
+                characteristic={char}
+                comfort={charObj.value}
+              ></ComfortSlider>
+            case 'Quality':
+              return <ComfortSlider
+                key={charObj.id}
+                characteristic={char}
+                comfort={charObj.value}
+              ></ComfortSlider>
+            default:
+              return <SizeSlider
+                key={charObj.id}
+                characteristic={char}
+                size={charObj.value}
+              ></SizeSlider>
+          }
+        })}
       </ColumnCont>
     </ColumnCont>
   )
