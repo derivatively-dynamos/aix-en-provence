@@ -17,8 +17,8 @@ const ReviewSlider = ({characteristic, comfort }) => {
         <Indicator style={sliderPos}></Indicator>
       </ReviewCont>
       <SpaceCont>
-            <p>Poor</p>
-            <p>Perfect</p>
+        <p>Poor</p>
+        <p>Perfect</p>
       </SpaceCont>
     </ColumnCont>
   )
