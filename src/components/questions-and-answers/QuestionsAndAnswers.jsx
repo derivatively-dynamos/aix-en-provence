@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import SearchBar from "./SearchBar";
 import QuestionsComponent from "./Questions-Answers/q-a-container/QuestionsComponent";
+import api from "../shared-components/api";
 import { GIT_AUTH, API_URL } from "../../../config";
 
 const QuestionsAndAnswers = ({ product }) => {
@@ -17,12 +18,8 @@ const QuestionsAndAnswers = ({ product }) => {
 
   useEffect(() => {
     if (productID !== undefined) {
-      axios({
-        method: "get",
-        url: `${API_URL}/qa/questions?product_id=${productID}&count=50`,
-        headers: { Authorization: GIT_AUTH },
-        responseType: "json",
-      })
+      api
+        .get(`qa/questions?product_id=${productID}&count=50`)
         .then(({ data }) => data.results)
         .then((results) => {
           console.log("RESULTS", results);

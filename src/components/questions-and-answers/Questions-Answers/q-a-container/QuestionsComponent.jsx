@@ -24,6 +24,7 @@ const QuestionsComponent = ({
                 key={question.question_id}
                 question={question}
                 productName={productName}
+                setUpdate={setUpdate}
               />
             );
           } else if (loadMore) {

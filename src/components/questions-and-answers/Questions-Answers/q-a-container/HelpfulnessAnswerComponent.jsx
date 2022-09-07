@@ -14,6 +14,7 @@ const HelpfulnessAnswerComponent = ({
   const [helpful, setHelpful] = useState(helpfulness);
   const [isOpen, setIsOpen] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [images, setImages] = useState([]);
   const [isDisabled, setDisabled] = useState(false);
   const [formValues, setFormValues] = useState({
     username: "",
@@ -71,21 +72,20 @@ const HelpfulnessAnswerComponent = ({
     setFormValues((preState) => ({ ...preState, [name]: value }));
   };
 
-  // const onFileUpload = (e) => {
-  //   const files = fileRef.current.files;
-  //   const file = files[0];
-  //   const accept = ["image/png"];
-
-  //   if (accept.indexOf(file.type) > -1) {
-  //     var fr = new FileReader();
-  //     fr.readAsDataURL(file);
-  //     setFormValues((prevState) => ({
-  //       ...prevState,
-  //       photos: fr.readAsDataURL(file),
-  //     }));
-  //   }
-  // };
-  // console.log(formValues);
+  const handleImageChange = (e) => {
+    let fileList = e.target.files;
+    console.log(fileList);
+    let validImages = [...fileList].filter((file) =>
+      ["image/jpeg", "image/png"].includes(file.type)
+    );
+    validImages.forEach((image) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.addEventListener("load", (e) => {
+        setImages((prev) => [...prev, e.target.result]);
+      });
+    });
+  };
 
   return (
     <div>
@@ -142,7 +142,7 @@ const HelpfulnessAnswerComponent = ({
               placeholder="Answer Here..."
             ></textarea>
             <div> Upload your photos </div>
-            <input type="file" />
+            <input onChange={handleImageChange} type="file" />
             <button>Submit</button>
           </Form>
         </AddButtonComponent>
