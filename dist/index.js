@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const path = require('path');
 const axios = require('axios');
 const expressStaticGzip = require('express-static-gzip');
+const compression = require('compression');
 require('dotenv').config();
 let app = express ();
 
@@ -15,9 +16,10 @@ const api = axios.create({
   }
 })
 
+//Middleware
 app.use(morgan('dev'));
 app.use(expressStaticGzip(__dirname));
-// app.use(express.static(__dirname));
+app.use(compression());
 
 const port = process.env.PORT || 8010;
 
