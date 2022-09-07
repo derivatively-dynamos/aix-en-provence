@@ -2,9 +2,9 @@ import {GIT_AUTH, API_URL} from '../../../config';
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: process.env.API_URL,
   headers: {
-    Authorization: GIT_AUTH
+    Authorization: process.env.AUTH
   }
 })
 api.interceptors.request.use(request => {
