@@ -13,7 +13,6 @@ const ScoreSelect = ({ userReview, setUserReview }) => {
   }
 
   const fillStarsToCurrent = (rating) => {
-    console.log(rating)
     setUserReview((prevState) => ({
       ...prevState,
       rating: rating
@@ -69,6 +68,7 @@ const ScoreSelect = ({ userReview, setUserReview }) => {
 const StarCont = styled.div`
   position: relative;
   width: 90px;
+  padding: 0.5em;
 `
 const FilledStars = styled.div`
   position: absolute;
