@@ -50,7 +50,7 @@ const App = () => {
             styles={styles}
             score={score}
           />
-          <QuestionsAndAnswers product={product} />
+          {/* <QuestionsAndAnswers product={product} /> */}
           <RatingsAndReviews setScore={setScore} productId={productId} />
         </SlimColumn>
       </Container>
