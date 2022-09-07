@@ -14,15 +14,12 @@ const QuestionsAndAnswers = ({ product }) => {
   let productID = product.id;
   let productName = product.name;
 
-  console.log(productName, productID);
-
   useEffect(() => {
     if (productID !== undefined) {
       api
         .get(`qa/questions?product_id=${productID}&count=50`)
         .then(({ data }) => data.results)
         .then((results) => {
-          console.log("RESULTS", results);
           setQuestions(results);
           setOriginalQuestions(results);
         })
@@ -31,8 +28,6 @@ const QuestionsAndAnswers = ({ product }) => {
         });
     }
   }, [productID, update]);
-
-  console.log(update);
 
   const handleSearch = (searchText) => {
     searchText = searchText.toLocaleLowerCase();

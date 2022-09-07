@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import AddButtonComponent from "../Forms/Buttons/AddButtonComponent";
 import api from "../../../shared-components/api";
@@ -10,17 +10,18 @@ const HelpfulnessAnswerComponent = ({
   questionID,
   setUpdate,
 }) => {
-  const fileRef = useRef(null);
   const [helpful, setHelpful] = useState(helpfulness);
   const [isOpen, setIsOpen] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [images, setImages] = useState([]);
   const [isDisabled, setDisabled] = useState(false);
   const [formValues, setFormValues] = useState({
     username: "",
     email: "",
     answer: "",
+    photos: "",
   });
+
+  const [images, setImages] = useState([]);
 
   const onClick = () => {
     setIsOpen((preState) => !preState);
@@ -61,6 +62,8 @@ const HelpfulnessAnswerComponent = ({
       .then((res) => {
         console.log("Posted", res);
         setUpdate((preState) => !preState);
+        setImages([]);
+        setFormValues((preState) => ({ ...preState, photos: "" }));
       })
       .catch((err) => console.error(err));
   };
@@ -74,7 +77,6 @@ const HelpfulnessAnswerComponent = ({
 
   const handleImageChange = (e) => {
     let fileList = e.target.files;
-    console.log(fileList);
     let validImages = [...fileList].filter((file) =>
       ["image/jpeg", "image/png"].includes(file.type)
     );
@@ -83,6 +85,7 @@ const HelpfulnessAnswerComponent = ({
       reader.readAsDataURL(image);
       reader.addEventListener("load", (e) => {
         setImages((prev) => [...prev, e.target.result]);
+        setFormValues((preState) => ({ ...preState, photos: images }));
       });
     });
   };
@@ -142,7 +145,16 @@ const HelpfulnessAnswerComponent = ({
               placeholder="Answer Here..."
             ></textarea>
             <div> Upload your photos </div>
-            <input onChange={handleImageChange} type="file" />
+            <div>
+              <input onChange={handleImageChange} type="file" />
+              <Container>
+                {images.map((image, index) => {
+                  return (
+                    <Thumbnail src={image} key={questionID + index}></Thumbnail>
+                  );
+                })}
+              </Container>
+            </div>
             <button>Submit</button>
           </Form>
         </AddButtonComponent>
@@ -177,4 +189,20 @@ const B = styled.b`
 
 const Box2 = styled.span`
   padding-right: 5px;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 8px;
+  margin-bottom: 4px;
+`;
+
+const Thumbnail = styled.img`
+  max-width: 100%;
+  width: 80px;
+  border-radius: 50%;
+  justify-content: ;
+  margin-right: 5px;
 `;
