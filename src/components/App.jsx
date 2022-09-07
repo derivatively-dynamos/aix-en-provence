@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Suspense, Component, useState, useEffect } from 'react';
 import './app.scss';
 import styled from 'styled-components';
 import themes from './theme';
@@ -41,17 +41,25 @@ const App = () => {
         style={{ backgroundColor: themes[theme].background }}
       >
         <Header curTheme={theme} setTheme={setTheme} themes={themes} />
-        <Overview product={product} styles={styles} score={score} />
+        <Suspense fallback={<Loading/>}>
+          <Overview product={product} styles={styles} score={score} />
+        </Suspense>
         <SlimColumn>
-          <RelatedItems
-            productId={productId}
-            setProductId={setProductId}
-            product={product}
-            styles={styles}
-            score={score}
-          />
-          <QuestionsAndAnswers product={product} />
-          <RatingsAndReviews setScore={setScore} productId={productId} />
+          <Suspense fallback={<Loading/>}>
+            <RelatedItems
+              productId={productId}
+              setProductId={setProductId}
+              product={product}
+              styles={styles}
+              score={score}
+            />
+          </Suspense>
+          <Suspense fallback={<Loading/>}>
+            <QuestionsAndAnswers product={product} />
+          </Suspense>
+          <Suspense fallback={<Loading/>}>
+            <RatingsAndReviews setScore={setScore} productId={productId} />
+          </Suspense>
         </SlimColumn>
       </Container>
     </ThemeProvider>
@@ -69,5 +77,9 @@ const Container = styled.div`
 const SlimColumn = styled.div`
   max-width: 85%;
 `;
+const Loading = styled.div`
+  width: 100%;
+  height: 30em;
+`
 
 export default App;
