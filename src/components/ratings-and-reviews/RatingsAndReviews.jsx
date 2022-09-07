@@ -11,24 +11,6 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
   const [metaData, setMetaData] = useState(undefined);
   const [sortedBy, setSort ] = useState('relevance');
   const [isOpen, setIsOpen] = useState(false);
-  const [userReview, setUserReview] = useState({
-    body: '',
-    date: '',
-    helpfulness: 1,
-    photos: [],
-    rating: 1,
-    recommend: false,
-    response: null,
-    review_id: 1,
-    reviewer_name: '',
-    summary: ''
-  });
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    //api call here
-    setIsOpen(false);
-  };
 
   const filterBy = (reviewArr, filter) => {
     switch (filter) {
@@ -142,7 +124,6 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
           setSort={setSort}
           isOpen={isOpen}
           setIsOpen={setIsOpen}
-          onSubmit={onSubmit}
         />
       </Container>
     </AppContainer>

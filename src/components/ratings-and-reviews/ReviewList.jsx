@@ -14,7 +14,7 @@ const ReviewList = ({
     report,
     isOpen,
     setIsOpen,
-    onSubmit
+    setUserReview
   }) => {
   const [expanded, expand] = useState(false);
 
@@ -68,7 +68,7 @@ const ReviewList = ({
         <ModalButton
           onClick={onClick}
           isOpen={isOpen}
-          onSubmit={onSubmit}
+          setIsOpen={setIsOpen}
         />
       </BtnCont>
     </Container>
