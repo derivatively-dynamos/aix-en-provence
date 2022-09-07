@@ -17,7 +17,7 @@ const QuestionsField = ({ question, productName, setUpdate }) => {
     <>
       <div>
         <Box1>
-          <div>
+          <div style={{ marginTop: "15px" }}>
             <b>Q:</b> <b>{question_body}</b>
           </div>
           <HelpfulnessAnswerComponent
