@@ -5,3 +5,4 @@ dist/bundle*
 config.js
 dist/index.html
 dist/*bundle*
+*.gz

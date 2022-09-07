@@ -38,7 +38,7 @@ const Cards = ({ product, setProductId, currProductInfo }) => {
   }, [product]);
 
   useEffect(() => {
-    api.get(`reviews/?product_id=${product}`)
+    api.get(`reviews?product_id=${product}`)
     .then(res => {
       let resultScores = [];
       res.data.results.forEach((review) => {
