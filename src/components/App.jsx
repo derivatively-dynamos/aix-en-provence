@@ -24,6 +24,7 @@ const App = () => {
     api
       .get(`products/${productId}`)
       .then((res) => {
+        console.log('PRODUCT DATA: ', res.data)
         setProduct(res.data);
         return api.get(`products/${productId}/styles`);
       })
@@ -40,7 +41,7 @@ const App = () => {
         style={{ backgroundColor: themes[theme].background }}
       >
         <Header curTheme={theme} setTheme={setTheme} themes={themes} />
-        <OverviewTrack product={product} styles={styles} score={score} />
+        <Overview product={product} styles={styles} score={score} />
         <SlimColumn>
           <RelatedItems
             productId={productId}

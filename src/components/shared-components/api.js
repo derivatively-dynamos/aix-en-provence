@@ -1,10 +1,13 @@
 import {GIT_AUTH, API_URL} from '../../../config';
 import axios from 'axios';
+console.log(process.env.NODE_ENV);
+
+const url = process.env.NODE_ENV === 'production' ? '/api' : 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
 
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: url,
   headers: {
-    Authorization: GIT_AUTH
+    Authorization: process.env.AUTH
   }
 })
 api.interceptors.request.use(request => {
