@@ -1,6 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
+const path = require('path');
 const axios = require('axios');
+const expressStaticGzip = require('express-static-gzip');
 require('dotenv').config();
 let app = express ();
 
@@ -14,7 +16,8 @@ const api = axios.create({
 })
 
 app.use(morgan('dev'));
-app.use(express.static(__dirname));
+app.use(expressStaticGzip(__dirname));
+// app.use(express.static(__dirname));
 
 const port = process.env.PORT || 8010;
 
@@ -26,7 +29,7 @@ app.get('/api/*', (req, res) => {
       res.send(response.data);
     })
     .catch(err => {
-      console.log(err);
+      console.log(err.data);
       res.status(400);
       res.send('Error')
     })

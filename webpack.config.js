@@ -2,6 +2,7 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const CompressionPlugin = require("compression-webpack-plugin");
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -23,6 +24,7 @@ module.exports = {
     }),
     new ReactRefreshWebpackPlugin(),
     new Dotenv(),
+    new CompressionPlugin(),
   ],
   module: {
     rules: [

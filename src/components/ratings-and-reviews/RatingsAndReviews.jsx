@@ -65,7 +65,7 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
   }
 
   const markHelpful = () => {
-    api.put(`/reviews/:${productId}/helpful`)
+    api.put(`/reviews/${productId}/helpful`)
     .then(() => {
       console.log('marked helpful!')
     })
@@ -75,7 +75,7 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
   }
 
   useEffect(() => {
-    api.get(`/reviews/?product_id=${productId}`)
+    api.get(`/reviews?product_id=${productId}`)
     .then((product) => {
       const reviewBundle = product.data.results;
       setReviews(reviewBundle);
@@ -93,7 +93,7 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     })
     .catch((err) => console.log(err))
 
-    api.get(`/reviews/meta/?product_id=${productId}`)
+    api.get(`/reviews/meta?product_id=${productId}`)
     .then((returnedData) => {
       const apiMetaData = returnedData.data;
       setMetaData(apiMetaData);
