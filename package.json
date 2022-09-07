@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "build": "webpack",
+    "server": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +18,9 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "axios": "^0.27.2",
+    "express": "^4.18.1",
     "lodash": "^4.17.21",
+    "morgan": "^1.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-select": "^5.4.0"
