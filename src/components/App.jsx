@@ -1,15 +1,15 @@
 import React, { Component, useState, useEffect } from 'react';
 import './app.scss';
 import styled from 'styled-components';
-import Overview from './overview/Overview';
-import RelatedItems from './related-items/RelatedItems';
-import QuestionsAndAnswers from './questions-and-answers/QuestionsAndAnswers';
-import RatingsAndReviews from './ratings-and-reviews/RatingsAndReviews';
 import themes from './theme';
 import { ThemeProvider } from 'styled-components';
 import Header from './Header';
 import clickTrack from './shared-components/ClickTracker';
 import api from './shared-components/api';
+const Overview = React.lazy(() => import('./overview/Overview'));
+const RelatedItems = React.lazy(() => import('./related-items/RelatedItems'));
+const QuestionsAndAnswers = React.lazy(() => import('./questions-and-answers/QuestionsAndAnswers'))
+const RatingsAndReviews = React.lazy(() => import('./ratings-and-reviews/RatingsAndReviews'))
 
 const OverviewTrack = clickTrack(Overview, 'overview');
 

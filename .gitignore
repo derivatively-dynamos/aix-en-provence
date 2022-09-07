@@ -4,3 +4,4 @@ dist/bundle*
 .env
 config.js
 dist/index.html
+dist/*bundle*
