@@ -3,7 +3,6 @@ import axios from "axios";
 import styled from "styled-components";
 import SearchBar from "./SearchBar";
 import QuestionsComponent from "./Questions-Answers/q-a-container/QuestionsComponent";
-import { GIT_AUTH, API_URL } from "../../../config";
 
 const QuestionsAndAnswers = ({ product }) => {
   const [questions, setQuestions] = useState([]);
