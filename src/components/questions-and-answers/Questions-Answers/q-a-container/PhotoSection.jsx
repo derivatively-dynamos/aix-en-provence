@@ -4,8 +4,12 @@ import Modal from "../Forms/Buttons/ModalForm";
 
 const PhotoSection = ({ photos, answerID }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentPhoto, setPhoto] = useState(null);
 
-  const onClick = () => {
+  const onClick = (photo) => {
+    if (photo) {
+      setPhoto(photo);
+    }
     setIsOpen((preState) => !preState);
   };
 
@@ -13,24 +17,23 @@ const PhotoSection = ({ photos, answerID }) => {
     return (
       <Box1>
         {photos.map((photo, index) => {
-          if (!isOpen) {
-            return (
-              <Img onClick={onClick} key={answerID + index} src={photo}></Img>
-            );
-          } else {
-            return (
-              <Modal
-                isOpen={isOpen}
-                onClick={onClick}
-                showCloseButton={false}
-                showHeader={false}
-                key={answerID + index}
-              >
-                <Img2 src={photo}></Img2>
-              </Modal>
-            );
-          }
+          return (
+            <Img
+              key={answerID + index}
+              onClick={() => onClick(photo)}
+              src={photo}
+            ></Img>
+          );
         })}
+
+        <Modal
+          isOpen={isOpen}
+          onClick={onClick}
+          showCloseButton={false}
+          showHeader={false}
+        >
+          <Img2 src={currentPhoto}></Img2>
+        </Modal>
       </Box1>
     );
   }

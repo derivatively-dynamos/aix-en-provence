@@ -1,25 +1,21 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import styled from "styled-components";
 import SearchBar from "./SearchBar";
 import QuestionsComponent from "./Questions-Answers/q-a-container/QuestionsComponent";
-import { GIT_AUTH, API_URL } from "../../../config";
+import api from "../shared-components/api";
 
 const QuestionsAndAnswers = ({ product }) => {
   const [questions, setQuestions] = useState([]);
   const [originalQuestions, setOriginalQuestions] = useState([]);
+  const [update, setUpdate] = useState(false);
 
   let productID = product.id;
   let productName = product.name;
 
   useEffect(() => {
     if (productID !== undefined) {
-      axios({
-        method: "get",
-        url: `${API_URL}/qa/questions?product_id=${productID}&count=50`,
-        headers: { Authorization: GIT_AUTH },
-        responseType: "json",
-      })
+      api
+        .get(`qa/questions?product_id=${productID}&count=50`)
         .then(({ data }) => data.results)
         .then((results) => {
           setQuestions(results);
@@ -29,7 +25,7 @@ const QuestionsAndAnswers = ({ product }) => {
           console.log("ERROR", err);
         });
     }
-  }, [productID]);
+  }, [productID, update]);
 
   const handleSearch = (searchText) => {
     searchText = searchText.toLocaleLowerCase();
@@ -58,6 +54,7 @@ const QuestionsAndAnswers = ({ product }) => {
           questions={questions}
           productName={productName}
           productID={productID}
+          setUpdate={setUpdate}
         />
       </div>
     </Container>

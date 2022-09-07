@@ -3,7 +3,12 @@ import styled from "styled-components";
 import QuestionsField from "./QuestionsField";
 import AddQuestionButton from "../Forms/Buttons/AddQuestionButton";
 
-const QuestionsComponent = ({ questions, productName, productID }) => {
+const QuestionsComponent = ({
+  questions,
+  productName,
+  productID,
+  setUpdate,
+}) => {
   const [loadMore, setLoadMore] = useState(false);
   const handleClick = () => {
     setLoadMore((prevState) => !prevState);
@@ -19,6 +24,7 @@ const QuestionsComponent = ({ questions, productName, productID }) => {
                 key={question.question_id}
                 question={question}
                 productName={productName}
+                setUpdate={setUpdate}
               />
             );
           } else if (loadMore) {
@@ -27,6 +33,7 @@ const QuestionsComponent = ({ questions, productName, productID }) => {
                 key={question.question_id}
                 question={question}
                 productName={productName}
+                setUpdate={setUpdate}
               />
             );
           }
@@ -38,7 +45,11 @@ const QuestionsComponent = ({ questions, productName, productID }) => {
             {loadMore ? "COLLAPSE" : "MORE ANSWERED QUESTIONS"}
           </Button>
         ) : null}
-        <AddQuestionButton productName={productName} productID={productID} />
+        <AddQuestionButton
+          setUpdate={setUpdate}
+          productName={productName}
+          productID={productID}
+        />
       </QuestionDiv>
     </>
   );

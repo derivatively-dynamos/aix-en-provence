@@ -34,6 +34,15 @@ const theme = {
     shadow: '#68ccc4',
     flavor: '#4dfff0',
     reviewColor: "yellow",
+  },
+  retro: {
+    background: '#283618',
+    color: '#fefae0',
+    highlight: '#dda15e',
+    shadow: '#6b3d15',
+    sale: 'red',
+    flavor: '#606c38',
+    reviewColor: 'yellow',
   }
 };
 

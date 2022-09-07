@@ -3,7 +3,7 @@ import styled from "styled-components";
 import AnswersComponent from "./AnswersComponent";
 import HelpfulnessAnswerComponent from "./HelpfulnessAnswerComponent";
 
-const QuestionsField = ({ question, productName }) => {
+const QuestionsField = ({ question, productName, setUpdate }) => {
   const {
     question_body,
     answers: questionsAnswers,
@@ -17,7 +17,7 @@ const QuestionsField = ({ question, productName }) => {
     <>
       <div>
         <Box1>
-          <div>
+          <div style={{ marginTop: "15px" }}>
             <b>Q:</b> <b>{question_body}</b>
           </div>
           <HelpfulnessAnswerComponent
@@ -26,6 +26,7 @@ const QuestionsField = ({ question, productName }) => {
             question={question_body}
             questionID={questionID}
             answers={answers}
+            setUpdate={setUpdate}
           />
         </Box1>
         <AnswersComponent answers={answers} />
