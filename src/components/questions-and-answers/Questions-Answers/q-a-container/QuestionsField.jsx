@@ -3,7 +3,7 @@ import styled from "styled-components";
 import AnswersComponent from "./AnswersComponent";
 import HelpfulnessAnswerComponent from "./HelpfulnessAnswerComponent";
 
-const QuestionsField = ({ question, productName }) => {
+const QuestionsField = ({ question, productName, setUpdate }) => {
   const {
     question_body,
     answers: questionsAnswers,
@@ -26,6 +26,7 @@ const QuestionsField = ({ question, productName }) => {
             question={question_body}
             questionID={questionID}
             answers={answers}
+            setUpdate={setUpdate}
           />
         </Box1>
         <AnswersComponent answers={answers} />

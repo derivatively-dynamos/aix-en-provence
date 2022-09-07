@@ -8,6 +8,7 @@ const HelpfulnessAnswerComponent = ({
   productName,
   question,
   questionID,
+  setUpdate,
 }) => {
   const fileRef = useRef(null);
   const [helpful, setHelpful] = useState(helpfulness);
@@ -56,7 +57,10 @@ const HelpfulnessAnswerComponent = ({
         name: username,
         email: email,
       })
-      .then((res) => console.log("Posted", res))
+      .then((res) => {
+        console.log("Posted", res);
+        setUpdate((preState) => !preState);
+      })
       .catch((err) => console.error(err));
   };
 

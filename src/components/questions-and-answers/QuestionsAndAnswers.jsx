@@ -8,9 +8,12 @@ import { GIT_AUTH, API_URL } from "../../../config";
 const QuestionsAndAnswers = ({ product }) => {
   const [questions, setQuestions] = useState([]);
   const [originalQuestions, setOriginalQuestions] = useState([]);
+  const [update, setUpdate] = useState(false);
 
   let productID = product.id;
   let productName = product.name;
+
+  console.log(productName, productID);
 
   useEffect(() => {
     if (productID !== undefined) {
@@ -22,6 +25,7 @@ const QuestionsAndAnswers = ({ product }) => {
       })
         .then(({ data }) => data.results)
         .then((results) => {
+          console.log("RESULTS", results);
           setQuestions(results);
           setOriginalQuestions(results);
         })
@@ -29,7 +33,9 @@ const QuestionsAndAnswers = ({ product }) => {
           console.log("ERROR", err);
         });
     }
-  }, [productID]);
+  }, [productID, update]);
+
+  console.log(update);
 
   const handleSearch = (searchText) => {
     searchText = searchText.toLocaleLowerCase();
@@ -58,6 +64,7 @@ const QuestionsAndAnswers = ({ product }) => {
           questions={questions}
           productName={productName}
           productID={productID}
+          setUpdate={setUpdate}
         />
       </div>
     </Container>

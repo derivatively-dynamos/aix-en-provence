@@ -3,7 +3,7 @@ import styled from "styled-components";
 import AddButtonComponent from "./AddButtonComponent";
 import api from "../../../../shared-components/api";
 
-const AddQuestionButton = ({ productName, productID }) => {
+const AddQuestionButton = ({ productName, productID, setUpdate }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [formValues, setFormValues] = useState({
@@ -38,7 +38,10 @@ const AddQuestionButton = ({ productName, productID }) => {
         email: email,
         product_id: productID,
       })
-      .then((res) => console.log("Posted", res))
+      .then((res) => {
+        console.log("Posted", res);
+        setUpdate((preState) => !preState);
+      })
       .catch((err) => console.error(err));
   };
 
