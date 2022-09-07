@@ -98,6 +98,7 @@ const AddToCart = ({ style }) => {
           </a>
           <a
             href={`http://pinterest.com/pin/create/button/?url=${window.location.href}&media=${style.photos[0].url}`}
+            target="_blank"
           >
             <Icon icon={faPinterest} />
           </a>

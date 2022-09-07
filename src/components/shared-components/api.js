@@ -1,4 +1,3 @@
-import {GIT_AUTH, API_URL} from '../../../config';
 import axios from 'axios';
 console.log(process.env.NODE_ENV);
 
