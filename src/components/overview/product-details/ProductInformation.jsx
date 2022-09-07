@@ -12,7 +12,7 @@ const ProductInformation = ({
       <Row>
         <Rating score={score}/>
         <div>
-          <a href="">Read all reviews</a>
+          <A href="#reviews">Read all reviews</A>
         </div>
       </Row>
       <ProductInfo>
@@ -52,6 +52,7 @@ const H4 = styled.h4`
   font-weight: 300;
   margin: 0;
   padding: 0;
+  margin-top: .5em;
 `;
 const H2 = styled.h2`
   margin-top: 5px;
@@ -84,6 +85,11 @@ const ProductInfo = styled.div`
 `
 const Row = styled.div`
   display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+`
+const A = styled.a`
+  color: ${props => props.theme.color};
 `
 
 export default ProductInformation;

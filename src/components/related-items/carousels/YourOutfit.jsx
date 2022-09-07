@@ -8,7 +8,16 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
   //State
   const [displayWidth, setDisplayWidth] = useState(0);
   const [scrollWidth, setScrollWidth] = useState(0);
-  const [outfit, setOutfit] = useState([]);
+  const [outfit, setOutfit] = useState(() => {
+    if (localStorage.getItem('outfit')) {
+      try {
+        return JSON.parse(localStorage.getItem('outfit'))
+      } catch (error) {
+        localStorage.removeItem('outfiit')
+      }
+    }
+    return [];
+  });
   const [scrollLeftLoc, setScrollLeftLoc] = useState(0);
   const [isShownLeft, setIsShownLeft] = useState(false);
   const [isShownRight, setIsShownRight] = useState(true);
@@ -27,6 +36,10 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
     }
   }
 
+
+  useEffect(() => {
+    localStorage.setItem('outfit', JSON.stringify(outfit));
+  }, [outfit])
 
   useEffect(() => {
     setDisplayWidth(scrollRef.current.offsetWidth);
@@ -88,7 +101,6 @@ const YourOutfit = ({ productId, setProductId, currProductInfo }) => {
           {iconConditionalRight}
         </CardContainer>
       </InnerContainer>
-      <SlideTracker />
     </Container>
   );
 };
@@ -116,12 +128,12 @@ const AddItemText = styled.section`
   font-size: 1em;
   color: white;
 `
-const TitleDiv = styled.section`
+const TitleDiv = styled.h2`
   display: flex;
   justify-content: center;
-  font-weight: bold;
-  font-size: larger;
-  color: ${props => props.theme.color}
+  font-weight: lighter;
+  margin: 2em 0 .5em 0;
+  color: ${props => props.theme.color};
 `
 const Container = styled.section`
   display: flex;
@@ -130,7 +142,7 @@ const Container = styled.section`
   background-color: ${props => props.theme.background};
   color: lightgray;
   padding: 0.2;
-  align-items: center;
+  align-items: start;
 `
 const InnerContainer = styled.section`
   display: flex;
@@ -156,11 +168,7 @@ const CardContainer = styled.section`
   scrollbar-width: none;
   overflow-x: hidden;
 `
-const SlideTracker = styled.section`
-  display: flex;
-  width: 100%;
-  height: 2em;
-`
+
 const IconCover = styled.div`
   display: flex;
   width: 2em;

@@ -14,10 +14,20 @@ const Modal = ({ modalState, price, name, photo, category, currProductInfo, setM
         <Container >
           <ImagesContainer>
             <ImageContainer>
-              <img src={currProductInfo.photo}></img>
+              <img src={currProductInfo.photo} style={{
+                maxWidth: 'auto',
+                maxHeight: 'auto',
+                minHeight: '100%',
+                minWidth: `100%`
+              }}></img>
             </ImageContainer>
             <ImageContainer>
-              <img src={photo}></img>
+              <img src={photo} style={{
+                maxWidth: 'auto',
+                maxHeight: 'auto',
+                minHeight: '100%',
+                minWidth: `100%`
+              }}></img>
             </ImageContainer>
           </ImagesContainer>
           <InfoContainer>
@@ -112,15 +122,17 @@ const Overlay = styled.div`
 
 const ImageContainer = styled.section`
   display: flex;
-  height: 14em;
-  width: auto;
+  height: 100%;
+  width: 50%;
   overflow: hidden;
+  justify-content: center;
+  align-items: center;
 `
 const ImagesContainer = styled.section`
   display: flex;
   flex-direction: row;
-  overflow:auto;
-  justify-content: space-evenly;
+  height: 14em;
+  overflow:hidden;
   background-color: ${props => props.theme.background};
 `
 const InfoContainer = styled.section`

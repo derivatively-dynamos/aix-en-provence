@@ -1,22 +1,22 @@
-import React, { Component, useState, useEffect } from "react";
-import "./app.scss";
-import styled from "styled-components";
-import Overview from "./overview/Overview";
-import RelatedItems from "./related-items/RelatedItems";
-import QuestionsAndAnswers from "./questions-and-answers/QuestionsAndAnswers";
-import RatingsAndReviews from "./ratings-and-reviews/RatingsAndReviews";
-import themes from "./theme";
-import { ThemeProvider } from "styled-components";
-import Header from "./Header";
-import clickTrack from "./shared-components/ClickTracker";
-import api from "./shared-components/api";
+import React, { Suspense, Component, useState, useEffect } from 'react';
+import './app.scss';
+import styled from 'styled-components';
+import themes from './theme';
+import { ThemeProvider } from 'styled-components';
+import Header from './Header';
+import clickTrack from './shared-components/ClickTracker';
+import api from './shared-components/api';
+const Overview = React.lazy(() => import('./overview/Overview'));
+const RelatedItems = React.lazy(() => import('./related-items/RelatedItems'));
+const QuestionsAndAnswers = React.lazy(() => import('./questions-and-answers/QuestionsAndAnswers'))
+const RatingsAndReviews = React.lazy(() => import('./ratings-and-reviews/RatingsAndReviews'))
 
-const OverviewTrack = clickTrack(Overview, "overview");
+const OverviewTrack = clickTrack(Overview, 'overview');
 
 const App = () => {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState('dark');
   const [productId, setProductId] = useState(37313);
-  const [product, setProduct] = useState("");
+  const [product, setProduct] = useState('');
   const [styles, setStyles] = useState([]);
   const [score, setScore] = useState(0);
 
@@ -24,6 +24,7 @@ const App = () => {
     api
       .get(`products/${productId}`)
       .then((res) => {
+        console.log('PRODUCT DATA: ', res.data)
         setProduct(res.data);
         return api.get(`products/${productId}/styles`);
       })
@@ -34,20 +35,34 @@ const App = () => {
   }, [productId]);
 
   return (
-    <Container
-      className="container"
-      style={{ backgroundColor: themes[theme].background }}
-    >
-      <ThemeProvider theme={themes[theme]}>
+    <ThemeProvider theme={themes[theme]}>
+      <Container
+        className="container"
+        style={{ backgroundColor: themes[theme].background }}
+      >
         <Header curTheme={theme} setTheme={setTheme} themes={themes} />
-        <OverviewTrack product={product} styles={styles} score={score}/>
+        <Suspense fallback={<Loading/>}>
+          <Overview product={product} styles={styles} score={score} />
+        </Suspense>
         <SlimColumn>
-          <RelatedItems productId={productId} setProductId={setProductId} product={product} styles={styles} score={score} />
-          <QuestionsAndAnswers product={product}/>
-          <RatingsAndReviews setScore={setScore} productId={productId}/>
+          <Suspense fallback={<Loading/>}>
+            <RelatedItems
+              productId={productId}
+              setProductId={setProductId}
+              product={product}
+              styles={styles}
+              score={score}
+            />
+          </Suspense>
+          <Suspense fallback={<Loading/>}>
+            <QuestionsAndAnswers product={product} />
+          </Suspense>
+          <Suspense fallback={<Loading/>}>
+            <RatingsAndReviews setScore={setScore} productId={productId} />
+          </Suspense>
         </SlimColumn>
-      </ThemeProvider>
-    </Container>
+      </Container>
+    </ThemeProvider>
   );
 };
 
@@ -55,12 +70,16 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1em auto 0 auto;
+  margin: 0 auto 1em auto;
   max-width: 1200px;
-  border: 1px solid darkgray;
+  background-color: ${props => props.theme.background};
 `;
 const SlimColumn = styled.div`
   max-width: 85%;
 `;
+const Loading = styled.div`
+  width: 100%;
+  height: 30em;
+`
 
 export default App;

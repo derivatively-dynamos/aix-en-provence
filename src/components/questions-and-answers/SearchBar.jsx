@@ -43,7 +43,7 @@ const Container = styled.div`
 `;
 
 const Input = styled.input`
-  color: ${(props) => props.theme.color};
+  color: black;
   position: relative;
   display: flex;
   border: 1px solid grey;

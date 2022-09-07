@@ -6,3 +6,9 @@
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+body{
+  margin-top: 0;
+  height: 100%;
+  width: 100%;
+}

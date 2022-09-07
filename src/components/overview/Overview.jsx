@@ -104,7 +104,7 @@ const Overview = ({ product, styles, score}) => {
 const Container = styled.div`
   display: flex;
   width: 100%;
-  padding: 0.5em;
+  padding-right: 0.5em;
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.color};
   position: relative;

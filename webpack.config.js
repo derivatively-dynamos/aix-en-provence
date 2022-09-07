@@ -1,6 +1,10 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+const CompressionPlugin = require("compression-webpack-plugin");
+
+const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports= function (api) {
   return {
@@ -19,6 +23,8 @@ module.exports = {
       template: './src/index.html',
     }),
     new ReactRefreshWebpackPlugin(),
+    new Dotenv(),
+    new CompressionPlugin(),
   ],
   module: {
     rules: [
@@ -29,7 +35,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
-            plugins: ['react-refresh/babel'],
+            plugins: isDevelopment ? ['react-refresh/babel'] : [],
           },
         },
       },
