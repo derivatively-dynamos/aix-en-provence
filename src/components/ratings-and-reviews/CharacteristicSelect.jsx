@@ -17,6 +17,7 @@ const StarRadio = ({
             <Input
               type="radio"
               name={characteristic + 'radio'}
+              required
               onClick={() => handleRadioClick(characteristic, rating)}
             />
           </Container>

@@ -22,9 +22,9 @@ const ModalButton = ({
       ...prevState,
       date: new Date(),
     }))
-    api.post('/reviews', userReview)
-    .then(setIsOpen(false))
-    .catch((err) => console.log(err))
+    // api.post('/reviews', userReview)
+    // .then(setIsOpen(false))
+    // .catch((err) => console.log(err))
   }
 
   const handleOnChange = (e) => {
@@ -121,6 +121,7 @@ const ModalButton = ({
             maxLength="60"
             placeholder="E-Mail..."
             type="text"
+            required
             onChange={(e) => handleOnChange(e)}
           />
           <Input
@@ -128,6 +129,7 @@ const ModalButton = ({
             maxLength="60"
             placeholder="Username..."
             type="text"
+            required
             onChange={(e) => handleOnChange(e)}
           />
           <Input
@@ -135,6 +137,7 @@ const ModalButton = ({
             maxLength="60"
             placeholder="Your review's awesome title..."
             type="text"
+            required
             onChange={(e) => handleOnChange(e)}
             />
           <Recommendation>
@@ -142,6 +145,7 @@ const ModalButton = ({
             <Input
               type="radio"
               name="recommend"
+              required
               onClick={() => handleRadioClick('recommend', 'Yes')}
             />
             <label htmlFor="recommend">Yes</label>
@@ -162,6 +166,7 @@ const ModalButton = ({
           })}
           <textarea
             id="body"
+            minLength="50"
             maxLength="1000"
             rows="6"
             cols="50"
