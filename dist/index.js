@@ -15,13 +15,12 @@ const api = axios.create({
     Authorization: process.env.AUTH,
   }
 })
-
 //Middleware
 app.use(morgan('dev'));
 app.use(expressStaticGzip(__dirname));
 app.use(compression());
 
-const port = process.env.PORT || 8010;
+const port = process.env.PORT || 8080;
 
 app.get('/api/*', (req, res) => {
   const url = req.url.replace('/api/', '/')
