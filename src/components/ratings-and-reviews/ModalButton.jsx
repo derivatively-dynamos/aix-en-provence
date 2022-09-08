@@ -16,12 +16,11 @@ const ModalButton = ({
   const [userReview, setUserReview] = useState({
     body: '',
     date: '',
-    helpfulness: 1,
+    helpfulness: 0,
     photos: [],
     rating: 1,
     recommend: false,
     response: null,
-    review_id: 1,
     reviewer_name: '',
     summary: '',
     characteristics: {
@@ -112,8 +111,6 @@ const ModalButton = ({
       break;
     }
   }
-
-  console.log(userReview)
 
   return (
     <AddButtonComponent
@@ -207,7 +204,7 @@ const Form = styled.form`
 const Recommendation = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  gap: 1em;
   align-items: baseline;
 `
 const ScoreCont = styled.div`
