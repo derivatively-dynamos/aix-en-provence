@@ -17,27 +17,34 @@ const QuestionsComponent = ({
   return (
     <>
       <ContainerDiv>
-        {questions.map((question, index) => {
-          if (!loadMore && index < 2) {
-            return (
-              <QuestionsField
-                key={question.question_id}
-                question={question}
-                productName={productName}
-                setUpdate={setUpdate}
-              />
-            );
-          } else if (loadMore) {
-            return (
-              <QuestionsField
-                key={question.question_id}
-                question={question}
-                productName={productName}
-                setUpdate={setUpdate}
-              />
-            );
-          }
-        })}
+        {questions
+          .sort((a, b) => {
+            const objA = Object.keys(a?.answers).length;
+            const objB = Object.keys(b?.answers).length;
+
+            return objB - objA;
+          })
+          .map((question, index) => {
+            if (!loadMore && index < 2) {
+              return (
+                <QuestionsField
+                  key={question.question_id}
+                  question={question}
+                  productName={productName}
+                  setUpdate={setUpdate}
+                />
+              );
+            } else if (loadMore) {
+              return (
+                <QuestionsField
+                  key={question.question_id}
+                  question={question}
+                  productName={productName}
+                  setUpdate={setUpdate}
+                />
+              );
+            }
+          })}
       </ContainerDiv>
       <QuestionDiv>
         {questions.length > 2 ? (

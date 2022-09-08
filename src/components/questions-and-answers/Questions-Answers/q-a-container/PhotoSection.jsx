@@ -31,6 +31,7 @@ const PhotoSection = ({ photos, answerID }) => {
           onClick={onClick}
           showCloseButton={false}
           showHeader={false}
+          border={false}
         >
           <Img2 src={currentPhoto}></Img2>
         </Modal>
