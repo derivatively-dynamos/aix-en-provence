@@ -11,6 +11,23 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
   const [metaData, setMetaData] = useState(undefined);
   const [sortedBy, setSort ] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const [userReview, setUserReview] = useState({
+    product_id: productId,
+    rating: 1,
+    summary: '',
+    body: '',
+    recommend: false,
+    name: '',
+    email: '',
+    photos: [],
+    characteristics: {
+      '125036': 0,
+      '125037': 0,
+      '125060': 0,
+      '125061': 0,
+      '125063': 0
+    }
+  });
 
   const filterBy = (reviewArr, filter) => {
     const sortByNewest = (reviews) => {
@@ -138,6 +155,8 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
           setSort={setSort}
           isOpen={isOpen}
           setIsOpen={setIsOpen}
+          userReview={userReview}
+          setUserReview={setUserReview}
         />
       </Container>
     </AppContainer>
@@ -151,9 +170,10 @@ const Container = styled.div`
 `
 const AppContainer = styled(Container)`
   flex-direction: column;
-  background-color: white;
-  color: #303030;
+  background-color: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.color};
 `
+
 const Loading = styled(Container)`
   height: 25em;
 `

@@ -11,26 +11,10 @@ import StarRadio from './CharacteristicSelect.jsx'
 const ModalButton = ({
     onClick,
     isOpen,
-    setIsOpen
+    setIsOpen,
+    userReview,
+    setUserReview
   }) => {
-  const [userReview, setUserReview] = useState({
-    body: '',
-    date: '',
-    helpfulness: 0,
-    photos: [],
-    rating: 1,
-    recommend: false,
-    response: null,
-    reviewer_name: '',
-    summary: '',
-    characteristics: {
-      Size: 0,
-      Fit: 0,
-      Length: 0,
-      Comfort: 0,
-      Quality: 0
-    }
-  });
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +23,12 @@ const ModalButton = ({
       date: new Date(),
     }))
     api.post('/reviews', userReview)
-    .then(setIsOpen(false))
+    .then((res) => {
+      if(res.status === 201) {
+        console.log('Review Posted!')
+      }
+      setIsOpen(false)
+    })
     .catch((err) => console.log(err))
   }
 
@@ -137,13 +126,15 @@ const ModalButton = ({
             maxLength="60"
             placeholder="E-Mail..."
             type="text"
+            required
             onChange={(e) => handleOnChange(e)}
           />
           <Input
-            id="reviewer_name"
+            id="name"
             maxLength="60"
             placeholder="Username..."
             type="text"
+            required
             onChange={(e) => handleOnChange(e)}
           />
           <Input
@@ -151,19 +142,21 @@ const ModalButton = ({
             maxLength="60"
             placeholder="Your review's awesome title..."
             type="text"
+            required
             onChange={(e) => handleOnChange(e)}
             />
           <Recommendation>
             <div>I recommend this product</div>
             <Input
               type="radio"
-              name="recommended"
+              name="recommend"
+              required
               onClick={() => handleRadioClick('recommend', 'Yes')}
             />
             <label htmlFor="recommend">Yes</label>
             <Input
               type="radio"
-              name="recommended"
+              name="recommend"
               onClick={() => handleRadioClick('recommend', 'No')}
             />
             <label htmlFor="recommend">No</label>
@@ -172,12 +165,13 @@ const ModalButton = ({
             return <StarRadio
               key={char}
               name={char}
-              chararacteristic={char}
+              characteristic={char}
               handleRadioClick={handleRadioClick}
             />
           })}
           <textarea
             id="body"
+            minLength="50"
             maxLength="1000"
             rows="6"
             cols="50"

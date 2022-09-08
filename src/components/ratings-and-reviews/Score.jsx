@@ -22,6 +22,5 @@ const ScoreCont = styled.div`
 const ScoreNum = styled.div`
   font-size: 5em;
   padding-right: .1em;
-  color: #303030;
 `
 export default Score;
