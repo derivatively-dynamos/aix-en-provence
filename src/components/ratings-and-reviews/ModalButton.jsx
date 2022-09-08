@@ -11,26 +11,10 @@ import StarRadio from './CharacteristicSelect.jsx'
 const ModalButton = ({
     onClick,
     isOpen,
-    setIsOpen
+    setIsOpen,
+    userReview,
+    setUserReview
   }) => {
-  const [userReview, setUserReview] = useState({
-    body: '',
-    date: '',
-    helpfulness: 0,
-    photos: [],
-    rating: 1,
-    recommend: false,
-    response: null,
-    reviewer_name: '',
-    summary: '',
-    characteristics: {
-      Size: 0,
-      Fit: 0,
-      Length: 0,
-      Comfort: 0,
-      Quality: 0
-    }
-  });
 
   const onSubmit = (e) => {
     e.preventDefault();
