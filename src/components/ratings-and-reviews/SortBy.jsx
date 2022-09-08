@@ -7,9 +7,9 @@ const SortBy = ({ reviews, setSort }) => {
     <Container>
       <Inline>{reviews.length} reviews, sorted by</Inline>
       <Selector onClick={(e) => setSort(e.target.value)}>
+        <option value="relevance" defaultValue>relevance</option>
         <option value="helpful">helpful</option>
         <option value="newest">newest</option>
-        <option value="relevance" defaultValue>relevance</option>
       </Selector>
     </Container>
   )

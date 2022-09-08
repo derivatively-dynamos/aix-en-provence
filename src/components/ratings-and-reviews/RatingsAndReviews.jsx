@@ -9,7 +9,7 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
   const [reviews, setReviews] = useState(undefined);
   const [sortedReviews, setSortedReviews] = useState(undefined);
   const [metaData, setMetaData] = useState(undefined);
-  const [sortedBy, setSort ] = useState('relevance');
+  const [sortedBy, setSort ] = useState('');
   const [isOpen, setIsOpen] = useState(false);
 
   const filterBy = (reviewArr, filter) => {
@@ -28,7 +28,8 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     }
 
     const sortByRelavance = (reviews) => {
-      return sortByNewest(sortByHelpfulness(reviews))
+      const helpful = sortByHelpfulness(reviews)
+      return sortByNewest(helpful)
     }
 
     switch (filter) {
