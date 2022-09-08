@@ -24,7 +24,6 @@ const port = process.env.PORT || 8080;
 
 app.get('/api/*', (req, res) => {
   const url = req.url.replace('/api/', '/')
-  console.log('Request url: ', url);
   api.get(url)
     .then(response => {
       res.status(200);
