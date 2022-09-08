@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import styled from 'styled-components';
 import { ThemeContext } from 'styled-components';
 import ReactSelect from 'react-select';
+import logo from '../../public/src/logo.svg'
 
 const Header = ({ curTheme, setTheme, themes }) => {
   const themeList = [];
@@ -26,7 +27,8 @@ const Header = ({ curTheme, setTheme, themes }) => {
   return (
     <Container>
       <Title>
-        <H1>FEC</H1>
+        <Logo src={logo}/>
+        <H1>Aix-en-Provence</H1>
         <SelectContainer>
           <ReactSelect
             options={options}
@@ -47,15 +49,23 @@ const Header = ({ curTheme, setTheme, themes }) => {
   );
 };
 
+const Logo = styled.img`
+  width: 70px;
+  height: 70px;
+  border: 1px solid;
+`
 const Title = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 0 1em;
   width: 100%;
+  gap: 1em;
 `;
 const H1 = styled.h1`
-  margin: 0.5em 0;
+  margin: 0.2em 0;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
 `;
 const Container = styled.div`
   width: 100%;
@@ -74,7 +84,8 @@ export default Header;
 
 const SelectContainer = styled.div`
   width: 125px;
-  color: ${props => props.theme.color}
+  color: ${props => props.theme.color};
+  margin-left: auto;
 `
 
 const selectStyles = {

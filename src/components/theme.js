@@ -17,12 +17,12 @@ const theme = {
     flavor: "red",
     reviewColor: "#3ce2ff",
   },
-  red: {
-    color: "pink",
-    background: "darkred",
-    highlight: "white",
+  seaside: {
+    color: "#b5e48c",
+    background: "#184e77",
+    highlight: "#d9ed92",
     sale: "red",
-    shadow: "burgundy",
+    shadow: "#168aad",
     flavor: "red",
     reviewColor: "yellow",
   },
