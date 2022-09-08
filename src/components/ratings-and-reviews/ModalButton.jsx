@@ -171,6 +171,7 @@ const ModalButton = ({
           {Object.keys(userReview.characteristics).map((char) => {
             return <StarRadio
               key={char}
+              name={char}
               chararacteristic={char}
               handleRadioClick={handleRadioClick}
             />
