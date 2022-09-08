@@ -29,6 +29,7 @@ const Option = styled.option`
   background-color: ${(props) => props.theme.background};
 `
 const Selector = styled.select`
+  cursor: pointer;
   color: ${(props) => props.theme.color};
   outline: 0px solid transparent;
   border: 0 solid transparent;

@@ -47,6 +47,7 @@ const StarRadio = ({
 
 const Input = styled.input`
   margin: 0.25em;
+  cursor: pointer;
 `
 const Container = styled.div`
   display: flex;

@@ -99,6 +99,7 @@ const ResponseBox = styled.div`
 `
 const UlText = styled.a`
   text-decoration: underline;
+  cursor: pointer;
 `
 
 const Helpful = styled.div`

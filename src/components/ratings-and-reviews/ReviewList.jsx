@@ -101,6 +101,7 @@ const BtnCont = styled.div`
 `
 
 const Btn = styled.button`
+  cursor: pointer;
   font-size: 1em;
   display: flex;
   justify-content: space-between;
