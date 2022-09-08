@@ -3,21 +3,21 @@ import styled from "styled-components";
 
 const StarRadio = ({
   handleRadioClick,
-  chararacteristic
+  characteristic
 }) => {
   const rating = [1, 2, 3, 4, 5]
 
   return (
     <Grid>
-      <div>{chararacteristic}</div>
+      <div>{characteristic}</div>
       {rating.map((rating) => {
         return (
-          <Container key={chararacteristic + rating.toString()}>
+          <Container key={characteristic + rating.toString()}>
             <label htmlFor={rating}>{rating}</label>
             <Input
               type="radio"
-              name={rating}
-              onClick={() => handleRadioClick(chararacteristic, rating)}
+              name={characteristic + 'radio'}
+              onClick={() => handleRadioClick(characteristic, rating)}
             />
           </Container>
         )

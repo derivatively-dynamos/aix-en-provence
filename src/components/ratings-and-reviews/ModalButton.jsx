@@ -124,7 +124,7 @@ const ModalButton = ({
             onChange={(e) => handleOnChange(e)}
           />
           <Input
-            id="reviewer_name"
+            id="name"
             maxLength="60"
             placeholder="Username..."
             type="text"
@@ -141,13 +141,13 @@ const ModalButton = ({
             <div>I recommend this product</div>
             <Input
               type="radio"
-              name="recommended"
+              name="recommend"
               onClick={() => handleRadioClick('recommend', 'Yes')}
             />
             <label htmlFor="recommend">Yes</label>
             <Input
               type="radio"
-              name="recommended"
+              name="recommend"
               onClick={() => handleRadioClick('recommend', 'No')}
             />
             <label htmlFor="recommend">No</label>
@@ -156,7 +156,7 @@ const ModalButton = ({
             return <StarRadio
               key={char}
               name={char}
-              chararacteristic={char}
+              characteristic={char}
               handleRadioClick={handleRadioClick}
             />
           })}
