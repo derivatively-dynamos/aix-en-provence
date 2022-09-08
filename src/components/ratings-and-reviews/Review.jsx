@@ -69,7 +69,6 @@ const ReviewCont = styled.div`
   gap: 1em;
   padding: 1.5em;
   width: 100%;
-  color: #303030;;
 `
 const ReviewHead = styled.div`
   display: flex;
@@ -81,7 +80,7 @@ const RevTitle = styled.h3`
 `
 const AuthorDate = styled(ReviewHead)`
   font-size: 0.9em;
-  color: gray;
+  opacity: 0.5;
   gap: 0.25em;
 `
 const ResponseBox = styled.div`
@@ -90,7 +89,6 @@ const ResponseBox = styled.div`
   width: 100%
   justify-content: space-between;
   gap: 1em;
-  background-color: #e8e8e8;
   padding: 1em;
 `
 const UlText = styled.a`

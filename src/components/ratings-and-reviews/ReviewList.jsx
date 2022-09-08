@@ -14,6 +14,7 @@ const ReviewList = ({
     report,
     isOpen,
     setIsOpen,
+    userReview,
     setUserReview
   }) => {
   const [expanded, expand] = useState(false);
@@ -69,6 +70,8 @@ const ReviewList = ({
           onClick={onClick}
           isOpen={isOpen}
           setIsOpen={setIsOpen}
+          userReview={userReview}
+          setUserReview={setUserReview}
         />
       </BtnCont>
     </Container>
@@ -92,18 +95,19 @@ const BtnCont = styled.div`
   padding-left: 1.5em;
 `
 
-const Btn = styled.div`
+const Btn = styled.button`
+  font-size: 1em;
   display: flex;
   justify-content: space-between;
   font-weight: 900;
   padding: 2em;
-  border: 0.15em solid #303030;
+  border: 0.15em solid ${(props) => props.theme.color};
   gap: 1.5em;
-  color: #303030;
+  color: ${(props) => props.theme.color};
+  background-color: ${props => props.theme.shadow};
 `
 const Cross = styled(FontAwesomeIcon)`
   font-size: 1.5em;
-  color: inherit;
 `
 
 export default ReviewList;

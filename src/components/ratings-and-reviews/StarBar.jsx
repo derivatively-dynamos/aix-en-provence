@@ -26,7 +26,6 @@ const StarLabel = styled(Container)`
   text-decoration: underline;
   flex: 1;
   padding-right: 0.5em;
-  color: #303030;
 `
 const StarBarCont = styled.div`
   flex: 5;
@@ -36,7 +35,7 @@ const StarBarCont = styled.div`
 `
 const StarBarFill = styled(StarBarCont)`
   position: relative;
-  background-color: #303030;;
+  background-color: ${props => props.theme.shadow};
 `
 
 export default StarBar;
