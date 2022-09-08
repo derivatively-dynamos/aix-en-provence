@@ -28,7 +28,7 @@ const ReviewList = ({
   };
 
   return (
-    <Container>
+    <ReviewListContainer>
       <SortBy
         setSort={setSort}
         reviews={ reviews } />
@@ -74,7 +74,7 @@ const ReviewList = ({
           setUserReview={setUserReview}
         />
       </BtnCont>
-    </Container>
+    </ReviewListContainer>
   )
 }
 
@@ -85,6 +85,11 @@ const Container = styled.div`
   box-sizing: border-box;
   width: 100%;
   flex-direction: column;
+  max-height: 78vh;
+  overflow: auto;
+`
+const ReviewListContainer = styled(Container)`
+  max-height: 100vh;
 `
 
 const BtnCont = styled.div`
