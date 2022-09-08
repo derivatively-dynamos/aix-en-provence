@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "export NODE_ENV=production && export SERVER=true && webpack --mode production",
-    "server": "nodemon dist/index.js"
+    "server": "nodemon server/index.js"
   },
   "keywords": [],
   "author": "",

@@ -17,7 +17,7 @@ const api = axios.create({
 })
 //Middleware
 app.use(morgan('dev'));
-app.use(expressStaticGzip(__dirname));
+app.use(expressStaticGzip(path.join(__dirname, '../dist')));
 app.use(compression());
 
 const port = process.env.PORT || 8080;
