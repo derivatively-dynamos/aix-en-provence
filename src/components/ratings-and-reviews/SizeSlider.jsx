@@ -58,7 +58,7 @@ const Indicator = styled.div`
   height: 0;
   border-left: 0.5em solid transparent;
   border-right: 0.5em solid transparent;
-  border-top: 0.75em solid #303030;;
+  border-top: 0.75em solid ${props => props.theme.shadow};;
 `
 
 export default SizeSlider;
