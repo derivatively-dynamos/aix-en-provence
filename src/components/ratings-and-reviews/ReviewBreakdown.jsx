@@ -8,8 +8,6 @@ import Score from './Score.jsx';
 
 const ReviewBreakdown = ({ data, setSort }) => {
 
-  console.log(data.characteristics)
-
   const [ totalStars, setTotal ] = useState(0);
   const [ starScore, setScore ] = useState(0);
   const [ percentRecommended, setPercentRecommended] = useState(0);
