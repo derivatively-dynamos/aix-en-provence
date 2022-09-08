@@ -60,11 +60,12 @@ const AddQuestionButton = ({ productName, productID, setUpdate }) => {
         isOpen={isOpen}
         showHeader={false}
         title={"Ask Your Question"}
+        border={true}
         styled={false}
       >
         <Form onSubmit={onSubmit}>
           {" "}
-          <H4> About the {productName}</H4>
+          <H4> About: {productName}</H4>
           <div>
             {hasError ? (
               <Box1>
