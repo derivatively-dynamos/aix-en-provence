@@ -26,6 +26,8 @@ const StarLabel = styled(Container)`
   text-decoration: underline;
   flex: 1;
   padding-right: 0.5em;
+  white-space: nowrap;
+  cursor: pointer;
 `
 const StarBarCont = styled.div`
   flex: 5;
