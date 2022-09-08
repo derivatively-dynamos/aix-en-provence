@@ -12,21 +12,20 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
   const [sortedBy, setSort ] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [userReview, setUserReview] = useState({
-    body: '',
-    date: '',
-    helpfulness: 0,
-    photos: [],
+    product_id: productId,
     rating: 1,
-    recommend: false,
-    response: null,
-    reviewer_name: '',
     summary: '',
+    body: '',
+    recommend: false,
+    name: '',
+    email: '',
+    photos: [],
     characteristics: {
-      Size: 0,
-      Fit: 0,
-      Length: 0,
-      Comfort: 0,
-      Quality: 0
+      '125036': 0,
+      '125037': 0,
+      '125060': 0,
+      '125061': 0,
+      '125063': 0
     }
   });
 

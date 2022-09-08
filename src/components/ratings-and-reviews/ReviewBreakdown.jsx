@@ -103,7 +103,6 @@ const ReviewBreakdown = ({ data, setSort }) => {
 }
 
 const BreakdownContainer = styled.div`
-  max-height: 70em;
 `
 
 const Container = styled.div`

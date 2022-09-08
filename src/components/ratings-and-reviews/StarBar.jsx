@@ -35,7 +35,7 @@ const StarBarCont = styled.div`
 `
 const StarBarFill = styled(StarBarCont)`
   position: relative;
-  background-color: #303030;;
+  background-color: ${props => props.theme.shadow};
 `
 
 export default StarBar;
