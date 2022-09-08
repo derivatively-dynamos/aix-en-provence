@@ -9,23 +9,38 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
   const [reviews, setReviews] = useState(undefined);
   const [sortedReviews, setSortedReviews] = useState(undefined);
   const [metaData, setMetaData] = useState(undefined);
-  const [sortedBy, setSort ] = useState('relevance');
+  const [sortedBy, setSort ] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
 
   const filterBy = (reviewArr, filter) => {
+    const sortByNewest = (reviews) => {
+      return reviews.slice().sort((a, b) => {
+        let aDate = new Date(a.date)
+        let bDate = new Date(b.date)
+        return bDate - aDate;
+      });
+    }
+
+    const sortByHelpfulness = (reviews) => {
+      return reviews.slice().sort((a, b) =>
+        b.helpfulness - a.helpfulness
+      );
+    }
+
+    const sortByRelavance = (reviews) => {
+      const helpful = sortByHelpfulness(reviews)
+      return sortByNewest(helpful)
+    }
+
     switch (filter) {
       case 'helpfulness':
-        const sortedByHelpfulness = reviewArr.slice().sort((a, b) =>
-          b.helpfulness - a.helpfulness
-        );
-        setSortedReviews(sortedByHelpfulness);
+        setSortedReviews(sortByHelpfulness(reviewArr));
         break;
       case 'newest':
-        const sortedByNewest = reviewArr.slice().sort((a, b) => {
-          let aDate = new Date(a.date)
-          let bDate = new Date(b.date)
-          return bDate - aDate;
-        });
-        setSortedReviews(sortedByNewest);
+        setSortedReviews(sortByNewest(reviewArr));
+        break;
+      case 'relevance':
+        setSortedReviews(sortByRelavance(reviewArr));
         break;
       case '5 Stars':
         sortByStars(5);
@@ -53,9 +68,9 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     setSortedReviews(reviewsByNum);
   }
 
-  const report = () => {
-    console.log('reported')
-    api.put(`/reviews/${productId}/report`)
+  const report = (reviewId) => {
+    console.log('reported');
+    api.put(`/reviews/${reviewId}/report`)
     .then(() => {
       console.log('Post Reported!')
     })
@@ -64,8 +79,9 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     })
   }
 
-  const markHelpful = () => {
-    api.put(`/reviews/${productId}/helpful`)
+  const markHelpful = (reviewId) => {
+    console.log('Marked Helpful!');
+    api.put(`/reviews/${reviewId}/helpful`)
     .then(() => {
       console.log('marked helpful!')
     })
@@ -109,7 +125,7 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
 
   return (
     <AppContainer>
-      <Headline id="reviews">RATINGS AND REVIEWS</Headline>
+      <h2>RATINGS AND REVIEWS</h2>
       <Container>
         <ReviewBreakdown
           setSort={setSort}
@@ -120,15 +136,14 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
           markHelpful={markHelpful}
           reviews={sortedReviews}
           setSort={setSort}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
         />
       </Container>
     </AppContainer>
   )
 }
 
-const Headline = styled.h2`
-  padding-bottom: 1em;
-`
 const Container = styled.div`
   display: flex;
   width: 100%;

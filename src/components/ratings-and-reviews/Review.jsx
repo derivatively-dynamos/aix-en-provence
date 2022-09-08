@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import FiveStarRating from '../shared-components/FiveStarRating';
+import Rating from '../shared-components/Rating.jsx';
 
 const Review = ({ review, markHelpful, report}) => {
   const [reported, setReported] = useState(false);
@@ -12,11 +12,10 @@ const Review = ({ review, markHelpful, report}) => {
       day: "numeric",
     });
 
-
   return (
     <ReviewCont>
       <ReviewHead>
-        <FiveStarRating score={review.rating} />
+        <Rating score={review.rating} />
         <AuthorDate>
           <div>{review.reviewer_name},</div>
           <div>{date}</div>
@@ -38,7 +37,7 @@ const Review = ({ review, markHelpful, report}) => {
         onClick={()=> {
           !reported
           ? (
-            markHelpful(),
+            markHelpful(review.review_id),
             setMarkedHelpful(true)
           )
           : null
@@ -51,7 +50,7 @@ const Review = ({ review, markHelpful, report}) => {
         onClick={()=> {
           !reported
           ? (
-            report(),
+            report(review.review_id),
             setReported(true)
           )
           : null

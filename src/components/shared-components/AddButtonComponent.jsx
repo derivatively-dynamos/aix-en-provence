@@ -63,14 +63,14 @@ const ButtonDiv = styled.div`
 `;
 
 const Button = styled.button`
-  height: 100%;
-  border-radius: 0;
-  border: 1px solid ${(props) => props.theme.color};
-  background-color: ${(props) => props.theme.shadow};
-  color: ${(props) => props.theme.color};
-  font-size: 14px;
-  padding: 10px;
-  cursor: pointer;
+  font-size: 1em;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 900;
+  padding: 2em;
+  border: 0.15em solid #303030;
+  gap: 1.5em;
+  color: #303030;
   ${(props) =>
     props.styled &&
     "background: transparent; letter-spacing: normal; word-spacing: normal; line-height: normal; text-transform: none;text-indent: 0px; text-shadow: none; display: inline-block; text-align: center; border: none; border-bottom: 1px solid white; padding-bottom: 3px "}

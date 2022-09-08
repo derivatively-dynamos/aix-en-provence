@@ -120,7 +120,6 @@ const ColumnCont = styled(Container)`
   flex-direction: column;
   justify-content: space-around;
   padding-right: 10px;
-  max-height: 40em;
 `
 
 export default ReviewBreakdown;
