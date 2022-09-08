@@ -14,6 +14,7 @@ const ReviewList = ({
     report,
     isOpen,
     setIsOpen,
+    userReview,
     setUserReview
   }) => {
   const [expanded, expand] = useState(false);
@@ -69,6 +70,8 @@ const ReviewList = ({
           onClick={onClick}
           isOpen={isOpen}
           setIsOpen={setIsOpen}
+          userReview={userReview}
+          setUserReview={setUserReview}
         />
       </BtnCont>
     </Container>
