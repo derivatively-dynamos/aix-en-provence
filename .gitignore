@@ -6,3 +6,5 @@ config.js
 dist/index.html
 dist/*bundle*
 *.gz
+dist/favicon.ico
+dist/*.svg
