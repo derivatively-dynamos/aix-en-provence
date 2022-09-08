@@ -68,7 +68,8 @@ const ScoreSelect = ({ userReview, setUserReview }) => {
 const StarCont = styled.div`
   position: relative;
   width: 90px;
-  padding: 0.5em;
+  padding-left: 0.5em;
+  padding-bottom: 1em;
 `
 const FilledStars = styled.div`
   position: absolute;
@@ -87,8 +88,8 @@ const EmptyStar = styled(FontAwesomeIcon)`
 `
 const FullStar = styled(FontAwesomeIcon)`
   position: relative;
-  color: yellow;
-  font-size: 0.9em;
+  color: ${props => props.theme.reviewColor};
+  font-size: 2em;
 `
 const StarWrap = styled.div`
   flex-basis: 18px;

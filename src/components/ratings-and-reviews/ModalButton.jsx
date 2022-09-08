@@ -115,6 +115,7 @@ const ModalButton = ({
       title={'Write Your Review'}
       styled={false}>
       <Form onSubmit={onSubmit}>
+        <div>Rate Me:</div>
         <ScoreCont>
           <ScoreSelect
             userReview={userReview}
