@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import AddButtonComponent from "../Forms/Buttons/AddButtonComponent";
 import api from "../../../shared-components/api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
 
 const HelpfulnessAnswerComponent = ({
   helpfulness,
@@ -110,46 +112,93 @@ const HelpfulnessAnswerComponent = ({
           styled={true}
         >
           <Form onSubmit={onSubmit}>
-            <h4 style={{ marginTop: "5px", marginBottom: "6px" }}>
+            <h4 style={{ marginTop: "-10px", marginBottom: "6px" }}>
               {productName}: {question}
             </h4>
             <div>
               {hasError ? (
-                <Box1>
+                <Box1 style={{ fontFamily: "arial" }}>
                   <B>
                     You have a form error please fill out any missing inputs!
                   </B>
                 </Box1>
               ) : null}
             </div>
-            <div> *What is your nickname </div>
-            <input
+            <div
+              style={{
+                fontFamily: "arial",
+                marginBottom: "5px",
+                marginTop: "3px",
+              }}
+            >
+              {" "}
+              * What is your nickname{" "}
+            </div>
+            <Inputs
               name="username"
               onChange={onChange}
               maxLength="60"
               placeholder="jack543!"
               type="text"
             />
-            <label> *Your email </label>
-            <input
+            <label
+              style={{
+                fontFamily: "arial",
+                marginTop: "5px",
+                marginBottom: "2px",
+              }}
+            >
+              {" "}
+              * Your email{" "}
+            </label>
+            <Inputs
               maxLength="60"
               name="email"
               onChange={onChange}
               placeholder="Example: jack@email.com"
               type="text"
             />
-            <div> *Your Answer</div>
-            <textarea
+            <div
+              style={{
+                fontFamily: "arial",
+                marginTop: "5px",
+                marginBottom: "2px",
+              }}
+            >
+              {" "}
+              *Your Answer
+            </div>
+            <TextBox
               name="answer"
               onChange={onChange}
               maxLength="1000"
               rows="6"
               cols="50"
               placeholder="Answer Here..."
-            ></textarea>
-            <div> Upload your photos </div>
-            <div>
-              <input onChange={handleImageChange} type="file" />
+            ></TextBox>
+            <div
+              style={{
+                marginTop: "10px",
+                marginBottom: "10px",
+                fontFamily: "arial",
+              }}
+            ></div>
+            <LabelDiv>
+              <StyledLabel>
+                Select Image
+                <FontAwesomeIcon
+                  style={{
+                    height: "20px",
+                    paddingBottom: "10px",
+                  }}
+                  icon={faCamera}
+                />
+                <PhotoButton
+                  onChange={handleImageChange}
+                  type="file"
+                  placeholder="Upload File"
+                />
+              </StyledLabel>
               <Container>
                 {images.map((image, index) => {
                   return (
@@ -157,8 +206,8 @@ const HelpfulnessAnswerComponent = ({
                   );
                 })}
               </Container>
-            </div>
-            <button>Submit</button>
+            </LabelDiv>
+            <ButtonStyle>Submit</ButtonStyle>
           </Form>
         </AddButtonComponent>
       </span>
@@ -173,6 +222,7 @@ const Button = styled.button`
   background: transparent;
   border: none;
   text-decoration: underline;
+  cursor: pointer;
 `;
 
 const Box1 = styled.div`
@@ -197,7 +247,6 @@ const Box2 = styled.span`
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
   margin-top: 8px;
   margin-bottom: 4px;
 `;
@@ -205,7 +254,57 @@ const Container = styled.div`
 const Thumbnail = styled.img`
   max-width: 100%;
   width: 80px;
-  border-radius: 50%;
+
   justify-content: ;
   margin-right: 5px;
+`;
+
+const Inputs = styled.input`
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 6px;
+`;
+
+const TextBox = styled.textarea`
+  border-radius: 10px;
+  padding-left: 6px;
+`;
+
+const PhotoButton = styled.input`
+  display: none;
+`;
+
+const ButtonStyle = styled.button`
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  border-radius: 0;
+  border: 1px solid ${(props) => props.theme.color};
+  background-color: ${(props) => props.theme.shadow};
+  color: ${(props) => props.theme.color};
+  font-size: 14px;
+  width: 43%;
+  margin-left: 28%;
+  cursor: pointer;
+`;
+
+const StyledLabel = styled.label`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 3%;
+  border: thin solid ${(props) => props.theme.color};
+  width: 24%;
+  height: 58px;
+  margin-right: 10px;
+  padding-top: 5px;
+`;
+
+const LabelDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: baseline;
+  margin-bottom: 10px;
 `;

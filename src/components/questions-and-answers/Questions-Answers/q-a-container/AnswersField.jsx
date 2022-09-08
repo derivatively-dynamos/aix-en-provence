@@ -121,5 +121,6 @@ const Button = styled.button`
   color: ${(props) => props.theme.color};
   border: none;
   text-decoration: underline;
+  cursor: pointer;
 `;
 export default AnswerField;
