@@ -15,7 +15,7 @@ const theme = {
     sale: "red",
     shadow: "#2E778A",
     flavor: "red",
-    reviewColor: "white",
+    reviewColor: "#3ce2ff",
   },
   red: {
     color: "pink",
