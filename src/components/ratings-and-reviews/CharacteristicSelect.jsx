@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const StarRadio = ({
@@ -7,9 +8,26 @@ const StarRadio = ({
 }) => {
   const rating = [1, 2, 3, 4, 5]
 
+  const setCharWord = (charNum) => {
+    switch (charNum) {
+      case '125036':
+        return 'Fit';
+      case '125037':
+        return 'Length';
+      case '125060':
+        return 'Size';
+      case '125061':
+        return 'Width';
+      case '125062':
+        return 'Comfort';
+      case '125063':
+        return 'Quality';
+    }
+  }
+
   return (
     <Grid>
-      <div>{characteristic}</div>
+      <div>{setCharWord(characteristic)}</div>
       {rating.map((rating) => {
         return (
           <Container key={characteristic + rating.toString()}>

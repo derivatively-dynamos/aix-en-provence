@@ -21,11 +21,11 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     email: '',
     photos: [],
     characteristics: {
-      Size: 0,
-      Fit: 0,
-      Length: 0,
-      Comfort: 0,
-      Quality: 0
+      '125036': 0,
+      '125037': 0,
+      '125060': 0,
+      '125061': 0,
+      '125063': 0
     }
   });
 

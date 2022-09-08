@@ -103,7 +103,6 @@ const ReviewBreakdown = ({ data, setSort }) => {
 }
 
 const BreakdownContainer = styled.div`
-
 `
 
 const Container = styled.div`

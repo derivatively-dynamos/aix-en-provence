@@ -22,9 +22,14 @@ const ModalButton = ({
       ...prevState,
       date: new Date(),
     }))
-    // api.post('/reviews', userReview)
-    // .then(setIsOpen(false))
-    // .catch((err) => console.log(err))
+    api.post('/reviews', userReview)
+    .then((res) => {
+      if(res.status === 201) {
+        console.log('Review Posted!')
+      }
+      setIsOpen(false)
+    })
+    .catch((err) => console.log(err))
   }
 
   const handleOnChange = (e) => {
