@@ -65,9 +65,14 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     })
   }
 
+<<<<<<< HEAD
   const markHelpful = (reviewId) => {
     console.log('Marked Helpful!');
     api.put(`/reviews/${reviewId}/helpful`)
+=======
+  const markHelpful = () => {
+    api.put(`/reviews/${productId}/helpful`)
+>>>>>>> 8709f18b4051038bab9db25e3cda267875d65e35
     .then(() => {
       console.log('marked helpful!')
     })
@@ -111,7 +116,11 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
 
   return (
     <AppContainer>
+<<<<<<< HEAD
       <h2>RATINGS AND REVIEWS</h2>
+=======
+      <Headline id="reviews">RATINGS AND REVIEWS</Headline>
+>>>>>>> 8709f18b4051038bab9db25e3cda267875d65e35
       <Container>
         <ReviewBreakdown
           setSort={setSort}
