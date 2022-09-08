@@ -18,13 +18,16 @@ const HelpfulnessAnswerComponent = ({
     username: "",
     email: "",
     answer: "",
-    photos: "",
   });
 
   const [images, setImages] = useState([]);
 
   const onClick = () => {
     setIsOpen((preState) => !preState);
+
+    if (!isOpen) {
+      setImages([]);
+    }
   };
 
   const onClickHelpfulness = () => {
@@ -107,7 +110,7 @@ const HelpfulnessAnswerComponent = ({
           styled={true}
         >
           <Form onSubmit={onSubmit}>
-            <h4>
+            <h4 style={{ marginTop: "5px", marginBottom: "6px" }}>
               {productName}: {question}
             </h4>
             <div>

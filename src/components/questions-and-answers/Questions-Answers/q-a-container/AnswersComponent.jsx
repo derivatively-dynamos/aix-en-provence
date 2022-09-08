@@ -13,13 +13,23 @@ const AnswersComponent = ({ answers }) => {
     <section>
       <Box1>
         <Box2>
-          {answers.map((answer, index) => {
-            if (!loadMore && index < 2) {
-              return <AnswersField key={answer.id} answer={answer} />;
-            } else if (loadMore) {
-              return <AnswersField key={answer.id} answer={answer} />;
-            }
-          })}
+          {answers
+            .sort((a, b) => {
+              if (b.answerer_name === "Seller") {
+                return 1;
+              }
+              if (a.answerer_name === "Seller") {
+                return -1;
+              }
+              return 0;
+            })
+            .map((answer, index) => {
+              if (!loadMore && index < 2) {
+                return <AnswersField key={answer.id} answer={answer} />;
+              } else if (loadMore) {
+                return <AnswersField key={answer.id} answer={answer} />;
+              }
+            })}
         </Box2>
         <div>
           {answers.length > 2 ? (

@@ -43,7 +43,7 @@ background-color: rgba(0,0,0,0.75);
 display: flex;
 align-items: center;
 justify-content: center;
-z-index: 1000
+z-index: 1000; 
 
 `;
 
@@ -59,13 +59,12 @@ const ModalHeaderDiv = styled.div`
 
 const ModalTitleH4 = styled.h4`
   margin: 0px;
-  padding: 0px;
+  padding: 5px;
+  border-bottom: 2px solid #eee;
 `;
 
 const ModalBodyDiv = styled.div`
-padding: 10px;
-border-top: 1px solid #eee;
-border-bottom 1px solid #eee;
+  padding: 10px;
 `;
 
 const ModalFooterDiv = styled.div``;
