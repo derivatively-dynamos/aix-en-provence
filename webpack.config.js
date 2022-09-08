@@ -6,6 +6,9 @@ const CompressionPlugin = require('compression-webpack-plugin');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
+const plugins = [];
+if (isDevelopment) plugins.push(new Dotenv());
+
 module.exports = function (api) {
   return {
     plugins: ['macros'],
@@ -20,12 +23,12 @@ module.exports = {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      favicon: "./public/src/favicon.ico",
+      favicon: './public/src/favicon.ico',
       template: './src/index.html',
     }),
     new ReactRefreshWebpackPlugin(),
-    new Dotenv(),
     new CompressionPlugin(),
+    ...plugins
   ],
   module: {
     rules: [
