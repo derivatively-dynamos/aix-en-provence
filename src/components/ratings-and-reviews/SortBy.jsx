@@ -22,16 +22,15 @@ const Container = styled.div`
 const Inline = styled.div`
   display: inline;
   width: 100%;
-  color: #303030;
   font-size: 1.25em;
   font-weight: 600;
 `
 
 const Selector = styled.select`
+  color: ${(props) => props.theme.color};
   outline: 0px solid transparent;
   border: 0 solid transparent;
   background-color: inherit;
-  color: #303030;
   font-size: 1.25em;
   font-weight: 600;
 `

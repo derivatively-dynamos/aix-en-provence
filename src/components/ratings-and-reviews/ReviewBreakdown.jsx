@@ -62,7 +62,7 @@ const ReviewBreakdown = ({ data, setSort }) => {
   }, [data]);
 
   return (
-    <ColumnCont>
+    <BreakdownContainer>
       <Score score={starScore}/>
       <ColumnCont>
         <p>{percentRecommended}% of reviews recommend this product</p>
@@ -100,9 +100,13 @@ const ReviewBreakdown = ({ data, setSort }) => {
           }
         })}
       </ColumnCont>
-    </ColumnCont>
+    </BreakdownContainer>
   )
 }
+
+const BreakdownContainer = styled.div`
+  max-height: 70em;
+`
 
 const Container = styled.div`
   display: flex;

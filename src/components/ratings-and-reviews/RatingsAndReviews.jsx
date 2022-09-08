@@ -171,9 +171,10 @@ const Container = styled.div`
 `
 const AppContainer = styled(Container)`
   flex-direction: column;
-  background-color: white;
-  color: #303030;
+  background-color: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.color};
 `
+
 const Loading = styled(Container)`
   height: 25em;
 `
