@@ -13,20 +13,33 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const filterBy = (reviewArr, filter) => {
+    const sortByNewest = (reviews) => {
+      return reviews.slice().sort((a, b) => {
+        let aDate = new Date(a.date)
+        let bDate = new Date(b.date)
+        return bDate - aDate;
+      });
+    }
+
+    const sortByHelpfulness = (reviews) => {
+      return reviews.slice().sort((a, b) =>
+        b.helpfulness - a.helpfulness
+      );
+    }
+
+    const sortByRelavance = (reviews) => {
+      return sortByNewest(sortByHelpfulness(reviews))
+    }
+
     switch (filter) {
       case 'helpfulness':
-        const sortedByHelpfulness = reviewArr.slice().sort((a, b) =>
-          b.helpfulness - a.helpfulness
-        );
-        setSortedReviews(sortedByHelpfulness);
+        setSortedReviews(sortByHelpfulness(reviewArr));
         break;
       case 'newest':
-        const sortedByNewest = reviewArr.slice().sort((a, b) => {
-          let aDate = new Date(a.date)
-          let bDate = new Date(b.date)
-          return bDate - aDate;
-        });
-        setSortedReviews(sortedByNewest);
+        setSortedReviews(sortByNewest(reviewArr));
+        break;
+      case 'relevance':
+        setSortedReviews(sortByRelavance(reviewArr));
         break;
       case '5 Stars':
         sortByStars(5);
