@@ -73,32 +73,62 @@ const AddQuestionButton = ({ productName, productID, setUpdate }) => {
               </Box1>
             ) : null}
           </div>
-          <div> *What is your nickname </div>
-          <input
+          <div
+            style={{
+              fontFamily: "arial",
+              fontSize: "14px",
+              marginBottom: "5px",
+              marginTop: "3px",
+            }}
+          >
+            {" "}
+            * What is your nickname{" "}
+          </div>
+          <Inputs
             name="username"
             maxLength="60"
             onChange={onChange}
             placeholder="jack543!"
             type="text"
           />
-          <div> *Your email </div>
-          <input
+          <div
+            style={{
+              fontFamily: "arial",
+              fontSize: "14px",
+              marginBottom: "5px",
+              marginTop: "4px",
+            }}
+          >
+            {" "}
+            * Your email{" "}
+          </div>
+          <Inputs
             name="email"
             maxLength="60"
             onChange={onChange}
             placeholder="Example: jack@email.com"
             type="text"
           />
-          <div> *Your Question</div>
-          <textarea
+          <div
+            style={{
+              fontFamily: "arial",
+              fontSize: "13.5px",
+              marginBottom: "5px",
+              marginTop: "4px",
+            }}
+          >
+            {" "}
+            * Your Question
+          </div>
+          <TextBox
             name="question"
             maxLength="1000"
             onChange={onChange}
             rows="6"
             cols="50"
             placeholder="Answer Here..."
-          ></textarea>
-          <button>Submit</button>
+          ></TextBox>
+          <ButtonStyle>Submit</ButtonStyle>
         </Form>
       </AddButtonComponent>
     </ContainerDiv>
@@ -129,4 +159,30 @@ const Box1 = styled.div`
 
 const B = styled.b`
   color: red;
+`;
+
+const ButtonStyle = styled.button`
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  border-radius: 0;
+  border: 1px solid ${(props) => props.theme.color};
+  background-color: ${(props) => props.theme.shadow};
+  color: ${(props) => props.theme.color};
+  font-size: 14px;
+  width: 43%;
+  margin-left: 28%;
+  cursor: pointer;
+`;
+
+const Inputs = styled.input`
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 6px;
+`;
+
+const TextBox = styled.textarea`
+  border-radius: 10px;
+  padding-left: 6px;
 `;
