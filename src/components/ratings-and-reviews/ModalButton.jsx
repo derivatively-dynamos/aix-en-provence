@@ -115,6 +115,7 @@ const ModalButton = ({
       title={'Write Your Review'}
       styled={false}>
       <Form onSubmit={onSubmit}>
+        <div>Rate Me:</div>
         <ScoreCont>
           <ScoreSelect
             userReview={userReview}
@@ -178,7 +179,7 @@ const ModalButton = ({
             placeholder="I thought this product was..."
             onChange={(e) => handleOnChange(e)}
           ></textarea>
-          <button>Submit</button>
+          <Submit>Submit</Submit>
       </Form>
     </AddButtonComponent>
   )
@@ -189,6 +190,7 @@ const PlusIcon = styled(FontAwesomeIcon)`
 `
 const Input = styled.input`
   margin: 0.25em;
+  cursor: pointer;
 `
 const Form = styled.form`
   display: flex;
@@ -204,5 +206,9 @@ const Recommendation = styled.div`
 `
 const ScoreCont = styled.div`
   margin-bottom: 0.25em;
+  cursor: pointer;
+`
+const Submit = styled.button`
+  cursor: pointer;
 `
 export default ModalButton;

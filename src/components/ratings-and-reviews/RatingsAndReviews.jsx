@@ -113,16 +113,6 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
       const reviewBundle = product.data.results;
       setReviews(reviewBundle);
       filterBy(reviewBundle, sortedBy);
-      //setScore for App
-      const init = 0;
-      const score = reviewBundle
-        .map((review) => {
-          return review.rating;
-        })
-        .reduce((total, curr) =>
-          total + curr, init
-        ) / reviewBundle.length;
-        setScore(score)
     })
     .catch((err) => console.log(err))
 
@@ -130,6 +120,18 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
     .then((returnedData) => {
       const apiMetaData = returnedData.data;
       setMetaData(apiMetaData);
+      //setScore for App
+      const metaRatings = apiMetaData.ratings;
+      let score = 0;
+      for (let rating in metaRatings) {
+        score += rating * metaRatings[rating];
+      }
+      score = score / Object.values(metaRatings).reduce((c, p) => {
+        c = Number(c);
+        p = Number(p);
+        return c + p;
+      }, 0)
+      setScore(score.toFixed(1))
     })
     .catch((err) => console.log(err))
   }, [productId])
@@ -142,7 +144,7 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
 
   return (
     <AppContainer>
-      <h2>RATINGS AND REVIEWS</h2>
+      <H2 id="reviews">RATINGS AND REVIEWS</H2>
       <Container>
         <ReviewBreakdown
           setSort={setSort}
@@ -176,6 +178,9 @@ const AppContainer = styled(Container)`
 
 const Loading = styled(Container)`
   height: 25em;
+`
+const H2 = styled.h2`
+  font-weight: lighter;
 `
 
 export default RatingsAndReviews;

@@ -49,7 +49,7 @@ export default AnswersComponent;
 const Box1 = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: -20px;
+  margin-left: -7px;
 `;
 
 const Box2 = styled.div`
@@ -66,4 +66,5 @@ const Button = styled.button`
   background: transparent;
   border: none;
   text-decoration: underline;
+  cursor: pointer;
 `;

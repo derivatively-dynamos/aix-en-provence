@@ -45,20 +45,26 @@ const Review = ({ review, markHelpful, report}) => {
       }>{!markedHelpful
           ? 'Yes'
           : null
-        }</UlText> {review.helpfulness} | <UlText
-        name='Report Button'
-        onClick={()=> {
-          !reported
-          ? (
-            report(review.review_id),
-            setReported(true)
-          )
-          : null
-        }
-      }>{!reported
-          ? 'Report'
-          : 'Reported'}
-      </UlText></Helpful>
+        }</UlText> {
+          !markedHelpful
+          ? review.helpfulness
+          : review.helpfulness + 1
+          } | <UlText
+                name='Report Button'
+                onClick={()=> {
+                  !reported
+                  ? (
+                    report(review.review_id),
+                    setReported(true)
+                  )
+                  : null
+                }
+              }
+              >{!reported
+                ? 'Report'
+                : 'Reported'}
+      </UlText>
+      </Helpful>
     </ReviewCont>
   )
 }
@@ -93,6 +99,7 @@ const ResponseBox = styled.div`
 `
 const UlText = styled.a`
   text-decoration: underline;
+  cursor: pointer;
 `
 
 const Helpful = styled.div`
