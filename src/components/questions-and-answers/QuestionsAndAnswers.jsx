@@ -48,7 +48,7 @@ const QuestionsAndAnswers = ({ product }) => {
   return (
     <Container>
       <div>
-        <H1>QUESTIONS & ANSWERS...</H1>
+        <H2>QUESTIONS & ANSWERS</H2>
         <SearchBar handleSearch={handleSearch} />
         <QuestionsComponent
           questions={questions}
@@ -72,8 +72,9 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const H1 = styled.h1`
+const H2 = styled.h2`
   margin-bottom: 0px;
+  font-weight: lighter;
 `;
 
 export default QuestionsAndAnswers;

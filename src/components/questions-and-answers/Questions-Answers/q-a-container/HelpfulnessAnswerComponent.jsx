@@ -254,7 +254,9 @@ const Container = styled.div`
 const Thumbnail = styled.img`
   max-width: 100%;
   width: 80px;
-
+  max-height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
   justify-content: ;
   margin-right: 5px;
 `;
@@ -303,8 +305,11 @@ const StyledLabel = styled.label`
 
 const LabelDiv = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: left;
-  align-items: baseline;
-  margin-bottom: 10px;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 3px;
 `;
+
+// display: flex;
+//     flex-direction: row;
+//     align-items: center;
