@@ -143,8 +143,8 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
   if (!reviews || !metaData) return <Loading />
 
   return (
-    <AppContainer id="reviews">
-      <H2>RATINGS AND REVIEWS</H2>
+    <AppContainer>
+      <H2 id="reviews">RATINGS AND REVIEWS</H2>
       <Container>
         <ReviewBreakdown
           setSort={setSort}
