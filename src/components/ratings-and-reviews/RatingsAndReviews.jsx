@@ -143,7 +143,7 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
   if (!reviews || !metaData) return <Loading />
 
   return (
-    <AppContainer>
+    <AppContainer id="reviews">
       <h2>RATINGS AND REVIEWS</h2>
       <Container>
         <ReviewBreakdown
