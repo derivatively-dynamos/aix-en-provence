@@ -144,7 +144,7 @@ const RatingsAndReviews = ({productId, score, setScore }) => {
 
   return (
     <AppContainer id="reviews">
-      <h2>RATINGS AND REVIEWS</h2>
+      <H2>RATINGS AND REVIEWS</H2>
       <Container>
         <ReviewBreakdown
           setSort={setSort}
@@ -178,6 +178,9 @@ const AppContainer = styled(Container)`
 
 const Loading = styled(Container)`
   height: 25em;
+`
+const H2 = styled.h2`
+  font-weight: lighter;
 `
 
 export default RatingsAndReviews;
