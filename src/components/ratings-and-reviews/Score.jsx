@@ -6,7 +6,9 @@ const Score = ({ score }) => {
   return (
     <ScoreCont>
       <ScoreNum>{score}</ScoreNum>
-      <Rating score={score} />
+      <RatingCont>
+        <Rating score={score} />
+      </RatingCont>
     </ScoreCont>
   )
 }
@@ -23,4 +25,8 @@ const ScoreNum = styled.div`
   font-size: 5em;
   padding-right: .1em;
 `
+const RatingCont = styled.div`
+  margin-top: 1em;
+`
+
 export default Score;
