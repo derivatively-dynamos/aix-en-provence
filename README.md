@@ -30,7 +30,7 @@ This module allows the asking and answering of questions for the selected produc
     
 - All question and answer data is obtained through HTTP requests to the API. If a different product is selected, it will trigger a request to the API and the module will re-render. After the data is received, questions and answers are sorted by their helpfulness, or number of helpful upvotes, as well if the questions actually contain answers. Users are able to report answers to the website which will have them removed, as well as vote on a question’s or answer’s helpfulness up to a total of one time.
     
-- Expanding both the answers or questions section renders a scrollbar for user friendly navigation. 
+- Expanding both the answer or question section renders a scrollbar for user friendly navigation. 
     
 - The search bar will only begin to filter questions after three characters are typed while keeping all sort functions working properly.
     
