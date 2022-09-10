@@ -82,9 +82,9 @@ If you are not a member of the team please fork this repo prior to diving in. If
 
 2. This app uses dotenv, create a copy of .example-env with your preferred Port and Git Access Token. Rename this to .env since it is on the .gitignore.
 
-3. Also fill your Git Access Token into the config.js file.
+3. Run `npm start` for a locally hosted development instance with hot reload.
 
-4. Lastly `npm start` to run the instance, we have included hot refresh so it is listening for changes.
+4. To run a server, first run `npm build` to build the bundle, then `npm server` to launch the express server.
 
 
 
