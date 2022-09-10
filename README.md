@@ -9,10 +9,10 @@ This project is a complete redesign of a formerly outdated feeling retail portal
 
 <details>
 <summary>Overview by Grand Deedler</summary>
-<br>
-    
-https://user-images.githubusercontent.com/76674186/189499818-5c3988b1-0234-4f67-b252-e75172c7e22e.mp4
-    
+<br>   
+
+https://user-images.githubusercontent.com/76674186/189500176-ff3e7c4c-2b21-42dc-a8fe-4e074ba3b28f.mp4
+  
 - The Overview section is the the first thing a customer sees upon visiting the page. Product details, price, and description are displayed. The customer can select different styles to see the available sizes and quantities of each SKU in stock. Links for sharing the product to social media are also available.
     
 - The dominant section of the overview is the image gallery. Customers can scroll through the available photos for each product style. If they click on the image it expands to a blown up gallery view. Clicking again on this view zooms in 300%, allowing customers to view small details in each product.
@@ -21,13 +21,19 @@ https://user-images.githubusercontent.com/76674186/189499818-5c3988b1-0234-4f67-
 <details>
 <summary>Related Items & Outfit Creation by Tyler Leet</summary>
 <br>
+
+https://user-images.githubusercontent.com/76674186/189500140-29c5e5fc-094c-43ca-ac1a-97cddc71b6e3.mp4
+    
 -your text here-
+
 </details>
 
 <details>
 <summary>Questions and Answers by James Anderson</summary>
 <br>
-    
+
+https://user-images.githubusercontent.com/76674186/189500160-a0c17f35-fe5e-4090-903f-8830e63467d2.mp4
+
 This module allows the asking and answering of questions for the selected product. The functionality contained within this module can be divided into five unique subsections:
 
 1. Search for a question and answer
@@ -48,6 +54,9 @@ This module allows the asking and answering of questions for the selected produc
 <details>
 <summary>Ratings and Reviews by Brian Crouse</summary>
 <br>
+  
+https://user-images.githubusercontent.com/76674186/189500256-3d19d6b4-b4b2-4dba-aac8-dac52f54f136.mp4
+
 Ratings and Reviews is meant to show a comprehensive breakdown of all user ratings for the currently selected product. This includes; the product's average rating, followed by percentage based "star rating" shown by a horizontal bar graph, as well as product characteristics represented by a slider. The reviews display lets users read into what others have thought about the product and post a review themselves, which is sent to Atelier API.
 </details>
 
