@@ -25,7 +25,7 @@ This project is a complete redesign of a formerly outdated feeling retail portal
 <details>
 <summary>Ratings and Reviews by Brian Crouse</summary>
 <br>
-Ratings and Reviews is meant to show a comprehensive breakdown of all user ratings for the currently selected product.
+Ratings and Reviews is meant to show a comprehensive breakdown of all user ratings for the currently selected product. This includes; the product's average rating, followed by percentage based "star rating" shown by a horizontal bar graph, as well as characteristics represented by a slider. The reviews display lets users read into what others have thought about the product and post a review themselves, which is sent to Atelier API.
 </details>
 
 ## Using this repo:
