@@ -20,7 +20,7 @@ app.use(morgan('dev'));
 app.use(expressStaticGzip(path.join(__dirname, '../dist')));
 app.use(compression());
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 80;
 
 app.get('/api/*', (req, res) => {
   const url = req.url.replace('/api/', '/')
