@@ -19,7 +19,27 @@ This project is a complete redesign of a formerly outdated feeling retail portal
 <details>
 <summary>Questions and Answers by James Anderson</summary>
 <br>
--your text here-
+36
+This module allows the asking and answering of questions for the selected product. The functionality contained within this module can be divided into five unique subsections:
+
+
+
+
+
+
+1. Search for a question and answer
+2. View questions
+3. View answers
+4. Ask a question
+5. Answer a question
+    
+- All question and answer data is obtained through HTTP requests to the API. If a different product is selected, it will trigger a request to the API and the module will re-render. After the data is received, questions and answers are sorted by their helpfulness, or number of helpful upvotes, as well if the questions actually contain answers. Users are able to report answers to the website which will have them removed, as well as vote on a question’s or answer’s helpfulness up to a total of one time.
+    
+- Expanding both the answers or questions section renders a scrollbar for user friendly navigation. 
+    
+- The search bar will only begin to filter questions after three characters are typed while keeping all sort functions working properly.
+    
+- Adding a new question or answer will trigger a modal view with a form to be filled out and submitted. Upon submission, each field is validated based on a set of requirements provided in the business documents. Upon a successful submission, a post request will be sent to the API to persist the data.
 </details>
 
 <details>
