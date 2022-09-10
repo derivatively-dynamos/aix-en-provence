@@ -4,10 +4,18 @@ This project is a complete redesign of a formerly outdated feeling retail portal
 
 ## This product includes the following widgets created by our talented team:
 
+
+
+
 <details>
 <summary>Overview by Grand Deedler</summary>
 <br>
--your text here-
+    
+https://user-images.githubusercontent.com/76674186/189499818-5c3988b1-0234-4f67-b252-e75172c7e22e.mp4
+    
+- The Overview section is the the first thing a customer sees upon visiting the page. Product details, price, and description are displayed. The customer can select different styles to see the available sizes and quantities of each SKU in stock. Links for sharing the product to social media are also available.
+    
+- The dominant section of the overview is the image gallery. Customers can scroll through the available photos for each product style. If they click on the image it expands to a blown up gallery view. Clicking again on this view zooms in 300%, allowing customers to view small details in each product.
 </details>
 
 <details>
@@ -77,3 +85,6 @@ If you are not a member of the team please fork this repo prior to diving in. If
 3. Also fill your Git Access Token into the config.js file.
 
 4. Lastly `npm start` to run the instance, we have included hot refresh so it is listening for changes.
+
+
+
