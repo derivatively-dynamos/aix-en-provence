@@ -19,13 +19,8 @@ This project is a complete redesign of a formerly outdated feeling retail portal
 <details>
 <summary>Questions and Answers by James Anderson</summary>
 <br>
-36
+    
 This module allows the asking and answering of questions for the selected product. The functionality contained within this module can be divided into five unique subsections:
-
-
-
-
-
 
 1. Search for a question and answer
 2. View questions
