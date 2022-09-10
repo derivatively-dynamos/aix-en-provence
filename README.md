@@ -54,15 +54,6 @@ If you are not a member of the team please fork this repo prior to diving in. If
     git checkout main       // Navigate to main branch
     git pull upstream main  // Get lastest changes of main branch
 ```
-## Install dependencies
-
-1. Navigate to the root directory and `npm install` all dependencies.
-
-2. This app uses dotenv, create a copy of .example-env with your preferred Port and Git Access Token. Rename this to .env since it is on the .gitignore.
-
-3. Also fill your Git Access Token into the config.js file.
-
-4. Lastly `npm start` to run the instance, we have included hot refresh so it is listening for changes.
 
 ### Tech Used:
 ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=plastic)
@@ -75,3 +66,14 @@ If you are not a member of the team please fork this repo prior to diving in. If
 ![Axios](https://img.shields.io/badge/-Axios-373747?logo=axios&logoColor=white&style=plastic)
 ![Express](https://img.shields.io/badge/-Express-DCDCDC?logo=express&logoColor=black&style=plastic)
 ![AWS](https://img.shields.io/badge/-AWS-000000?logo=amazon-aws&logoColor=white&style=plastic)
+
+
+## Install dependencies
+
+1. Navigate to the root directory and `npm install` all dependencies.
+
+2. This app uses dotenv, create a copy of .example-env with your preferred Port and Git Access Token. Rename this to .env since it is on the .gitignore.
+
+3. Also fill your Git Access Token into the config.js file.
+
+4. Lastly `npm start` to run the instance, we have included hot refresh so it is listening for changes.
