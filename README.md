@@ -8,7 +8,7 @@ This project is a complete redesign of a formerly outdated feeling retail portal
 
 
 <details>
-<summary>Overview by Grand Deedler</summary>
+<summary>Overview by Grant Deedler</summary>
 <br>   
 
 https://user-images.githubusercontent.com/76674186/189500176-ff3e7c4c-2b21-42dc-a8fe-4e074ba3b28f.mp4
