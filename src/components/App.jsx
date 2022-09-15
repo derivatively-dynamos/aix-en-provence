@@ -15,7 +15,7 @@ const OverviewTrack = clickTrack(Overview, 'overview');
 
 const App = () => {
   const [theme, setTheme] = useState('dark');
-  const [productId, setProductId] = useState(37313);
+  const [productId, setProductId] = useState(3);
   const [product, setProduct] = useState('');
   const [styles, setStyles] = useState([]);
   const [score, setScore] = useState(0);
