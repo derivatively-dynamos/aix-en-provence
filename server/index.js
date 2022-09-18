@@ -34,6 +34,16 @@ app.get('/api/products/*', (req, res) => {
     })
     .catch(err => console.log(err))
 })
+app.get('/api/qa/*', (req, res) => {
+  const url = 'http://3.140.28.167:8090' + req.url.replace('/api/', '/')
+  console.log(url);
+  newApi.get(url)
+    .then(response => {
+      res.status(200);
+      res.send(response.data);
+    })
+    .catch(err => console.log(err))
+})
 app.get('/api/*', (req, res) => {
   const url = req.url.replace('/api/', '/')
   api.get(url)
